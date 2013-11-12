@@ -84,7 +84,8 @@ public class Controller {
 	public static void TestTreeSearchAlgorithm()
 	{
 		objects.FileTree t = new objects.FileTree(new File(ROOT + "projects\\ProjectProcessor.java"),"Senior-Design");
-		int nodetype = QueryNodeTypeClassifier.ClassifyNode(QueryHandler.searchNodeType);
+		Class nodetype = QueryNodeTypeClassifier.ClassifyNodeC(QueryHandler.searchNodeType);
+		//int nodetype = QueryNodeTypeClassifier.ClassifyNode(QueryHandler.searchNodeType);
 		System.out.println(nodetype);
 		algorithm.TreeSearchAlgorithm.HasSubTree(t.root, nodetype);	
 	}

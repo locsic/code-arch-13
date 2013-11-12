@@ -12,8 +12,9 @@ public class Search {
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 		LinkedList r = new LinkedList();
 		
-		int nodetype = QueryNodeTypeClassifier.ClassifyNode(QueryHandler.searchNodeType);
-		
+		//int nodetype = QueryNodeTypeClassifier.ClassifyNode(QueryHandler.searchNodeType);
+		Class nodetype = QueryNodeTypeClassifier.ClassifyNodeC(QueryHandler.searchNodeType);
+
 		for(ProjectTree proj: trees)
 			results.addAll(SearchTree(proj.projectTree));
 		return results;
@@ -24,7 +25,8 @@ public class Search {
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 		
-		int nodetype = QueryNodeTypeClassifier.ClassifyNode(QueryHandler.searchNodeType);
+		//int nodetype = QueryNodeTypeClassifier.ClassifyNode(QueryHandler.searchNodeType);
+		Class nodetype = QueryNodeTypeClassifier.ClassifyNodeC(QueryHandler.searchNodeType);
 		//System.out.println(nodetype);
 		
 		for(DirectoryTree dir: tree.dirs)
@@ -48,8 +50,9 @@ public class Search {
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 		
-		int nodetype = QueryNodeTypeClassifier.ClassifyNode(QueryHandler.searchNodeType);
-		
+		//int nodetype = QueryNodeTypeClassifier.ClassifyNode(QueryHandler.searchNodeType);
+		Class nodetype = QueryNodeTypeClassifier.ClassifyNodeC(QueryHandler.searchNodeType);
+
 		for(ResultTree proj: trees)
 			results.addAll(SearchTree(proj));
 		return results;
@@ -58,8 +61,8 @@ public class Search {
 	public static LinkedList<ResultTree> SearchTree(ResultTree tree)
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
-		
-		int nodetype = QueryNodeTypeClassifier.ClassifyNode(QueryHandler.searchNodeType);
+		Class nodetype = QueryNodeTypeClassifier.ClassifyNodeC(QueryHandler.searchNodeType);
+		//int nodetype = QueryNodeTypeClassifier.ClassifyNode(QueryHandler.searchNodeType);
 		//System.out.println(nodetype);
 
 			algorithm.TreeSearchAlgorithm.HasSubTree(tree.root, nodetype);
