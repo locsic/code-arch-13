@@ -1,68 +1,77 @@
 package objects;
 import java.util.*;
 
+import org.antlr.runtime.tree.CommonTree;
+
 public class Query {
 	public String queryName;
-	private LinkedList<SelectorNode> nodeChain;
-	public String nodeChainName;
+	public LinkedList <NodeChain> nodeChains;
 	public LinkedList<Query> nestedQueries;
-	public LinkedList<BooleanStatement> whereClause;
+	public BooleanStatement whereClause;
 	public LinkedList<Statement> statements;
-	private LinkedList<SelectorNode> printNodeChain;
+	//private LinkedList<SelectorNode> printNodeChain;
 	//public LinkedList<>
 
 	public Query()
 	{
-		nodeChain = new LinkedList<SelectorNode>();
+		nodeChains = new LinkedList <NodeChain>();
 		queryName = null;
 		nestedQueries = null;
 		whereClause = null;
-		printNodeChain = null;
+		//printNodeChain = null;
 	}
 
 	public void setQueryName(String name)
 	{
 		queryName = name;
 	}
+	
+	public void newNodeChain()
+	{
+		nodeChains.add(new NodeChain());
+	}
 
 	public void setNodeChainName(String name)
 	{
-		nodeChainName = name;
+		nodeChains.getLast().name = name;
 	}
 
 	public void addSelectorNode(String node, int type)
 	{
-		nodeChain.add(new SelectorNode(node, type));
+		nodeChains.getLast().add(new SelectorNode(node, type));
 	}
 
 	public SelectorNode nextSelectorNode()
 	{
-		return nodeChain.isEmpty() ? null : nodeChain.remove();
+		return nodeChains.getLast().isEmpty() ? null : nodeChains.getLast().remove();
 	}
 
-	public void addBooleanStatement()
+	public void addWhereClause(CommonTree ct)
 	{
-
+		if (ct != null)	whereClause = new BooleanStatement(ct);
 	}
-
 
 	public String print()
 	{
 		String out = "";
-		out += this.queryName + "\n";
+//		out += this.queryName + "\n";
 		out += "selector: ";
-		for(SelectorNode n : this.nodeChain)
+		for(SelectorNode n : (this.nodeChains.getLast().nodeList))
 		{
 			out += n.nodeText + " ";
 		}
-		out += "\n" + this.nodeChainName;
+		out += "\n" + this.nodeChains.getLast().name;
 		out += "\nwhere: ";
-		if (whereClause != null)
-			for(BooleanStatement b: this.whereClause)
-			{
-				out +=   " ";
-			}
+		//if (whereClause != null)
+//			for(BooleanStatement b: this.whereClause)
+			//{
+//				out +=   " ";
+			//}
 
 		return out;
+	}
+
+	public void bindVars(ResultTree r) {
+		nodeChains.getFirst().setBinding(r);		
 	}
 }

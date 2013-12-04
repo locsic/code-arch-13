@@ -125,7 +125,8 @@ public class Controller {
 	public static void SearchAlgorithm()
 	{
 		LinkedList<ResultTree> resultTrees;
-		resultTrees = algorithm.Search.SearchTrees(projectsList);
+		resultTrees = algorithm.Search.SearchTrees(projectsList);		
+		resultTrees = QueryHandler.applyWhere(resultTrees);
 
 		if (QueryHandler.printSum)
 			ResultsHandler.PrintNumResults(resultTrees);

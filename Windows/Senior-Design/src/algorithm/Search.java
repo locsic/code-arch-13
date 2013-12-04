@@ -35,7 +35,7 @@ public class Search {
 			for (ResultTree t: algorithm.TreeSearchAlgorithm.matches)
 			{
 				t.project = fileTree.project;
-				t.origin = fileTree.origin;
+				t.origin = fileTree.origin;				
 				results.add(t);
 			}
 			//results.addAll(algorithm.TreeSearchAlgorithm.matches);

@@ -1,6 +1,5 @@
 // $ANTLR 3.4 C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g 2013-12-04 12:39:27
 
-package query;
 import org.antlr.runtime.*;
 import java.util.Stack;
 import java.util.List;

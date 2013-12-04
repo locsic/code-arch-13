@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.LinkedList;
 
 import main.Controller;
+import objects.NodeChain;
 import objects.Query;
+import objects.ResultTree;
 import objects.SelectorNode;
 
 import org.antlr.runtime.*;
@@ -40,6 +42,10 @@ public class QueryHandler {
 		tokens.setTokenSource(lexer);
 		QueryLanguageParser parser = new QueryLanguageParser(tokens);
 		CommonTree tree = (CommonTree)parser.startrule().getTree();
+		
+		simplePrintTree(tree, 4);
+		
+		System.out.println("Begin processing.");
 		printTree(tree,4);
 		System.out.println("Searching For: " + searchNodeType);
 
@@ -64,6 +70,19 @@ public class QueryHandler {
 	    System.out.println(st);*/
 	}
 
+	public static void simplePrintTree(CommonTree t, int indent) {
+		if ( t != null ) {
+			StringBuffer sb = new StringBuffer(indent);
+
+			for ( int i = 0; i < indent; i++ )
+				sb = sb.append("   ");
+			for ( int i = 0; i < t.getChildCount(); i++ ) {
+				System.out.println(sb.toString() + t.getChild(i).toString());
+					printTree((CommonTree)t.getChild(i), indent+1);
+			}
+		}
+	}
+	
 	public static void printTree(CommonTree t, int indent) {
 		if ( t != null ) {
 			StringBuffer sb = new StringBuffer(indent);
@@ -145,8 +164,13 @@ public class QueryHandler {
 				else if (t.getChild(i).getText().toString().equals("CHAIN_ID"))
 				{
 					query.setNodeChainName(((CommonTree)t.getChild(i).getChild(0)).getText().toString());
-					System.out.println(sb.toString() + query.nodeChainName);
+					System.out.println(sb.toString() + query.nodeChains.getLast().name);
 				}
+				else if (t.getChild(i).getText().toString().equals("WHERE_BLOCK"))
+				{
+					CommonTree sw = (CommonTree)t.getChild(0);
+					query.addWhereClause(sw);
+				}				
 				else
 					printTree((CommonTree)t.getChild(i), indent+1);
 			}
@@ -168,7 +192,15 @@ public class QueryHandler {
 				else if (t.getChild(i).getText().toString().equals("CHAIN_ID"))
 				{
 					query.setNodeChainName(((CommonTree)t.getChild(i).getChild(0)).getText().toString());
-					System.out.println(sb.toString() + query.nodeChainName);
+					System.out.println(sb.toString() + query.nodeChains.getLast().name);
+				}
+				else if (t.getChild(i).getText().toString().equals("WHERE_BLOCK"))
+				{
+					CommonTree sw = (CommonTree)t.getChild(i).getChild(0);
+					query.addWhereClause(sw);
+					
+					System.out.println("(Where Block)");
+					printTree((CommonTree)t.getChild(i), indent+1);
 				}
 				else
 					printTree((CommonTree)t.getChild(i), indent+1);
@@ -176,7 +208,18 @@ public class QueryHandler {
 		}
 	}
 
-	public static void GetSearchNode(CommonTree t, int indent, Query query) {
+	//public static void GetSearchNode(CommonTree t, int indent) 
+	//{
+		 //= GetSearchNode(t, indent);
+	//}
+	public static NodeChain GetSearchNode(CommonTree t, int indent)
+	{
+		Query dummyQuery = new Query();
+		return GetSearchNode(t, indent, dummyQuery);
+	}
+	
+	public static NodeChain GetSearchNode(CommonTree t, int indent, Query query)
+	{
 		if ( t != null ) {
 			StringBuffer sb = new StringBuffer(indent);
 
@@ -192,25 +235,69 @@ public class QueryHandler {
 				System.out.println(sb.toString() + t.getChild(i).toString());
 				if(t.getChild(i).getText().toString().equals("NODE_NAME"))
 				{
+					query.newNodeChain();
 					searchNodeType = t.getChild(i).getChild(0).getText().toString();
 					query.addSelectorNode(searchNodeType, SelectorNode.NODE);
 					System.out.println(sb.toString() + "node: " + searchNodeType);
 				}
-				else if (t.getChild(i).getText().toString().equals("ATTRIBUTE"))
+				else 
 				{
-					String node = t.getChild(i).getChild(0).getText().toString();
-					query.addSelectorNode(node, SelectorNode.ATTR);
-					System.out.println(sb.toString() + "attr: " + node);
+					if (query.nodeChains.size() == 0) query.newNodeChain();
+					if (t.getChild(i).getText().toString().equals("ATTRIBUTE"))				
+					{
+						String node = t.getChild(i).getChild(0).getText().toString();
+						query.addSelectorNode(node, SelectorNode.ATTR);
+						System.out.println(sb.toString() + "attr: " + node);
+					}
+					else if (t.getChild(i).getText().toString().equals("PROPERTY"))
+					{
+						String node = t.getChild(i).getChild(0).getText().toString();
+						if (node == "VAR_NAME")
+						{
+							node = t.getChild(i).getChild(0).getChild(0).getText().toString();
+							query.setNodeChainName(node);
+						}
+						query.addSelectorNode(node, SelectorNode.PROP);
+						System.out.println(sb.toString() + "prop: " + node);
+					}
+					else //if  (t.getChild(i).getText().toString().equals("NODE"))
+					{
+						GetSearchNode((CommonTree)t.getChild(i), indent+1, query);
+					}
 				}
-				else if (t.getChild(i).getText().toString().equals("PROPERTY"))
-				{
-					String node = t.getChild(i).getChild(0).getText().toString();
-					query.addSelectorNode(node, SelectorNode.PROP);
-					System.out.println(sb.toString() + "prop: " + node);
-				}
-				else //if  (t.getChild(i).getText().toString().equals("NODE"))
-					GetSearchNode((CommonTree)t.getChild(i), indent+1, query);
 			}
 		}
+		
+		return query.nodeChains.getLast();		
+	}
+
+	public static LinkedList<ResultTree> applyWhere(
+			LinkedList<ResultTree> resultTrees) {
+
+	LinkedList<ResultTree> passedResultTrees = new LinkedList<ResultTree>();
+		
+		for(Query q: queries)
+		{
+			for(ResultTree r: resultTrees)
+			{
+				q.bindVars(r);
+				boolean passed = true;
+				if (q.whereClause != null)
+				{
+					passed = q.whereClause.evaluate(r, q.nodeChains);					
+				}
+				if (passed == true)
+				{
+					passedResultTrees.add(r);
+					System.out.println("Where clause passed!");					
+				}
+				else
+				{
+					System.out.println("Where clause failed.");
+				}
+			}
+		}
+
+		return passedResultTrees;
 	}
 }

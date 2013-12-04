@@ -80,11 +80,11 @@ with_clause
 	|	-> WITH_CLAUSE
 	;
 node_chain
-	:	node PERIOD node_chain 				-> ^(NODE ^(NODE_NAME node) node_chain)
+	:	node PERIOD node_chain 				-> ^(NODE ^(NODE_NAME node) ^(NODE_CHAIN node_chain))
 	|	node COLON attr 				-> ^(NODE ^(NODE_NAME node) ^(ATTRIBUTE attr))
 	|	node 						-> ^(NODE ^(NODE_NAME node))
 	|	node keywords					-> ^(NODE ^(NODE_NAME node) keywords)
-	|	ID PERIOD node_chain 				-> ^(VAR_NAME ID ^(node_chain))
+	|	ID PERIOD node_chain 				-> ^(VAR_NAME ID ^(NODE_CHAIN node_chain))
 	|	property					-> ^(PROPERTY property)
 	;	
 node

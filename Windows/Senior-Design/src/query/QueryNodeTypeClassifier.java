@@ -79,7 +79,7 @@ public class QueryNodeTypeClassifier {
 		else if(nodeType.equals("null_literal"))
 			return ASTNode.NULL_LITERAL;
 		else if(nodeType.equals("integer_literal"))
-			return 0;
+			return ASTNode.NUMBER_LITERAL;
 		else if(nodeType.equals("character_literal"))
 			return ASTNode.CHARACTER_LITERAL;
 		else if(nodeType.equals("string_literal"))
