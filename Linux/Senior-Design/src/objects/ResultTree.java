@@ -6,10 +6,17 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 public class ResultTree extends FileTree {
 	
 	public ASTNode root;
+	private String flat;
 	
 	public ResultTree(ASTNode root)
 	{
 		this.root = root;
+	}
+	
+	public ResultTree(ASTNode root, String flat)
+	{
+		this.root = root;
+		this.flat = flat;
 	}
 
 	public ResultTree(ASTNode root, FileTree originTree)

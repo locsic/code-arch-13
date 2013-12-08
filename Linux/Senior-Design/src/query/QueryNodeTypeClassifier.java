@@ -1,5 +1,7 @@
 package query;
 import org.eclipse.jdt.core.dom.ASTNode;
+import org.eclipse.jdt.core.dom.*;
+import java.lang.*;
 public class QueryNodeTypeClassifier {
 
 	public static int ClassifyNode(String nodeType)
@@ -19,7 +21,8 @@ public class QueryNodeTypeClassifier {
 		else if(nodeType.equals("method_declaration"))
 			return ASTNode.METHOD_DECLARATION;
 		else if(nodeType.equals("interface_declaration"))
-			return ASTNode.TYPE_DECLARATION_STATEMENT;
+			//return ASTNode.TYPE_DECLARATION_STATEMENT;
+			return 100;
 		else if(nodeType.equals("constructor_declaration"))
 			return 0;
 		else if(nodeType.equals("class_declaration"))
@@ -94,7 +97,7 @@ public class QueryNodeTypeClassifier {
 		if(nodeType.equals("package_declaration"))
 			return ASTNode.nodeClassForType(ASTNode.PACKAGE_DECLARATION);
 		else if(nodeType.equals("body_declaration"))
-			return null;
+			return org.eclipse.jdt.core.dom.BodyDeclaration.class;
 		else if(nodeType.equals("variable_declaration"))
 			return ASTNode.nodeClassForType(ASTNode.VARIABLE_DECLARATION_EXPRESSION);
 		else if(nodeType.equals("import_declaration"))
@@ -106,7 +109,8 @@ public class QueryNodeTypeClassifier {
 		else if(nodeType.equals("method_declaration"))
 			return ASTNode.nodeClassForType(ASTNode.METHOD_DECLARATION);
 		else if(nodeType.equals("interface_declaration"))
-			return ASTNode.nodeClassForType(ASTNode.TYPE_DECLARATION_STATEMENT);
+			//return ASTNode.nodeClassForType(ASTNode.TYPE_DECLARATION_STATEMENT);
+			return null;
 		else if(nodeType.equals("constructor_declaration"))
 			return null;
 		else if(nodeType.equals("class_declaration"))

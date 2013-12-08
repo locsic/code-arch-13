@@ -6,6 +6,7 @@ import main.Controller;
 import objects.*;
 
 import org.eclipse.jdt.core.dom.*;
+import org.eclipse.jdt.internal.core.dom.NaiveASTFlattener;
 
 public class TreeSearchAlgorithm extends ASTVisitor{
 
@@ -50,10 +51,11 @@ public class TreeSearchAlgorithm extends ASTVisitor{
 			//if(Controller.DEBUG)
 			//System.out.println(treeToSearch.getLineNumber(node.getStartPosition()));
 			if(!query.QueryHandler.getParent)
-				matches.add(new ResultTree(node));
+				//matches.add(new ResultTree(node));
+				matches.add(new ResultTree(node, asString(node)));
 			else
-				matches.add(new ResultTree(node.getParent()));
-			
+				//matches.add(new ResultTree(node.getParent()));
+				matches.add(new ResultTree(node.getParent(), asString(node.getParent())));
 			// Add checks for attr/prop
 			
 			//if(testAttribute(node))
@@ -77,5 +79,11 @@ public class TreeSearchAlgorithm extends ASTVisitor{
 			}
 		}
 		return isFound;
+	}
+	
+	public String asString(ASTNode node) {
+		NaiveASTFlattener flattener = new NaiveASTFlattener();
+		node.accept(flattener);
+		return flattener.getResult();
 	}
 }

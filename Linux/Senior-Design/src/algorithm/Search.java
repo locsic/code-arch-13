@@ -12,9 +12,6 @@ public class Search {
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 		LinkedList r = new LinkedList();
 		
-		//int nodetype = QueryNodeTypeClassifier.ClassifyNode(QueryHandler.searchNodeType);
-		Class nodetype = QueryNodeTypeClassifier.ClassifyNodeC(QueryHandler.searchNodeType);
-
 		for(ProjectTree proj: trees)
 			results.addAll(SearchTree(proj.projectTree));
 		return results;
