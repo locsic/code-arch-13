@@ -18,6 +18,8 @@ public class Query {
 		queryName = null;
 		nestedQueries = null;
 		whereClause = null;
+		statements = new LinkedList <Statement>();
+		
 		//printNodeChain = null;
 	}
 
@@ -49,6 +51,23 @@ public class Query {
 	public void addWhereClause(CommonTree ct)
 	{
 		if (ct != null)	whereClause = new BooleanStatement(ct);
+	}
+	
+	public void addStatements(CommonTree ct)
+	{
+		for (CommonTree child : (Collection <CommonTree>)(ct.getChildren()))
+		{
+			if (child.getText().toString().equals("STATEMENT"))
+			{
+				addStatement(child);
+				addStatements(child);
+			}
+		}
+	}
+	
+	public void addStatement(CommonTree ct)
+	{
+		if (ct != null) statements.add(new Statement(ct));
 	}
 
 	public String print()

@@ -23,7 +23,6 @@ tokens {
     IF_STATEMENT;
     NODE;
     NODE_NAME;
-    AST_CHILD;
     ATTRIBUTE;
     PROPERTY;
     EPSILON;
@@ -81,21 +80,16 @@ with_clause
 	|	-> WITH_CLAUSE
 	;
 node_chain
-	:	node PERIOD node_chain 				-> ^(NODE node) ^(NODE_CHAIN node_chain)
+	:	node PERIOD node_chain 				-> ^(NODE ^(NODE_NAME node) ^(NODE_CHAIN node_chain))
 	|	node COLON attr 				-> ^(NODE ^(NODE_NAME node) ^(ATTRIBUTE attr))
 	|	node 						-> ^(NODE ^(NODE_NAME node))
-	|   ast_child PERIOD node_chain            -> ^(NODE ^(AST_CHILD ast_child) ^(NODE_CHAIN node_chain))
-	|   ast_child                -> ^(NODE ^(AST_CHILD ast_child))
 	|	node keywords					-> ^(NODE ^(NODE_NAME node) keywords)
 	|	ID PERIOD node_chain 				-> ^(VAR_NAME ID ^(NODE_CHAIN node_chain))
 	|	property					-> ^(PROPERTY property)
 	;	
 node
-	:	LT NODE_TYPE GT -> NODE_TYPE	
+	:	LT NODE_TYPE GT -> NODE_TYPE
 	|	LEFT_SQ_BRACKET ID RIGHT_SQ_BRACKET -> ^(TABLE ID)
-	;
-ast_child
-	:	LEFT_BRACKET ID RIGHT_BRACKET -> ID
 	;
 keywords
 	:	PERIOD CONTAINS LEFT_PAREN keyword_nodes RIGHT_PAREN 	-> ^(CONTAINS keyword_nodes)
@@ -124,7 +118,6 @@ variable
 	:	ID COLON attr				-> ^(VAR_NAME ID attr)
 	|	node_chain 				-> ^(NODE_CHAIN node_chain)
 	|	INTEGER 				-> INTEGER
-	|       STRING                                  -> STRING
 	|	RESERVED_TYPES				-> RESERVED_TYPES	
 	;
 
@@ -210,7 +203,6 @@ logical_op
 	:	AND		-> AND
 	|	OR		-> OR
 	;
-	
 //QL Specific Keywords
 FOREACH  
 	:	 'foreach'
@@ -286,9 +278,7 @@ COLON
 PERIOD
 	: 	'.'
 	;	
-//Logical Operators
-DQOUTE : '"'
-    ;	
+//Logical Operators	
 GT 	:	'>' 
 	;
 LT 	:	'<' 
@@ -419,9 +409,6 @@ ID  :	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
 INTEGER :	'0'..'9'+
     ;
 
-STRING 	:	'"' .* '"'
-    ;
-    
 FLOAT
     :   ('0'..'9')+ '.' ('0'..'9')* EXPONENT?
     |   '.' ('0'..'9')+ EXPONENT?
@@ -454,4 +441,3 @@ UNICODE_ESC
     ;
     
 SPACE  : (' ' | '\t' | '\r' | '\n')+ {skip();};
-

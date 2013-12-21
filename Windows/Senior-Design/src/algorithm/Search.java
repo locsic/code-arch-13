@@ -1,19 +1,19 @@
 package algorithm;
 import java.util.LinkedList;
 import java.util.List;
+import java.lang.reflect.*;
+
+import org.eclipse.core.runtime.Assert;
 
 import objects.*;
 import query.QueryHandler;
-import query.QueryNodeTypeClassifier;
 public class Search {
 
 	public static LinkedList<ResultTree> SearchTrees (List<ProjectTree> trees)
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 		LinkedList r = new LinkedList();
-		
-		int nodetype = QueryNodeTypeClassifier.ClassifyNode(QueryHandler.searchNodeType);
-		
+//		
 		for(ProjectTree proj: trees)
 			results.addAll(SearchTree(proj.projectTree));
 		return results;
@@ -24,14 +24,30 @@ public class Search {
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 		
-		int nodetype = QueryNodeTypeClassifier.ClassifyNode(QueryHandler.searchNodeType);
-		//System.out.println(nodetype);
+		Class searchClass = null;
+		
+		try
+		{
+			searchClass = Class.forName("org.eclipse.jdt.core.dom." + QueryHandler.searchNodeType);
+				
+			if (!(Class.forName("org.eclipse.jdt.core.dom.ASTNode").isAssignableFrom(searchClass)))
+			{
+				System.out.println(QueryHandler.searchNodeType + " is not an ASTNode.");
+				Assert.isTrue(false);
+			}
+			// System.out.println(nodetype);
+		}
+		catch (ClassNotFoundException c)
+		{
+			System.out.println("Class " + QueryHandler.searchNodeType + " not found.");
+			Assert.isTrue(false);			
+		}
 		
 		for(DirectoryTree dir: tree.dirs)
 			results.addAll(SearchTree(dir));
 		
 		for(FileTree fileTree: tree.files){
-			algorithm.TreeSearchAlgorithm.HasSubTree(fileTree.root, nodetype);	
+			algorithm.TreeSearchAlgorithm.HasSubTree(fileTree.root, searchClass);	
 			for (ResultTree t: algorithm.TreeSearchAlgorithm.matches)
 			{
 				t.project = fileTree.project;
@@ -48,8 +64,6 @@ public class Search {
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 		
-		int nodetype = QueryNodeTypeClassifier.ClassifyNode(QueryHandler.searchNodeType);
-		
 		for(ResultTree proj: trees)
 			results.addAll(SearchTree(proj));
 		return results;
@@ -58,11 +72,28 @@ public class Search {
 	public static LinkedList<ResultTree> SearchTree(ResultTree tree)
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
+
+		Class searchClass = null;
 		
-		int nodetype = QueryNodeTypeClassifier.ClassifyNode(QueryHandler.searchNodeType);
+		try
+		{
+			searchClass = Class.forName("org.eclipse.jdt.core.dom." + QueryHandler.searchNodeType);
+			
+			if (!(Class.forName("org.eclipse.jdt.core.dom.ASTNode").isAssignableFrom(searchClass)))
+			{
+				System.out.println(QueryHandler.searchNodeType + " is not an ASTNode.");
+				Assert.isTrue(false);
+			}
+		}
+		catch (ClassNotFoundException c)
+		{
+			System.out.println("Class " + QueryHandler.searchNodeType + " not found.");
+			Assert.isTrue(false);			
+		}
+
 		//System.out.println(nodetype);
 
-			algorithm.TreeSearchAlgorithm.HasSubTree(tree.root, nodetype);
+			algorithm.TreeSearchAlgorithm.HasSubTree(tree.root, searchClass);
 			for (ResultTree t: algorithm.TreeSearchAlgorithm.matches)
 			{
 				t.project = tree.project;

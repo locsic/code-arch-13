@@ -1,6 +1,7 @@
 package query;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.LinkedList;
 
 import main.Controller;
@@ -8,6 +9,7 @@ import objects.NodeChain;
 import objects.Query;
 import objects.ResultTree;
 import objects.SelectorNode;
+import objects.Statement;
 
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.CommonTree;
@@ -168,8 +170,16 @@ public class QueryHandler {
 				}
 				else if (t.getChild(i).getText().toString().equals("WHERE_BLOCK"))
 				{
-					CommonTree sw = (CommonTree)t.getChild(0);
-					query.addWhereClause(sw);
+					CommonTree sw = (CommonTree)t.getChild(i);
+					query.addWhereClause((CommonTree)sw.getChild(0));
+					
+					for (CommonTree whereChild : (Collection <CommonTree>)(sw.getChildren()))
+					{
+						if (whereChild.getText().toString().equals("STATEMENTS"))
+						{
+							query.addStatements(whereChild);
+						}
+					}
 				}				
 				else
 					printTree((CommonTree)t.getChild(i), indent+1);
@@ -196,11 +206,19 @@ public class QueryHandler {
 				}
 				else if (t.getChild(i).getText().toString().equals("WHERE_BLOCK"))
 				{
-					CommonTree sw = (CommonTree)t.getChild(i).getChild(0);
-					query.addWhereClause(sw);
+					CommonTree sw = (CommonTree)t.getChild(i);
+					query.addWhereClause((CommonTree)sw.getChild(0));
 					
 					System.out.println("(Where Block)");
 					printTree((CommonTree)t.getChild(i), indent+1);
+					
+					for (CommonTree whereChild : (Collection <CommonTree>)(sw.getChildren()))
+					{
+						if (whereChild.getText().toString().equals("STATEMENTS"))
+						{
+							query.addStatements(whereChild);
+						}
+					}
 				}
 				else
 					printTree((CommonTree)t.getChild(i), indent+1);
@@ -225,7 +243,7 @@ public class QueryHandler {
 
 			if (t.getParent() == null){
 				if(t.getText()!=null){
-					String node = t.getText().toString();
+					//String node = t.getText().toString();
 					System.out.println(sb.toString() + t.getText().toString());	
 				}
 			}
@@ -240,6 +258,13 @@ public class QueryHandler {
 					query.addSelectorNode(searchNodeType, SelectorNode.NODE);
 					System.out.println(sb.toString() + "node: " + searchNodeType);
 				}
+				else if (t.getChild(i).getText().toString().equals("AST_CHILD"))
+				{
+					if (query.nodeChains.size() == 0) query.newNodeChain();
+					searchNodeType = t.getChild(i).getChild(0).getText().toString();
+					query.addSelectorNode(searchNodeType, SelectorNode.AST_CHILD);
+					System.out.println(sb.toString() + "ast_child: " + searchNodeType);					
+				}
 				else 
 				{
 					if (query.nodeChains.size() == 0) query.newNodeChain();
@@ -248,6 +273,15 @@ public class QueryHandler {
 						String node = t.getChild(i).getChild(0).getText().toString();
 						query.addSelectorNode(node, SelectorNode.ATTR);
 						System.out.println(sb.toString() + "attr: " + node);
+					}
+					else if (t.getChild(i).getText().toString().equals("VAR_NAME"))
+					{
+						String node = t.getChild(i).getChild(0).getText().toString();
+						
+						query.setNodeChainName(node);
+						System.out.println(sb.toString() + "var_name: " + node);
+						
+						GetSearchNode((CommonTree)t.getChild(i), indent+1, query);
 					}
 					else if (t.getChild(i).getText().toString().equals("PROPERTY"))
 					{
@@ -270,11 +304,29 @@ public class QueryHandler {
 		
 		return query.nodeChains.getLast();		
 	}
+	
+	public static void applyStatements(LinkedList<ResultTree> resultTrees)
+	{
+		LinkedList <NodeChain> localVars = new LinkedList <NodeChain> ();
+
+		for(Query q: queries)
+		{
+			for(ResultTree r: resultTrees)
+			{				
+				q.bindVars(r);
+				
+				for (Statement s: q.statements)
+				{
+					s.evaluate(r, q.nodeChains, localVars);
+				}
+			}
+		}		
+	}
 
 	public static LinkedList<ResultTree> applyWhere(
 			LinkedList<ResultTree> resultTrees) {
 
-	LinkedList<ResultTree> passedResultTrees = new LinkedList<ResultTree>();
+		LinkedList<ResultTree> passedResultTrees = new LinkedList<ResultTree>();
 		
 		for(Query q: queries)
 		{

@@ -12,7 +12,6 @@ import org.antlr.runtime.RecognitionException;
 
 import projects.ProjectProcessor;
 import query.QueryHandler;
-import query.QueryNodeTypeClassifier;
 import objects.ProjectTree;
 import objects.ResultTree;
 
@@ -78,37 +77,6 @@ public class Controller {
 
 	}
 
-	public static void TestTreeSearchAlgorithm()
-	{
-		objects.FileTree t = new objects.FileTree(new File(ROOT + "projects\\ProjectProcessor.java"),"Senior-Design");
-		int nodetype = QueryNodeTypeClassifier.ClassifyNode(QueryHandler.searchNodeType);
-		System.out.println(nodetype);
-		algorithm.TreeSearchAlgorithm.HasSubTree(t.root, nodetype);	
-	}
-
-	public static void TestProjectTreeSearchAlgorithm()
-	{
-		LinkedList<ResultTree> resultTrees;
-		if(QueryHandler.queryName.equals("EPSILON")){
-			QueryHandler.queryName = "Q3";
-			query.QueryHandler.searchNodeType = "type_declaration";
-			resultTrees = algorithm.Search.SearchTrees(projectsList);
-			//LinkedList<ResultTree> resultTrees1 = algorithm.Search.SearchTrees(projectsList);
-			//query.QueryHandler.searchNodeType = "interface_declaration";
-			//resultTrees = algorithm.Search.SearchResultTrees(resultTrees1);
-		}
-		else{
-			query.QueryHandler.getParent = true;
-			resultTrees = algorithm.Search.SearchTrees(projectsList);
-		}
-
-
-		if (QueryHandler.printSum)
-			ResultsHandler.PrintNumResults(resultTrees);
-		else
-			ResultsHandler.PrintResults(resultTrees);		
-	}
-
 	public static void GetProjects()
 	{
 		ProjectProcessor.DownloadProjects(DOWNLOAD);
@@ -127,7 +95,10 @@ public class Controller {
 		LinkedList<ResultTree> resultTrees;
 		resultTrees = algorithm.Search.SearchTrees(projectsList);		
 		resultTrees = QueryHandler.applyWhere(resultTrees);
-
+		
+		// Apply the STATEMENTS in the query body to the remaining results
+		QueryHandler.applyStatements(resultTrees);
+		
 		if (QueryHandler.printSum)
 			ResultsHandler.PrintNumResults(resultTrees);
 		else
@@ -164,20 +135,6 @@ public class Controller {
 		}
 
 	}
-
-	public static void Test()
-	{
-		try{
-			TestProjects();
-			TestQuery();
-			TestProjectTreeSearchAlgorithm();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-
 
 	public static void main(String[] args) {
 		getProjectDir();
