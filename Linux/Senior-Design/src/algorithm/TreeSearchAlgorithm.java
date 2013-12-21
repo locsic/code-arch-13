@@ -5,25 +5,18 @@ import java.util.LinkedList;
 import main.Controller;
 import objects.*;
 
-import org.eclipse.jdt.core.dom.AST;
-import org.eclipse.jdt.core.dom.ASTMatcher;
-import org.eclipse.jdt.core.dom.ASTNode;
-import org.eclipse.jdt.core.dom.ASTParser;
-import org.eclipse.jdt.core.dom.ASTVisitor;
-import org.eclipse.jdt.core.dom.Block;
-import org.eclipse.jdt.core.dom.CompilationUnit;
-import org.eclipse.jdt.core.dom.ImportDeclaration;
 import org.eclipse.jdt.core.dom.*;
+import org.eclipse.jdt.internal.core.dom.NaiveASTFlattener;
 
 public class TreeSearchAlgorithm extends ASTVisitor{
 
 	// During tree traversal, keep track of the source tree we are searching and the
 	// tree containing the search string 
 	private ASTNode treeToSearch;
-	private int nodeType;
+	private Class nodeType;
 	public static LinkedList<ResultTree> matches;
 
-	public static void HasSubTree(ASTNode tree, int search)
+	public static void HasSubTree(ASTNode tree, Class search)
 	{ 
 		// perform search using AST visitor -- as we visit each node, compare to the search string
 		//matches = new LinkedList<ResultTree>();
@@ -34,10 +27,10 @@ public class TreeSearchAlgorithm extends ASTVisitor{
 	}
 
 	// Constructor
-	public TreeSearchAlgorithm(ASTNode sourceToSearch, int nodeType)
+	public TreeSearchAlgorithm(ASTNode sourceToSearch, Class search)
 	{
 		this.treeToSearch = sourceToSearch;
-		this.nodeType = nodeType;
+		this.nodeType = search;
 	}
 
 	// Visits each node in source file during tree traversal and compares against
@@ -47,15 +40,22 @@ public class TreeSearchAlgorithm extends ASTVisitor{
 		if(Controller.DEBUG)
 			System.out.print(".");
 		// Use ASTMatcher to compare this node against the search tree
-		if (node.getNodeType() == nodeType)
+		java.util.List<org.eclipse.jdt.core.dom.StructuralPropertyDescriptor> a = node.structuralPropertiesForType();
+		for(org.eclipse.jdt.core.dom.StructuralPropertyDescriptor struct: a) {
+			System.out.println(struct.toString());
+		}
+		//if (node.getNodeType() == nodeType)
+		if (node.getClass().getName().equals(nodeType.getName()))
 		{
+			
 			//if(Controller.DEBUG)
 			//System.out.println(treeToSearch.getLineNumber(node.getStartPosition()));
 			if(!query.QueryHandler.getParent)
-				matches.add(new ResultTree(node));
+				//matches.add(new ResultTree(node));
+				matches.add(new ResultTree(node, asString(node)));
 			else
-				matches.add(new ResultTree(node.getParent()));
-			
+				//matches.add(new ResultTree(node.getParent()));
+				matches.add(new ResultTree(node.getParent(), asString(node.getParent())));
 			// Add checks for attr/prop
 			
 			//if(testAttribute(node))
@@ -80,9 +80,10 @@ public class TreeSearchAlgorithm extends ASTVisitor{
 		}
 		return isFound;
 	}
-
-
-
-
-
+	
+	public String asString(ASTNode node) {
+		NaiveASTFlattener flattener = new NaiveASTFlattener();
+		node.accept(flattener);
+		return flattener.getResult();
+	}
 }
