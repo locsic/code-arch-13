@@ -10,7 +10,6 @@ public class Search {
 	public static LinkedList<ResultTree> SearchTrees (List<ProjectTree> trees)
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
-		LinkedList r = new LinkedList();
 		
 		for(ProjectTree proj: trees)
 			results.addAll(SearchTree(proj.projectTree));
@@ -51,11 +50,11 @@ public class Search {
 		Class nodetype = QueryNodeTypeClassifier.ClassifyNodeC(QueryHandler.searchNodeType);
 
 		for(ResultTree proj: trees)
-			results.addAll(SearchTree(proj));
+			results.addAll(SearchResultTree(proj));
 		return results;
 	}
 	
-	public static LinkedList<ResultTree> SearchTree(ResultTree tree)
+	public static LinkedList<ResultTree> SearchResultTree(ResultTree tree)
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 		Class nodetype = QueryNodeTypeClassifier.ClassifyNodeC(QueryHandler.searchNodeType);

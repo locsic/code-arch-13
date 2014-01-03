@@ -29,6 +29,11 @@ public class QueryHandler {
 			System.out.println(q.print());
 		}
 	}
+	
+	public static int queryNum()
+	{
+		return queries.size();
+	}
 
 	public static void ReadUserQuery () throws IOException, RecognitionException
 	{
