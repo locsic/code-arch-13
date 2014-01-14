@@ -30,6 +30,7 @@ public class Statement {
 		
 		if (ct.getChild(0).getText().equals("VAR") && ct.getChild(1).getText().equals("VAR_ASSIGN"))
 		{
+			boolean newVar = false;
 			CommonTree varCt = (CommonTree)ct.getChild(0);
 			CommonTree varAsnCt = (CommonTree)ct.getChild(1);
 			
@@ -42,7 +43,7 @@ public class Statement {
 				boundNC = new NodeChain();
 				boundNC.name = lvalue.name;
 				boundNC.nodeList = new LinkedList<SelectorNode>();
-
+				newVar = true;
 			}
 			
 			// now evaluate the right side of the assignment
@@ -84,7 +85,7 @@ public class Statement {
 			}
 			
 			boundNC.localVarValue = v;
-			locals.add(boundNC);
+			if (newVar) locals.add(boundNC);
 			System.out.println("Assigning value " + v.toString() + " to variable " + boundNC.name);
 		}
 		else

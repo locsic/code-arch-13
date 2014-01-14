@@ -1,7 +1,10 @@
 package query;
 
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Enumeration;
 import java.util.LinkedList;
 
 import main.Controller;
@@ -15,6 +18,7 @@ import org.antlr.runtime.*;
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.DOTTreeGenerator;
 import org.antlr.stringtemplate.StringTemplate;
+import java.util.Properties;
 
 public class QueryHandler {
 
@@ -25,6 +29,7 @@ public class QueryHandler {
 	static public boolean getParent = false;
 
 	static public LinkedList<Query> queries = null;
+	static public LinkedList <NodeChain> localVars = new LinkedList <NodeChain> ();
 	
 	public static void printQueries()
 	{
@@ -307,7 +312,7 @@ public class QueryHandler {
 	
 	public static void applyStatements(LinkedList<ResultTree> resultTrees)
 	{
-		LinkedList <NodeChain> localVars = new LinkedList <NodeChain> ();
+		
 
 		for(Query q: queries)
 		{
@@ -351,5 +356,76 @@ public class QueryHandler {
 		}
 
 		return passedResultTrees;
+	}
+
+	public static void readLocals(String filename) {
+		try
+		{
+			FileReader fr = new FileReader(filename);
+			Properties p = new Properties();
+			p.load(fr);
+
+			for (Enumeration<Object> e = p.elements(); e.hasMoreElements();)
+			{
+				String key = (String)(e.nextElement());
+				String value = p.getProperty(key);
+
+				NodeChain nc = new NodeChain();
+				nc.nodeList = new LinkedList<SelectorNode>();
+				nc.localVarValue = new NodeChain.VarResult();
+				nc.name = new String(key);
+				
+				try
+				{
+				   Integer i = new Integer(value);				  
+
+				   nc.localVarValue.intResultFound = true;
+				   nc.localVarValue.intResult = i;
+				   nc.localVarValue.stringResultFound = false;
+				   nc.localVarValue.stringResult = null;
+				}
+				catch (NumberFormatException nfe)
+				{
+				   nc.localVarValue.intResultFound = false;
+				   nc.localVarValue.intResult = 0;
+				   nc.localVarValue.stringResultFound = true;
+				   nc.localVarValue.stringResult = new String(value);
+				}
+				
+				localVars.add(nc);
+			}
+			fr.close();
+		}
+		catch (Exception e)
+		{
+			System.out.println("Couldn't read properties file " + filename + ". Exception: " + e.toString());
+			
+			// not a fatal error -- continue on		
+		}
+		
+	}
+
+	public static void writeLocals(String filename) {
+		try
+		{
+			FileWriter fw = new FileWriter(filename);
+			Properties p = new Properties();
+			for (NodeChain nc : localVars)
+			{
+				String key = nc.name,
+				       value = nc.localVarValue.toString();
+				p.setProperty(key, value);
+			}
+			p.store(fw, "Persistent local query variables");
+			fw.close();
+		}
+		catch (Exception e)
+		{
+			System.out.println("Couldn't write properties file " + filename + ". Exception: " + e.toString());
+			
+			// not a fatal error -- continue on		
+		}
+		
+		
 	}
 }

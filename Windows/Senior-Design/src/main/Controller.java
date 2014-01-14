@@ -93,11 +93,16 @@ public class Controller {
 	public static void SearchAlgorithm()
 	{
 		LinkedList<ResultTree> resultTrees;
-		resultTrees = algorithm.Search.SearchTrees(projectsList);		
+		
+		QueryHandler.readLocals(ROOT + "locals.properties");
+		resultTrees = algorithm.Search.SearchTrees(projectsList);
+		
 		resultTrees = QueryHandler.applyWhere(resultTrees);
 		
 		// Apply the STATEMENTS in the query body to the remaining results
 		QueryHandler.applyStatements(resultTrees);
+		
+		QueryHandler.writeLocals(ROOT + "locals.properties");
 		
 		if (QueryHandler.printSum)
 			ResultsHandler.PrintNumResults(resultTrees);
