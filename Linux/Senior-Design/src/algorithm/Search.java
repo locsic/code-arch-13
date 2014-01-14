@@ -7,28 +7,31 @@ import query.QueryHandler;
 import query.QueryNodeTypeClassifier;
 public class Search {
 
-	public static LinkedList<ResultTree> SearchTrees (List<ProjectTree> trees)
+	public static LinkedList<ResultTree> SearchTrees (List<ProjectTree> trees, int iteration)
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 		
 		for(ProjectTree proj: trees)
-			results.addAll(SearchTree(proj.projectTree));
+			results.addAll(SearchTree(proj.projectTree, iteration));
 		return results;
 	}
 
 	
-	public static LinkedList<ResultTree> SearchTree(DirectoryTree tree)
+	public static LinkedList<ResultTree> SearchTree(DirectoryTree tree, int iteration)
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 		
 		//int nodetype = QueryNodeTypeClassifier.ClassifyNode(QueryHandler.searchNodeType);
-		Class nodetype = QueryNodeTypeClassifier.ClassifyNodeC(QueryHandler.searchNodeType);
+		//Class nodetype = QueryNodeTypeClassifier.ClassifyNodeC(QueryHandler.searchNodeType);
+		Class nodetype = QueryNodeTypeClassifier.ClassifyNodeC(QueryHandler.searchNodeTypeArray[iteration]);
+		//Class nodetype = QueryNodeTypeClassifier.ClassifyNodeC(QueryHandler.queries.get(iteration).nodeChain.getHead());
 		//System.out.println(nodetype);
 		
 		for(DirectoryTree dir: tree.dirs)
-			results.addAll(SearchTree(dir));
+			results.addAll(SearchTree(dir, iteration));
 		
 		for(FileTree fileTree: tree.files){
+			//for(int i = 0; i < QueryHandler.searchNodeTypeArray[iteration].nodeChain.size()
 			algorithm.TreeSearchAlgorithm.HasSubTree(fileTree.root, nodetype);	
 			for (ResultTree t: algorithm.TreeSearchAlgorithm.matches)
 			{

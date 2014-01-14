@@ -107,14 +107,14 @@ public class Controller {
 		if(QueryHandler.queryName.equals("EPSILON")){
 			QueryHandler.queryName = "Q3";
 			query.QueryHandler.searchNodeType = "type_declaration";
-			resultTrees = algorithm.Search.SearchTrees(projectsList);
+			resultTrees = algorithm.Search.SearchTrees(projectsList, 0);
 			//LinkedList<ResultTree> resultTrees1 = algorithm.Search.SearchTrees(projectsList);
 			//query.QueryHandler.searchNodeType = "interface_declaration";
 			//resultTrees = algorithm.Search.SearchResultTrees(resultTrees1);
 		}
 		else{
 			query.QueryHandler.getParent = true;
-			resultTrees = algorithm.Search.SearchTrees(projectsList);
+			resultTrees = algorithm.Search.SearchTrees(projectsList, 0);
 		}
 
 
@@ -147,15 +147,15 @@ public class Controller {
 		for(int i = 0; i < QueryHandler.queryNum(); i++){
 			if(i == 0){
 				// First run
-				resultTrees = algorithm.Search.SearchTrees(projectsList);
+				resultTrees = algorithm.Search.SearchTrees(projectsList, i);
 			}
 			else{
 				resultTrees = algorithm.Search.SearchResultTrees(ResultsHandler.resultTreeList.get(i-1)); //Get last result as input to next
 			}
 			ResultsHandler.resultTreeList.add(resultTrees);
 		}
-		resultTrees = algorithm.Search.SearchTrees(projectsList);
-		ResultsHandler.resultTreeList.add(resultTrees);
+		//resultTrees = algorithm.Search.SearchTrees(projectsList, i);
+		//ResultsHandler.resultTreeList.add(resultTrees);
 		//for(ResultTree Tree: resultTrees){
 		//	ResultsHandler.resultTreeList.add(algorithm.Search.SearchTree(Tree));
 		//}
@@ -163,6 +163,7 @@ public class Controller {
 			ResultsHandler.PrintNumResults(resultTrees);
 		else
 			ResultsHandler.PrintResults(resultTrees);
+			//ResultsHandler.PrintResultsList(resultsTree);
 	}
 
 
