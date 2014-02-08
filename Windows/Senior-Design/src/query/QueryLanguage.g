@@ -106,6 +106,7 @@ keyword_nodes
 	:	node	-> ^(NODE_NAME node)
 	|	ID	-> ^(VAR_NAME ID)
 	|	logical_op -> ^(LOGIC_OP logical_op)
+	|	ast_child -> ^(AST_CHILD ast_child)
 	;
 attr
 	:	COLON attr 					->  ^(ATTRIBUTES attr)

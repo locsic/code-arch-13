@@ -71,7 +71,7 @@ public class BooleanStatement {
 			}
 		}
 	
-		System.out.println("BOOL EXP evaluated, returning " + varResult.intResult);
+		//System.out.println("BOOL EXP evaluated, returning " + varResult.intResult);
 		
 		// the output of applyOperation is always boolean(/int)
 		return varResult.intResult == 0 ? false : true;		

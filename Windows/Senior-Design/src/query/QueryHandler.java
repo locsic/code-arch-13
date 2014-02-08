@@ -249,13 +249,13 @@ public class QueryHandler {
 			if (t.getParent() == null){
 				if(t.getText()!=null){
 					//String node = t.getText().toString();
-					System.out.println(sb.toString() + t.getText().toString());	
+					//System.out.println(sb.toString() + t.getText().toString());	
 				}
 			}
 			for ( int i = 0; i < indent; i++ )
 				sb = sb.append("   ");
 			for ( int i = 0; i < t.getChildCount(); i++ ) {
-				System.out.println(sb.toString() + t.getChild(i).toString());
+				//System.out.println(sb.toString() + t.getChild(i).toString());
 				if(t.getChild(i).getText().toString().equals("NODE_NAME"))
 				{
 					query.newNodeChain();
@@ -269,6 +269,17 @@ public class QueryHandler {
 					searchNodeType = t.getChild(i).getChild(0).getText().toString();
 					query.addSelectorNode(searchNodeType, SelectorNode.AST_CHILD);
 					System.out.println(sb.toString() + "ast_child: " + searchNodeType);					
+				}
+				else if (t.getChild(i).getText().toString().equals("contains"))
+				{
+					// "Contains" only implemented for AST child right now
+					CommonTree contains = (CommonTree)t.getChild(i);
+					CommonTree containsAstChild = (CommonTree)contains.getChild(1);
+					//String containsAstChildString = containsAstChild.getText().toString();
+					if (query.nodeChains.size() == 0) query.newNodeChain();
+					NodeChain containsNC = GetSearchNode(containsAstChild, 0);
+					query.addContains(containsNC);
+					//query.addContains(n)
 				}
 				else 
 				{
@@ -297,7 +308,7 @@ public class QueryHandler {
 							query.setNodeChainName(node);
 						}
 						query.addSelectorNode(node, SelectorNode.PROP);
-						System.out.println(sb.toString() + "prop: " + node);
+						//System.out.println(sb.toString() + "prop: " + node);
 					}
 					else //if  (t.getChild(i).getText().toString().equals("NODE"))
 					{
@@ -312,8 +323,6 @@ public class QueryHandler {
 	
 	public static void applyStatements(LinkedList<ResultTree> resultTrees)
 	{
-		
-
 		for(Query q: queries)
 		{
 			for(ResultTree r: resultTrees)
@@ -350,7 +359,7 @@ public class QueryHandler {
 				}
 				else
 				{
-					System.out.println("Where clause failed.");
+					//System.out.println("Where clause failed.");
 				}
 			}
 		}

@@ -1,6 +1,6 @@
 package query;
 
-// $ANTLR 3.4 C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g 2013-12-11 15:17:34
+// $ANTLR 3.4 C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g 2014-02-02 10:17:20
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -441,7 +441,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_print_stmt.add(print_stmt6.getTree());
 
                     // AST REWRITE
-                    // elements: query_name, print_stmt, foreach_query
+                    // elements: foreach_query, print_stmt, query_name
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -536,7 +536,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_print_stmt.add(print_stmt9.getTree());
 
                     // AST REWRITE
-                    // elements: print_stmt, query_name, select_query
+                    // elements: query_name, select_query, print_stmt
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -636,7 +636,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_print_stmt.add(print_stmt14.getTree());
 
                     // AST REWRITE
-                    // elements: ID, query_name, FILTER, ID, print_stmt
+                    // elements: print_stmt, ID, ID, query_name, FILTER
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -998,7 +998,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_stat_statements.add(stat_statements25.getTree());
 
             // AST REWRITE
-            // elements: stat_statements, foreach_where, node_chain, ID, with_clause, in_clause
+            // elements: with_clause, node_chain, foreach_where, in_clause, ID, stat_statements
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1352,7 +1352,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_select_where.add(select_where36.getTree());
 
             // AST REWRITE
-            // elements: ID, select_where, with_clause, node_chain, in_clause, block
+            // elements: with_clause, select_where, in_clause, ID, block, node_chain
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1820,7 +1820,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: variable, ID
+                    // elements: ID, variable
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -2353,7 +2353,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_attr.add(attr51.getTree());
 
                     // AST REWRITE
-                    // elements: attr, node
+                    // elements: node, attr
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -2665,7 +2665,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_node_chain.add(node_chain61.getTree());
 
                     // AST REWRITE
-                    // elements: ID, node_chain
+                    // elements: node_chain, ID
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -3149,7 +3149,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: keyword_nodes, CONTAINS
+                    // elements: CONTAINS, keyword_nodes
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -3327,7 +3327,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "keyword_nodes"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:105:1: keyword_nodes : ( node -> ^( NODE_NAME node ) | ID -> ^( VAR_NAME ID ) | logical_op -> ^( LOGIC_OP logical_op ) );
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:105:1: keyword_nodes : ( node -> ^( NODE_NAME node ) | ID -> ^( VAR_NAME ID ) | logical_op -> ^( LOGIC_OP logical_op ) | ast_child -> ^( AST_CHILD ast_child ) );
     public final QueryLanguageParser.keyword_nodes_return keyword_nodes() throws RecognitionException {
         QueryLanguageParser.keyword_nodes_return retval = new QueryLanguageParser.keyword_nodes_return();
         retval.start = input.LT(1);
@@ -3340,14 +3340,17 @@ public TreeAdaptor getTreeAdaptor() {
 
         QueryLanguageParser.logical_op_return logical_op89 =null;
 
+        QueryLanguageParser.ast_child_return ast_child90 =null;
+
 
         Object ID88_tree=null;
         RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
+        RewriteRuleSubtreeStream stream_ast_child=new RewriteRuleSubtreeStream(adaptor,"rule ast_child");
         RewriteRuleSubtreeStream stream_node=new RewriteRuleSubtreeStream(adaptor,"rule node");
         RewriteRuleSubtreeStream stream_logical_op=new RewriteRuleSubtreeStream(adaptor,"rule logical_op");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:106:2: ( node -> ^( NODE_NAME node ) | ID -> ^( VAR_NAME ID ) | logical_op -> ^( LOGIC_OP logical_op ) )
-            int alt13=3;
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:106:2: ( node -> ^( NODE_NAME node ) | ID -> ^( VAR_NAME ID ) | logical_op -> ^( LOGIC_OP logical_op ) | ast_child -> ^( AST_CHILD ast_child ) )
+            int alt13=4;
             switch ( input.LA(1) ) {
             case LEFT_SQ_BRACKET:
             case LT:
@@ -3364,6 +3367,11 @@ public TreeAdaptor getTreeAdaptor() {
             case OR:
                 {
                 alt13=3;
+                }
+                break;
+            case LEFT_BRACKET:
+                {
+                alt13=4;
                 }
                 break;
             default:
@@ -3500,6 +3508,48 @@ public TreeAdaptor getTreeAdaptor() {
 
                     }
                     break;
+                case 4 :
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:109:4: ast_child
+                    {
+                    pushFollow(FOLLOW_ast_child_in_keyword_nodes1087);
+                    ast_child90=ast_child();
+
+                    state._fsp--;
+
+                    stream_ast_child.add(ast_child90.getTree());
+
+                    // AST REWRITE
+                    // elements: ast_child
+                    // token labels: 
+                    // rule labels: retval
+                    // token list labels: 
+                    // rule list labels: 
+                    // wildcard labels: 
+                    retval.tree = root_0;
+                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
+                    root_0 = (Object)adaptor.nil();
+                    // 109:14: -> ^( AST_CHILD ast_child )
+                    {
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:109:17: ^( AST_CHILD ast_child )
+                        {
+                        Object root_1 = (Object)adaptor.nil();
+                        root_1 = (Object)adaptor.becomeRoot(
+                        (Object)adaptor.create(AST_CHILD, "AST_CHILD")
+                        , root_1);
+
+                        adaptor.addChild(root_1, stream_ast_child.nextTree());
+
+                        adaptor.addChild(root_0, root_1);
+                        }
+
+                    }
+
+
+                    retval.tree = root_0;
+
+                    }
+                    break;
 
             }
             retval.stop = input.LT(-1);
@@ -3531,7 +3581,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "attr"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:110:1: attr : ( COLON attr -> ^( ATTRIBUTES attr ) | PERIOD CONTAINS LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^( CONTAINS keyword_nodes ) | PERIOD IS LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^( IS keyword_nodes ) | PERIOD HAS LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^( HAS keyword_nodes ) | ATTRIBUTES attr -> ^( ATTRIBUTES attr ) | -> EPSILON );
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:111:1: attr : ( COLON attr -> ^( ATTRIBUTES attr ) | PERIOD CONTAINS LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^( CONTAINS keyword_nodes ) | PERIOD IS LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^( IS keyword_nodes ) | PERIOD HAS LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^( HAS keyword_nodes ) | ATTRIBUTES attr -> ^( ATTRIBUTES attr ) | -> EPSILON );
     public final QueryLanguageParser.attr_return attr() throws RecognitionException {
         QueryLanguageParser.attr_return retval = new QueryLanguageParser.attr_return();
         retval.start = input.LT(1);
@@ -3539,45 +3589,45 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token COLON90=null;
-        Token PERIOD92=null;
-        Token CONTAINS93=null;
-        Token LEFT_PAREN94=null;
-        Token RIGHT_PAREN96=null;
-        Token PERIOD97=null;
-        Token IS98=null;
-        Token LEFT_PAREN99=null;
-        Token RIGHT_PAREN101=null;
-        Token PERIOD102=null;
-        Token HAS103=null;
-        Token LEFT_PAREN104=null;
-        Token RIGHT_PAREN106=null;
-        Token ATTRIBUTES107=null;
-        QueryLanguageParser.attr_return attr91 =null;
+        Token COLON91=null;
+        Token PERIOD93=null;
+        Token CONTAINS94=null;
+        Token LEFT_PAREN95=null;
+        Token RIGHT_PAREN97=null;
+        Token PERIOD98=null;
+        Token IS99=null;
+        Token LEFT_PAREN100=null;
+        Token RIGHT_PAREN102=null;
+        Token PERIOD103=null;
+        Token HAS104=null;
+        Token LEFT_PAREN105=null;
+        Token RIGHT_PAREN107=null;
+        Token ATTRIBUTES108=null;
+        QueryLanguageParser.attr_return attr92 =null;
 
-        QueryLanguageParser.keyword_nodes_return keyword_nodes95 =null;
+        QueryLanguageParser.keyword_nodes_return keyword_nodes96 =null;
 
-        QueryLanguageParser.keyword_nodes_return keyword_nodes100 =null;
+        QueryLanguageParser.keyword_nodes_return keyword_nodes101 =null;
 
-        QueryLanguageParser.keyword_nodes_return keyword_nodes105 =null;
+        QueryLanguageParser.keyword_nodes_return keyword_nodes106 =null;
 
-        QueryLanguageParser.attr_return attr108 =null;
+        QueryLanguageParser.attr_return attr109 =null;
 
 
-        Object COLON90_tree=null;
-        Object PERIOD92_tree=null;
-        Object CONTAINS93_tree=null;
-        Object LEFT_PAREN94_tree=null;
-        Object RIGHT_PAREN96_tree=null;
-        Object PERIOD97_tree=null;
-        Object IS98_tree=null;
-        Object LEFT_PAREN99_tree=null;
-        Object RIGHT_PAREN101_tree=null;
-        Object PERIOD102_tree=null;
-        Object HAS103_tree=null;
-        Object LEFT_PAREN104_tree=null;
-        Object RIGHT_PAREN106_tree=null;
-        Object ATTRIBUTES107_tree=null;
+        Object COLON91_tree=null;
+        Object PERIOD93_tree=null;
+        Object CONTAINS94_tree=null;
+        Object LEFT_PAREN95_tree=null;
+        Object RIGHT_PAREN97_tree=null;
+        Object PERIOD98_tree=null;
+        Object IS99_tree=null;
+        Object LEFT_PAREN100_tree=null;
+        Object RIGHT_PAREN102_tree=null;
+        Object PERIOD103_tree=null;
+        Object HAS104_tree=null;
+        Object LEFT_PAREN105_tree=null;
+        Object RIGHT_PAREN107_tree=null;
+        Object ATTRIBUTES108_tree=null;
         RewriteRuleTokenStream stream_COLON=new RewriteRuleTokenStream(adaptor,"token COLON");
         RewriteRuleTokenStream stream_HAS=new RewriteRuleTokenStream(adaptor,"token HAS");
         RewriteRuleTokenStream stream_LEFT_PAREN=new RewriteRuleTokenStream(adaptor,"token LEFT_PAREN");
@@ -3589,7 +3639,7 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_keyword_nodes=new RewriteRuleSubtreeStream(adaptor,"rule keyword_nodes");
         RewriteRuleSubtreeStream stream_attr=new RewriteRuleSubtreeStream(adaptor,"rule attr");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:111:2: ( COLON attr -> ^( ATTRIBUTES attr ) | PERIOD CONTAINS LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^( CONTAINS keyword_nodes ) | PERIOD IS LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^( IS keyword_nodes ) | PERIOD HAS LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^( HAS keyword_nodes ) | ATTRIBUTES attr -> ^( ATTRIBUTES attr ) | -> EPSILON )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:112:2: ( COLON attr -> ^( ATTRIBUTES attr ) | PERIOD CONTAINS LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^( CONTAINS keyword_nodes ) | PERIOD IS LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^( IS keyword_nodes ) | PERIOD HAS LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^( HAS keyword_nodes ) | ATTRIBUTES attr -> ^( ATTRIBUTES attr ) | -> EPSILON )
             int alt14=6;
             switch ( input.LA(1) ) {
             case COLON:
@@ -3678,18 +3728,18 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt14) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:111:4: COLON attr
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:112:4: COLON attr
                     {
-                    COLON90=(Token)match(input,COLON,FOLLOW_COLON_in_attr1092);  
-                    stream_COLON.add(COLON90);
+                    COLON91=(Token)match(input,COLON,FOLLOW_COLON_in_attr1105);  
+                    stream_COLON.add(COLON91);
 
 
-                    pushFollow(FOLLOW_attr_in_attr1094);
-                    attr91=attr();
+                    pushFollow(FOLLOW_attr_in_attr1107);
+                    attr92=attr();
 
                     state._fsp--;
 
-                    stream_attr.add(attr91.getTree());
+                    stream_attr.add(attr92.getTree());
 
                     // AST REWRITE
                     // elements: attr
@@ -3702,9 +3752,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 111:20: -> ^( ATTRIBUTES attr )
+                    // 112:20: -> ^( ATTRIBUTES attr )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:111:24: ^( ATTRIBUTES attr )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:112:24: ^( ATTRIBUTES attr )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -3724,33 +3774,33 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:112:4: PERIOD CONTAINS LEFT_PAREN keyword_nodes RIGHT_PAREN
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:113:4: PERIOD CONTAINS LEFT_PAREN keyword_nodes RIGHT_PAREN
                     {
-                    PERIOD92=(Token)match(input,PERIOD,FOLLOW_PERIOD_in_attr1113);  
-                    stream_PERIOD.add(PERIOD92);
+                    PERIOD93=(Token)match(input,PERIOD,FOLLOW_PERIOD_in_attr1126);  
+                    stream_PERIOD.add(PERIOD93);
 
 
-                    CONTAINS93=(Token)match(input,CONTAINS,FOLLOW_CONTAINS_in_attr1115);  
-                    stream_CONTAINS.add(CONTAINS93);
+                    CONTAINS94=(Token)match(input,CONTAINS,FOLLOW_CONTAINS_in_attr1128);  
+                    stream_CONTAINS.add(CONTAINS94);
 
 
-                    LEFT_PAREN94=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_attr1117);  
-                    stream_LEFT_PAREN.add(LEFT_PAREN94);
+                    LEFT_PAREN95=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_attr1130);  
+                    stream_LEFT_PAREN.add(LEFT_PAREN95);
 
 
-                    pushFollow(FOLLOW_keyword_nodes_in_attr1119);
-                    keyword_nodes95=keyword_nodes();
+                    pushFollow(FOLLOW_keyword_nodes_in_attr1132);
+                    keyword_nodes96=keyword_nodes();
 
                     state._fsp--;
 
-                    stream_keyword_nodes.add(keyword_nodes95.getTree());
+                    stream_keyword_nodes.add(keyword_nodes96.getTree());
 
-                    RIGHT_PAREN96=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_attr1121);  
-                    stream_RIGHT_PAREN.add(RIGHT_PAREN96);
+                    RIGHT_PAREN97=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_attr1134);  
+                    stream_RIGHT_PAREN.add(RIGHT_PAREN97);
 
 
                     // AST REWRITE
-                    // elements: keyword_nodes, CONTAINS
+                    // elements: CONTAINS, keyword_nodes
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -3760,9 +3810,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 112:58: -> ^( CONTAINS keyword_nodes )
+                    // 113:58: -> ^( CONTAINS keyword_nodes )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:112:61: ^( CONTAINS keyword_nodes )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:113:61: ^( CONTAINS keyword_nodes )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -3782,29 +3832,29 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:113:4: PERIOD IS LEFT_PAREN keyword_nodes RIGHT_PAREN
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:114:4: PERIOD IS LEFT_PAREN keyword_nodes RIGHT_PAREN
                     {
-                    PERIOD97=(Token)match(input,PERIOD,FOLLOW_PERIOD_in_attr1135);  
-                    stream_PERIOD.add(PERIOD97);
+                    PERIOD98=(Token)match(input,PERIOD,FOLLOW_PERIOD_in_attr1148);  
+                    stream_PERIOD.add(PERIOD98);
 
 
-                    IS98=(Token)match(input,IS,FOLLOW_IS_in_attr1137);  
-                    stream_IS.add(IS98);
+                    IS99=(Token)match(input,IS,FOLLOW_IS_in_attr1150);  
+                    stream_IS.add(IS99);
 
 
-                    LEFT_PAREN99=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_attr1139);  
-                    stream_LEFT_PAREN.add(LEFT_PAREN99);
+                    LEFT_PAREN100=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_attr1152);  
+                    stream_LEFT_PAREN.add(LEFT_PAREN100);
 
 
-                    pushFollow(FOLLOW_keyword_nodes_in_attr1141);
-                    keyword_nodes100=keyword_nodes();
+                    pushFollow(FOLLOW_keyword_nodes_in_attr1154);
+                    keyword_nodes101=keyword_nodes();
 
                     state._fsp--;
 
-                    stream_keyword_nodes.add(keyword_nodes100.getTree());
+                    stream_keyword_nodes.add(keyword_nodes101.getTree());
 
-                    RIGHT_PAREN101=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_attr1143);  
-                    stream_RIGHT_PAREN.add(RIGHT_PAREN101);
+                    RIGHT_PAREN102=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_attr1156);  
+                    stream_RIGHT_PAREN.add(RIGHT_PAREN102);
 
 
                     // AST REWRITE
@@ -3818,9 +3868,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 113:53: -> ^( IS keyword_nodes )
+                    // 114:53: -> ^( IS keyword_nodes )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:113:56: ^( IS keyword_nodes )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:114:56: ^( IS keyword_nodes )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -3840,29 +3890,29 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:114:4: PERIOD HAS LEFT_PAREN keyword_nodes RIGHT_PAREN
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:115:4: PERIOD HAS LEFT_PAREN keyword_nodes RIGHT_PAREN
                     {
-                    PERIOD102=(Token)match(input,PERIOD,FOLLOW_PERIOD_in_attr1158);  
-                    stream_PERIOD.add(PERIOD102);
+                    PERIOD103=(Token)match(input,PERIOD,FOLLOW_PERIOD_in_attr1171);  
+                    stream_PERIOD.add(PERIOD103);
 
 
-                    HAS103=(Token)match(input,HAS,FOLLOW_HAS_in_attr1160);  
-                    stream_HAS.add(HAS103);
+                    HAS104=(Token)match(input,HAS,FOLLOW_HAS_in_attr1173);  
+                    stream_HAS.add(HAS104);
 
 
-                    LEFT_PAREN104=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_attr1162);  
-                    stream_LEFT_PAREN.add(LEFT_PAREN104);
+                    LEFT_PAREN105=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_attr1175);  
+                    stream_LEFT_PAREN.add(LEFT_PAREN105);
 
 
-                    pushFollow(FOLLOW_keyword_nodes_in_attr1164);
-                    keyword_nodes105=keyword_nodes();
+                    pushFollow(FOLLOW_keyword_nodes_in_attr1177);
+                    keyword_nodes106=keyword_nodes();
 
                     state._fsp--;
 
-                    stream_keyword_nodes.add(keyword_nodes105.getTree());
+                    stream_keyword_nodes.add(keyword_nodes106.getTree());
 
-                    RIGHT_PAREN106=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_attr1166);  
-                    stream_RIGHT_PAREN.add(RIGHT_PAREN106);
+                    RIGHT_PAREN107=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_attr1179);  
+                    stream_RIGHT_PAREN.add(RIGHT_PAREN107);
 
 
                     // AST REWRITE
@@ -3876,9 +3926,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 114:53: -> ^( HAS keyword_nodes )
+                    // 115:53: -> ^( HAS keyword_nodes )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:114:56: ^( HAS keyword_nodes )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:115:56: ^( HAS keyword_nodes )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -3898,18 +3948,18 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 5 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:115:4: ATTRIBUTES attr
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:116:4: ATTRIBUTES attr
                     {
-                    ATTRIBUTES107=(Token)match(input,ATTRIBUTES,FOLLOW_ATTRIBUTES_in_attr1180);  
-                    stream_ATTRIBUTES.add(ATTRIBUTES107);
+                    ATTRIBUTES108=(Token)match(input,ATTRIBUTES,FOLLOW_ATTRIBUTES_in_attr1193);  
+                    stream_ATTRIBUTES.add(ATTRIBUTES108);
 
 
-                    pushFollow(FOLLOW_attr_in_attr1182);
-                    attr108=attr();
+                    pushFollow(FOLLOW_attr_in_attr1195);
+                    attr109=attr();
 
                     state._fsp--;
 
-                    stream_attr.add(attr108.getTree());
+                    stream_attr.add(attr109.getTree());
 
                     // AST REWRITE
                     // elements: ATTRIBUTES, attr
@@ -3922,9 +3972,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 115:24: -> ^( ATTRIBUTES attr )
+                    // 116:24: -> ^( ATTRIBUTES attr )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:115:27: ^( ATTRIBUTES attr )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:116:27: ^( ATTRIBUTES attr )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -3944,7 +3994,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 6 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:116:4: 
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:117:4: 
                     {
                     // AST REWRITE
                     // elements: 
@@ -3957,7 +4007,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 116:4: -> EPSILON
+                    // 117:4: -> EPSILON
                     {
                         adaptor.addChild(root_0, 
                         (Object)adaptor.create(EPSILON, "EPSILON")
@@ -4001,7 +4051,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "property"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:118:1: property : ( ID -> ^( VAR_NAME ID ) | ID PERIOD CONTAINS LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^( VAR_NAME ID ^( CONTAINS keyword_nodes ) ) );
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:119:1: property : ( ID -> ^( VAR_NAME ID ) | ID PERIOD CONTAINS LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^( VAR_NAME ID ^( CONTAINS keyword_nodes ) ) );
     public final QueryLanguageParser.property_return property() throws RecognitionException {
         QueryLanguageParser.property_return retval = new QueryLanguageParser.property_return();
         retval.start = input.LT(1);
@@ -4009,21 +4059,21 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token ID109=null;
         Token ID110=null;
-        Token PERIOD111=null;
-        Token CONTAINS112=null;
-        Token LEFT_PAREN113=null;
-        Token RIGHT_PAREN115=null;
-        QueryLanguageParser.keyword_nodes_return keyword_nodes114 =null;
+        Token ID111=null;
+        Token PERIOD112=null;
+        Token CONTAINS113=null;
+        Token LEFT_PAREN114=null;
+        Token RIGHT_PAREN116=null;
+        QueryLanguageParser.keyword_nodes_return keyword_nodes115 =null;
 
 
-        Object ID109_tree=null;
         Object ID110_tree=null;
-        Object PERIOD111_tree=null;
-        Object CONTAINS112_tree=null;
-        Object LEFT_PAREN113_tree=null;
-        Object RIGHT_PAREN115_tree=null;
+        Object ID111_tree=null;
+        Object PERIOD112_tree=null;
+        Object CONTAINS113_tree=null;
+        Object LEFT_PAREN114_tree=null;
+        Object RIGHT_PAREN116_tree=null;
         RewriteRuleTokenStream stream_LEFT_PAREN=new RewriteRuleTokenStream(adaptor,"token LEFT_PAREN");
         RewriteRuleTokenStream stream_RIGHT_PAREN=new RewriteRuleTokenStream(adaptor,"token RIGHT_PAREN");
         RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
@@ -4031,7 +4081,7 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleTokenStream stream_CONTAINS=new RewriteRuleTokenStream(adaptor,"token CONTAINS");
         RewriteRuleSubtreeStream stream_keyword_nodes=new RewriteRuleSubtreeStream(adaptor,"rule keyword_nodes");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:119:2: ( ID -> ^( VAR_NAME ID ) | ID PERIOD CONTAINS LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^( VAR_NAME ID ^( CONTAINS keyword_nodes ) ) )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:120:2: ( ID -> ^( VAR_NAME ID ) | ID PERIOD CONTAINS LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^( VAR_NAME ID ^( CONTAINS keyword_nodes ) ) )
             int alt15=2;
             int LA15_0 = input.LA(1);
 
@@ -4061,10 +4111,10 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt15) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:119:4: ID
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:120:4: ID
                     {
-                    ID109=(Token)match(input,ID,FOLLOW_ID_in_property1211);  
-                    stream_ID.add(ID109);
+                    ID110=(Token)match(input,ID,FOLLOW_ID_in_property1224);  
+                    stream_ID.add(ID110);
 
 
                     // AST REWRITE
@@ -4078,9 +4128,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 119:18: -> ^( VAR_NAME ID )
+                    // 120:18: -> ^( VAR_NAME ID )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:119:21: ^( VAR_NAME ID )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:120:21: ^( VAR_NAME ID )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -4102,37 +4152,37 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:120:4: ID PERIOD CONTAINS LEFT_PAREN keyword_nodes RIGHT_PAREN
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:121:4: ID PERIOD CONTAINS LEFT_PAREN keyword_nodes RIGHT_PAREN
                     {
-                    ID110=(Token)match(input,ID,FOLLOW_ID_in_property1235);  
-                    stream_ID.add(ID110);
+                    ID111=(Token)match(input,ID,FOLLOW_ID_in_property1248);  
+                    stream_ID.add(ID111);
 
 
-                    PERIOD111=(Token)match(input,PERIOD,FOLLOW_PERIOD_in_property1237);  
-                    stream_PERIOD.add(PERIOD111);
+                    PERIOD112=(Token)match(input,PERIOD,FOLLOW_PERIOD_in_property1250);  
+                    stream_PERIOD.add(PERIOD112);
 
 
-                    CONTAINS112=(Token)match(input,CONTAINS,FOLLOW_CONTAINS_in_property1239);  
-                    stream_CONTAINS.add(CONTAINS112);
+                    CONTAINS113=(Token)match(input,CONTAINS,FOLLOW_CONTAINS_in_property1252);  
+                    stream_CONTAINS.add(CONTAINS113);
 
 
-                    LEFT_PAREN113=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_property1241);  
-                    stream_LEFT_PAREN.add(LEFT_PAREN113);
+                    LEFT_PAREN114=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_property1254);  
+                    stream_LEFT_PAREN.add(LEFT_PAREN114);
 
 
-                    pushFollow(FOLLOW_keyword_nodes_in_property1243);
-                    keyword_nodes114=keyword_nodes();
+                    pushFollow(FOLLOW_keyword_nodes_in_property1256);
+                    keyword_nodes115=keyword_nodes();
 
                     state._fsp--;
 
-                    stream_keyword_nodes.add(keyword_nodes114.getTree());
+                    stream_keyword_nodes.add(keyword_nodes115.getTree());
 
-                    RIGHT_PAREN115=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_property1245);  
-                    stream_RIGHT_PAREN.add(RIGHT_PAREN115);
+                    RIGHT_PAREN116=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_property1258);  
+                    stream_RIGHT_PAREN.add(RIGHT_PAREN116);
 
 
                     // AST REWRITE
-                    // elements: keyword_nodes, CONTAINS, ID
+                    // elements: ID, keyword_nodes, CONTAINS
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -4142,9 +4192,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 120:60: -> ^( VAR_NAME ID ^( CONTAINS keyword_nodes ) )
+                    // 121:60: -> ^( VAR_NAME ID ^( CONTAINS keyword_nodes ) )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:120:63: ^( VAR_NAME ID ^( CONTAINS keyword_nodes ) )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:121:63: ^( VAR_NAME ID ^( CONTAINS keyword_nodes ) )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -4155,7 +4205,7 @@ public TreeAdaptor getTreeAdaptor() {
                         stream_ID.nextNode()
                         );
 
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:120:77: ^( CONTAINS keyword_nodes )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:121:77: ^( CONTAINS keyword_nodes )
                         {
                         Object root_2 = (Object)adaptor.nil();
                         root_2 = (Object)adaptor.becomeRoot(
@@ -4208,7 +4258,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "variable"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:123:1: variable : ( ID COLON attr -> ^( VAR_NAME ID attr ) | node_chain -> ^( NODE_CHAIN node_chain ) | INTEGER -> INTEGER | STRING -> STRING | RESERVED_TYPES -> RESERVED_TYPES );
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:124:1: variable : ( ID COLON attr -> ^( VAR_NAME ID attr ) | node_chain -> ^( NODE_CHAIN node_chain ) | INTEGER -> INTEGER | STRING -> STRING | RESERVED_TYPES -> RESERVED_TYPES );
     public final QueryLanguageParser.variable_return variable() throws RecognitionException {
         QueryLanguageParser.variable_return retval = new QueryLanguageParser.variable_return();
         retval.start = input.LT(1);
@@ -4216,21 +4266,21 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token ID116=null;
-        Token COLON117=null;
-        Token INTEGER120=null;
-        Token STRING121=null;
-        Token RESERVED_TYPES122=null;
-        QueryLanguageParser.attr_return attr118 =null;
+        Token ID117=null;
+        Token COLON118=null;
+        Token INTEGER121=null;
+        Token STRING122=null;
+        Token RESERVED_TYPES123=null;
+        QueryLanguageParser.attr_return attr119 =null;
 
-        QueryLanguageParser.node_chain_return node_chain119 =null;
+        QueryLanguageParser.node_chain_return node_chain120 =null;
 
 
-        Object ID116_tree=null;
-        Object COLON117_tree=null;
-        Object INTEGER120_tree=null;
-        Object STRING121_tree=null;
-        Object RESERVED_TYPES122_tree=null;
+        Object ID117_tree=null;
+        Object COLON118_tree=null;
+        Object INTEGER121_tree=null;
+        Object STRING122_tree=null;
+        Object RESERVED_TYPES123_tree=null;
         RewriteRuleTokenStream stream_INTEGER=new RewriteRuleTokenStream(adaptor,"token INTEGER");
         RewriteRuleTokenStream stream_COLON=new RewriteRuleTokenStream(adaptor,"token COLON");
         RewriteRuleTokenStream stream_RESERVED_TYPES=new RewriteRuleTokenStream(adaptor,"token RESERVED_TYPES");
@@ -4239,7 +4289,7 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_node_chain=new RewriteRuleSubtreeStream(adaptor,"rule node_chain");
         RewriteRuleSubtreeStream stream_attr=new RewriteRuleSubtreeStream(adaptor,"rule attr");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:124:2: ( ID COLON attr -> ^( VAR_NAME ID attr ) | node_chain -> ^( NODE_CHAIN node_chain ) | INTEGER -> INTEGER | STRING -> STRING | RESERVED_TYPES -> RESERVED_TYPES )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:125:2: ( ID COLON attr -> ^( VAR_NAME ID attr ) | node_chain -> ^( NODE_CHAIN node_chain ) | INTEGER -> INTEGER | STRING -> STRING | RESERVED_TYPES -> RESERVED_TYPES )
             int alt16=5;
             switch ( input.LA(1) ) {
             case ID:
@@ -4293,22 +4343,22 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt16) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:124:4: ID COLON attr
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:125:4: ID COLON attr
                     {
-                    ID116=(Token)match(input,ID,FOLLOW_ID_in_variable1272);  
-                    stream_ID.add(ID116);
+                    ID117=(Token)match(input,ID,FOLLOW_ID_in_variable1285);  
+                    stream_ID.add(ID117);
 
 
-                    COLON117=(Token)match(input,COLON,FOLLOW_COLON_in_variable1274);  
-                    stream_COLON.add(COLON117);
+                    COLON118=(Token)match(input,COLON,FOLLOW_COLON_in_variable1287);  
+                    stream_COLON.add(COLON118);
 
 
-                    pushFollow(FOLLOW_attr_in_variable1276);
-                    attr118=attr();
+                    pushFollow(FOLLOW_attr_in_variable1289);
+                    attr119=attr();
 
                     state._fsp--;
 
-                    stream_attr.add(attr118.getTree());
+                    stream_attr.add(attr119.getTree());
 
                     // AST REWRITE
                     // elements: ID, attr
@@ -4321,9 +4371,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 124:21: -> ^( VAR_NAME ID attr )
+                    // 125:21: -> ^( VAR_NAME ID attr )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:124:24: ^( VAR_NAME ID attr )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:125:24: ^( VAR_NAME ID attr )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -4347,14 +4397,14 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:125:4: node_chain
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:126:4: node_chain
                     {
-                    pushFollow(FOLLOW_node_chain_in_variable1294);
-                    node_chain119=node_chain();
+                    pushFollow(FOLLOW_node_chain_in_variable1307);
+                    node_chain120=node_chain();
 
                     state._fsp--;
 
-                    stream_node_chain.add(node_chain119.getTree());
+                    stream_node_chain.add(node_chain120.getTree());
 
                     // AST REWRITE
                     // elements: node_chain
@@ -4367,9 +4417,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 125:19: -> ^( NODE_CHAIN node_chain )
+                    // 126:19: -> ^( NODE_CHAIN node_chain )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:125:22: ^( NODE_CHAIN node_chain )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:126:22: ^( NODE_CHAIN node_chain )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -4389,10 +4439,10 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:126:4: INTEGER
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:127:4: INTEGER
                     {
-                    INTEGER120=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_variable1311);  
-                    stream_INTEGER.add(INTEGER120);
+                    INTEGER121=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_variable1324);  
+                    stream_INTEGER.add(INTEGER121);
 
 
                     // AST REWRITE
@@ -4406,7 +4456,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 126:16: -> INTEGER
+                    // 127:16: -> INTEGER
                     {
                         adaptor.addChild(root_0, 
                         stream_INTEGER.nextNode()
@@ -4420,10 +4470,10 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:127:10: STRING
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:128:10: STRING
                     {
-                    STRING121=(Token)match(input,STRING,FOLLOW_STRING_in_variable1330);  
-                    stream_STRING.add(STRING121);
+                    STRING122=(Token)match(input,STRING,FOLLOW_STRING_in_variable1343);  
+                    stream_STRING.add(STRING122);
 
 
                     // AST REWRITE
@@ -4437,7 +4487,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 127:50: -> STRING
+                    // 128:50: -> STRING
                     {
                         adaptor.addChild(root_0, 
                         stream_STRING.nextNode()
@@ -4451,10 +4501,10 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 5 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:128:4: RESERVED_TYPES
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:129:4: RESERVED_TYPES
                     {
-                    RESERVED_TYPES122=(Token)match(input,RESERVED_TYPES,FOLLOW_RESERVED_TYPES_in_variable1372);  
-                    stream_RESERVED_TYPES.add(RESERVED_TYPES122);
+                    RESERVED_TYPES123=(Token)match(input,RESERVED_TYPES,FOLLOW_RESERVED_TYPES_in_variable1385);  
+                    stream_RESERVED_TYPES.add(RESERVED_TYPES123);
 
 
                     // AST REWRITE
@@ -4468,7 +4518,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 128:22: -> RESERVED_TYPES
+                    // 129:22: -> RESERVED_TYPES
                     {
                         adaptor.addChild(root_0, 
                         stream_RESERVED_TYPES.nextNode()
@@ -4512,7 +4562,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "block"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:131:1: block : ( LEFT_BRACKET block_statements RIGHT_BRACKET -> ^( BLOCK_STATEMENTS block_statements ) | -> EPSILON );
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:132:1: block : ( LEFT_BRACKET block_statements RIGHT_BRACKET -> ^( BLOCK_STATEMENTS block_statements ) | -> EPSILON );
     public final QueryLanguageParser.block_return block() throws RecognitionException {
         QueryLanguageParser.block_return retval = new QueryLanguageParser.block_return();
         retval.start = input.LT(1);
@@ -4520,18 +4570,18 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token LEFT_BRACKET123=null;
-        Token RIGHT_BRACKET125=null;
-        QueryLanguageParser.block_statements_return block_statements124 =null;
+        Token LEFT_BRACKET124=null;
+        Token RIGHT_BRACKET126=null;
+        QueryLanguageParser.block_statements_return block_statements125 =null;
 
 
-        Object LEFT_BRACKET123_tree=null;
-        Object RIGHT_BRACKET125_tree=null;
+        Object LEFT_BRACKET124_tree=null;
+        Object RIGHT_BRACKET126_tree=null;
         RewriteRuleTokenStream stream_LEFT_BRACKET=new RewriteRuleTokenStream(adaptor,"token LEFT_BRACKET");
         RewriteRuleTokenStream stream_RIGHT_BRACKET=new RewriteRuleTokenStream(adaptor,"token RIGHT_BRACKET");
         RewriteRuleSubtreeStream stream_block_statements=new RewriteRuleSubtreeStream(adaptor,"rule block_statements");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:132:2: ( LEFT_BRACKET block_statements RIGHT_BRACKET -> ^( BLOCK_STATEMENTS block_statements ) | -> EPSILON )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:133:2: ( LEFT_BRACKET block_statements RIGHT_BRACKET -> ^( BLOCK_STATEMENTS block_statements ) | -> EPSILON )
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -4575,21 +4625,21 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt17) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:132:4: LEFT_BRACKET block_statements RIGHT_BRACKET
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:133:4: LEFT_BRACKET block_statements RIGHT_BRACKET
                     {
-                    LEFT_BRACKET123=(Token)match(input,LEFT_BRACKET,FOLLOW_LEFT_BRACKET_in_block1392);  
-                    stream_LEFT_BRACKET.add(LEFT_BRACKET123);
+                    LEFT_BRACKET124=(Token)match(input,LEFT_BRACKET,FOLLOW_LEFT_BRACKET_in_block1405);  
+                    stream_LEFT_BRACKET.add(LEFT_BRACKET124);
 
 
-                    pushFollow(FOLLOW_block_statements_in_block1394);
-                    block_statements124=block_statements();
+                    pushFollow(FOLLOW_block_statements_in_block1407);
+                    block_statements125=block_statements();
 
                     state._fsp--;
 
-                    stream_block_statements.add(block_statements124.getTree());
+                    stream_block_statements.add(block_statements125.getTree());
 
-                    RIGHT_BRACKET125=(Token)match(input,RIGHT_BRACKET,FOLLOW_RIGHT_BRACKET_in_block1396);  
-                    stream_RIGHT_BRACKET.add(RIGHT_BRACKET125);
+                    RIGHT_BRACKET126=(Token)match(input,RIGHT_BRACKET,FOLLOW_RIGHT_BRACKET_in_block1409);  
+                    stream_RIGHT_BRACKET.add(RIGHT_BRACKET126);
 
 
                     // AST REWRITE
@@ -4603,9 +4653,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 132:48: -> ^( BLOCK_STATEMENTS block_statements )
+                    // 133:48: -> ^( BLOCK_STATEMENTS block_statements )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:132:51: ^( BLOCK_STATEMENTS block_statements )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:133:51: ^( BLOCK_STATEMENTS block_statements )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -4625,7 +4675,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:133:4: 
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:134:4: 
                     {
                     // AST REWRITE
                     // elements: 
@@ -4638,7 +4688,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 133:4: -> EPSILON
+                    // 134:4: -> EPSILON
                     {
                         adaptor.addChild(root_0, 
                         (Object)adaptor.create(EPSILON, "EPSILON")
@@ -4682,7 +4732,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "block_statements"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:135:1: block_statements : ( STAR block_statements -> ^( STAR block_statements ) | REPEATER block_statements -> ^( REPEATER block_statements ) | node_chain block block_statements -> ^( NESTED ^( node_chain ) block ^( BLOCK_STATEMENTS block_statements ) ) | -> EPSILON );
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:136:1: block_statements : ( STAR block_statements -> ^( STAR block_statements ) | REPEATER block_statements -> ^( REPEATER block_statements ) | node_chain block block_statements -> ^( NESTED ^( node_chain ) block ^( BLOCK_STATEMENTS block_statements ) ) | -> EPSILON );
     public final QueryLanguageParser.block_statements_return block_statements() throws RecognitionException {
         QueryLanguageParser.block_statements_return retval = new QueryLanguageParser.block_statements_return();
         retval.start = input.LT(1);
@@ -4690,28 +4740,28 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token STAR126=null;
-        Token REPEATER128=null;
-        QueryLanguageParser.block_statements_return block_statements127 =null;
+        Token STAR127=null;
+        Token REPEATER129=null;
+        QueryLanguageParser.block_statements_return block_statements128 =null;
 
-        QueryLanguageParser.block_statements_return block_statements129 =null;
+        QueryLanguageParser.block_statements_return block_statements130 =null;
 
-        QueryLanguageParser.node_chain_return node_chain130 =null;
+        QueryLanguageParser.node_chain_return node_chain131 =null;
 
-        QueryLanguageParser.block_return block131 =null;
+        QueryLanguageParser.block_return block132 =null;
 
-        QueryLanguageParser.block_statements_return block_statements132 =null;
+        QueryLanguageParser.block_statements_return block_statements133 =null;
 
 
-        Object STAR126_tree=null;
-        Object REPEATER128_tree=null;
+        Object STAR127_tree=null;
+        Object REPEATER129_tree=null;
         RewriteRuleTokenStream stream_STAR=new RewriteRuleTokenStream(adaptor,"token STAR");
         RewriteRuleTokenStream stream_REPEATER=new RewriteRuleTokenStream(adaptor,"token REPEATER");
         RewriteRuleSubtreeStream stream_node_chain=new RewriteRuleSubtreeStream(adaptor,"rule node_chain");
         RewriteRuleSubtreeStream stream_block=new RewriteRuleSubtreeStream(adaptor,"rule block");
         RewriteRuleSubtreeStream stream_block_statements=new RewriteRuleSubtreeStream(adaptor,"rule block_statements");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:136:2: ( STAR block_statements -> ^( STAR block_statements ) | REPEATER block_statements -> ^( REPEATER block_statements ) | node_chain block block_statements -> ^( NESTED ^( node_chain ) block ^( BLOCK_STATEMENTS block_statements ) ) | -> EPSILON )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:137:2: ( STAR block_statements -> ^( STAR block_statements ) | REPEATER block_statements -> ^( REPEATER block_statements ) | node_chain block block_statements -> ^( NESTED ^( node_chain ) block ^( BLOCK_STATEMENTS block_statements ) ) | -> EPSILON )
             int alt18=4;
             switch ( input.LA(1) ) {
             case STAR:
@@ -4747,18 +4797,18 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt18) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:136:4: STAR block_statements
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:137:4: STAR block_statements
                     {
-                    STAR126=(Token)match(input,STAR,FOLLOW_STAR_in_block_statements1421);  
-                    stream_STAR.add(STAR126);
+                    STAR127=(Token)match(input,STAR,FOLLOW_STAR_in_block_statements1434);  
+                    stream_STAR.add(STAR127);
 
 
-                    pushFollow(FOLLOW_block_statements_in_block_statements1423);
-                    block_statements127=block_statements();
+                    pushFollow(FOLLOW_block_statements_in_block_statements1436);
+                    block_statements128=block_statements();
 
                     state._fsp--;
 
-                    stream_block_statements.add(block_statements127.getTree());
+                    stream_block_statements.add(block_statements128.getTree());
 
                     // AST REWRITE
                     // elements: STAR, block_statements
@@ -4771,9 +4821,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 136:29: -> ^( STAR block_statements )
+                    // 137:29: -> ^( STAR block_statements )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:136:32: ^( STAR block_statements )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:137:32: ^( STAR block_statements )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -4793,18 +4843,18 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:137:4: REPEATER block_statements
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:138:4: REPEATER block_statements
                     {
-                    REPEATER128=(Token)match(input,REPEATER,FOLLOW_REPEATER_in_block_statements1439);  
-                    stream_REPEATER.add(REPEATER128);
+                    REPEATER129=(Token)match(input,REPEATER,FOLLOW_REPEATER_in_block_statements1452);  
+                    stream_REPEATER.add(REPEATER129);
 
 
-                    pushFollow(FOLLOW_block_statements_in_block_statements1441);
-                    block_statements129=block_statements();
+                    pushFollow(FOLLOW_block_statements_in_block_statements1454);
+                    block_statements130=block_statements();
 
                     state._fsp--;
 
-                    stream_block_statements.add(block_statements129.getTree());
+                    stream_block_statements.add(block_statements130.getTree());
 
                     // AST REWRITE
                     // elements: REPEATER, block_statements
@@ -4817,9 +4867,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 137:32: -> ^( REPEATER block_statements )
+                    // 138:32: -> ^( REPEATER block_statements )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:137:35: ^( REPEATER block_statements )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:138:35: ^( REPEATER block_statements )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -4839,31 +4889,31 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:138:4: node_chain block block_statements
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:139:4: node_chain block block_statements
                     {
-                    pushFollow(FOLLOW_node_chain_in_block_statements1456);
-                    node_chain130=node_chain();
+                    pushFollow(FOLLOW_node_chain_in_block_statements1469);
+                    node_chain131=node_chain();
 
                     state._fsp--;
 
-                    stream_node_chain.add(node_chain130.getTree());
+                    stream_node_chain.add(node_chain131.getTree());
 
-                    pushFollow(FOLLOW_block_in_block_statements1458);
-                    block131=block();
-
-                    state._fsp--;
-
-                    stream_block.add(block131.getTree());
-
-                    pushFollow(FOLLOW_block_statements_in_block_statements1460);
-                    block_statements132=block_statements();
+                    pushFollow(FOLLOW_block_in_block_statements1471);
+                    block132=block();
 
                     state._fsp--;
 
-                    stream_block_statements.add(block_statements132.getTree());
+                    stream_block.add(block132.getTree());
+
+                    pushFollow(FOLLOW_block_statements_in_block_statements1473);
+                    block_statements133=block_statements();
+
+                    state._fsp--;
+
+                    stream_block_statements.add(block_statements133.getTree());
 
                     // AST REWRITE
-                    // elements: node_chain, block, block_statements
+                    // elements: block, node_chain, block_statements
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -4873,16 +4923,16 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 138:38: -> ^( NESTED ^( node_chain ) block ^( BLOCK_STATEMENTS block_statements ) )
+                    // 139:38: -> ^( NESTED ^( node_chain ) block ^( BLOCK_STATEMENTS block_statements ) )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:138:41: ^( NESTED ^( node_chain ) block ^( BLOCK_STATEMENTS block_statements ) )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:139:41: ^( NESTED ^( node_chain ) block ^( BLOCK_STATEMENTS block_statements ) )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
                         (Object)adaptor.create(NESTED, "NESTED")
                         , root_1);
 
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:138:50: ^( node_chain )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:139:50: ^( node_chain )
                         {
                         Object root_2 = (Object)adaptor.nil();
                         root_2 = (Object)adaptor.becomeRoot(stream_node_chain.nextNode(), root_2);
@@ -4892,7 +4942,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                         adaptor.addChild(root_1, stream_block.nextTree());
 
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:138:70: ^( BLOCK_STATEMENTS block_statements )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:139:70: ^( BLOCK_STATEMENTS block_statements )
                         {
                         Object root_2 = (Object)adaptor.nil();
                         root_2 = (Object)adaptor.becomeRoot(
@@ -4915,7 +4965,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:139:4: 
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:140:4: 
                     {
                     // AST REWRITE
                     // elements: 
@@ -4928,7 +4978,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 139:4: -> EPSILON
+                    // 140:4: -> EPSILON
                     {
                         adaptor.addChild(root_0, 
                         (Object)adaptor.create(EPSILON, "EPSILON")
@@ -4972,7 +5022,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "print_stmt"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:142:1: print_stmt : ( PRINT variable_stmt SEMICOLON -> variable_stmt | -> EPSILON );
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:143:1: print_stmt : ( PRINT variable_stmt SEMICOLON -> variable_stmt | -> EPSILON );
     public final QueryLanguageParser.print_stmt_return print_stmt() throws RecognitionException {
         QueryLanguageParser.print_stmt_return retval = new QueryLanguageParser.print_stmt_return();
         retval.start = input.LT(1);
@@ -4980,18 +5030,18 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token PRINT133=null;
-        Token SEMICOLON135=null;
-        QueryLanguageParser.variable_stmt_return variable_stmt134 =null;
+        Token PRINT134=null;
+        Token SEMICOLON136=null;
+        QueryLanguageParser.variable_stmt_return variable_stmt135 =null;
 
 
-        Object PRINT133_tree=null;
-        Object SEMICOLON135_tree=null;
+        Object PRINT134_tree=null;
+        Object SEMICOLON136_tree=null;
         RewriteRuleTokenStream stream_SEMICOLON=new RewriteRuleTokenStream(adaptor,"token SEMICOLON");
         RewriteRuleTokenStream stream_PRINT=new RewriteRuleTokenStream(adaptor,"token PRINT");
         RewriteRuleSubtreeStream stream_variable_stmt=new RewriteRuleSubtreeStream(adaptor,"rule variable_stmt");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:143:2: ( PRINT variable_stmt SEMICOLON -> variable_stmt | -> EPSILON )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:144:2: ( PRINT variable_stmt SEMICOLON -> variable_stmt | -> EPSILON )
             int alt19=2;
             int LA19_0 = input.LA(1);
 
@@ -5010,21 +5060,21 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt19) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:143:4: PRINT variable_stmt SEMICOLON
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:144:4: PRINT variable_stmt SEMICOLON
                     {
-                    PRINT133=(Token)match(input,PRINT,FOLLOW_PRINT_in_print_stmt1496);  
-                    stream_PRINT.add(PRINT133);
+                    PRINT134=(Token)match(input,PRINT,FOLLOW_PRINT_in_print_stmt1509);  
+                    stream_PRINT.add(PRINT134);
 
 
-                    pushFollow(FOLLOW_variable_stmt_in_print_stmt1498);
-                    variable_stmt134=variable_stmt();
+                    pushFollow(FOLLOW_variable_stmt_in_print_stmt1511);
+                    variable_stmt135=variable_stmt();
 
                     state._fsp--;
 
-                    stream_variable_stmt.add(variable_stmt134.getTree());
+                    stream_variable_stmt.add(variable_stmt135.getTree());
 
-                    SEMICOLON135=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_print_stmt1500);  
-                    stream_SEMICOLON.add(SEMICOLON135);
+                    SEMICOLON136=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_print_stmt1513);  
+                    stream_SEMICOLON.add(SEMICOLON136);
 
 
                     // AST REWRITE
@@ -5038,7 +5088,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 143:34: -> variable_stmt
+                    // 144:34: -> variable_stmt
                     {
                         adaptor.addChild(root_0, stream_variable_stmt.nextTree());
 
@@ -5050,7 +5100,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:144:4: 
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:145:4: 
                     {
                     // AST REWRITE
                     // elements: 
@@ -5063,7 +5113,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 144:4: -> EPSILON
+                    // 145:4: -> EPSILON
                     {
                         adaptor.addChild(root_0, 
                         (Object)adaptor.create(EPSILON, "EPSILON")
@@ -5107,7 +5157,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stat_statements"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:147:1: stat_statements : ( LEFT_BRACKET statements RIGHT_BRACKET -> statements | -> EPSILON );
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:148:1: stat_statements : ( LEFT_BRACKET statements RIGHT_BRACKET -> statements | -> EPSILON );
     public final QueryLanguageParser.stat_statements_return stat_statements() throws RecognitionException {
         QueryLanguageParser.stat_statements_return retval = new QueryLanguageParser.stat_statements_return();
         retval.start = input.LT(1);
@@ -5115,18 +5165,18 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token LEFT_BRACKET136=null;
-        Token RIGHT_BRACKET138=null;
-        QueryLanguageParser.statements_return statements137 =null;
+        Token LEFT_BRACKET137=null;
+        Token RIGHT_BRACKET139=null;
+        QueryLanguageParser.statements_return statements138 =null;
 
 
-        Object LEFT_BRACKET136_tree=null;
-        Object RIGHT_BRACKET138_tree=null;
+        Object LEFT_BRACKET137_tree=null;
+        Object RIGHT_BRACKET139_tree=null;
         RewriteRuleTokenStream stream_LEFT_BRACKET=new RewriteRuleTokenStream(adaptor,"token LEFT_BRACKET");
         RewriteRuleTokenStream stream_RIGHT_BRACKET=new RewriteRuleTokenStream(adaptor,"token RIGHT_BRACKET");
         RewriteRuleSubtreeStream stream_statements=new RewriteRuleSubtreeStream(adaptor,"rule statements");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:148:2: ( LEFT_BRACKET statements RIGHT_BRACKET -> statements | -> EPSILON )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:149:2: ( LEFT_BRACKET statements RIGHT_BRACKET -> statements | -> EPSILON )
             int alt20=2;
             int LA20_0 = input.LA(1);
 
@@ -5173,21 +5223,21 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt20) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:148:4: LEFT_BRACKET statements RIGHT_BRACKET
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:149:4: LEFT_BRACKET statements RIGHT_BRACKET
                     {
-                    LEFT_BRACKET136=(Token)match(input,LEFT_BRACKET,FOLLOW_LEFT_BRACKET_in_stat_statements1522);  
-                    stream_LEFT_BRACKET.add(LEFT_BRACKET136);
+                    LEFT_BRACKET137=(Token)match(input,LEFT_BRACKET,FOLLOW_LEFT_BRACKET_in_stat_statements1535);  
+                    stream_LEFT_BRACKET.add(LEFT_BRACKET137);
 
 
-                    pushFollow(FOLLOW_statements_in_stat_statements1524);
-                    statements137=statements();
+                    pushFollow(FOLLOW_statements_in_stat_statements1537);
+                    statements138=statements();
 
                     state._fsp--;
 
-                    stream_statements.add(statements137.getTree());
+                    stream_statements.add(statements138.getTree());
 
-                    RIGHT_BRACKET138=(Token)match(input,RIGHT_BRACKET,FOLLOW_RIGHT_BRACKET_in_stat_statements1526);  
-                    stream_RIGHT_BRACKET.add(RIGHT_BRACKET138);
+                    RIGHT_BRACKET139=(Token)match(input,RIGHT_BRACKET,FOLLOW_RIGHT_BRACKET_in_stat_statements1539);  
+                    stream_RIGHT_BRACKET.add(RIGHT_BRACKET139);
 
 
                     // AST REWRITE
@@ -5201,7 +5251,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 148:42: -> statements
+                    // 149:42: -> statements
                     {
                         adaptor.addChild(root_0, stream_statements.nextTree());
 
@@ -5213,7 +5263,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:149:4: 
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:150:4: 
                     {
                     // AST REWRITE
                     // elements: 
@@ -5226,7 +5276,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 149:4: -> EPSILON
+                    // 150:4: -> EPSILON
                     {
                         adaptor.addChild(root_0, 
                         (Object)adaptor.create(EPSILON, "EPSILON")
@@ -5270,7 +5320,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "statements"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:152:1: statements : ( variable_assn statements -> ^( STATEMENT variable_assn statements ) | if_statement statements -> ^( STATEMENT if_statement statements ) | query statements -> ^( QUERY query ) statements | SET variable_assn WHERE boolean_exp SEMICOLON -> ^( SET_TABLE variable_assn boolean_exp ) | -> EPSILON );
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:153:1: statements : ( variable_assn statements -> ^( STATEMENT variable_assn statements ) | if_statement statements -> ^( STATEMENT if_statement statements ) | query statements -> ^( QUERY query ) statements | SET variable_assn WHERE boolean_exp SEMICOLON -> ^( SET_TABLE variable_assn boolean_exp ) | -> EPSILON );
     public final QueryLanguageParser.statements_return statements() throws RecognitionException {
         QueryLanguageParser.statements_return retval = new QueryLanguageParser.statements_return();
         retval.start = input.LT(1);
@@ -5278,29 +5328,29 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token SET145=null;
-        Token WHERE147=null;
-        Token SEMICOLON149=null;
-        QueryLanguageParser.variable_assn_return variable_assn139 =null;
+        Token SET146=null;
+        Token WHERE148=null;
+        Token SEMICOLON150=null;
+        QueryLanguageParser.variable_assn_return variable_assn140 =null;
 
-        QueryLanguageParser.statements_return statements140 =null;
+        QueryLanguageParser.statements_return statements141 =null;
 
-        QueryLanguageParser.if_statement_return if_statement141 =null;
+        QueryLanguageParser.if_statement_return if_statement142 =null;
 
-        QueryLanguageParser.statements_return statements142 =null;
+        QueryLanguageParser.statements_return statements143 =null;
 
-        QueryLanguageParser.query_return query143 =null;
+        QueryLanguageParser.query_return query144 =null;
 
-        QueryLanguageParser.statements_return statements144 =null;
+        QueryLanguageParser.statements_return statements145 =null;
 
-        QueryLanguageParser.variable_assn_return variable_assn146 =null;
+        QueryLanguageParser.variable_assn_return variable_assn147 =null;
 
-        QueryLanguageParser.boolean_exp_return boolean_exp148 =null;
+        QueryLanguageParser.boolean_exp_return boolean_exp149 =null;
 
 
-        Object SET145_tree=null;
-        Object WHERE147_tree=null;
-        Object SEMICOLON149_tree=null;
+        Object SET146_tree=null;
+        Object WHERE148_tree=null;
+        Object SEMICOLON150_tree=null;
         RewriteRuleTokenStream stream_WHERE=new RewriteRuleTokenStream(adaptor,"token WHERE");
         RewriteRuleTokenStream stream_SET=new RewriteRuleTokenStream(adaptor,"token SET");
         RewriteRuleTokenStream stream_SEMICOLON=new RewriteRuleTokenStream(adaptor,"token SEMICOLON");
@@ -5310,7 +5360,7 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_statements=new RewriteRuleSubtreeStream(adaptor,"rule statements");
         RewriteRuleSubtreeStream stream_boolean_exp=new RewriteRuleSubtreeStream(adaptor,"rule boolean_exp");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:153:2: ( variable_assn statements -> ^( STATEMENT variable_assn statements ) | if_statement statements -> ^( STATEMENT if_statement statements ) | query statements -> ^( QUERY query ) statements | SET variable_assn WHERE boolean_exp SEMICOLON -> ^( SET_TABLE variable_assn boolean_exp ) | -> EPSILON )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:154:2: ( variable_assn statements -> ^( STATEMENT variable_assn statements ) | if_statement statements -> ^( STATEMENT if_statement statements ) | query statements -> ^( QUERY query ) statements | SET variable_assn WHERE boolean_exp SEMICOLON -> ^( SET_TABLE variable_assn boolean_exp ) | -> EPSILON )
             int alt21=5;
             switch ( input.LA(1) ) {
             case ID:
@@ -5399,24 +5449,24 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt21) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:153:4: variable_assn statements
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:154:4: variable_assn statements
                     {
-                    pushFollow(FOLLOW_variable_assn_in_statements1549);
-                    variable_assn139=variable_assn();
+                    pushFollow(FOLLOW_variable_assn_in_statements1562);
+                    variable_assn140=variable_assn();
 
                     state._fsp--;
 
-                    stream_variable_assn.add(variable_assn139.getTree());
+                    stream_variable_assn.add(variable_assn140.getTree());
 
-                    pushFollow(FOLLOW_statements_in_statements1551);
-                    statements140=statements();
+                    pushFollow(FOLLOW_statements_in_statements1564);
+                    statements141=statements();
 
                     state._fsp--;
 
-                    stream_statements.add(statements140.getTree());
+                    stream_statements.add(statements141.getTree());
 
                     // AST REWRITE
-                    // elements: statements, variable_assn
+                    // elements: variable_assn, statements
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -5426,9 +5476,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 153:29: -> ^( STATEMENT variable_assn statements )
+                    // 154:29: -> ^( STATEMENT variable_assn statements )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:153:32: ^( STATEMENT variable_assn statements )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:154:32: ^( STATEMENT variable_assn statements )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -5450,24 +5500,24 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:154:4: if_statement statements
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:155:4: if_statement statements
                     {
-                    pushFollow(FOLLOW_if_statement_in_statements1566);
-                    if_statement141=if_statement();
+                    pushFollow(FOLLOW_if_statement_in_statements1579);
+                    if_statement142=if_statement();
 
                     state._fsp--;
 
-                    stream_if_statement.add(if_statement141.getTree());
+                    stream_if_statement.add(if_statement142.getTree());
 
-                    pushFollow(FOLLOW_statements_in_statements1568);
-                    statements142=statements();
+                    pushFollow(FOLLOW_statements_in_statements1581);
+                    statements143=statements();
 
                     state._fsp--;
 
-                    stream_statements.add(statements142.getTree());
+                    stream_statements.add(statements143.getTree());
 
                     // AST REWRITE
-                    // elements: if_statement, statements
+                    // elements: statements, if_statement
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -5477,9 +5527,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 154:29: -> ^( STATEMENT if_statement statements )
+                    // 155:29: -> ^( STATEMENT if_statement statements )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:154:32: ^( STATEMENT if_statement statements )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:155:32: ^( STATEMENT if_statement statements )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -5501,24 +5551,24 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:155:4: query statements
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:156:4: query statements
                     {
-                    pushFollow(FOLLOW_query_in_statements1584);
-                    query143=query();
+                    pushFollow(FOLLOW_query_in_statements1597);
+                    query144=query();
 
                     state._fsp--;
 
-                    stream_query.add(query143.getTree());
+                    stream_query.add(query144.getTree());
 
-                    pushFollow(FOLLOW_statements_in_statements1586);
-                    statements144=statements();
+                    pushFollow(FOLLOW_statements_in_statements1599);
+                    statements145=statements();
 
                     state._fsp--;
 
-                    stream_statements.add(statements144.getTree());
+                    stream_statements.add(statements145.getTree());
 
                     // AST REWRITE
-                    // elements: statements, query
+                    // elements: query, statements
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -5528,9 +5578,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 155:22: -> ^( QUERY query ) statements
+                    // 156:22: -> ^( QUERY query ) statements
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:155:25: ^( QUERY query )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:156:25: ^( QUERY query )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -5552,36 +5602,36 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:156:4: SET variable_assn WHERE boolean_exp SEMICOLON
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:157:4: SET variable_assn WHERE boolean_exp SEMICOLON
                     {
-                    SET145=(Token)match(input,SET,FOLLOW_SET_in_statements1602);  
-                    stream_SET.add(SET145);
+                    SET146=(Token)match(input,SET,FOLLOW_SET_in_statements1615);  
+                    stream_SET.add(SET146);
 
 
-                    pushFollow(FOLLOW_variable_assn_in_statements1604);
-                    variable_assn146=variable_assn();
-
-                    state._fsp--;
-
-                    stream_variable_assn.add(variable_assn146.getTree());
-
-                    WHERE147=(Token)match(input,WHERE,FOLLOW_WHERE_in_statements1606);  
-                    stream_WHERE.add(WHERE147);
-
-
-                    pushFollow(FOLLOW_boolean_exp_in_statements1608);
-                    boolean_exp148=boolean_exp();
+                    pushFollow(FOLLOW_variable_assn_in_statements1617);
+                    variable_assn147=variable_assn();
 
                     state._fsp--;
 
-                    stream_boolean_exp.add(boolean_exp148.getTree());
+                    stream_variable_assn.add(variable_assn147.getTree());
 
-                    SEMICOLON149=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_statements1610);  
-                    stream_SEMICOLON.add(SEMICOLON149);
+                    WHERE148=(Token)match(input,WHERE,FOLLOW_WHERE_in_statements1619);  
+                    stream_WHERE.add(WHERE148);
+
+
+                    pushFollow(FOLLOW_boolean_exp_in_statements1621);
+                    boolean_exp149=boolean_exp();
+
+                    state._fsp--;
+
+                    stream_boolean_exp.add(boolean_exp149.getTree());
+
+                    SEMICOLON150=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_statements1623);  
+                    stream_SEMICOLON.add(SEMICOLON150);
 
 
                     // AST REWRITE
-                    // elements: variable_assn, boolean_exp
+                    // elements: boolean_exp, variable_assn
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -5591,9 +5641,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 156:50: -> ^( SET_TABLE variable_assn boolean_exp )
+                    // 157:50: -> ^( SET_TABLE variable_assn boolean_exp )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:156:53: ^( SET_TABLE variable_assn boolean_exp )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:157:53: ^( SET_TABLE variable_assn boolean_exp )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -5615,7 +5665,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 5 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:157:4: 
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:158:4: 
                     {
                     // AST REWRITE
                     // elements: 
@@ -5628,7 +5678,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 157:4: -> EPSILON
+                    // 158:4: -> EPSILON
                     {
                         adaptor.addChild(root_0, 
                         (Object)adaptor.create(EPSILON, "EPSILON")
@@ -5672,7 +5722,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "variable_stmt"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:160:1: variable_stmt : ( variable binary_op -> ^( VAR_STMT ^( VAR variable ) ^( BIN_OP binary_op ) ) | MAX LEFT_PAREN variable COMMA variable RIGHT_PAREN -> ^( MAX variable variable ) );
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:161:1: variable_stmt : ( variable binary_op -> ^( VAR_STMT ^( VAR variable ) ^( BIN_OP binary_op ) ) | MAX LEFT_PAREN variable COMMA variable RIGHT_PAREN -> ^( MAX variable variable ) );
     public final QueryLanguageParser.variable_stmt_return variable_stmt() throws RecognitionException {
         QueryLanguageParser.variable_stmt_return retval = new QueryLanguageParser.variable_stmt_return();
         retval.start = input.LT(1);
@@ -5680,23 +5730,23 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token MAX152=null;
-        Token LEFT_PAREN153=null;
-        Token COMMA155=null;
-        Token RIGHT_PAREN157=null;
-        QueryLanguageParser.variable_return variable150 =null;
+        Token MAX153=null;
+        Token LEFT_PAREN154=null;
+        Token COMMA156=null;
+        Token RIGHT_PAREN158=null;
+        QueryLanguageParser.variable_return variable151 =null;
 
-        QueryLanguageParser.binary_op_return binary_op151 =null;
+        QueryLanguageParser.binary_op_return binary_op152 =null;
 
-        QueryLanguageParser.variable_return variable154 =null;
+        QueryLanguageParser.variable_return variable155 =null;
 
-        QueryLanguageParser.variable_return variable156 =null;
+        QueryLanguageParser.variable_return variable157 =null;
 
 
-        Object MAX152_tree=null;
-        Object LEFT_PAREN153_tree=null;
-        Object COMMA155_tree=null;
-        Object RIGHT_PAREN157_tree=null;
+        Object MAX153_tree=null;
+        Object LEFT_PAREN154_tree=null;
+        Object COMMA156_tree=null;
+        Object RIGHT_PAREN158_tree=null;
         RewriteRuleTokenStream stream_MAX=new RewriteRuleTokenStream(adaptor,"token MAX");
         RewriteRuleTokenStream stream_LEFT_PAREN=new RewriteRuleTokenStream(adaptor,"token LEFT_PAREN");
         RewriteRuleTokenStream stream_RIGHT_PAREN=new RewriteRuleTokenStream(adaptor,"token RIGHT_PAREN");
@@ -5704,7 +5754,7 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_binary_op=new RewriteRuleSubtreeStream(adaptor,"rule binary_op");
         RewriteRuleSubtreeStream stream_variable=new RewriteRuleSubtreeStream(adaptor,"rule variable");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:161:2: ( variable binary_op -> ^( VAR_STMT ^( VAR variable ) ^( BIN_OP binary_op ) ) | MAX LEFT_PAREN variable COMMA variable RIGHT_PAREN -> ^( MAX variable variable ) )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:162:2: ( variable binary_op -> ^( VAR_STMT ^( VAR variable ) ^( BIN_OP binary_op ) ) | MAX LEFT_PAREN variable COMMA variable RIGHT_PAREN -> ^( MAX variable variable ) )
             int alt22=2;
             int LA22_0 = input.LA(1);
 
@@ -5723,24 +5773,24 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt22) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:161:4: variable binary_op
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:162:4: variable binary_op
                     {
-                    pushFollow(FOLLOW_variable_in_variable_stmt1639);
-                    variable150=variable();
+                    pushFollow(FOLLOW_variable_in_variable_stmt1652);
+                    variable151=variable();
 
                     state._fsp--;
 
-                    stream_variable.add(variable150.getTree());
+                    stream_variable.add(variable151.getTree());
 
-                    pushFollow(FOLLOW_binary_op_in_variable_stmt1641);
-                    binary_op151=binary_op();
+                    pushFollow(FOLLOW_binary_op_in_variable_stmt1654);
+                    binary_op152=binary_op();
 
                     state._fsp--;
 
-                    stream_binary_op.add(binary_op151.getTree());
+                    stream_binary_op.add(binary_op152.getTree());
 
                     // AST REWRITE
-                    // elements: binary_op, variable
+                    // elements: variable, binary_op
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -5750,16 +5800,16 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 161:25: -> ^( VAR_STMT ^( VAR variable ) ^( BIN_OP binary_op ) )
+                    // 162:25: -> ^( VAR_STMT ^( VAR variable ) ^( BIN_OP binary_op ) )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:161:28: ^( VAR_STMT ^( VAR variable ) ^( BIN_OP binary_op ) )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:162:28: ^( VAR_STMT ^( VAR variable ) ^( BIN_OP binary_op ) )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
                         (Object)adaptor.create(VAR_STMT, "VAR_STMT")
                         , root_1);
 
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:161:39: ^( VAR variable )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:162:39: ^( VAR variable )
                         {
                         Object root_2 = (Object)adaptor.nil();
                         root_2 = (Object)adaptor.becomeRoot(
@@ -5771,7 +5821,7 @@ public TreeAdaptor getTreeAdaptor() {
                         adaptor.addChild(root_1, root_2);
                         }
 
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:161:55: ^( BIN_OP binary_op )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:162:55: ^( BIN_OP binary_op )
                         {
                         Object root_2 = (Object)adaptor.nil();
                         root_2 = (Object)adaptor.becomeRoot(
@@ -5794,40 +5844,40 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:162:4: MAX LEFT_PAREN variable COMMA variable RIGHT_PAREN
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:163:4: MAX LEFT_PAREN variable COMMA variable RIGHT_PAREN
                     {
-                    MAX152=(Token)match(input,MAX,FOLLOW_MAX_in_variable_stmt1667);  
-                    stream_MAX.add(MAX152);
+                    MAX153=(Token)match(input,MAX,FOLLOW_MAX_in_variable_stmt1680);  
+                    stream_MAX.add(MAX153);
 
 
-                    LEFT_PAREN153=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_variable_stmt1669);  
-                    stream_LEFT_PAREN.add(LEFT_PAREN153);
+                    LEFT_PAREN154=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_variable_stmt1682);  
+                    stream_LEFT_PAREN.add(LEFT_PAREN154);
 
 
-                    pushFollow(FOLLOW_variable_in_variable_stmt1671);
-                    variable154=variable();
-
-                    state._fsp--;
-
-                    stream_variable.add(variable154.getTree());
-
-                    COMMA155=(Token)match(input,COMMA,FOLLOW_COMMA_in_variable_stmt1673);  
-                    stream_COMMA.add(COMMA155);
-
-
-                    pushFollow(FOLLOW_variable_in_variable_stmt1675);
-                    variable156=variable();
+                    pushFollow(FOLLOW_variable_in_variable_stmt1684);
+                    variable155=variable();
 
                     state._fsp--;
 
-                    stream_variable.add(variable156.getTree());
+                    stream_variable.add(variable155.getTree());
 
-                    RIGHT_PAREN157=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_variable_stmt1677);  
-                    stream_RIGHT_PAREN.add(RIGHT_PAREN157);
+                    COMMA156=(Token)match(input,COMMA,FOLLOW_COMMA_in_variable_stmt1686);  
+                    stream_COMMA.add(COMMA156);
+
+
+                    pushFollow(FOLLOW_variable_in_variable_stmt1688);
+                    variable157=variable();
+
+                    state._fsp--;
+
+                    stream_variable.add(variable157.getTree());
+
+                    RIGHT_PAREN158=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_variable_stmt1690);  
+                    stream_RIGHT_PAREN.add(RIGHT_PAREN158);
 
 
                     // AST REWRITE
-                    // elements: variable, MAX, variable
+                    // elements: MAX, variable, variable
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -5837,9 +5887,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 162:55: -> ^( MAX variable variable )
+                    // 163:55: -> ^( MAX variable variable )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:162:58: ^( MAX variable variable )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:163:58: ^( MAX variable variable )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -5891,7 +5941,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "variable_assn"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:164:1: variable_assn : variable variable_assn_right -> ^( VAR variable ) variable_assn_right ;
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:165:1: variable_assn : variable variable_assn_right -> ^( VAR variable ) variable_assn_right ;
     public final QueryLanguageParser.variable_assn_return variable_assn() throws RecognitionException {
         QueryLanguageParser.variable_assn_return retval = new QueryLanguageParser.variable_assn_return();
         retval.start = input.LT(1);
@@ -5899,30 +5949,30 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        QueryLanguageParser.variable_return variable158 =null;
+        QueryLanguageParser.variable_return variable159 =null;
 
-        QueryLanguageParser.variable_assn_right_return variable_assn_right159 =null;
+        QueryLanguageParser.variable_assn_right_return variable_assn_right160 =null;
 
 
         RewriteRuleSubtreeStream stream_variable_assn_right=new RewriteRuleSubtreeStream(adaptor,"rule variable_assn_right");
         RewriteRuleSubtreeStream stream_variable=new RewriteRuleSubtreeStream(adaptor,"rule variable");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:165:2: ( variable variable_assn_right -> ^( VAR variable ) variable_assn_right )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:165:4: variable variable_assn_right
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:166:2: ( variable variable_assn_right -> ^( VAR variable ) variable_assn_right )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:166:4: variable variable_assn_right
             {
-            pushFollow(FOLLOW_variable_in_variable_assn1697);
-            variable158=variable();
+            pushFollow(FOLLOW_variable_in_variable_assn1710);
+            variable159=variable();
 
             state._fsp--;
 
-            stream_variable.add(variable158.getTree());
+            stream_variable.add(variable159.getTree());
 
-            pushFollow(FOLLOW_variable_assn_right_in_variable_assn1699);
-            variable_assn_right159=variable_assn_right();
+            pushFollow(FOLLOW_variable_assn_right_in_variable_assn1712);
+            variable_assn_right160=variable_assn_right();
 
             state._fsp--;
 
-            stream_variable_assn_right.add(variable_assn_right159.getTree());
+            stream_variable_assn_right.add(variable_assn_right160.getTree());
 
             // AST REWRITE
             // elements: variable, variable_assn_right
@@ -5935,9 +5985,9 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 165:33: -> ^( VAR variable ) variable_assn_right
+            // 166:33: -> ^( VAR variable ) variable_assn_right
             {
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:165:36: ^( VAR variable )
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:166:36: ^( VAR variable )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(
@@ -5987,7 +6037,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "variable_assn_right"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:167:1: variable_assn_right : ( EQUALS variable_stmt SEMICOLON -> ^( VAR_ASSIGN variable_stmt ) | COMPOUND_ADD variable_stmt SEMICOLON -> ^( COMP_ADD variable_stmt ) | INCREMENT SEMICOLON -> INCR );
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:168:1: variable_assn_right : ( EQUALS variable_stmt SEMICOLON -> ^( VAR_ASSIGN variable_stmt ) | COMPOUND_ADD variable_stmt SEMICOLON -> ^( COMP_ADD variable_stmt ) | INCREMENT SEMICOLON -> INCR );
     public final QueryLanguageParser.variable_assn_right_return variable_assn_right() throws RecognitionException {
         QueryLanguageParser.variable_assn_right_return retval = new QueryLanguageParser.variable_assn_right_return();
         retval.start = input.LT(1);
@@ -5995,30 +6045,30 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token EQUALS160=null;
-        Token SEMICOLON162=null;
-        Token COMPOUND_ADD163=null;
-        Token SEMICOLON165=null;
-        Token INCREMENT166=null;
-        Token SEMICOLON167=null;
-        QueryLanguageParser.variable_stmt_return variable_stmt161 =null;
+        Token EQUALS161=null;
+        Token SEMICOLON163=null;
+        Token COMPOUND_ADD164=null;
+        Token SEMICOLON166=null;
+        Token INCREMENT167=null;
+        Token SEMICOLON168=null;
+        QueryLanguageParser.variable_stmt_return variable_stmt162 =null;
 
-        QueryLanguageParser.variable_stmt_return variable_stmt164 =null;
+        QueryLanguageParser.variable_stmt_return variable_stmt165 =null;
 
 
-        Object EQUALS160_tree=null;
-        Object SEMICOLON162_tree=null;
-        Object COMPOUND_ADD163_tree=null;
-        Object SEMICOLON165_tree=null;
-        Object INCREMENT166_tree=null;
-        Object SEMICOLON167_tree=null;
+        Object EQUALS161_tree=null;
+        Object SEMICOLON163_tree=null;
+        Object COMPOUND_ADD164_tree=null;
+        Object SEMICOLON166_tree=null;
+        Object INCREMENT167_tree=null;
+        Object SEMICOLON168_tree=null;
         RewriteRuleTokenStream stream_INCREMENT=new RewriteRuleTokenStream(adaptor,"token INCREMENT");
         RewriteRuleTokenStream stream_EQUALS=new RewriteRuleTokenStream(adaptor,"token EQUALS");
         RewriteRuleTokenStream stream_SEMICOLON=new RewriteRuleTokenStream(adaptor,"token SEMICOLON");
         RewriteRuleTokenStream stream_COMPOUND_ADD=new RewriteRuleTokenStream(adaptor,"token COMPOUND_ADD");
         RewriteRuleSubtreeStream stream_variable_stmt=new RewriteRuleSubtreeStream(adaptor,"rule variable_stmt");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:168:2: ( EQUALS variable_stmt SEMICOLON -> ^( VAR_ASSIGN variable_stmt ) | COMPOUND_ADD variable_stmt SEMICOLON -> ^( COMP_ADD variable_stmt ) | INCREMENT SEMICOLON -> INCR )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:169:2: ( EQUALS variable_stmt SEMICOLON -> ^( VAR_ASSIGN variable_stmt ) | COMPOUND_ADD variable_stmt SEMICOLON -> ^( COMP_ADD variable_stmt ) | INCREMENT SEMICOLON -> INCR )
             int alt23=3;
             switch ( input.LA(1) ) {
             case EQUALS:
@@ -6046,21 +6096,21 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt23) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:168:4: EQUALS variable_stmt SEMICOLON
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:169:4: EQUALS variable_stmt SEMICOLON
                     {
-                    EQUALS160=(Token)match(input,EQUALS,FOLLOW_EQUALS_in_variable_assn_right1719);  
-                    stream_EQUALS.add(EQUALS160);
+                    EQUALS161=(Token)match(input,EQUALS,FOLLOW_EQUALS_in_variable_assn_right1732);  
+                    stream_EQUALS.add(EQUALS161);
 
 
-                    pushFollow(FOLLOW_variable_stmt_in_variable_assn_right1721);
-                    variable_stmt161=variable_stmt();
+                    pushFollow(FOLLOW_variable_stmt_in_variable_assn_right1734);
+                    variable_stmt162=variable_stmt();
 
                     state._fsp--;
 
-                    stream_variable_stmt.add(variable_stmt161.getTree());
+                    stream_variable_stmt.add(variable_stmt162.getTree());
 
-                    SEMICOLON162=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_variable_assn_right1723);  
-                    stream_SEMICOLON.add(SEMICOLON162);
+                    SEMICOLON163=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_variable_assn_right1736);  
+                    stream_SEMICOLON.add(SEMICOLON163);
 
 
                     // AST REWRITE
@@ -6074,9 +6124,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 168:36: -> ^( VAR_ASSIGN variable_stmt )
+                    // 169:36: -> ^( VAR_ASSIGN variable_stmt )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:168:39: ^( VAR_ASSIGN variable_stmt )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:169:39: ^( VAR_ASSIGN variable_stmt )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -6096,21 +6146,21 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:169:4: COMPOUND_ADD variable_stmt SEMICOLON
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:170:4: COMPOUND_ADD variable_stmt SEMICOLON
                     {
-                    COMPOUND_ADD163=(Token)match(input,COMPOUND_ADD,FOLLOW_COMPOUND_ADD_in_variable_assn_right1737);  
-                    stream_COMPOUND_ADD.add(COMPOUND_ADD163);
+                    COMPOUND_ADD164=(Token)match(input,COMPOUND_ADD,FOLLOW_COMPOUND_ADD_in_variable_assn_right1750);  
+                    stream_COMPOUND_ADD.add(COMPOUND_ADD164);
 
 
-                    pushFollow(FOLLOW_variable_stmt_in_variable_assn_right1739);
-                    variable_stmt164=variable_stmt();
+                    pushFollow(FOLLOW_variable_stmt_in_variable_assn_right1752);
+                    variable_stmt165=variable_stmt();
 
                     state._fsp--;
 
-                    stream_variable_stmt.add(variable_stmt164.getTree());
+                    stream_variable_stmt.add(variable_stmt165.getTree());
 
-                    SEMICOLON165=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_variable_assn_right1741);  
-                    stream_SEMICOLON.add(SEMICOLON165);
+                    SEMICOLON166=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_variable_assn_right1754);  
+                    stream_SEMICOLON.add(SEMICOLON166);
 
 
                     // AST REWRITE
@@ -6124,9 +6174,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 169:41: -> ^( COMP_ADD variable_stmt )
+                    // 170:41: -> ^( COMP_ADD variable_stmt )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:169:44: ^( COMP_ADD variable_stmt )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:170:44: ^( COMP_ADD variable_stmt )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -6146,14 +6196,14 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:170:4: INCREMENT SEMICOLON
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:171:4: INCREMENT SEMICOLON
                     {
-                    INCREMENT166=(Token)match(input,INCREMENT,FOLLOW_INCREMENT_in_variable_assn_right1754);  
-                    stream_INCREMENT.add(INCREMENT166);
+                    INCREMENT167=(Token)match(input,INCREMENT,FOLLOW_INCREMENT_in_variable_assn_right1767);  
+                    stream_INCREMENT.add(INCREMENT167);
 
 
-                    SEMICOLON167=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_variable_assn_right1756);  
-                    stream_SEMICOLON.add(SEMICOLON167);
+                    SEMICOLON168=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_variable_assn_right1769);  
+                    stream_SEMICOLON.add(SEMICOLON168);
 
 
                     // AST REWRITE
@@ -6167,7 +6217,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 170:26: -> INCR
+                    // 171:26: -> INCR
                     {
                         adaptor.addChild(root_0, 
                         (Object)adaptor.create(INCR, "INCR")
@@ -6211,7 +6261,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "if_statement"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:172:1: if_statement : IF LEFT_PAREN boolean_exp RIGHT_PAREN LEFT_BRACKET statements RIGHT_BRACKET -> ^( IF_STATEMENT ^( BOOL_EXP boolean_exp ) ^( STATEMENTS statements ) ) ;
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:173:1: if_statement : IF LEFT_PAREN boolean_exp RIGHT_PAREN LEFT_BRACKET statements RIGHT_BRACKET -> ^( IF_STATEMENT ^( BOOL_EXP boolean_exp ) ^( STATEMENTS statements ) ) ;
     public final QueryLanguageParser.if_statement_return if_statement() throws RecognitionException {
         QueryLanguageParser.if_statement_return retval = new QueryLanguageParser.if_statement_return();
         retval.start = input.LT(1);
@@ -6219,21 +6269,21 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token IF168=null;
-        Token LEFT_PAREN169=null;
-        Token RIGHT_PAREN171=null;
-        Token LEFT_BRACKET172=null;
-        Token RIGHT_BRACKET174=null;
-        QueryLanguageParser.boolean_exp_return boolean_exp170 =null;
+        Token IF169=null;
+        Token LEFT_PAREN170=null;
+        Token RIGHT_PAREN172=null;
+        Token LEFT_BRACKET173=null;
+        Token RIGHT_BRACKET175=null;
+        QueryLanguageParser.boolean_exp_return boolean_exp171 =null;
 
-        QueryLanguageParser.statements_return statements173 =null;
+        QueryLanguageParser.statements_return statements174 =null;
 
 
-        Object IF168_tree=null;
-        Object LEFT_PAREN169_tree=null;
-        Object RIGHT_PAREN171_tree=null;
-        Object LEFT_BRACKET172_tree=null;
-        Object RIGHT_BRACKET174_tree=null;
+        Object IF169_tree=null;
+        Object LEFT_PAREN170_tree=null;
+        Object RIGHT_PAREN172_tree=null;
+        Object LEFT_BRACKET173_tree=null;
+        Object RIGHT_BRACKET175_tree=null;
         RewriteRuleTokenStream stream_LEFT_PAREN=new RewriteRuleTokenStream(adaptor,"token LEFT_PAREN");
         RewriteRuleTokenStream stream_RIGHT_PAREN=new RewriteRuleTokenStream(adaptor,"token RIGHT_PAREN");
         RewriteRuleTokenStream stream_LEFT_BRACKET=new RewriteRuleTokenStream(adaptor,"token LEFT_BRACKET");
@@ -6242,45 +6292,45 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_statements=new RewriteRuleSubtreeStream(adaptor,"rule statements");
         RewriteRuleSubtreeStream stream_boolean_exp=new RewriteRuleSubtreeStream(adaptor,"rule boolean_exp");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:173:2: ( IF LEFT_PAREN boolean_exp RIGHT_PAREN LEFT_BRACKET statements RIGHT_BRACKET -> ^( IF_STATEMENT ^( BOOL_EXP boolean_exp ) ^( STATEMENTS statements ) ) )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:173:4: IF LEFT_PAREN boolean_exp RIGHT_PAREN LEFT_BRACKET statements RIGHT_BRACKET
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:174:2: ( IF LEFT_PAREN boolean_exp RIGHT_PAREN LEFT_BRACKET statements RIGHT_BRACKET -> ^( IF_STATEMENT ^( BOOL_EXP boolean_exp ) ^( STATEMENTS statements ) ) )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:174:4: IF LEFT_PAREN boolean_exp RIGHT_PAREN LEFT_BRACKET statements RIGHT_BRACKET
             {
-            IF168=(Token)match(input,IF,FOLLOW_IF_in_if_statement1772);  
-            stream_IF.add(IF168);
+            IF169=(Token)match(input,IF,FOLLOW_IF_in_if_statement1785);  
+            stream_IF.add(IF169);
 
 
-            LEFT_PAREN169=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_if_statement1774);  
-            stream_LEFT_PAREN.add(LEFT_PAREN169);
+            LEFT_PAREN170=(Token)match(input,LEFT_PAREN,FOLLOW_LEFT_PAREN_in_if_statement1787);  
+            stream_LEFT_PAREN.add(LEFT_PAREN170);
 
 
-            pushFollow(FOLLOW_boolean_exp_in_if_statement1776);
-            boolean_exp170=boolean_exp();
-
-            state._fsp--;
-
-            stream_boolean_exp.add(boolean_exp170.getTree());
-
-            RIGHT_PAREN171=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_if_statement1778);  
-            stream_RIGHT_PAREN.add(RIGHT_PAREN171);
-
-
-            LEFT_BRACKET172=(Token)match(input,LEFT_BRACKET,FOLLOW_LEFT_BRACKET_in_if_statement1780);  
-            stream_LEFT_BRACKET.add(LEFT_BRACKET172);
-
-
-            pushFollow(FOLLOW_statements_in_if_statement1782);
-            statements173=statements();
+            pushFollow(FOLLOW_boolean_exp_in_if_statement1789);
+            boolean_exp171=boolean_exp();
 
             state._fsp--;
 
-            stream_statements.add(statements173.getTree());
+            stream_boolean_exp.add(boolean_exp171.getTree());
 
-            RIGHT_BRACKET174=(Token)match(input,RIGHT_BRACKET,FOLLOW_RIGHT_BRACKET_in_if_statement1784);  
-            stream_RIGHT_BRACKET.add(RIGHT_BRACKET174);
+            RIGHT_PAREN172=(Token)match(input,RIGHT_PAREN,FOLLOW_RIGHT_PAREN_in_if_statement1791);  
+            stream_RIGHT_PAREN.add(RIGHT_PAREN172);
+
+
+            LEFT_BRACKET173=(Token)match(input,LEFT_BRACKET,FOLLOW_LEFT_BRACKET_in_if_statement1793);  
+            stream_LEFT_BRACKET.add(LEFT_BRACKET173);
+
+
+            pushFollow(FOLLOW_statements_in_if_statement1795);
+            statements174=statements();
+
+            state._fsp--;
+
+            stream_statements.add(statements174.getTree());
+
+            RIGHT_BRACKET175=(Token)match(input,RIGHT_BRACKET,FOLLOW_RIGHT_BRACKET_in_if_statement1797);  
+            stream_RIGHT_BRACKET.add(RIGHT_BRACKET175);
 
 
             // AST REWRITE
-            // elements: boolean_exp, statements
+            // elements: statements, boolean_exp
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -6290,16 +6340,16 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 173:80: -> ^( IF_STATEMENT ^( BOOL_EXP boolean_exp ) ^( STATEMENTS statements ) )
+            // 174:80: -> ^( IF_STATEMENT ^( BOOL_EXP boolean_exp ) ^( STATEMENTS statements ) )
             {
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:173:83: ^( IF_STATEMENT ^( BOOL_EXP boolean_exp ) ^( STATEMENTS statements ) )
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:174:83: ^( IF_STATEMENT ^( BOOL_EXP boolean_exp ) ^( STATEMENTS statements ) )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(
                 (Object)adaptor.create(IF_STATEMENT, "IF_STATEMENT")
                 , root_1);
 
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:173:98: ^( BOOL_EXP boolean_exp )
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:174:98: ^( BOOL_EXP boolean_exp )
                 {
                 Object root_2 = (Object)adaptor.nil();
                 root_2 = (Object)adaptor.becomeRoot(
@@ -6311,7 +6361,7 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:173:122: ^( STATEMENTS statements )
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:174:122: ^( STATEMENTS statements )
                 {
                 Object root_2 = (Object)adaptor.nil();
                 root_2 = (Object)adaptor.becomeRoot(
@@ -6362,7 +6412,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "boolean_stmt"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:176:1: boolean_stmt : variable boolean_right -> ^( VAR variable ) boolean_right ;
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:177:1: boolean_stmt : variable boolean_right -> ^( VAR variable ) boolean_right ;
     public final QueryLanguageParser.boolean_stmt_return boolean_stmt() throws RecognitionException {
         QueryLanguageParser.boolean_stmt_return retval = new QueryLanguageParser.boolean_stmt_return();
         retval.start = input.LT(1);
@@ -6370,30 +6420,30 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        QueryLanguageParser.variable_return variable175 =null;
+        QueryLanguageParser.variable_return variable176 =null;
 
-        QueryLanguageParser.boolean_right_return boolean_right176 =null;
+        QueryLanguageParser.boolean_right_return boolean_right177 =null;
 
 
         RewriteRuleSubtreeStream stream_boolean_right=new RewriteRuleSubtreeStream(adaptor,"rule boolean_right");
         RewriteRuleSubtreeStream stream_variable=new RewriteRuleSubtreeStream(adaptor,"rule variable");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:177:2: ( variable boolean_right -> ^( VAR variable ) boolean_right )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:177:4: variable boolean_right
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:178:2: ( variable boolean_right -> ^( VAR variable ) boolean_right )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:178:4: variable boolean_right
             {
-            pushFollow(FOLLOW_variable_in_boolean_stmt1813);
-            variable175=variable();
+            pushFollow(FOLLOW_variable_in_boolean_stmt1826);
+            variable176=variable();
 
             state._fsp--;
 
-            stream_variable.add(variable175.getTree());
+            stream_variable.add(variable176.getTree());
 
-            pushFollow(FOLLOW_boolean_right_in_boolean_stmt1815);
-            boolean_right176=boolean_right();
+            pushFollow(FOLLOW_boolean_right_in_boolean_stmt1828);
+            boolean_right177=boolean_right();
 
             state._fsp--;
 
-            stream_boolean_right.add(boolean_right176.getTree());
+            stream_boolean_right.add(boolean_right177.getTree());
 
             // AST REWRITE
             // elements: boolean_right, variable
@@ -6406,9 +6456,9 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 177:27: -> ^( VAR variable ) boolean_right
+            // 178:27: -> ^( VAR variable ) boolean_right
             {
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:177:30: ^( VAR variable )
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:178:30: ^( VAR variable )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(
@@ -6458,7 +6508,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "boolean_right"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:180:1: boolean_right : ( boolean_op variable -> ^( boolean_op variable ) | -> EPSILON );
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:181:1: boolean_right : ( boolean_op variable -> ^( boolean_op variable ) | -> EPSILON );
     public final QueryLanguageParser.boolean_right_return boolean_right() throws RecognitionException {
         QueryLanguageParser.boolean_right_return retval = new QueryLanguageParser.boolean_right_return();
         retval.start = input.LT(1);
@@ -6466,15 +6516,15 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        QueryLanguageParser.boolean_op_return boolean_op177 =null;
+        QueryLanguageParser.boolean_op_return boolean_op178 =null;
 
-        QueryLanguageParser.variable_return variable178 =null;
+        QueryLanguageParser.variable_return variable179 =null;
 
 
         RewriteRuleSubtreeStream stream_boolean_op=new RewriteRuleSubtreeStream(adaptor,"rule boolean_op");
         RewriteRuleSubtreeStream stream_variable=new RewriteRuleSubtreeStream(adaptor,"rule variable");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:181:2: ( boolean_op variable -> ^( boolean_op variable ) | -> EPSILON )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:182:2: ( boolean_op variable -> ^( boolean_op variable ) | -> EPSILON )
             int alt24=2;
             switch ( input.LA(1) ) {
             case GT:
@@ -6536,24 +6586,24 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt24) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:181:4: boolean_op variable
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:182:4: boolean_op variable
                     {
-                    pushFollow(FOLLOW_boolean_op_in_boolean_right1836);
-                    boolean_op177=boolean_op();
+                    pushFollow(FOLLOW_boolean_op_in_boolean_right1849);
+                    boolean_op178=boolean_op();
 
                     state._fsp--;
 
-                    stream_boolean_op.add(boolean_op177.getTree());
+                    stream_boolean_op.add(boolean_op178.getTree());
 
-                    pushFollow(FOLLOW_variable_in_boolean_right1838);
-                    variable178=variable();
+                    pushFollow(FOLLOW_variable_in_boolean_right1851);
+                    variable179=variable();
 
                     state._fsp--;
 
-                    stream_variable.add(variable178.getTree());
+                    stream_variable.add(variable179.getTree());
 
                     // AST REWRITE
-                    // elements: variable, boolean_op
+                    // elements: boolean_op, variable
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -6563,9 +6613,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 181:24: -> ^( boolean_op variable )
+                    // 182:24: -> ^( boolean_op variable )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:181:27: ^( boolean_op variable )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:182:27: ^( boolean_op variable )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(stream_boolean_op.nextNode(), root_1);
@@ -6583,7 +6633,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:182:4: 
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:183:4: 
                     {
                     // AST REWRITE
                     // elements: 
@@ -6596,7 +6646,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 182:4: -> EPSILON
+                    // 183:4: -> EPSILON
                     {
                         adaptor.addChild(root_0, 
                         (Object)adaptor.create(EPSILON, "EPSILON")
@@ -6640,7 +6690,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "boolean_exp"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:185:1: boolean_exp : ( boolean_stmt boolean_exp_cont -> boolean_stmt ^( BOOL_EXP boolean_exp_cont ) | NOT boolean_exp -> ^( NOT ^( BOOL_EXP boolean_exp ) ) );
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:186:1: boolean_exp : ( boolean_stmt boolean_exp_cont -> boolean_stmt ^( BOOL_EXP boolean_exp_cont ) | NOT boolean_exp -> ^( NOT ^( BOOL_EXP boolean_exp ) ) );
     public final QueryLanguageParser.boolean_exp_return boolean_exp() throws RecognitionException {
         QueryLanguageParser.boolean_exp_return retval = new QueryLanguageParser.boolean_exp_return();
         retval.start = input.LT(1);
@@ -6648,21 +6698,21 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token NOT181=null;
-        QueryLanguageParser.boolean_stmt_return boolean_stmt179 =null;
+        Token NOT182=null;
+        QueryLanguageParser.boolean_stmt_return boolean_stmt180 =null;
 
-        QueryLanguageParser.boolean_exp_cont_return boolean_exp_cont180 =null;
+        QueryLanguageParser.boolean_exp_cont_return boolean_exp_cont181 =null;
 
-        QueryLanguageParser.boolean_exp_return boolean_exp182 =null;
+        QueryLanguageParser.boolean_exp_return boolean_exp183 =null;
 
 
-        Object NOT181_tree=null;
+        Object NOT182_tree=null;
         RewriteRuleTokenStream stream_NOT=new RewriteRuleTokenStream(adaptor,"token NOT");
         RewriteRuleSubtreeStream stream_boolean_stmt=new RewriteRuleSubtreeStream(adaptor,"rule boolean_stmt");
         RewriteRuleSubtreeStream stream_boolean_exp=new RewriteRuleSubtreeStream(adaptor,"rule boolean_exp");
         RewriteRuleSubtreeStream stream_boolean_exp_cont=new RewriteRuleSubtreeStream(adaptor,"rule boolean_exp_cont");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:186:2: ( boolean_stmt boolean_exp_cont -> boolean_stmt ^( BOOL_EXP boolean_exp_cont ) | NOT boolean_exp -> ^( NOT ^( BOOL_EXP boolean_exp ) ) )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:187:2: ( boolean_stmt boolean_exp_cont -> boolean_stmt ^( BOOL_EXP boolean_exp_cont ) | NOT boolean_exp -> ^( NOT ^( BOOL_EXP boolean_exp ) ) )
             int alt25=2;
             int LA25_0 = input.LA(1);
 
@@ -6681,24 +6731,24 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt25) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:186:4: boolean_stmt boolean_exp_cont
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:187:4: boolean_stmt boolean_exp_cont
                     {
-                    pushFollow(FOLLOW_boolean_stmt_in_boolean_exp1865);
-                    boolean_stmt179=boolean_stmt();
+                    pushFollow(FOLLOW_boolean_stmt_in_boolean_exp1878);
+                    boolean_stmt180=boolean_stmt();
 
                     state._fsp--;
 
-                    stream_boolean_stmt.add(boolean_stmt179.getTree());
+                    stream_boolean_stmt.add(boolean_stmt180.getTree());
 
-                    pushFollow(FOLLOW_boolean_exp_cont_in_boolean_exp1867);
-                    boolean_exp_cont180=boolean_exp_cont();
+                    pushFollow(FOLLOW_boolean_exp_cont_in_boolean_exp1880);
+                    boolean_exp_cont181=boolean_exp_cont();
 
                     state._fsp--;
 
-                    stream_boolean_exp_cont.add(boolean_exp_cont180.getTree());
+                    stream_boolean_exp_cont.add(boolean_exp_cont181.getTree());
 
                     // AST REWRITE
-                    // elements: boolean_stmt, boolean_exp_cont
+                    // elements: boolean_exp_cont, boolean_stmt
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -6708,11 +6758,11 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 186:34: -> boolean_stmt ^( BOOL_EXP boolean_exp_cont )
+                    // 187:34: -> boolean_stmt ^( BOOL_EXP boolean_exp_cont )
                     {
                         adaptor.addChild(root_0, stream_boolean_stmt.nextTree());
 
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:186:50: ^( BOOL_EXP boolean_exp_cont )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:187:50: ^( BOOL_EXP boolean_exp_cont )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -6732,18 +6782,18 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:187:4: NOT boolean_exp
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:188:4: NOT boolean_exp
                     {
-                    NOT181=(Token)match(input,NOT,FOLLOW_NOT_in_boolean_exp1882);  
-                    stream_NOT.add(NOT181);
+                    NOT182=(Token)match(input,NOT,FOLLOW_NOT_in_boolean_exp1895);  
+                    stream_NOT.add(NOT182);
 
 
-                    pushFollow(FOLLOW_boolean_exp_in_boolean_exp1884);
-                    boolean_exp182=boolean_exp();
+                    pushFollow(FOLLOW_boolean_exp_in_boolean_exp1897);
+                    boolean_exp183=boolean_exp();
 
                     state._fsp--;
 
-                    stream_boolean_exp.add(boolean_exp182.getTree());
+                    stream_boolean_exp.add(boolean_exp183.getTree());
 
                     // AST REWRITE
                     // elements: boolean_exp, NOT
@@ -6756,16 +6806,16 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 187:22: -> ^( NOT ^( BOOL_EXP boolean_exp ) )
+                    // 188:22: -> ^( NOT ^( BOOL_EXP boolean_exp ) )
                     {
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:187:25: ^( NOT ^( BOOL_EXP boolean_exp ) )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:188:25: ^( NOT ^( BOOL_EXP boolean_exp ) )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
                         stream_NOT.nextNode()
                         , root_1);
 
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:187:31: ^( BOOL_EXP boolean_exp )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:188:31: ^( BOOL_EXP boolean_exp )
                         {
                         Object root_2 = (Object)adaptor.nil();
                         root_2 = (Object)adaptor.becomeRoot(
@@ -6818,7 +6868,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "boolean_exp_cont"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:190:1: boolean_exp_cont : ( logical_op boolean_exp -> logical_op ^( BOOL_EXP boolean_exp ) | -> EPSILON );
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:191:1: boolean_exp_cont : ( logical_op boolean_exp -> logical_op ^( BOOL_EXP boolean_exp ) | -> EPSILON );
     public final QueryLanguageParser.boolean_exp_cont_return boolean_exp_cont() throws RecognitionException {
         QueryLanguageParser.boolean_exp_cont_return retval = new QueryLanguageParser.boolean_exp_cont_return();
         retval.start = input.LT(1);
@@ -6826,15 +6876,15 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        QueryLanguageParser.logical_op_return logical_op183 =null;
+        QueryLanguageParser.logical_op_return logical_op184 =null;
 
-        QueryLanguageParser.boolean_exp_return boolean_exp184 =null;
+        QueryLanguageParser.boolean_exp_return boolean_exp185 =null;
 
 
         RewriteRuleSubtreeStream stream_boolean_exp=new RewriteRuleSubtreeStream(adaptor,"rule boolean_exp");
         RewriteRuleSubtreeStream stream_logical_op=new RewriteRuleSubtreeStream(adaptor,"rule logical_op");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:191:2: ( logical_op boolean_exp -> logical_op ^( BOOL_EXP boolean_exp ) | -> EPSILON )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:192:2: ( logical_op boolean_exp -> logical_op ^( BOOL_EXP boolean_exp ) | -> EPSILON )
             int alt26=2;
             int LA26_0 = input.LA(1);
 
@@ -6853,24 +6903,24 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt26) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:191:4: logical_op boolean_exp
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:192:4: logical_op boolean_exp
                     {
-                    pushFollow(FOLLOW_logical_op_in_boolean_exp_cont1909);
-                    logical_op183=logical_op();
+                    pushFollow(FOLLOW_logical_op_in_boolean_exp_cont1922);
+                    logical_op184=logical_op();
 
                     state._fsp--;
 
-                    stream_logical_op.add(logical_op183.getTree());
+                    stream_logical_op.add(logical_op184.getTree());
 
-                    pushFollow(FOLLOW_boolean_exp_in_boolean_exp_cont1911);
-                    boolean_exp184=boolean_exp();
+                    pushFollow(FOLLOW_boolean_exp_in_boolean_exp_cont1924);
+                    boolean_exp185=boolean_exp();
 
                     state._fsp--;
 
-                    stream_boolean_exp.add(boolean_exp184.getTree());
+                    stream_boolean_exp.add(boolean_exp185.getTree());
 
                     // AST REWRITE
-                    // elements: logical_op, boolean_exp
+                    // elements: boolean_exp, logical_op
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -6880,11 +6930,11 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 191:28: -> logical_op ^( BOOL_EXP boolean_exp )
+                    // 192:28: -> logical_op ^( BOOL_EXP boolean_exp )
                     {
                         adaptor.addChild(root_0, stream_logical_op.nextTree());
 
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:191:42: ^( BOOL_EXP boolean_exp )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:192:42: ^( BOOL_EXP boolean_exp )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -6904,7 +6954,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:192:4: 
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:193:4: 
                     {
                     // AST REWRITE
                     // elements: 
@@ -6917,7 +6967,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 192:4: -> EPSILON
+                    // 193:4: -> EPSILON
                     {
                         adaptor.addChild(root_0, 
                         (Object)adaptor.create(EPSILON, "EPSILON")
@@ -6961,7 +7011,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "binary_op"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:195:1: binary_op : ( PLUS variable -> PLUS ^( VAR variable ) | MINUS variable -> MINUS ^( VAR variable ) | DIVIDE variable -> DIVIDE ^( VAR variable ) | -> EPSILON );
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:196:1: binary_op : ( PLUS variable -> PLUS ^( VAR variable ) | MINUS variable -> MINUS ^( VAR variable ) | DIVIDE variable -> DIVIDE ^( VAR variable ) | -> EPSILON );
     public final QueryLanguageParser.binary_op_return binary_op() throws RecognitionException {
         QueryLanguageParser.binary_op_return retval = new QueryLanguageParser.binary_op_return();
         retval.start = input.LT(1);
@@ -6969,25 +7019,25 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token PLUS185=null;
-        Token MINUS187=null;
-        Token DIVIDE189=null;
-        QueryLanguageParser.variable_return variable186 =null;
+        Token PLUS186=null;
+        Token MINUS188=null;
+        Token DIVIDE190=null;
+        QueryLanguageParser.variable_return variable187 =null;
 
-        QueryLanguageParser.variable_return variable188 =null;
+        QueryLanguageParser.variable_return variable189 =null;
 
-        QueryLanguageParser.variable_return variable190 =null;
+        QueryLanguageParser.variable_return variable191 =null;
 
 
-        Object PLUS185_tree=null;
-        Object MINUS187_tree=null;
-        Object DIVIDE189_tree=null;
+        Object PLUS186_tree=null;
+        Object MINUS188_tree=null;
+        Object DIVIDE190_tree=null;
         RewriteRuleTokenStream stream_PLUS=new RewriteRuleTokenStream(adaptor,"token PLUS");
         RewriteRuleTokenStream stream_MINUS=new RewriteRuleTokenStream(adaptor,"token MINUS");
         RewriteRuleTokenStream stream_DIVIDE=new RewriteRuleTokenStream(adaptor,"token DIVIDE");
         RewriteRuleSubtreeStream stream_variable=new RewriteRuleSubtreeStream(adaptor,"rule variable");
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:196:2: ( PLUS variable -> PLUS ^( VAR variable ) | MINUS variable -> MINUS ^( VAR variable ) | DIVIDE variable -> DIVIDE ^( VAR variable ) | -> EPSILON )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:197:2: ( PLUS variable -> PLUS ^( VAR variable ) | MINUS variable -> MINUS ^( VAR variable ) | DIVIDE variable -> DIVIDE ^( VAR variable ) | -> EPSILON )
             int alt27=4;
             switch ( input.LA(1) ) {
             case PLUS:
@@ -7020,21 +7070,21 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt27) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:196:4: PLUS variable
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:197:4: PLUS variable
                     {
-                    PLUS185=(Token)match(input,PLUS,FOLLOW_PLUS_in_binary_op1940);  
-                    stream_PLUS.add(PLUS185);
+                    PLUS186=(Token)match(input,PLUS,FOLLOW_PLUS_in_binary_op1953);  
+                    stream_PLUS.add(PLUS186);
 
 
-                    pushFollow(FOLLOW_variable_in_binary_op1942);
-                    variable186=variable();
+                    pushFollow(FOLLOW_variable_in_binary_op1955);
+                    variable187=variable();
 
                     state._fsp--;
 
-                    stream_variable.add(variable186.getTree());
+                    stream_variable.add(variable187.getTree());
 
                     // AST REWRITE
-                    // elements: PLUS, variable
+                    // elements: variable, PLUS
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -7044,13 +7094,13 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 196:20: -> PLUS ^( VAR variable )
+                    // 197:20: -> PLUS ^( VAR variable )
                     {
                         adaptor.addChild(root_0, 
                         stream_PLUS.nextNode()
                         );
 
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:196:28: ^( VAR variable )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:197:28: ^( VAR variable )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -7070,18 +7120,18 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:197:4: MINUS variable
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:198:4: MINUS variable
                     {
-                    MINUS187=(Token)match(input,MINUS,FOLLOW_MINUS_in_binary_op1959);  
-                    stream_MINUS.add(MINUS187);
+                    MINUS188=(Token)match(input,MINUS,FOLLOW_MINUS_in_binary_op1972);  
+                    stream_MINUS.add(MINUS188);
 
 
-                    pushFollow(FOLLOW_variable_in_binary_op1961);
-                    variable188=variable();
+                    pushFollow(FOLLOW_variable_in_binary_op1974);
+                    variable189=variable();
 
                     state._fsp--;
 
-                    stream_variable.add(variable188.getTree());
+                    stream_variable.add(variable189.getTree());
 
                     // AST REWRITE
                     // elements: variable, MINUS
@@ -7094,13 +7144,13 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 197:21: -> MINUS ^( VAR variable )
+                    // 198:21: -> MINUS ^( VAR variable )
                     {
                         adaptor.addChild(root_0, 
                         stream_MINUS.nextNode()
                         );
 
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:197:30: ^( VAR variable )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:198:30: ^( VAR variable )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -7120,21 +7170,21 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:198:4: DIVIDE variable
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:199:4: DIVIDE variable
                     {
-                    DIVIDE189=(Token)match(input,DIVIDE,FOLLOW_DIVIDE_in_binary_op1978);  
-                    stream_DIVIDE.add(DIVIDE189);
+                    DIVIDE190=(Token)match(input,DIVIDE,FOLLOW_DIVIDE_in_binary_op1991);  
+                    stream_DIVIDE.add(DIVIDE190);
 
 
-                    pushFollow(FOLLOW_variable_in_binary_op1980);
-                    variable190=variable();
+                    pushFollow(FOLLOW_variable_in_binary_op1993);
+                    variable191=variable();
 
                     state._fsp--;
 
-                    stream_variable.add(variable190.getTree());
+                    stream_variable.add(variable191.getTree());
 
                     // AST REWRITE
-                    // elements: variable, DIVIDE
+                    // elements: DIVIDE, variable
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -7144,13 +7194,13 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 198:22: -> DIVIDE ^( VAR variable )
+                    // 199:22: -> DIVIDE ^( VAR variable )
                     {
                         adaptor.addChild(root_0, 
                         stream_DIVIDE.nextNode()
                         );
 
-                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:198:32: ^( VAR variable )
+                        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:199:32: ^( VAR variable )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -7170,7 +7220,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:199:4: 
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:200:4: 
                     {
                     // AST REWRITE
                     // elements: 
@@ -7183,7 +7233,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 199:4: -> EPSILON
+                    // 200:4: -> EPSILON
                     {
                         adaptor.addChild(root_0, 
                         (Object)adaptor.create(EPSILON, "EPSILON")
@@ -7227,7 +7277,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "boolean_op"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:201:1: boolean_op : ( GT -> GT | GTE -> GTE | LT -> LT | LTE -> LTE | NOT_EQUAL -> NOT_EQUAL | LOGIC_EQUALS -> LOGIC_EQUALS );
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:202:1: boolean_op : ( GT -> GT | GTE -> GTE | LT -> LT | LTE -> LTE | NOT_EQUAL -> NOT_EQUAL | LOGIC_EQUALS -> LOGIC_EQUALS );
     public final QueryLanguageParser.boolean_op_return boolean_op() throws RecognitionException {
         QueryLanguageParser.boolean_op_return retval = new QueryLanguageParser.boolean_op_return();
         retval.start = input.LT(1);
@@ -7235,19 +7285,19 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token GT191=null;
-        Token GTE192=null;
-        Token LT193=null;
-        Token LTE194=null;
-        Token NOT_EQUAL195=null;
-        Token LOGIC_EQUALS196=null;
+        Token GT192=null;
+        Token GTE193=null;
+        Token LT194=null;
+        Token LTE195=null;
+        Token NOT_EQUAL196=null;
+        Token LOGIC_EQUALS197=null;
 
-        Object GT191_tree=null;
-        Object GTE192_tree=null;
-        Object LT193_tree=null;
-        Object LTE194_tree=null;
-        Object NOT_EQUAL195_tree=null;
-        Object LOGIC_EQUALS196_tree=null;
+        Object GT192_tree=null;
+        Object GTE193_tree=null;
+        Object LT194_tree=null;
+        Object LTE195_tree=null;
+        Object NOT_EQUAL196_tree=null;
+        Object LOGIC_EQUALS197_tree=null;
         RewriteRuleTokenStream stream_GT=new RewriteRuleTokenStream(adaptor,"token GT");
         RewriteRuleTokenStream stream_LT=new RewriteRuleTokenStream(adaptor,"token LT");
         RewriteRuleTokenStream stream_LOGIC_EQUALS=new RewriteRuleTokenStream(adaptor,"token LOGIC_EQUALS");
@@ -7256,7 +7306,7 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleTokenStream stream_GTE=new RewriteRuleTokenStream(adaptor,"token GTE");
 
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:202:2: ( GT -> GT | GTE -> GTE | LT -> LT | LTE -> LTE | NOT_EQUAL -> NOT_EQUAL | LOGIC_EQUALS -> LOGIC_EQUALS )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:203:2: ( GT -> GT | GTE -> GTE | LT -> LT | LTE -> LTE | NOT_EQUAL -> NOT_EQUAL | LOGIC_EQUALS -> LOGIC_EQUALS )
             int alt28=6;
             switch ( input.LA(1) ) {
             case GT:
@@ -7299,10 +7349,10 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt28) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:202:4: GT
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:203:4: GT
                     {
-                    GT191=(Token)match(input,GT,FOLLOW_GT_in_boolean_op2009);  
-                    stream_GT.add(GT191);
+                    GT192=(Token)match(input,GT,FOLLOW_GT_in_boolean_op2022);  
+                    stream_GT.add(GT192);
 
 
                     // AST REWRITE
@@ -7316,7 +7366,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 202:8: -> GT
+                    // 203:8: -> GT
                     {
                         adaptor.addChild(root_0, 
                         stream_GT.nextNode()
@@ -7330,10 +7380,10 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:203:4: GTE
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:204:4: GTE
                     {
-                    GTE192=(Token)match(input,GTE,FOLLOW_GTE_in_boolean_op2019);  
-                    stream_GTE.add(GTE192);
+                    GTE193=(Token)match(input,GTE,FOLLOW_GTE_in_boolean_op2032);  
+                    stream_GTE.add(GTE193);
 
 
                     // AST REWRITE
@@ -7347,7 +7397,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 203:9: -> GTE
+                    // 204:9: -> GTE
                     {
                         adaptor.addChild(root_0, 
                         stream_GTE.nextNode()
@@ -7361,10 +7411,10 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:204:4: LT
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:205:4: LT
                     {
-                    LT193=(Token)match(input,LT,FOLLOW_LT_in_boolean_op2029);  
-                    stream_LT.add(LT193);
+                    LT194=(Token)match(input,LT,FOLLOW_LT_in_boolean_op2042);  
+                    stream_LT.add(LT194);
 
 
                     // AST REWRITE
@@ -7378,7 +7428,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 204:8: -> LT
+                    // 205:8: -> LT
                     {
                         adaptor.addChild(root_0, 
                         stream_LT.nextNode()
@@ -7392,10 +7442,10 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:205:4: LTE
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:206:4: LTE
                     {
-                    LTE194=(Token)match(input,LTE,FOLLOW_LTE_in_boolean_op2039);  
-                    stream_LTE.add(LTE194);
+                    LTE195=(Token)match(input,LTE,FOLLOW_LTE_in_boolean_op2052);  
+                    stream_LTE.add(LTE195);
 
 
                     // AST REWRITE
@@ -7409,7 +7459,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 205:9: -> LTE
+                    // 206:9: -> LTE
                     {
                         adaptor.addChild(root_0, 
                         stream_LTE.nextNode()
@@ -7423,10 +7473,10 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 5 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:206:4: NOT_EQUAL
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:207:4: NOT_EQUAL
                     {
-                    NOT_EQUAL195=(Token)match(input,NOT_EQUAL,FOLLOW_NOT_EQUAL_in_boolean_op2049);  
-                    stream_NOT_EQUAL.add(NOT_EQUAL195);
+                    NOT_EQUAL196=(Token)match(input,NOT_EQUAL,FOLLOW_NOT_EQUAL_in_boolean_op2062);  
+                    stream_NOT_EQUAL.add(NOT_EQUAL196);
 
 
                     // AST REWRITE
@@ -7440,7 +7490,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 206:14: -> NOT_EQUAL
+                    // 207:14: -> NOT_EQUAL
                     {
                         adaptor.addChild(root_0, 
                         stream_NOT_EQUAL.nextNode()
@@ -7454,10 +7504,10 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 6 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:207:4: LOGIC_EQUALS
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:208:4: LOGIC_EQUALS
                     {
-                    LOGIC_EQUALS196=(Token)match(input,LOGIC_EQUALS,FOLLOW_LOGIC_EQUALS_in_boolean_op2058);  
-                    stream_LOGIC_EQUALS.add(LOGIC_EQUALS196);
+                    LOGIC_EQUALS197=(Token)match(input,LOGIC_EQUALS,FOLLOW_LOGIC_EQUALS_in_boolean_op2071);  
+                    stream_LOGIC_EQUALS.add(LOGIC_EQUALS197);
 
 
                     // AST REWRITE
@@ -7471,7 +7521,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 207:17: -> LOGIC_EQUALS
+                    // 208:17: -> LOGIC_EQUALS
                     {
                         adaptor.addChild(root_0, 
                         stream_LOGIC_EQUALS.nextNode()
@@ -7515,7 +7565,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "logical_op"
-    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:209:1: logical_op : ( AND -> AND | OR -> OR );
+    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:210:1: logical_op : ( AND -> AND | OR -> OR );
     public final QueryLanguageParser.logical_op_return logical_op() throws RecognitionException {
         QueryLanguageParser.logical_op_return retval = new QueryLanguageParser.logical_op_return();
         retval.start = input.LT(1);
@@ -7523,16 +7573,16 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token AND197=null;
-        Token OR198=null;
+        Token AND198=null;
+        Token OR199=null;
 
-        Object AND197_tree=null;
-        Object OR198_tree=null;
+        Object AND198_tree=null;
+        Object OR199_tree=null;
         RewriteRuleTokenStream stream_AND=new RewriteRuleTokenStream(adaptor,"token AND");
         RewriteRuleTokenStream stream_OR=new RewriteRuleTokenStream(adaptor,"token OR");
 
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:210:2: ( AND -> AND | OR -> OR )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:211:2: ( AND -> AND | OR -> OR )
             int alt29=2;
             int LA29_0 = input.LA(1);
 
@@ -7551,10 +7601,10 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt29) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:210:4: AND
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:211:4: AND
                     {
-                    AND197=(Token)match(input,AND,FOLLOW_AND_in_logical_op2072);  
-                    stream_AND.add(AND197);
+                    AND198=(Token)match(input,AND,FOLLOW_AND_in_logical_op2085);  
+                    stream_AND.add(AND198);
 
 
                     // AST REWRITE
@@ -7568,7 +7618,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 210:9: -> AND
+                    // 211:9: -> AND
                     {
                         adaptor.addChild(root_0, 
                         stream_AND.nextNode()
@@ -7582,10 +7632,10 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:211:4: OR
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:212:4: OR
                     {
-                    OR198=(Token)match(input,OR,FOLLOW_OR_in_logical_op2082);  
-                    stream_OR.add(OR198);
+                    OR199=(Token)match(input,OR,FOLLOW_OR_in_logical_op2095);  
+                    stream_OR.add(OR199);
 
 
                     // AST REWRITE
@@ -7599,7 +7649,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 211:8: -> OR
+                    // 212:8: -> OR
                     {
                         adaptor.addChild(root_0, 
                         stream_OR.nextNode()
@@ -7713,130 +7763,131 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_RIGHT_BRACKET_in_ast_child962 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_PERIOD_in_keywords976 = new BitSet(new long[]{0x0000000000020000L});
     public static final BitSet FOLLOW_CONTAINS_in_keywords978 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_LEFT_PAREN_in_keywords980 = new BitSet(new long[]{0x0800900200000010L});
+    public static final BitSet FOLLOW_LEFT_PAREN_in_keywords980 = new BitSet(new long[]{0x0800940200000010L});
     public static final BitSet FOLLOW_keyword_nodes_in_keywords982 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
     public static final BitSet FOLLOW_RIGHT_PAREN_in_keywords984 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_PERIOD_in_keywords998 = new BitSet(new long[]{0x0000020000000000L});
     public static final BitSet FOLLOW_IS_in_keywords1000 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_LEFT_PAREN_in_keywords1002 = new BitSet(new long[]{0x0800900200000010L});
+    public static final BitSet FOLLOW_LEFT_PAREN_in_keywords1002 = new BitSet(new long[]{0x0800940200000010L});
     public static final BitSet FOLLOW_keyword_nodes_in_keywords1004 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
     public static final BitSet FOLLOW_RIGHT_PAREN_in_keywords1006 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_PERIOD_in_keywords1021 = new BitSet(new long[]{0x0000000080000000L});
     public static final BitSet FOLLOW_HAS_in_keywords1023 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_LEFT_PAREN_in_keywords1025 = new BitSet(new long[]{0x0800900200000010L});
+    public static final BitSet FOLLOW_LEFT_PAREN_in_keywords1025 = new BitSet(new long[]{0x0800940200000010L});
     public static final BitSet FOLLOW_keyword_nodes_in_keywords1027 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
     public static final BitSet FOLLOW_RIGHT_PAREN_in_keywords1029 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_node_in_keyword_nodes1048 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ID_in_keyword_nodes1061 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_logical_op_in_keyword_nodes1074 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_COLON_in_attr1092 = new BitSet(new long[]{0x1000000000002100L});
-    public static final BitSet FOLLOW_attr_in_attr1094 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PERIOD_in_attr1113 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_CONTAINS_in_attr1115 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_LEFT_PAREN_in_attr1117 = new BitSet(new long[]{0x0800900200000010L});
-    public static final BitSet FOLLOW_keyword_nodes_in_attr1119 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_RIGHT_PAREN_in_attr1121 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PERIOD_in_attr1135 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_IS_in_attr1137 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_LEFT_PAREN_in_attr1139 = new BitSet(new long[]{0x0800900200000010L});
-    public static final BitSet FOLLOW_keyword_nodes_in_attr1141 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_RIGHT_PAREN_in_attr1143 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PERIOD_in_attr1158 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_HAS_in_attr1160 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_LEFT_PAREN_in_attr1162 = new BitSet(new long[]{0x0800900200000010L});
-    public static final BitSet FOLLOW_keyword_nodes_in_attr1164 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_RIGHT_PAREN_in_attr1166 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ATTRIBUTES_in_attr1180 = new BitSet(new long[]{0x1000000000002100L});
-    public static final BitSet FOLLOW_attr_in_attr1182 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_property1211 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_property1235 = new BitSet(new long[]{0x1000000000000000L});
-    public static final BitSet FOLLOW_PERIOD_in_property1237 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_CONTAINS_in_property1239 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_LEFT_PAREN_in_property1241 = new BitSet(new long[]{0x0800900200000010L});
-    public static final BitSet FOLLOW_keyword_nodes_in_property1243 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_RIGHT_PAREN_in_property1245 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_variable1272 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_COLON_in_variable1274 = new BitSet(new long[]{0x1000000000002100L});
-    public static final BitSet FOLLOW_attr_in_variable1276 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_node_chain_in_variable1294 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTEGER_in_variable1311 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_in_variable1330 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RESERVED_TYPES_in_variable1372 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LEFT_BRACKET_in_block1392 = new BitSet(new long[]{0x0000940200000000L,0x0000000000004028L});
-    public static final BitSet FOLLOW_block_statements_in_block1394 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_RIGHT_BRACKET_in_block1396 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STAR_in_block_statements1421 = new BitSet(new long[]{0x0000940200000000L,0x0000000000004008L});
-    public static final BitSet FOLLOW_block_statements_in_block_statements1423 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_REPEATER_in_block_statements1439 = new BitSet(new long[]{0x0000940200000000L,0x0000000000004008L});
-    public static final BitSet FOLLOW_block_statements_in_block_statements1441 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_node_chain_in_block_statements1456 = new BitSet(new long[]{0x0000940200000000L,0x0000000000004008L});
-    public static final BitSet FOLLOW_block_in_block_statements1458 = new BitSet(new long[]{0x0000940200000000L,0x0000000000004008L});
-    public static final BitSet FOLLOW_block_statements_in_block_statements1460 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PRINT_in_print_stmt1496 = new BitSet(new long[]{0x0002948200000000L,0x0000000000020010L});
-    public static final BitSet FOLLOW_variable_stmt_in_print_stmt1498 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
-    public static final BitSet FOLLOW_SEMICOLON_in_print_stmt1500 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LEFT_BRACKET_in_stat_statements1522 = new BitSet(new long[]{0x0000948608000000L,0x0000000000020930L});
-    public static final BitSet FOLLOW_statements_in_stat_statements1524 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_RIGHT_BRACKET_in_stat_statements1526 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_variable_assn_in_statements1549 = new BitSet(new long[]{0x0000948608000000L,0x0000000000020910L});
-    public static final BitSet FOLLOW_statements_in_statements1551 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_if_statement_in_statements1566 = new BitSet(new long[]{0x0000948608000000L,0x0000000000020910L});
-    public static final BitSet FOLLOW_statements_in_statements1568 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_query_in_statements1584 = new BitSet(new long[]{0x0000948608000000L,0x0000000000020910L});
-    public static final BitSet FOLLOW_statements_in_statements1586 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SET_in_statements1602 = new BitSet(new long[]{0x0000948200000000L,0x0000000000020010L});
-    public static final BitSet FOLLOW_variable_assn_in_statements1604 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-    public static final BitSet FOLLOW_WHERE_in_statements1606 = new BitSet(new long[]{0x0100948200000000L,0x0000000000020010L});
-    public static final BitSet FOLLOW_boolean_exp_in_statements1608 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
-    public static final BitSet FOLLOW_SEMICOLON_in_statements1610 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_variable_in_variable_stmt1639 = new BitSet(new long[]{0x2004000000040000L});
-    public static final BitSet FOLLOW_binary_op_in_variable_stmt1641 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MAX_in_variable_stmt1667 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_LEFT_PAREN_in_variable_stmt1669 = new BitSet(new long[]{0x0000948200000000L,0x0000000000020010L});
-    public static final BitSet FOLLOW_variable_in_variable_stmt1671 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_COMMA_in_variable_stmt1673 = new BitSet(new long[]{0x0000948200000000L,0x0000000000020010L});
-    public static final BitSet FOLLOW_variable_in_variable_stmt1675 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_RIGHT_PAREN_in_variable_stmt1677 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_variable_in_variable_assn1697 = new BitSet(new long[]{0x0000004000208000L});
-    public static final BitSet FOLLOW_variable_assn_right_in_variable_assn1699 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_EQUALS_in_variable_assn_right1719 = new BitSet(new long[]{0x0002948200000000L,0x0000000000020010L});
-    public static final BitSet FOLLOW_variable_stmt_in_variable_assn_right1721 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
-    public static final BitSet FOLLOW_SEMICOLON_in_variable_assn_right1723 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_COMPOUND_ADD_in_variable_assn_right1737 = new BitSet(new long[]{0x0002948200000000L,0x0000000000020010L});
-    public static final BitSet FOLLOW_variable_stmt_in_variable_assn_right1739 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
-    public static final BitSet FOLLOW_SEMICOLON_in_variable_assn_right1741 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INCREMENT_in_variable_assn_right1754 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
-    public static final BitSet FOLLOW_SEMICOLON_in_variable_assn_right1756 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IF_in_if_statement1772 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_LEFT_PAREN_in_if_statement1774 = new BitSet(new long[]{0x0100948200000000L,0x0000000000020010L});
-    public static final BitSet FOLLOW_boolean_exp_in_if_statement1776 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_RIGHT_PAREN_in_if_statement1778 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_LEFT_BRACKET_in_if_statement1780 = new BitSet(new long[]{0x0000948608000000L,0x0000000000020930L});
-    public static final BitSet FOLLOW_statements_in_if_statement1782 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_RIGHT_BRACKET_in_if_statement1784 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_variable_in_boolean_stmt1813 = new BitSet(new long[]{0x0201A00060000000L});
-    public static final BitSet FOLLOW_boolean_right_in_boolean_stmt1815 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_boolean_op_in_boolean_right1836 = new BitSet(new long[]{0x0000948200000000L,0x0000000000020010L});
-    public static final BitSet FOLLOW_variable_in_boolean_right1838 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_boolean_stmt_in_boolean_exp1865 = new BitSet(new long[]{0x0800000000000010L});
-    public static final BitSet FOLLOW_boolean_exp_cont_in_boolean_exp1867 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NOT_in_boolean_exp1882 = new BitSet(new long[]{0x0100948200000000L,0x0000000000020010L});
-    public static final BitSet FOLLOW_boolean_exp_in_boolean_exp1884 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_logical_op_in_boolean_exp_cont1909 = new BitSet(new long[]{0x0100948200000000L,0x0000000000020010L});
-    public static final BitSet FOLLOW_boolean_exp_in_boolean_exp_cont1911 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PLUS_in_binary_op1940 = new BitSet(new long[]{0x0000948200000000L,0x0000000000020010L});
-    public static final BitSet FOLLOW_variable_in_binary_op1942 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MINUS_in_binary_op1959 = new BitSet(new long[]{0x0000948200000000L,0x0000000000020010L});
-    public static final BitSet FOLLOW_variable_in_binary_op1961 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DIVIDE_in_binary_op1978 = new BitSet(new long[]{0x0000948200000000L,0x0000000000020010L});
-    public static final BitSet FOLLOW_variable_in_binary_op1980 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_GT_in_boolean_op2009 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_GTE_in_boolean_op2019 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LT_in_boolean_op2029 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LTE_in_boolean_op2039 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NOT_EQUAL_in_boolean_op2049 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LOGIC_EQUALS_in_boolean_op2058 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_AND_in_logical_op2072 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_OR_in_logical_op2082 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ast_child_in_keyword_nodes1087 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_COLON_in_attr1105 = new BitSet(new long[]{0x1000000000002100L});
+    public static final BitSet FOLLOW_attr_in_attr1107 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PERIOD_in_attr1126 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_CONTAINS_in_attr1128 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_LEFT_PAREN_in_attr1130 = new BitSet(new long[]{0x0800940200000010L});
+    public static final BitSet FOLLOW_keyword_nodes_in_attr1132 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_RIGHT_PAREN_in_attr1134 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PERIOD_in_attr1148 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_IS_in_attr1150 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_LEFT_PAREN_in_attr1152 = new BitSet(new long[]{0x0800940200000010L});
+    public static final BitSet FOLLOW_keyword_nodes_in_attr1154 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_RIGHT_PAREN_in_attr1156 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PERIOD_in_attr1171 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_HAS_in_attr1173 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_LEFT_PAREN_in_attr1175 = new BitSet(new long[]{0x0800940200000010L});
+    public static final BitSet FOLLOW_keyword_nodes_in_attr1177 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_RIGHT_PAREN_in_attr1179 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ATTRIBUTES_in_attr1193 = new BitSet(new long[]{0x1000000000002100L});
+    public static final BitSet FOLLOW_attr_in_attr1195 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_property1224 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_property1248 = new BitSet(new long[]{0x1000000000000000L});
+    public static final BitSet FOLLOW_PERIOD_in_property1250 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_CONTAINS_in_property1252 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_LEFT_PAREN_in_property1254 = new BitSet(new long[]{0x0800940200000010L});
+    public static final BitSet FOLLOW_keyword_nodes_in_property1256 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_RIGHT_PAREN_in_property1258 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_variable1285 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_COLON_in_variable1287 = new BitSet(new long[]{0x1000000000002100L});
+    public static final BitSet FOLLOW_attr_in_variable1289 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_node_chain_in_variable1307 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTEGER_in_variable1324 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_in_variable1343 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RESERVED_TYPES_in_variable1385 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LEFT_BRACKET_in_block1405 = new BitSet(new long[]{0x0000940200000000L,0x0000000000004028L});
+    public static final BitSet FOLLOW_block_statements_in_block1407 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_RIGHT_BRACKET_in_block1409 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STAR_in_block_statements1434 = new BitSet(new long[]{0x0000940200000000L,0x0000000000004008L});
+    public static final BitSet FOLLOW_block_statements_in_block_statements1436 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_REPEATER_in_block_statements1452 = new BitSet(new long[]{0x0000940200000000L,0x0000000000004008L});
+    public static final BitSet FOLLOW_block_statements_in_block_statements1454 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_node_chain_in_block_statements1469 = new BitSet(new long[]{0x0000940200000000L,0x0000000000004008L});
+    public static final BitSet FOLLOW_block_in_block_statements1471 = new BitSet(new long[]{0x0000940200000000L,0x0000000000004008L});
+    public static final BitSet FOLLOW_block_statements_in_block_statements1473 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PRINT_in_print_stmt1509 = new BitSet(new long[]{0x0002948200000000L,0x0000000000020010L});
+    public static final BitSet FOLLOW_variable_stmt_in_print_stmt1511 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
+    public static final BitSet FOLLOW_SEMICOLON_in_print_stmt1513 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LEFT_BRACKET_in_stat_statements1535 = new BitSet(new long[]{0x0000948608000000L,0x0000000000020930L});
+    public static final BitSet FOLLOW_statements_in_stat_statements1537 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_RIGHT_BRACKET_in_stat_statements1539 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_variable_assn_in_statements1562 = new BitSet(new long[]{0x0000948608000000L,0x0000000000020910L});
+    public static final BitSet FOLLOW_statements_in_statements1564 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_if_statement_in_statements1579 = new BitSet(new long[]{0x0000948608000000L,0x0000000000020910L});
+    public static final BitSet FOLLOW_statements_in_statements1581 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_query_in_statements1597 = new BitSet(new long[]{0x0000948608000000L,0x0000000000020910L});
+    public static final BitSet FOLLOW_statements_in_statements1599 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SET_in_statements1615 = new BitSet(new long[]{0x0000948200000000L,0x0000000000020010L});
+    public static final BitSet FOLLOW_variable_assn_in_statements1617 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+    public static final BitSet FOLLOW_WHERE_in_statements1619 = new BitSet(new long[]{0x0100948200000000L,0x0000000000020010L});
+    public static final BitSet FOLLOW_boolean_exp_in_statements1621 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
+    public static final BitSet FOLLOW_SEMICOLON_in_statements1623 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_variable_in_variable_stmt1652 = new BitSet(new long[]{0x2004000000040000L});
+    public static final BitSet FOLLOW_binary_op_in_variable_stmt1654 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MAX_in_variable_stmt1680 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_LEFT_PAREN_in_variable_stmt1682 = new BitSet(new long[]{0x0000948200000000L,0x0000000000020010L});
+    public static final BitSet FOLLOW_variable_in_variable_stmt1684 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_COMMA_in_variable_stmt1686 = new BitSet(new long[]{0x0000948200000000L,0x0000000000020010L});
+    public static final BitSet FOLLOW_variable_in_variable_stmt1688 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_RIGHT_PAREN_in_variable_stmt1690 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_variable_in_variable_assn1710 = new BitSet(new long[]{0x0000004000208000L});
+    public static final BitSet FOLLOW_variable_assn_right_in_variable_assn1712 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_EQUALS_in_variable_assn_right1732 = new BitSet(new long[]{0x0002948200000000L,0x0000000000020010L});
+    public static final BitSet FOLLOW_variable_stmt_in_variable_assn_right1734 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
+    public static final BitSet FOLLOW_SEMICOLON_in_variable_assn_right1736 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_COMPOUND_ADD_in_variable_assn_right1750 = new BitSet(new long[]{0x0002948200000000L,0x0000000000020010L});
+    public static final BitSet FOLLOW_variable_stmt_in_variable_assn_right1752 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
+    public static final BitSet FOLLOW_SEMICOLON_in_variable_assn_right1754 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INCREMENT_in_variable_assn_right1767 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
+    public static final BitSet FOLLOW_SEMICOLON_in_variable_assn_right1769 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IF_in_if_statement1785 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_LEFT_PAREN_in_if_statement1787 = new BitSet(new long[]{0x0100948200000000L,0x0000000000020010L});
+    public static final BitSet FOLLOW_boolean_exp_in_if_statement1789 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_RIGHT_PAREN_in_if_statement1791 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_LEFT_BRACKET_in_if_statement1793 = new BitSet(new long[]{0x0000948608000000L,0x0000000000020930L});
+    public static final BitSet FOLLOW_statements_in_if_statement1795 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_RIGHT_BRACKET_in_if_statement1797 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_variable_in_boolean_stmt1826 = new BitSet(new long[]{0x0201A00060000000L});
+    public static final BitSet FOLLOW_boolean_right_in_boolean_stmt1828 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_boolean_op_in_boolean_right1849 = new BitSet(new long[]{0x0000948200000000L,0x0000000000020010L});
+    public static final BitSet FOLLOW_variable_in_boolean_right1851 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_boolean_stmt_in_boolean_exp1878 = new BitSet(new long[]{0x0800000000000010L});
+    public static final BitSet FOLLOW_boolean_exp_cont_in_boolean_exp1880 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NOT_in_boolean_exp1895 = new BitSet(new long[]{0x0100948200000000L,0x0000000000020010L});
+    public static final BitSet FOLLOW_boolean_exp_in_boolean_exp1897 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_logical_op_in_boolean_exp_cont1922 = new BitSet(new long[]{0x0100948200000000L,0x0000000000020010L});
+    public static final BitSet FOLLOW_boolean_exp_in_boolean_exp_cont1924 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PLUS_in_binary_op1953 = new BitSet(new long[]{0x0000948200000000L,0x0000000000020010L});
+    public static final BitSet FOLLOW_variable_in_binary_op1955 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MINUS_in_binary_op1972 = new BitSet(new long[]{0x0000948200000000L,0x0000000000020010L});
+    public static final BitSet FOLLOW_variable_in_binary_op1974 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DIVIDE_in_binary_op1991 = new BitSet(new long[]{0x0000948200000000L,0x0000000000020010L});
+    public static final BitSet FOLLOW_variable_in_binary_op1993 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_GT_in_boolean_op2022 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_GTE_in_boolean_op2032 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LT_in_boolean_op2042 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LTE_in_boolean_op2052 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NOT_EQUAL_in_boolean_op2062 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LOGIC_EQUALS_in_boolean_op2071 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_AND_in_logical_op2085 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_OR_in_logical_op2095 = new BitSet(new long[]{0x0000000000000002L});
 
 }

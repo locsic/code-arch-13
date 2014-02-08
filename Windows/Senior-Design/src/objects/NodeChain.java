@@ -44,6 +44,8 @@ public class NodeChain {
 	public ResultTree resultTree;
 	public VarResult localVarValue;
 	
+	public SelectorNode contains;
+	
 	public NodeChain()
 	{
 		nodeList = new LinkedList <SelectorNode> ();
@@ -334,7 +336,7 @@ public class NodeChain {
 		for (int i = 0; i < nodeChain.nodeList.size(); i++)
 		{
 			SelectorNode currentNode = nodeChain.nodeList.get(i);
-			
+
 			if (currentNode.nodeType == SelectorNode.AST_CHILD)
 			{
 				// try to find the matching child name in the result

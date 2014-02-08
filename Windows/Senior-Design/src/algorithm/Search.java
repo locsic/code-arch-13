@@ -68,8 +68,13 @@ public class Search {
 			results.addAll(SearchTree(proj));
 		return results;
 	}
-	
+
 	public static LinkedList<ResultTree> SearchTree(ResultTree tree)
+	{
+		return SearchTree(tree, QueryHandler.searchNodeType);
+	}
+	
+	public static LinkedList<ResultTree> SearchTree(ResultTree tree, String searchNodeType)
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 
@@ -77,7 +82,7 @@ public class Search {
 		
 		try
 		{
-			searchClass = Class.forName("org.eclipse.jdt.core.dom." + QueryHandler.searchNodeType);
+			searchClass = Class.forName("org.eclipse.jdt.core.dom." + searchNodeType);
 			
 			if (!(Class.forName("org.eclipse.jdt.core.dom.ASTNode").isAssignableFrom(searchClass)))
 			{
