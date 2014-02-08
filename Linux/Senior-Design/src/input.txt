@@ -3,3 +3,15 @@ Q2: select ( <type_declaration> c )
 	  c.<interface_declaration>:name == Comparable
 	{}
 	print c;
+	
+Q3: select ( <type_declaration> c ) 
+	where
+	  c.<interface_declaration>:name == Comparable
+	{}
+	print c;
+	
+Q4: select ( <type_declaration> c ) 
+	where
+	  c.<interface_declaration>:name == Comparable
+	{}
+	print c;

@@ -15,7 +15,7 @@ import org.antlr.stringtemplate.StringTemplate;
 public class QueryHandler {
 
 	static public String searchNodeType = null;
-	static public String searchNodeNumber = null;
+	static public String[] searchNodeTypeArray = null;
 	static public String queryName = null;
 	static public boolean printSum = false;
 	static public boolean getParent = false;
@@ -29,9 +29,15 @@ public class QueryHandler {
 			System.out.println(q.print());
 		}
 	}
+	
+	public static int queryNum()
+	{
+		return queries.size();
+	}
 
 	public static void ReadUserQuery () throws IOException, RecognitionException
 	{
+		searchNodeTypeArray = new String[10];
 		String file = Controller.ROOT + "input.txt";
 		CharStream cs = new ANTLRFileStream(file);
 		System.out.println(cs);
@@ -63,6 +69,40 @@ public class QueryHandler {
 	    StringTemplate st = gen.toDOT(tree);
 	    System.out.println(st);*/
 	}
+	
+	public static void parseQuery(CommonTree t, int indent){
+		if (t != null){
+			StringBuffer sb = new StringBuffer(indent);
+			
+			if(t.getParent() != null){
+				if(t.getText()!= null){
+					String node = t.getText().toString();
+					//Start of query
+					if(node.equals("QUERIES"))
+					{
+						queries = new LinkedList<Query>();
+					}
+					else
+					{
+						System.out.println("here2: " + t.getText().toString());
+					}
+				}
+			}
+			for (int i = 0; i < indent; i++)
+				sb = sb.append("   ");
+			for(int i = 0; i < t.getChildCount(); i++){
+				//Build Query
+				if(t.getChild(i).getText().toString().equals("QUERY"))
+				{
+					QueryBuilder((CommonTree)t.getChild(i), indent+1);
+				}
+				//Recurse
+				else{
+					parseQuery((CommonTree)t.getChild(i), indent+1);
+				}
+			}
+		}
+	}
 
 	public static void printTree(CommonTree t, int indent) {
 		if ( t != null ) {
@@ -78,7 +118,6 @@ public class QueryHandler {
 					}
 					else
 					{
-
 						System.out.println("here2: " + t.getText().toString());
 					}
 				}
@@ -193,6 +232,7 @@ public class QueryHandler {
 				if(t.getChild(i).getText().toString().equals("NODE_NAME"))
 				{
 					searchNodeType = t.getChild(i).getChild(0).getText().toString();
+					searchNodeTypeArray[queryNum()] = t.getChild(i).getChild(0).getText().toString();
 					query.addSelectorNode(searchNodeType, SelectorNode.NODE);
 					System.out.println(sb.toString() + "node: " + searchNodeType);
 				}

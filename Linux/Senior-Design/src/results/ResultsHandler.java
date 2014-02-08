@@ -15,6 +15,9 @@ public class ResultsHandler {
 
 	static String outputDir = main.Controller.ROOT + "output/" + query.QueryHandler.queryName + "/";
 	static int count;
+	static Boolean passResult = false;
+	static public LinkedList<LinkedList<ResultTree>> resultTreeList = new LinkedList<LinkedList<ResultTree>>();
+
 	public static void PrintResults(LinkedList<ResultTree> results) 
 	{
 
