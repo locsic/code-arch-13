@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="database"/>
 	<classpathentry kind="lib" path="lib/antlr-3.4-complete.jar"/>
 	<classpathentry kind="lib" path="lib/json-simple-1.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.core.contenttype_3.4.200.v20120523-2004.jar"/>
@@ -15,5 +16,6 @@
 	<classpathentry kind="lib" path="lib/org.eclipse.osgi.services_3.3.100.v20120522-1822.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.osgi.util_3.2.300.v20120522-1822.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/nocsi/Working/REPO/code-arch-13/Senior-Design/lib/commons-cli-1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

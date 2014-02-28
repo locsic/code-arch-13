@@ -129,6 +129,11 @@ public class ProjectProcessor {
 		
 	}
 	
+	public static void LogProjects()
+	{
+		
+	}
+	
 	
 	/* Input: file
 	 * Iterates through the sub-directories to find the .java files
