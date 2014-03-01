@@ -45,4 +45,33 @@ public class ResultTree extends FileTree {
 		
 		return this.root;
 	}
+	
+	public static int depth(ResultTree t)
+	{
+		return depthBetween(null, t);
+	}
+	
+	public static int depthBetween(ResultTree ancestor, ResultTree descendent)
+	{
+		return depthBetween(ancestor.root, descendent.root);
+	}
+	
+	public static int depth(ASTNode t)
+	{
+		return depthBetween(null, t);		
+	}
+	
+	public static int depthBetween(ASTNode ancestor, ASTNode descendent)
+	{
+		int depth = 0;
+		ASTNode currentNode = descendent;
+		
+		while (currentNode != null && !currentNode.equals(ancestor))
+		{
+			currentNode = currentNode.getParent();
+			depth++;
+		}
+			
+		return depth;
+	}
 }

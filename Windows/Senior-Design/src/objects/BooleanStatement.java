@@ -7,6 +7,8 @@ import objects.NodeChain.VarResult;
 import org.antlr.runtime.tree.CommonTree;
 import org.eclipse.core.runtime.Assert;
 
+import query.QueryLanguageLexer;
+
 
 public class BooleanStatement {
 
@@ -31,12 +33,17 @@ public class BooleanStatement {
 	{
 		if (bindings == null) bindings = new LinkedList <NodeChain>();
 		
-		// The first child of a BOOL_EXP is always a VAR or epsilon
+		// The first child of a BOOL_EXP is always a VAR or epsilon (or a unary operator)
 		
 		CommonTree varTree;
-		NodeChain.VarResult varResult = new NodeChain.VarResult();;
+		NodeChain.VarResult varResult = new NodeChain.VarResult();
+		int type = ct.getChild(0).getType();
 		
-		if (ct.getChild(0).getText().toString() == "EPSILON")
+		if (ct.getChild(0).getType() == QueryLanguageLexer.NOT)
+		{
+			return !evaluate((CommonTree)(ct.getChild(0).getChild(0)), result, bindings);
+		}
+		else if (ct.getChild(0).getText().toString() == "EPSILON")
 		{
 			varResult.intResult = 1;
 			varResult.intResultFound = true;

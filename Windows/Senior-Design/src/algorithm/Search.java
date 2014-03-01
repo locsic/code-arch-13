@@ -13,7 +13,7 @@ public class Search {
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 		LinkedList r = new LinkedList();
-//		
+		
 		for(ProjectTree proj: trees)
 			results.addAll(SearchTree(proj.projectTree));
 		return results;
@@ -24,30 +24,15 @@ public class Search {
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 		
-		Class searchClass = null;
+		SearchCriteria sc = new SearchCriteria();
 		
-		try
-		{
-			searchClass = Class.forName("org.eclipse.jdt.core.dom." + QueryHandler.searchNodeType);
-				
-			if (!(Class.forName("org.eclipse.jdt.core.dom.ASTNode").isAssignableFrom(searchClass)))
-			{
-				System.out.println(QueryHandler.searchNodeType + " is not an ASTNode.");
-				Assert.isTrue(false);
-			}
-			// System.out.println(nodetype);
-		}
-		catch (ClassNotFoundException c)
-		{
-			System.out.println("Class " + QueryHandler.searchNodeType + " not found.");
-			Assert.isTrue(false);			
-		}
-		
+		Class searchClass = sc.searchClass;
+			
 		for(DirectoryTree dir: tree.dirs)
 			results.addAll(SearchTree(dir));
 		
 		for(FileTree fileTree: tree.files){
-			algorithm.TreeSearchAlgorithm.HasSubTree(fileTree.root, searchClass);	
+			algorithm.TreeSearchAlgorithm.HasSubTree(fileTree.root, sc);	
 			for (ResultTree t: algorithm.TreeSearchAlgorithm.matches)
 			{
 				t.project = fileTree.project;
@@ -74,10 +59,8 @@ public class Search {
 		return SearchTree(tree, QueryHandler.searchNodeType);
 	}
 	
-	public static LinkedList<ResultTree> SearchTree(ResultTree tree, String searchNodeType)
+	public static Class getClassFromSearchNodeType(String searchNodeType)
 	{
-		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
-
 		Class searchClass = null;
 		
 		try
@@ -94,9 +77,18 @@ public class Search {
 		{
 			System.out.println("Class " + QueryHandler.searchNodeType + " not found.");
 			Assert.isTrue(false);			
-		}
+		}	
+		
+		return searchClass;
+	}
+	
+	public static LinkedList<ResultTree> SearchTree(ResultTree tree, String searchNodeType)
+	{
+		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 
 		//System.out.println(nodetype);
+		
+		Class searchClass = getClassFromSearchNodeType(searchNodeType);
 
 			algorithm.TreeSearchAlgorithm.HasSubTree(tree.root, searchClass);
 			for (ResultTree t: algorithm.TreeSearchAlgorithm.matches)

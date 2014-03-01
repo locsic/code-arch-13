@@ -22,15 +22,63 @@ public class TreeSearchAlgorithm extends ASTVisitor{
 	private ASTNode treeToSearch;
 	private Class nodeType;
 	public static LinkedList<ResultTree> matches;
+	
+	public static boolean HasSubTree(ASTNode tree, SearchCriteria sc)
+	{
+		LinkedList<ResultTree> tempMatches;
+		LinkedList<ResultTree> outputMatches = new LinkedList<ResultTree>();
+		ResultTree deepestMatch = null;
+		int matchDepth = 0;
+		
+		// first perform the basic search, then refine based on the operator (* or ...)
+		HasSubTree(tree, sc.searchClass);
+		
+		if (sc.operandClass != null)
+		{
+			tempMatches = matches;
+			
+			for (ResultTree match : tempMatches)
+			{
+				ASTNode root = match.getRoot();
+				
+				if (HasSubTree(root, sc.operandClass))
+				{
+					if (sc.op.equals("*"))
+					{
+						outputMatches.add(match);
+					}
+					else if (sc.op.equals("..."))
+					{
+						if (deepestMatch == null || ResultTree.depthBetween(root, match.root) > matchDepth)
+						{
+							deepestMatch = match;
+							matchDepth = ResultTree.depthBetween(root, match.root);
+						}
+					}
+					else
+					{
+						org.eclipse.core.runtime.Assert.isTrue(false);
+					}
+						
+				}			
+			}
+			
+			if (deepestMatch != null) outputMatches.add(deepestMatch);
+			
+			matches = outputMatches;
+		}
+		
+		return !matches.isEmpty();
+	}
 
-	public static void HasSubTree(ASTNode tree, Class search)
+	public static boolean HasSubTree(ASTNode tree, Class search)
 	{ 
 		// perform search using AST visitor -- as we visit each node, compare to the search string
 		//matches = new LinkedList<ResultTree>();
 		matches = new LinkedList<ResultTree>();
 		TreeSearchAlgorithm staticSearchVisitor = new TreeSearchAlgorithm(tree, search);
 		tree.accept(staticSearchVisitor);
-		//return matches;
+		return !staticSearchVisitor.matches.isEmpty();
 	}
 
 	// Constructor

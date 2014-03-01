@@ -8,8 +8,9 @@ public class Query {
 	public LinkedList <NodeChain> nodeChains;
 	public LinkedList<Query> nestedQueries;
 	public BooleanStatement whereClause;
-	public LinkedList<Statement> statements;
-	public NodeChain contains;
+	public LinkedList<Statement> statements;	
+	public String searchOp;
+	public NodeChain searchOperand;
 	//private LinkedList<SelectorNode> printNodeChain;
 	//public LinkedList<>
 
@@ -20,8 +21,8 @@ public class Query {
 		nestedQueries = null;
 		whereClause = null;
 		statements = new LinkedList <Statement>();
-		contains = null;
-		
+		searchOp = null;
+		searchOperand = null;
 		//printNodeChain = null;
 	}
 
@@ -52,8 +53,9 @@ public class Query {
 
 	public void addContains(NodeChain n)
 	{
-		contains = n;
+		nodeChains.getLast().contains = n.nodeList.getFirst();		
 	}
+	
 	public void addWhereClause(CommonTree ct)
 	{
 		if (ct != null)	whereClause = new BooleanStatement(ct);

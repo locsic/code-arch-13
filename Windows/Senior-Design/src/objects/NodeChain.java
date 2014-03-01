@@ -11,6 +11,9 @@ import org.eclipse.jdt.core.dom.SimpleName;
 import org.eclipse.jdt.core.dom.StructuralPropertyDescriptor;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 
+import algorithm.Search;
+import algorithm.TreeSearchAlgorithm;
+
 import query.QueryHandler;
 import query.QueryLanguageParser;
 
@@ -281,7 +284,23 @@ public class NodeChain {
 					{
 						ASTNode currentResult = descendNodeChain(nodeChain, nc.resultTree.root);
 						
-						if (currentResult instanceof VariableDeclarationFragment)
+						if (nodeChain.contains != null)
+						{
+							Class searchClass = Search.getClassFromSearchNodeType(nodeChain.contains.nodeText);
+
+							if (TreeSearchAlgorithm.HasSubTree(currentResult, searchClass))
+							{
+								varResult.intResultFound = true;
+								varResult.intResult = 1;
+							}
+							else
+							{
+								varResult.intResultFound = true;
+								varResult.intResult = 0;								
+							}
+							return varResult;
+						}						
+						else if (currentResult instanceof VariableDeclarationFragment)
 						{
 							varResult.stringResultFound = true;
 							varResult.stringResult = ((VariableDeclarationFragment)currentResult).getName().getIdentifier();

@@ -23,7 +23,8 @@ import java.util.Properties;
 public class QueryHandler {
 
 	static public String searchNodeType = null;
-	static public String searchNodeNumber = null;
+	static public String searchNodeOp = null;
+	static public String searchNodeOperand = null;
 	static public String queryName = null;
 	static public boolean printSum = false;
 	static public boolean getParent = false;
@@ -204,6 +205,27 @@ public class QueryHandler {
 				{
 					GetSearchNode((CommonTree)t.getChild(i),indent+1, query);
 				}
+				else if (t.getChild(i).getText().toString().equals("NODE_CHAIN_OP"))
+				{
+					int opType = t.getChild(i).getChild(0).getType();
+					
+					if (opType == QueryLanguageLexer.STAR)
+					{
+						query.searchOp = "*";
+						searchNodeOp = "*";
+					}
+					else
+					{
+						query.searchOp = "...";
+						searchNodeOp = "...";
+					}
+					
+					String tempSearchNodeType = searchNodeType;
+					query.searchOperand = GetSearchNode((CommonTree)t.getChild(i).getChild(0),indent+1);
+					searchNodeType = tempSearchNodeType;
+					searchNodeOperand = query.searchOperand.nodeList.getFirst().nodeText;
+					query.nodeChains.add(query.searchOperand);
+				}
 				else if (t.getChild(i).getText().toString().equals("CHAIN_ID"))
 				{
 					query.setNodeChainName(((CommonTree)t.getChild(i).getChild(0)).getText().toString());
@@ -274,10 +296,10 @@ public class QueryHandler {
 				{
 					// "Contains" only implemented for AST child right now
 					CommonTree contains = (CommonTree)t.getChild(i);
-					CommonTree containsAstChild = (CommonTree)contains.getChild(1);
+					CommonTree containsAstChild = (CommonTree)contains.getChild(0);
 					//String containsAstChildString = containsAstChild.getText().toString();
 					if (query.nodeChains.size() == 0) query.newNodeChain();
-					NodeChain containsNC = GetSearchNode(containsAstChild, 0);
+					NodeChain containsNC = GetSearchNode(contains, 0);
 					query.addContains(containsNC);
 					//query.addContains(n)
 				}
@@ -308,6 +330,9 @@ public class QueryHandler {
 							query.setNodeChainName(node);
 						}
 						query.addSelectorNode(node, SelectorNode.PROP);
+						
+						GetSearchNode((CommonTree)t.getChild(i), indent+1, query);
+
 						//System.out.println(sb.toString() + "prop: " + node);
 					}
 					else //if  (t.getChild(i).getText().toString().equals("NODE"))

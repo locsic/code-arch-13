@@ -12,6 +12,7 @@ tokens {
     FILTER_QUERY;
     PRINT;
     NODE_CHAIN;
+    NODE_CHAIN_OP;
     CHAIN_ID;
     IN_CLAUSE;
     WITH_CLAUSE;
@@ -66,7 +67,7 @@ foreach_where
 	;
 
 select_query
-	:	SELECT LEFT_PAREN node_chain block ID? in_clause RIGHT_PAREN with_clause select_where -> ^(NODE_CHAIN node_chain) ^(CHAIN_ID ID?) ^(IN_CLAUSE in_clause) ^(BLOCK_STATEMENTS block) with_clause select_where
+	:	SELECT LEFT_PAREN node_chain ID? node_chain_op block in_clause RIGHT_PAREN with_clause select_where -> ^(NODE_CHAIN node_chain) ^(CHAIN_ID ID?) ^(NODE_CHAIN_OP node_chain_op)  ^(IN_CLAUSE in_clause) ^(BLOCK_STATEMENTS block) with_clause select_where
 	;
 select_where
 	:	WHERE boolean_exp stat_statements -> ^(WHERE_BLOCK ^(BOOL_EXP boolean_exp) ^(STATEMENTS stat_statements))
@@ -80,6 +81,11 @@ with_clause
 	:	WITH variable AS ID -> ^(WITH_CLAUSE ^(VAR variable) ^(CHAIN_ID ID))
 	|	-> WITH_CLAUSE
 	;
+node_chain_op
+	:	STAR node_chain ID? -> ^(STAR node_chain ^(CHAIN_ID ID?))
+	|	REPEATER node_chain ID? -> ^(REPEATER node_chain ^(CHAIN_ID ID?))
+	|	-> EPSILON
+	;	
 node_chain
 	:	node PERIOD node_chain 				-> ^(NODE node) ^(NODE_CHAIN node_chain)
 	|	node COLON attr 				-> ^(NODE ^(NODE_NAME node) ^(ATTRIBUTE attr))
