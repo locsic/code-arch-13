@@ -1,0 +1,3 @@
+select (<type_declaration> c) 
+where c.<field_declaration>:name == i
+  and c.<field_declaration>:type == int
