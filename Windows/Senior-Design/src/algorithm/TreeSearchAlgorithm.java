@@ -43,23 +43,27 @@ public class TreeSearchAlgorithm extends ASTVisitor{
 				
 				if (HasSubTree(root, sc.operandClass))
 				{
-					if (sc.op.equals("*"))
+					for (ResultTree innerMatch : matches)
 					{
-						outputMatches.add(match);
-					}
-					else if (sc.op.equals("..."))
-					{
-						if (deepestMatch == null || ResultTree.depthBetween(root, match.root) > matchDepth)
-						{
-							deepestMatch = match;
-							matchDepth = ResultTree.depthBetween(root, match.root);
-						}
-					}
-					else
-					{
-						org.eclipse.core.runtime.Assert.isTrue(false);
-					}
+						ResultTree outputMatch = new ResultTree(match.root, innerMatch.root);
 						
+						if (sc.op.equals("*"))
+						{								 
+								outputMatches.add(outputMatch);
+						}
+						else if (sc.op.equals("..."))
+						{
+							if (deepestMatch == null || ResultTree.depthBetween(root, match.root) > matchDepth)
+							{
+								deepestMatch = outputMatch;
+								matchDepth = ResultTree.depthBetween(root, innerMatch.root);
+							}
+						}
+						else
+						{
+							org.eclipse.core.runtime.Assert.isTrue(false);
+						}
+					}						
 				}			
 			}
 			

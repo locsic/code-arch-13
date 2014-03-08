@@ -216,12 +216,13 @@ public class QueryHandler {
 					}
 					else
 					{
-						query.searchOp = "...";
+//						query.searchOp = "...";
 						searchNodeOp = "...";
 					}
 					
 					String tempSearchNodeType = searchNodeType;
 					query.searchOperand = GetSearchNode((CommonTree)t.getChild(i).getChild(0),indent+1);
+					query.searchOperand.name = t.getChild(i).getChild(0).getChild(1).getChild(0).getText().toString();
 					searchNodeType = tempSearchNodeType;
 					searchNodeOperand = query.searchOperand.nodeList.getFirst().nodeText;
 					query.nodeChains.add(query.searchOperand);

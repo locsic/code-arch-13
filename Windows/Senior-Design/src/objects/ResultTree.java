@@ -6,10 +6,23 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 public class ResultTree extends FileTree {
 	
 	public ASTNode root;
+	public ASTNode operandRoot;
 	
 	public ResultTree(ASTNode root)
 	{
 		this.root = root;
+	}
+	
+	public ResultTree(ASTNode root, ASTNode operandRoot)
+	{
+		this.root = root;
+		this.operandRoot = operandRoot;
+	}
+	
+	public ResultTree(ResultTree r)
+	{
+		this.root = r.root;
+		this.operandRoot = r.operandRoot;
 	}
 
 	public ResultTree(ASTNode root, FileTree originTree)

@@ -241,6 +241,47 @@ public class NodeChain {
 		}				
 		return out; 
 	}
+	
+	static VarResult evaluateFunction(CommonTree ct, LinkedList <NodeChain> bindings)
+	{
+		VarResult varResult = new VarResult();
+
+		CommonTree functionNode = (CommonTree)ct;
+		String functionName = functionNode.getText().toString();
+		
+		if (functionName.equals("depth"))
+		{
+			CommonTree arg_node_chain_ct = (CommonTree)functionNode.getChild(0);
+			NodeChain argNodeChain = QueryHandler.GetSearchNode(arg_node_chain_ct, 0);
+			NodeChain nc = findNodeChain(bindings, argNodeChain.name);
+			ASTNode currentResult = descendNodeChain(argNodeChain, nc.resultTree.root);
+			
+			varResult.intResultFound = true;
+			varResult.intResult =  ResultTree.depth(currentResult);			
+		}
+		else if (functionName.equals("max") || functionName.equals("min"))
+		{
+			VarResult vr1 = evaluateVar((CommonTree)functionNode.getChild(0), bindings);
+			VarResult vr2 = evaluateVar((CommonTree)functionNode.getChild(1), bindings);
+
+			varResult.intResultFound = true;
+			
+			if (functionName.equals("max"))
+			{
+				varResult.intResult = Math.max(vr1.intResult, vr2.intResult);
+			}
+			else
+			{
+				varResult.intResult = Math.min(vr1.intResult, vr2.intResult);
+			}
+		}
+		else
+		{		
+		
+		}
+		
+		return varResult;
+	}
 
 	static VarResult evaluateVar(CommonTree ct, LinkedList <NodeChain> bindings)
 		{
@@ -266,7 +307,11 @@ public class NodeChain {
 				varResult.stringResult = strVal.substring(1, strVal.length()-1);
 				varResult.stringResultFound = true;
 			}
-			else if (ct.getText() == "NODE_CHAIN")
+			else if (ct.getText().equals("FUNCTION"))
+			{
+				varResult = evaluateFunction((CommonTree)ct.getChild(0), bindings);
+			}
+			else if (ct.getText().equals("NODE_CHAIN"))
 			{
 				CommonTree node_chain_ct = (CommonTree)ct;
 				NodeChain nodeChain = QueryHandler.GetSearchNode(node_chain_ct, 0);
@@ -286,17 +331,22 @@ public class NodeChain {
 						
 						if (nodeChain.contains != null)
 						{
-							Class searchClass = Search.getClassFromSearchNodeType(nodeChain.contains.nodeText);
-
-							if (TreeSearchAlgorithm.HasSubTree(currentResult, searchClass))
+							switch (nodeChain.contains.nodeType)
 							{
-								varResult.intResultFound = true;
-								varResult.intResult = 1;
-							}
-							else
-							{
-								varResult.intResultFound = true;
-								varResult.intResult = 0;								
+								case SelectorNode.AST_CHILD : {
+									Class searchClass = Search.getClassFromSearchNodeType(nodeChain.contains.nodeText);
+	
+									if (TreeSearchAlgorithm.HasSubTree(currentResult, searchClass))
+									{
+										varResult.intResultFound = true;
+										varResult.intResult = 1;
+									}
+									else
+									{
+										varResult.intResultFound = true;
+										varResult.intResult = 0;								
+									}
+								} break;
 							}
 							return varResult;
 						}						

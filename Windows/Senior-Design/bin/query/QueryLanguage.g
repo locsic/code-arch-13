@@ -167,6 +167,8 @@ statements //collects data
 variable_stmt
 	:	variable binary_op 		-> ^(VAR_STMT ^(VAR variable) ^(BIN_OP binary_op)) 
 	|	MAX LEFT_PAREN variable COMMA variable RIGHT_PAREN -> ^(MAX variable variable)
+	|	MIN LEFT_PAREN variable COMMA variable RIGHT_PAREN -> ^(MIN variable variable)
+	|       DEPTH LEFT_PAREN variable RIGHT_PAREN -> ^(DEPTH variable)
 	;
 variable_assn
 	:	variable variable_assn_right	-> ^(VAR variable) variable_assn_right
@@ -256,6 +258,10 @@ IS	:	'is'
 HAS	:	'has'
 	;
 MAX	:	'max'
+	;
+MIN	:	'min'
+	;
+DEPTH	:	'depth'
 	;
 PRINT
 	:	'print'

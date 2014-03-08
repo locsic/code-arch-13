@@ -99,6 +99,8 @@ public class Query {
 	}
 
 	public void bindVars(ResultTree r) {
-		nodeChains.getFirst().setBinding(r);		
+		nodeChains.getFirst().setBinding(r);	
+		ResultTree innerResultTree = new ResultTree(r.operandRoot);
+		searchOperand.resultTree = innerResultTree;
 	}
 }
