@@ -1,9 +1,12 @@
 package query;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 
 import main.Controller;
+import objects.DirectoryTree;
+import objects.FileTree;
 import objects.Query;
 import objects.SelectorNode;
 
@@ -35,6 +38,18 @@ public class QueryHandler {
 		return queries.size();
 	}
 
+	public static void DirectoryTree(final File queryFolder)
+	{
+		for(final File queryEntry : queryFolder.listFiles()){
+			if(queryEntry.isDirectory()){
+				//do nothing
+				DirectoryTree(queryEntry);
+			} else{
+				System.out.println(queryEntry.getName());
+			}
+		}
+	}
+	
 	public static void ReadUserQuery () throws IOException, RecognitionException
 	{
 		searchNodeTypeArray = new String[10];
@@ -161,6 +176,13 @@ public class QueryHandler {
 			else if (t.getChild(i).getText().toString().equals("SELECT_QUERY"))
 			{
 				SelectQueryBuilder((CommonTree)t.getChild(i), indent+1, query);
+			}
+			else if ((t.getChild(i).getText().toString().equals("PRINT_PP")))
+			{
+				query.setPrint_pp(true);
+				queries.add(query);
+				//Flush system by setting flag in Controller
+				//Flag will also output to database
 			}
 			else if ((t.getChild(i).getText().toString().equals("PRINT")))
 			{

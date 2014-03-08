@@ -9,6 +9,7 @@ public class Query {
 	public LinkedList<BooleanStatement> whereClause;
 	public LinkedList<Statement> statements;
 	private LinkedList<SelectorNode> printNodeChain;
+	private Boolean print_pp;
 	//public LinkedList<>
 
 	public Query()
@@ -64,5 +65,13 @@ public class Query {
 			}
 
 		return out;
+	}
+
+	public void setPrint_pp(Boolean print_pp) {
+		this.print_pp = print_pp;
+	}
+
+	public Boolean getPrint_pp() {
+		return print_pp;
 	}
 }

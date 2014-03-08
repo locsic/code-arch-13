@@ -1,5 +1,9 @@
 package objects;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
@@ -36,6 +40,13 @@ public class ResultTree extends FileTree {
 	public String PrintTree()
 	{
 		return super.project + "\n" + super.origin.toString().split("ProjectSource/")[1] + "\n\n" + root.toString();
+
+		//return super.project + "\n" + super.origin.toString().split("ProjectSource/")[1] + "\n\n" + root.toString();
+	}
+	
+	public String TreeFlattener()
+	{
+		return "";
 	}
 	
 	public void saveTree()
@@ -51,5 +62,25 @@ public class ResultTree extends FileTree {
 		}
 		
 		return this.root;
+	}
+	
+	public boolean saveToFile()
+	{
+		String destFile = "";
+		try{
+			FileWriter fstream = new FileWriter(destFile);
+			BufferedWriter out = new BufferedWriter(fstream);
+			out.write(PrintTree());
+			out.close();
+		} catch (Exception e){
+			System.err.println("Error: " + e.getMessage());
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean reconstructFromFile()
+	{
+		return false;
 	}
 }

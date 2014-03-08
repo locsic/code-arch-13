@@ -134,6 +134,9 @@ public class Controller {
 
 	public static void InterpretQuery() throws Exception
 	{
+		
+		final File folder = new File(ROOT+"input/");
+		QueryHandler.DirectoryTree(folder);
 		QueryHandler.ReadUserQuery();
 	}
 
