@@ -242,7 +242,7 @@ public class NodeChain {
 		return out; 
 	}
 	
-	static VarResult evaluateFunction(CommonTree ct, LinkedList <NodeChain> bindings)
+	static VarResult evaluateFunction(CommonTree ct, LinkedList <NodeChain> bindings, LinkedList <NodeChain> locals)
 	{
 		VarResult varResult = new VarResult();
 
@@ -254,6 +254,12 @@ public class NodeChain {
 			CommonTree arg_node_chain_ct = (CommonTree)functionNode.getChild(0);
 			NodeChain argNodeChain = QueryHandler.GetSearchNode(arg_node_chain_ct, 0);
 			NodeChain nc = findNodeChain(bindings, argNodeChain.name);
+			
+			if (nc == null)
+			{
+				nc = findNodeChain(locals, argNodeChain.name);			
+			}
+			
 			ASTNode currentResult = descendNodeChain(argNodeChain, nc.resultTree.root);
 			
 			varResult.intResultFound = true;
@@ -261,8 +267,18 @@ public class NodeChain {
 		}
 		else if (functionName.equals("max") || functionName.equals("min"))
 		{
-			VarResult vr1 = evaluateVar((CommonTree)functionNode.getChild(0), bindings);
-			VarResult vr2 = evaluateVar((CommonTree)functionNode.getChild(1), bindings);
+			VarResult vr1 = evaluateVar((CommonTree)functionNode.getChild(0), bindings, new LinkedList <NodeChain> ());
+			VarResult vr2 = evaluateVar((CommonTree)functionNode.getChild(1), bindings, new LinkedList <NodeChain> ());
+			
+			if (vr1.intResultFound == false)
+			{
+				vr1 = evaluateVar((CommonTree)functionNode.getChild(0), locals, new LinkedList <NodeChain> ()); 
+			}
+
+			if (vr2.intResultFound == false)
+			{
+				vr2 = evaluateVar((CommonTree)functionNode.getChild(1), locals, new LinkedList <NodeChain> ()); 
+			}
 
 			varResult.intResultFound = true;
 			
@@ -283,7 +299,7 @@ public class NodeChain {
 		return varResult;
 	}
 
-	static VarResult evaluateVar(CommonTree ct, LinkedList <NodeChain> bindings)
+	static VarResult evaluateVar(CommonTree ct, LinkedList <NodeChain> bindings, LinkedList <NodeChain> locals)
 		{
 	//		variable	
 	//		:	ID COLON attr				-> ^(VAR_NAME ID attr)
@@ -309,7 +325,7 @@ public class NodeChain {
 			}
 			else if (ct.getText().equals("FUNCTION"))
 			{
-				varResult = evaluateFunction((CommonTree)ct.getChild(0), bindings);
+				varResult = evaluateFunction((CommonTree)ct.getChild(0), bindings, locals);
 			}
 			else if (ct.getText().equals("NODE_CHAIN"))
 			{

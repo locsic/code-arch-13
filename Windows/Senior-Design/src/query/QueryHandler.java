@@ -206,26 +206,29 @@ public class QueryHandler {
 					GetSearchNode((CommonTree)t.getChild(i),indent+1, query);
 				}
 				else if (t.getChild(i).getText().toString().equals("NODE_CHAIN_OP"))
-				{
+				{					
 					int opType = t.getChild(i).getChild(0).getType();
 					
-					if (opType == QueryLanguageLexer.STAR)
-					{
-						query.searchOp = "*";
-						searchNodeOp = "*";
+					if (opType != QueryLanguageLexer.EPSILON)
+					{					
+						if (opType == QueryLanguageLexer.STAR)
+						{
+							query.searchOp = "*";
+							searchNodeOp = "*";
+						}
+						else
+						{
+	//						query.searchOp = "...";
+							searchNodeOp = "...";
+						}
+						
+						String tempSearchNodeType = searchNodeType;
+						query.searchOperand = GetSearchNode((CommonTree)t.getChild(i).getChild(0),indent+1);
+						query.searchOperand.name = t.getChild(i).getChild(0).getChild(1).getChild(0).getText().toString();
+						searchNodeType = tempSearchNodeType;
+						searchNodeOperand = query.searchOperand.nodeList.getFirst().nodeText;
+						query.nodeChains.add(query.searchOperand);
 					}
-					else
-					{
-//						query.searchOp = "...";
-						searchNodeOp = "...";
-					}
-					
-					String tempSearchNodeType = searchNodeType;
-					query.searchOperand = GetSearchNode((CommonTree)t.getChild(i).getChild(0),indent+1);
-					query.searchOperand.name = t.getChild(i).getChild(0).getChild(1).getChild(0).getText().toString();
-					searchNodeType = tempSearchNodeType;
-					searchNodeOperand = query.searchOperand.nodeList.getFirst().nodeText;
-					query.nodeChains.add(query.searchOperand);
 				}
 				else if (t.getChild(i).getText().toString().equals("CHAIN_ID"))
 				{
@@ -282,7 +285,7 @@ public class QueryHandler {
 				if(t.getChild(i).getText().toString().equals("NODE_NAME"))
 				{
 					query.newNodeChain();
-					searchNodeType = t.getChild(i).getChild(0).getText().toString();
+					//searchNodeType = t.getChild(i).getChild(0).getText().toString();
 					query.addSelectorNode(searchNodeType, SelectorNode.NODE);
 					System.out.println(sb.toString() + "node: " + searchNodeType);
 				}

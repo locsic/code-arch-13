@@ -51,11 +51,11 @@ public class Statement {
 			CommonTree varVar = (CommonTree)varStmt.getChild(0);
 			CommonTree varBinOp = (CommonTree)varStmt.getChild(1);
 			
-			VarResult v = NodeChain.evaluateVar((CommonTree)varVar.getChild(0), bindings);
+			VarResult v = NodeChain.evaluateVar((CommonTree)varVar.getChild(0), bindings, locals);
 			
 			if (v.intResultFound == false && v.stringResultFound == false)
 			{
-				v = NodeChain.evaluateVar((CommonTree)varVar.getChild(0), locals);
+				v = NodeChain.evaluateVar((CommonTree)varVar.getChild(0), locals, new LinkedList <NodeChain> ());
 			}
 			
 			if (!((CommonTree)varBinOp.getChild(0)).getText().equals("EPSILON"))
@@ -63,11 +63,11 @@ public class Statement {
 				String operation = varBinOp.getChild(0).getText();
 				CommonTree varRVar = (CommonTree)varBinOp.getChild(1); 
 				
-				VarResult vr = NodeChain.evaluateVar((CommonTree)varRVar.getChild(0), bindings);
+				VarResult vr = NodeChain.evaluateVar((CommonTree)varRVar.getChild(0), bindings, new LinkedList <NodeChain> ());
 				
 				if (vr.intResultFound == false && vr.stringResultFound == false)
 				{
-					vr = NodeChain.evaluateVar((CommonTree)varRVar.getChild(0), locals);
+					vr = NodeChain.evaluateVar((CommonTree)varRVar.getChild(0), locals, new LinkedList <NodeChain> ());
 				}
 				v = NodeChain.applyOperation(v, vr, operation);
 				

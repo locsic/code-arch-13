@@ -29,7 +29,8 @@ import org.apache.commons.cli.ParseException;
 public class Controller {
 	//public static String ROOT = "C:\\Users\\Sara\\Documents\\Java\\Senior-Design\\src\\";
 	//public static String ROOT = "C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\data_area\\";
-	public static String ROOT = "/home/nocsi/Working/REPO/code-arch-13/Data/";
+	public static String ROOT = "C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\data_area\\";
+	//public static String ROOT = "/home/nocsi/Working/REPO/code-arch-13/Data/";
 	//public static String ROOT = "";
 	public static boolean DEBUG = false;
 	public static boolean DOWNLOAD = false;
@@ -86,7 +87,7 @@ public class Controller {
 
 	public static void TestFileTreeCreation()
 	{
-		objects.FileTree t = new objects.FileTree(new File(ROOT + "projects//ProjectProcessor.java"),"Senior-Design");
+		objects.FileTree t = new objects.FileTree(new File(ROOT + "projects\\ProjectProcessor.java"),"Senior-Design");
 
 		algorithm.TreeSearch.HasSubTree(t.root, "InputStream is = process.getInputStream();			InputStreamReader isr = new InputStreamReader(is);");
 

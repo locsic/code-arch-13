@@ -39,9 +39,9 @@ public class Controller {
 	public static void TestProjects()
 	{
 		if(DEBUG) System.out.println("before download");
-		ProjectProcessor.DownloadProjects(false);
+		ProjectProcessor.DownloadProjects(true);
 		if(DEBUG) System.out.println("post download");
-		if(!DEBUG)
+		//if(!DEBUG)
 			ProjectProcessor.UnZipProjects();
 		ProjectProcessor.BuildProjectTrees();
 		if(DEBUG) System.out.println("build trees");

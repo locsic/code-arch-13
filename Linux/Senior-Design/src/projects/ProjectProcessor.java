@@ -11,8 +11,8 @@ import objects.ProjectTree;
 
 public class ProjectProcessor {
 
-	static String projectsDir = main.Controller.ROOT + "projects/ProjectSource/";
-	static String projectsNamesFile = main.Controller.ROOT + "projects/ProjectNames";
+	static String projectsDir = main.Controller.ROOT + "projects\\ProjectSource\\";
+	static String projectsNamesFile = main.Controller.ROOT + "projects\\ProjectNames";
 	static LinkedList<String> projectNames = new LinkedList<String>();
 
 
@@ -25,10 +25,8 @@ public class ProjectProcessor {
 			while (s.hasNext())
 			{
 				String project = s.nextLine();
-				System.out.println(download);
-				if (download){
+				if (download)
 					DownloadProjectSource(project);
-				}
 				projectNames.add(project);
 			}
 			s.close();
@@ -49,7 +47,7 @@ public class ProjectProcessor {
 			URL url = new URL("http://" + projectName + ".cvs.sourceforge.net/viewvc/" + projectName + "/?view=tar");
 			URLConnection conn = url.openConnection();
 			InputStream in = conn.getInputStream();
-			FileOutputStream out = new FileOutputStream(projectsDir /*+"/"+ projectName + "/"*/+ projectName + ".tar.gz");
+			FileOutputStream out = new FileOutputStream(projectsDir /*+"\\"+ projectName + "\\"*/+ projectName + ".tar.gz");
 			byte[] b = new byte[1024];
 			int count;
 			while ((count = in.read(b)) >= 0) {
@@ -69,8 +67,7 @@ public class ProjectProcessor {
 	{
 		for(String projectName : projectNames){
 			try{
-			//ProcessBuilder builder = new ProcessBuilder("\"C:\\Program Files\\7-Zip\\7z\"", "x", projectsDir+projectName+".tar.gz");
-			ProcessBuilder builder = new ProcessBuilder("tar", "xvf", projectsDir+projectName+".tar.gz");
+			ProcessBuilder builder = new ProcessBuilder("\"C:\\Program Files\\7-Zip\\7z\"", "x", projectsDir+projectName+".tar.gz");
 			builder.directory(new File(projectsDir));
 			//Map<String, String> environ = builder.environment();
 
@@ -84,8 +81,7 @@ public class ProjectProcessor {
 			}
 			System.out.println("Program terminated!");
 
-			//ProcessBuilder builder2 = new ProcessBuilder("\"C:\\Program Files\\7-Zip\\7z\"", "x", projectsDir+projectName+".tar");
-			ProcessBuilder builder2 = new ProcessBuilder("tar", "xvf", projectsDir+projectName+".tar");
+			ProcessBuilder builder2 = new ProcessBuilder("\"C:\\Program Files\\7-Zip\\7z\"", "x", projectsDir+projectName+".tar");
 			//File direct = new File(projectsDir+projectName+"\\");
 			//if (!direct.exists())
 			//	direct.mkdir();
@@ -126,11 +122,6 @@ public class ProjectProcessor {
 			
 			// Continue to build tree
 		}
-		
-	}
-	
-	public static void LogProjects()
-	{
 		
 	}
 	

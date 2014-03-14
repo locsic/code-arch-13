@@ -1,3 +1,5 @@
+package query.output;
+
 // $ANTLR 3.4 C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g 2014-03-02 10:14:40
 
 import org.antlr.runtime.*;

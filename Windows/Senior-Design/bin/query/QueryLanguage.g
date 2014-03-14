@@ -32,6 +32,7 @@ tokens {
     VAR_STMT;
     VAR_ASSIGN;
     VAR_NAME;
+    FUNCTION;
     COMP_ADD;
     INCR;
     BOOL_EXP;
@@ -133,6 +134,13 @@ variable
 	|	INTEGER 				-> INTEGER
 	|       STRING                                  -> STRING
 	|	RESERVED_TYPES				-> RESERVED_TYPES	
+	|	function				-> ^(FUNCTION function)
+	;
+
+function
+	:	MAX LEFT_PAREN variable COMMA variable RIGHT_PAREN -> ^(MAX variable variable)
+	|	MIN LEFT_PAREN variable COMMA variable RIGHT_PAREN -> ^(MIN variable variable)
+	|       DEPTH LEFT_PAREN variable RIGHT_PAREN -> ^(DEPTH variable)
 	;
 
 block //used for search
@@ -166,10 +174,8 @@ statements //collects data
 	
 variable_stmt
 	:	variable binary_op 		-> ^(VAR_STMT ^(VAR variable) ^(BIN_OP binary_op)) 
-	|	MAX LEFT_PAREN variable COMMA variable RIGHT_PAREN -> ^(MAX variable variable)
-	|	MIN LEFT_PAREN variable COMMA variable RIGHT_PAREN -> ^(MIN variable variable)
-	|       DEPTH LEFT_PAREN variable RIGHT_PAREN -> ^(DEPTH variable)
 	;
+
 variable_assn
 	:	variable variable_assn_right	-> ^(VAR variable) variable_assn_right
 	;
