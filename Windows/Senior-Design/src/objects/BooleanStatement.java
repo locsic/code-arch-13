@@ -24,12 +24,12 @@ public class BooleanStatement {
 		booleanTree = ct;
 	}
 	
-	public boolean evaluate(ResultTree result, LinkedList <NodeChain> bindings)
+	public boolean evaluate(ResultTree result, LinkedList <NodeChain> bindings, LinkedList <NodeChain> locals)
 	{
-		return BooleanStatement.evaluate(booleanTree, result, bindings);
+		return BooleanStatement.evaluate(booleanTree, result, bindings, locals);
 	}	
 	
-	public static boolean evaluate(CommonTree ct, ResultTree result, LinkedList <NodeChain> bindings)
+	public static boolean evaluate(CommonTree ct, ResultTree result, LinkedList <NodeChain> bindings, LinkedList <NodeChain> locals)
 	{
 		if (bindings == null) bindings = new LinkedList <NodeChain>();
 		
@@ -41,7 +41,7 @@ public class BooleanStatement {
 		
 		if (ct.getChild(0).getType() == QueryLanguageLexer.NOT)
 		{
-			return !evaluate((CommonTree)(ct.getChild(0).getChild(0)), result, bindings);
+			return !evaluate((CommonTree)(ct.getChild(0).getChild(0)), result, bindings, locals);
 		}
 		else if (ct.getChild(0).getText().toString() == "EPSILON")
 		{
@@ -51,14 +51,14 @@ public class BooleanStatement {
 		else
 		{
 			varTree = (CommonTree)ct.getChild(0);
-			varResult = NodeChain.evaluateVar((CommonTree) varTree.getChild(0), bindings, new LinkedList <NodeChain> ());
+			varResult = NodeChain.evaluateVar((CommonTree) varTree.getChild(0), bindings, locals);
 		
 			// The second child is always a BOOLEAN_OP variable or EPSILON
 			if (ct.getChild(1).getText() != "EPSILON")
 			{
 				CommonTree booleanOp = (CommonTree) ct.getChild(1);
 				CommonTree innerVarTree = (CommonTree)booleanOp.getChild(0);
-				NodeChain.VarResult innerVarResult = NodeChain.evaluateVar(innerVarTree, bindings, new LinkedList <NodeChain> ());
+				NodeChain.VarResult innerVarResult = NodeChain.evaluateVar(innerVarTree, bindings, locals);
 				
 				String operation = booleanOp.getText().toString();
 				varResult = NodeChain.applyBoolOperation(varResult, innerVarResult, operation);
@@ -70,7 +70,7 @@ public class BooleanStatement {
 				CommonTree phonyBoolExp = (CommonTree)ct.getChild(2);
 				String logicalOp = phonyBoolExp.getChild(0).getText().toString();
 				CommonTree innerBoolExp = (CommonTree)phonyBoolExp.getChild(1);
-				boolean boolExpResult = evaluate(innerBoolExp, result, bindings);
+				boolean boolExpResult = evaluate(innerBoolExp, result, bindings, locals);
 				NodeChain.VarResult r = new NodeChain.VarResult();
 				r.intResultFound = true;
 				r.intResult = boolExpResult == false ? 0 : 1;

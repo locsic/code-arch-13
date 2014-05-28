@@ -48,6 +48,19 @@ public class NodeChain {
 	public VarResult localVarValue;
 	
 	public SelectorNode contains;
+	public int containsType;
+	
+	public static final int CONTAINS = 0;
+	public static final int ISPARENT = 1;	
+	public static final int ISNODETYPE = 2;	
+	
+	public NodeChain(NodeChain source)
+	{
+		nodeList = source.nodeList;
+		name = source.name;
+		resultTree = source.resultTree;
+		localVarValue = source.localVarValue;
+	}
 	
 	public NodeChain()
 	{
@@ -76,7 +89,9 @@ public class NodeChain {
 		VarResult vr = new VarResult();
 		vr.intResultFound = true;
 		
-		if (l.intResultFound && r.intResultFound)
+		if ((l.intResultFound && r.intResultFound) ||
+			(l.intResultFound && !r.stringResultFound) ||
+			(r.intResultFound && !l.stringResultFound))
 		{
 			vr = applyIntOperation(l.intResult, r.intResult, operation);
 		}
@@ -184,7 +199,7 @@ public class NodeChain {
 			out.intResult = (l == r) == false ? 0 : 1;
 			out.intResultFound = true;
 		}
-		else if (operation.matches("||"))			
+		else if (operation.equals("||"))			
 		{
 			out.intResult = ((l == 0 ? false : true) || (r == 0 ? false : true)) == false ? 0 : 1;
 			out.intResultFound = true;
@@ -335,6 +350,11 @@ public class NodeChain {
 				
 				NodeChain nc = findNodeChain(bindings, nodeChain.name);
 				
+				if (nc == null)
+				{
+					nc = findNodeChain(locals, nodeChain.name);
+				}
+				
 				if (nc != null)
 				{
 					if (nc.localVarValue != null)
@@ -351,16 +371,72 @@ public class NodeChain {
 							{
 								case SelectorNode.AST_CHILD : {
 									Class searchClass = Search.getClassFromSearchNodeType(nodeChain.contains.nodeText);
-	
-									if (TreeSearchAlgorithm.HasSubTree(currentResult, searchClass))
+									
+									if (nodeChain.containsType == ISNODETYPE)
 									{
-										varResult.intResultFound = true;
-										varResult.intResult = 1;
+										if (searchClass.isInstance(currentResult))
+										{
+											varResult.intResultFound = true;
+											varResult.intResult = 1;											
+										}
+										else
+										{											
+											varResult.intResultFound = true;
+											varResult.intResult = 0;
+										}
 									}
-									else
+									else if (nodeChain.containsType == CONTAINS)
 									{
-										varResult.intResultFound = true;
-										varResult.intResult = 0;								
+										if (TreeSearchAlgorithm.HasSubTree(currentResult, searchClass))
+										{
+											varResult.intResultFound = true;
+											varResult.intResult = 1;
+										}
+										else
+										{
+											varResult.intResultFound = true;
+											varResult.intResult = 0;								
+										}
+									}
+									else // ISPARENT has no meaning for an AST_CHILD
+									{
+										Assert.isTrue(false, "Inappropriate contains type with AST_CHILD");
+									}
+								} break;
+								case SelectorNode.PROP : {
+									NodeChain containsNC = findNodeChain(bindings, nodeChain.contains.nodeText);
+									
+									if (containsNC == null)
+									{
+										containsNC = findNodeChain(locals, nodeChain.contains.nodeText);
+									}
+									
+									if (containsNC == null)
+									{
+										Assert.isTrue(false, "Can't find variable within contains");										
+									}
+									
+									ASTNode NCResult = containsNC.resultTree.getRoot();
+									
+									varResult.stringResultFound = false;
+									varResult.stringResult = null;
+									varResult.intResultFound = true;
+									varResult.intResult = 0;
+									
+									while (NCResult != null)
+									{
+										NCResult = NCResult.getParent();
+										if (NCResult != null && NCResult.equals(currentResult))
+										{
+											varResult.intResult = 1;
+											break;
+										}
+										if (nodeChain.containsType == ISPARENT)
+										{
+											// if this operation is ISPARENT rather than CONTAINS, we
+											// should only check the first level up
+											break;
+										}
 									}
 								} break;
 							}
@@ -391,12 +467,18 @@ public class NodeChain {
 							varResult.stringResult = ((SimpleName)currentResult).getIdentifier();
 							return varResult;
 						}
+						else
+						{
+							varResult.stringResultFound = true;
+							varResult.stringResult = currentResult.toString();
+							return varResult;						
+						}
 					}
 					// still here, haven't found anything usable
-					System.out.println("Couldn't resolve variable " + nodeChain.name + " to boolean/integer, will return 0");
+					//System.out.println("Couldn't resolve variable " + nodeChain.name + " to boolean/integer, will return 0");
 				}
 				// we failed to find a matching variable, report error
-				System.out.println("Couldn't match variable " + nodeChain.name + ", will return 0");
+				//System.out.println("Couldn't match variable " + nodeChain.name + ", will return 0");
 				
 			}
 			
@@ -424,6 +506,10 @@ public class NodeChain {
 
 			if (currentNode.nodeType == SelectorNode.AST_CHILD)
 			{
+				if (currentNode.nodeText.equals(new String("parent")))
+				{
+					currentResult = currentResult.getParent();
+				}
 				// try to find the matching child name in the result
 				List <StructuralPropertyDescriptor> structuralProperties = currentResult.structuralPropertiesForType();
 				

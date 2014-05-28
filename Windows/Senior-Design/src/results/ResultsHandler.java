@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class ResultsHandler {
 
-	static String outputDir = main.Controller.ROOT + "output\\" + query.QueryHandler.queryName + "\\";
+	static String outputDir = main.Controller.ROOT + "output\\" + query.QueryHandler.queries.getFirst().queryName + "\\";
 	static int count;
 	public static void PrintResults(LinkedList<ResultTree> results) 
 	{

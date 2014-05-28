@@ -3,7 +3,10 @@ import java.util.*;
 
 import org.antlr.runtime.tree.CommonTree;
 
+import query.QueryHandler;
+
 public class Query {
+	public boolean nullQuery; // A null query has statements but no actual query
 	public String queryName;
 	public LinkedList <NodeChain> nodeChains;
 	public LinkedList<Query> nestedQueries;
@@ -11,8 +14,12 @@ public class Query {
 	public LinkedList<Statement> statements;	
 	public String searchOp;
 	public NodeChain searchOperand;
+	public String searchNodeOperand = null;
+	public String searchNodeOp = null;
 	//private LinkedList<SelectorNode> printNodeChain;
 	//public LinkedList<>
+	public String searchNodeType = null;
+	public LinkedList<ResultTree> resultTrees = null;
 
 	public Query()
 	{
@@ -23,6 +30,7 @@ public class Query {
 		statements = new LinkedList <Statement>();
 		searchOp = null;
 		searchOperand = null;
+		nullQuery = false;
 		//printNodeChain = null;
 	}
 
@@ -51,9 +59,18 @@ public class Query {
 		return nodeChains.getLast().isEmpty() ? null : nodeChains.getLast().remove();
 	}
 
-	public void addContains(NodeChain n)
+	public void addContains(NodeChain n, int containsType)
 	{
-		nodeChains.getLast().contains = n.nodeList.getFirst();		
+		if (n.nodeList.isEmpty())
+		{
+			nodeChains.getLast().contains = new SelectorNode(n.name, SelectorNode.PROP);
+		}
+		else
+		{
+			nodeChains.getLast().contains = n.nodeList.getFirst();
+		}
+		
+		nodeChains.getLast().containsType = containsType;
 	}
 	
 	public void addWhereClause(CommonTree ct)
@@ -65,7 +82,15 @@ public class Query {
 	{
 		for (CommonTree child : (Collection <CommonTree>)(ct.getChildren()))
 		{
-			if (child.getText().toString().equals("STATEMENT"))
+			if (child.getText().toString().equals("QUERY"))
+			{
+				// For normal statements, add to the statement list of this query.
+				// For Query statements, insert a dummy statement to indicate when to
+				// process the second query								
+				QueryHandler.QueryBuilder((CommonTree)(child.getChild(0)), 0);
+				addStatement((CommonTree)child);
+			}
+			else if (child.getText().toString().equals("STATEMENT"))
 			{
 				addStatement(child);
 				addStatements(child);
@@ -99,11 +124,14 @@ public class Query {
 	}
 
 	public void bindVars(ResultTree r) {
-		nodeChains.getFirst().setBinding(r);
-		if (r.operandRoot != null)
+		if (r != null && !nodeChains.isEmpty())
 		{
-			ResultTree innerResultTree = new ResultTree(r.operandRoot);
-			searchOperand.resultTree = innerResultTree;
+			nodeChains.getFirst().setBinding(r);
+			if (r.operandRoot != null)
+			{
+				ResultTree innerResultTree = new ResultTree(r.operandRoot);
+				searchOperand.resultTree = innerResultTree;
+			}
 		}
 	}
 }

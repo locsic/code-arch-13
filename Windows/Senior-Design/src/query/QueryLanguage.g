@@ -46,12 +46,17 @@ startrule
 	:	queries -> ^(QUERIES queries)
 	;
 
-queries	:	query query*
+queries	:	blockquery*
 	;
+
+
+blockquery : stat_statements query stat_statements -> ^(STATEMENTS stat_statements) query ^(STATEMENTS stat_statements)
+           ;
 
 query	:	query_name foreach_query print_stmt -> ^(QUERY ^(QUERY_NAME query_name) ^(FOR_QUERY foreach_query) ^(PRINT print_stmt?) )
 	|	query_name select_query print_stmt -> ^(QUERY ^(QUERY_NAME query_name) ^(SELECT_QUERY select_query) ^(PRINT print_stmt?) )
 	|	query_name ID FILTER ID print_stmt -> ^(QUERY ^(QUERY_NAME query_name) ^(FILTER_QUERY ID FILTER ID) ^(PRINT print_stmt?) )
+	|       EPSILON
 	;
 
 query_name 
@@ -72,7 +77,7 @@ select_query
 	;
 select_where
 	:	WHERE boolean_exp stat_statements -> ^(WHERE_BLOCK ^(BOOL_EXP boolean_exp) ^(STATEMENTS stat_statements))
-	|	-> WHERE_BLOCK
+	|	stat_statements -> ^(WHERE_BLOCK ^(STATEMENTS stat_statements))
 	;
 in_clause
 	:	IN ID -> ID
@@ -106,6 +111,8 @@ ast_child
 	;
 keywords
 	:	PERIOD CONTAINS LEFT_PAREN keyword_nodes RIGHT_PAREN 	-> ^(CONTAINS keyword_nodes)
+	|	PERIOD ISPARENT LEFT_PAREN keyword_nodes RIGHT_PAREN	-> ^(ISPARENT keyword_nodes)
+	|	PERIOD ISNODETYPE LEFT_PAREN keyword_nodes RIGHT_PAREN	-> ^(ISNODETYPE keyword_nodes)
 	|	PERIOD IS LEFT_PAREN keyword_nodes RIGHT_PAREN 		-> ^(IS keyword_nodes)
 	|	PERIOD HAS LEFT_PAREN keyword_nodes RIGHT_PAREN 	-> ^(HAS keyword_nodes)
 	;
@@ -118,6 +125,8 @@ keyword_nodes
 attr
 	:	COLON attr 					->  ^(ATTRIBUTES attr)
 	|	PERIOD CONTAINS LEFT_PAREN keyword_nodes RIGHT_PAREN 	-> ^(CONTAINS keyword_nodes)
+	|	PERIOD ISPARENT LEFT_PAREN keyword_nodes RIGHT_PAREN 	-> ^(ISPARENT keyword_nodes)
+	|	PERIOD ISNODETYPE LEFT_PAREN keyword_nodes RIGHT_PAREN 	-> ^(ISNODETYPE keyword_nodes)
 	|	PERIOD IS LEFT_PAREN keyword_nodes RIGHT_PAREN 		-> ^(IS keyword_nodes)
 	|	PERIOD HAS LEFT_PAREN keyword_nodes RIGHT_PAREN 	-> ^(HAS keyword_nodes)
 	|	ATTRIBUTES attr 				-> ^(ATTRIBUTES attr)
@@ -126,6 +135,8 @@ attr
 property
 	:	ID					       -> ^(VAR_NAME ID)
 	|	ID PERIOD CONTAINS LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^(VAR_NAME ID ^(CONTAINS keyword_nodes))
+	|	ID PERIOD ISPARENT LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^(VAR_NAME ID ^(ISPARENT keyword_nodes))
+	|	ID PERIOD ISNODETYPE LEFT_PAREN keyword_nodes RIGHT_PAREN -> ^(VAR_NAME ID ^(ISNODETYPE keyword_nodes))
 	;
 	
 variable	
@@ -258,6 +269,12 @@ REPEATER
 	;
 CONTAINS
 	:	'contains'
+	;
+ISPARENT
+	:	'isparent'
+	;
+ISNODETYPE
+	:	'isnodetype'
 	;
 IS	:	'is'
 	;

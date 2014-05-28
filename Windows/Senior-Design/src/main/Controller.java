@@ -13,6 +13,7 @@ import org.antlr.runtime.RecognitionException;
 import projects.ProjectProcessor;
 import query.QueryHandler;
 import objects.ProjectTree;
+import objects.Query;
 import objects.ResultTree;
 
 public class Controller {
@@ -90,21 +91,18 @@ public class Controller {
 		QueryHandler.ReadUserQuery();
 	}
 
-	public static void SearchAlgorithm()
+	public static void SearchAlgorithm(LinkedList<Query> queries, boolean topLevel)
 	{
-		LinkedList<ResultTree> resultTrees;
+		QueryHandler.readLocals(ROOT + "locals.properties");	
 		
-		QueryHandler.readLocals(ROOT + "locals.properties");
-		resultTrees = algorithm.Search.SearchTrees(projectsList);
+		LinkedList<ResultTree> resultTrees = null;
 		
-		resultTrees = QueryHandler.applyWhere(resultTrees);
+		for (Query q : queries)
+		{
+			resultTrees = QueryHandler.executeQuery(QueryHandler.queries.getFirst(), null, resultTrees);
+		}
 		
-		// Apply the STATEMENTS in the query body to the remaining results
-		QueryHandler.applyStatements(resultTrees);
-		
-		QueryHandler.writeLocals(ROOT + "locals.properties");
-		
-		if (QueryHandler.printSum)
+		if (topLevel && QueryHandler.printSum)
 			ResultsHandler.PrintNumResults(resultTrees);
 		else
 			ResultsHandler.PrintResults(resultTrees);
@@ -120,7 +118,7 @@ public class Controller {
 				InterpretQuery();
 				
 				try{
-					SearchAlgorithm();
+					SearchAlgorithm(QueryHandler.queries, true);
 				}
 				catch (Exception e)
 				{

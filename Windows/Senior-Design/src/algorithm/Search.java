@@ -1,4 +1,5 @@
 package algorithm;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.lang.reflect.*;
@@ -6,30 +7,31 @@ import java.lang.reflect.*;
 import org.eclipse.core.runtime.Assert;
 
 import objects.*;
-import query.QueryHandler;
 public class Search {
+	
+	HashMap <Query, List <ProjectTree> > resultCache = new HashMap <Query, List <ProjectTree>> ();
 
-	public static LinkedList<ResultTree> SearchTrees (List<ProjectTree> trees)
+	public static LinkedList<ResultTree> SearchTrees (Query query, List<ProjectTree> trees)
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 		LinkedList r = new LinkedList();
 		
 		for(ProjectTree proj: trees)
-			results.addAll(SearchTree(proj.projectTree));
+			results.addAll(SearchTree(query, proj.projectTree));
 		return results;
 	}
 
 	
-	public static LinkedList<ResultTree> SearchTree(DirectoryTree tree)
+	public static LinkedList<ResultTree> SearchTree(Query query, DirectoryTree tree)
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 		
-		SearchCriteria sc = new SearchCriteria();
+		SearchCriteria sc = new SearchCriteria(query);
 		
 		Class searchClass = sc.searchClass;
 			
 		for(DirectoryTree dir: tree.dirs)
-			results.addAll(SearchTree(dir));
+			results.addAll(SearchTree(query, dir));
 		
 		for(FileTree fileTree: tree.files){
 			algorithm.TreeSearchAlgorithm.HasSubTree(fileTree.root, sc);	
@@ -45,19 +47,34 @@ public class Search {
 		return results;
 	}
 	
-	public static LinkedList<ResultTree> SearchResultTrees (List<ResultTree> trees)
+	public static LinkedList<ResultTree> SearchTrees(Query query, LinkedList<ResultTree> inputTrees)
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 		
-		for(ResultTree proj: trees)
-			results.addAll(SearchTree(proj));
+		SearchCriteria sc = new SearchCriteria(query);
+		
+		Class searchClass = sc.searchClass;
+		
+		for (ResultTree inputTree : inputTrees)
+		{
+			results.addAll(SearchTree(inputTree, searchClass));
+		}
 		return results;
 	}
+	
+	//public static LinkedList<ResultTree> SearchResultTrees (List<ResultTree> trees)
+	//{
+//		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
+		//
+		//for(ResultTree proj: trees)
+//			results.addAll(SearchTree(proj));
+		//return results;
+	//}
 
-	public static LinkedList<ResultTree> SearchTree(ResultTree tree)
-	{
-		return SearchTree(tree, QueryHandler.searchNodeType);
-	}
+	//public static LinkedList<ResultTree> SearchTree(ResultTree tree)
+	//{
+//		return SearchTree(tree, Query.searchNodeType);
+//	}
 	
 	public static Class getClassFromSearchNodeType(String searchNodeType)
 	{
@@ -69,26 +86,24 @@ public class Search {
 			
 			if (!(Class.forName("org.eclipse.jdt.core.dom.ASTNode").isAssignableFrom(searchClass)))
 			{
-				System.out.println(QueryHandler.searchNodeType + " is not an ASTNode.");
+				System.out.println(searchNodeType + " is not an ASTNode.");
 				Assert.isTrue(false);
 			}
 		}
 		catch (ClassNotFoundException c)
 		{
-			System.out.println("Class " + QueryHandler.searchNodeType + " not found.");
+			System.out.println("Class " + searchNodeType + " not found.");
 			Assert.isTrue(false);			
 		}	
 		
 		return searchClass;
 	}
 	
-	public static LinkedList<ResultTree> SearchTree(ResultTree tree, String searchNodeType)
+	public static LinkedList<ResultTree> SearchTree(ResultTree tree, Class searchClass)
 	{
 		LinkedList<ResultTree> results = new LinkedList<ResultTree>();
 
 		//System.out.println(nodetype);
-		
-		Class searchClass = getClassFromSearchNodeType(searchNodeType);
 
 			algorithm.TreeSearchAlgorithm.HasSubTree(tree.root, searchClass);
 			for (ResultTree t: algorithm.TreeSearchAlgorithm.matches)

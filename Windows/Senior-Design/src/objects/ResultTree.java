@@ -21,8 +21,16 @@ public class ResultTree extends FileTree {
 	
 	public ResultTree(ResultTree r)
 	{
-		this.root = r.root;
-		this.operandRoot = r.operandRoot;
+		if (r != null)
+		{
+			this.root = r.root;
+			this.operandRoot = r.operandRoot;
+		}
+		else
+		{
+			root = null;
+			operandRoot = null;
+		}
 	}
 
 	public ResultTree(ASTNode root, FileTree originTree)
