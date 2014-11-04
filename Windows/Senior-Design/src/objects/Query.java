@@ -7,10 +7,12 @@ import query.QueryHandler;
 
 public class Query {
 	public boolean nullQuery; // A null query has statements but no actual query
+	public boolean isTopLevel;
 	public String queryName;
 	public LinkedList <NodeChain> nodeChains;
 	public LinkedList<Query> nestedQueries;
 	public BooleanStatement whereClause;
+	public CommonTree inClause;
 	public LinkedList<Statement> statements;	
 	public String searchOp;
 	public NodeChain searchOperand;
@@ -24,6 +26,7 @@ public class Query {
 	public Query()
 	{
 		nodeChains = new LinkedList <NodeChain>();
+		isTopLevel = false;
 		queryName = null;
 		nestedQueries = null;
 		whereClause = null;
@@ -31,6 +34,7 @@ public class Query {
 		searchOp = null;
 		searchOperand = null;
 		nullQuery = false;
+		inClause = null;
 		//printNodeChain = null;
 	}
 
@@ -87,7 +91,7 @@ public class Query {
 				// For normal statements, add to the statement list of this query.
 				// For Query statements, insert a dummy statement to indicate when to
 				// process the second query								
-				QueryHandler.QueryBuilder((CommonTree)(child.getChild(0)), 0);
+				QueryHandler.QueryBuilder((CommonTree)(child.getChild(0)), 0, false);
 				addStatement((CommonTree)child);
 			}
 			else if (child.getText().toString().equals("STATEMENT"))
@@ -100,7 +104,8 @@ public class Query {
 	
 	public void addStatement(CommonTree ct)
 	{
-		if (ct != null) statements.add(new Statement(ct));
+		if (ct != null && ct.getChild(0) != null && !ct.getChild(0).getText().toString().equals("EPSILON")) 
+			statements.add(new Statement(ct));
 	}
 
 	public String print()

@@ -47,7 +47,7 @@ public class SearchCriteria {
 				// System.out.println(nodetype);
 			}
 			catch (ClassNotFoundException c)
-			{
+			{				
 				// This is not actually an error (because there might not be a search op)
 				// System.out.println("Class " + query.searchNodeOperand + " not found.");
 				//Assert.isTrue(false);			

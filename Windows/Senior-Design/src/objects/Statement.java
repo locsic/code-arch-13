@@ -95,11 +95,11 @@ public class Statement {
 			CommonTree varVar = (CommonTree)varStmt.getChild(0);
 			CommonTree varBinOp = (CommonTree)varStmt.getChild(1);
 			
-			VarResult v = NodeChain.evaluateVar((CommonTree)varVar.getChild(0), bindings, locals);
+			VarResult v = NodeChain.evaluateVar((CommonTree)varVar.getChild(0), bindings, locals, false);
 			
 			if (v.intResultFound == false && v.stringResultFound == false)
 			{
-				v = NodeChain.evaluateVar((CommonTree)varVar.getChild(0), locals, new LinkedList <NodeChain> ());
+				v = NodeChain.evaluateVar((CommonTree)varVar.getChild(0), locals, new LinkedList <NodeChain> (), false);
 			}
 			
 			if (!((CommonTree)varBinOp.getChild(0)).getText().equals("EPSILON"))
@@ -107,11 +107,11 @@ public class Statement {
 				String operation = varBinOp.getChild(0).getText();
 				CommonTree varRVar = (CommonTree)varBinOp.getChild(1); 
 				
-				VarResult vr = NodeChain.evaluateVar((CommonTree)varRVar.getChild(0), bindings, new LinkedList <NodeChain> ());
+				VarResult vr = NodeChain.evaluateVar((CommonTree)varRVar.getChild(0), bindings, new LinkedList <NodeChain> (), false);
 				
 				if (vr.intResultFound == false && vr.stringResultFound == false)
 				{
-					vr = NodeChain.evaluateVar((CommonTree)varRVar.getChild(0), locals, new LinkedList <NodeChain> ());
+					vr = NodeChain.evaluateVar((CommonTree)varRVar.getChild(0), locals, new LinkedList <NodeChain> (), false);
 				}
 				v = NodeChain.applyOperation(v, vr, operation);
 				

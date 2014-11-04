@@ -1,6 +1,6 @@
 package query;
 
-// $ANTLR 3.4 C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g 2014-05-18 09:56:49
+// $ANTLR 3.4 C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g 2014-11-02 15:56:52
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -34,27 +34,27 @@ public class QueryLanguageLexer extends Lexer {
     public static final int FILTER=25;
     public static final int FILTER_QUERY=26;
     public static final int FLOAT=27;
-    public static final int FOREACH=28;
-    public static final int FOR_QUERY=29;
-    public static final int FUNCTION=30;
-    public static final int GT=31;
-    public static final int GTE=32;
-    public static final int HAS=33;
-    public static final int HEX_DIGIT=34;
-    public static final int ID=35;
-    public static final int IF=36;
-    public static final int IF_STATEMENT=37;
-    public static final int IN=38;
-    public static final int INCR=39;
-    public static final int INCREMENT=40;
-    public static final int INTEGER=41;
-    public static final int IN_CLAUSE=42;
-    public static final int IS=43;
-    public static final int ISNODETYPE=44;
-    public static final int ISPARENT=45;
-    public static final int LEFT_BRACKET=46;
-    public static final int LEFT_PAREN=47;
-    public static final int LEFT_SQ_BRACKET=48;
+    public static final int FOR_QUERY=28;
+    public static final int FUNCTION=29;
+    public static final int GT=30;
+    public static final int GTE=31;
+    public static final int HAS=32;
+    public static final int HEX_DIGIT=33;
+    public static final int ID=34;
+    public static final int IF=35;
+    public static final int IF_STATEMENT=36;
+    public static final int IN=37;
+    public static final int INCR=38;
+    public static final int INCREMENT=39;
+    public static final int INTEGER=40;
+    public static final int IN_CLAUSE=41;
+    public static final int IS=42;
+    public static final int ISNODETYPE=43;
+    public static final int ISPARENT=44;
+    public static final int LEFT_BRACKET=45;
+    public static final int LEFT_PAREN=46;
+    public static final int LEFT_SQ_BRACKET=47;
+    public static final int LINE_COMMENT=48;
     public static final int LOGIC_EQUALS=49;
     public static final int LOGIC_OP=50;
     public static final int LT=51;
@@ -120,36 +120,13 @@ public class QueryLanguageLexer extends Lexer {
     }
     public String getGrammarFileName() { return "C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g"; }
 
-    // $ANTLR start "FOREACH"
-    public final void mFOREACH() throws RecognitionException {
-        try {
-            int _type = FOREACH;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:242:2: ( 'foreach' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:242:5: 'foreach'
-            {
-            match("foreach"); 
-
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "FOREACH"
-
     // $ANTLR start "SELECT"
     public final void mSELECT() throws RecognitionException {
         try {
             int _type = SELECT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:245:2: ( 'select' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:245:5: 'select'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:233:2: ( 'select' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:233:5: 'select'
             {
             match("select"); 
 
@@ -171,8 +148,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = WHERE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:248:2: ( 'where' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:248:4: 'where'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:236:2: ( 'where' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:236:4: 'where'
             {
             match("where"); 
 
@@ -194,8 +171,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = WITH;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:251:2: ( 'with' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:251:4: 'with'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:239:2: ( 'with' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:239:4: 'with'
             {
             match("with"); 
 
@@ -217,8 +194,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = AS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:254:2: ( 'as' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:254:4: 'as'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:242:2: ( 'as' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:242:4: 'as'
             {
             match("as"); 
 
@@ -240,8 +217,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = SET;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:257:2: ( 'set' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:257:4: 'set'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:245:2: ( 'set' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:245:4: 'set'
             {
             match("set"); 
 
@@ -263,8 +240,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = IF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:260:2: ( 'if' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:260:4: 'if'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:248:2: ( 'if' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:248:4: 'if'
             {
             match("if"); 
 
@@ -286,8 +263,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = IN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:262:4: ( 'in' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:262:6: 'in'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:250:4: ( 'in' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:250:6: 'in'
             {
             match("in"); 
 
@@ -309,8 +286,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = STAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:265:2: ( '*' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:265:4: '*'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:253:2: ( '*' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:253:4: '*'
             {
             match('*'); 
 
@@ -330,8 +307,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = REPEATER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:268:2: ( PERIOD PERIOD PERIOD )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:268:4: PERIOD PERIOD PERIOD
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:256:2: ( PERIOD PERIOD PERIOD )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:256:4: PERIOD PERIOD PERIOD
             {
             mPERIOD(); 
 
@@ -358,8 +335,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = CONTAINS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:271:2: ( 'contains' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:271:4: 'contains'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:259:2: ( 'contains' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:259:4: 'contains'
             {
             match("contains"); 
 
@@ -381,8 +358,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = ISPARENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:274:2: ( 'isparent' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:274:4: 'isparent'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:262:2: ( 'isparent' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:262:4: 'isparent'
             {
             match("isparent"); 
 
@@ -404,8 +381,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = ISNODETYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:277:2: ( 'isnodetype' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:277:4: 'isnodetype'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:265:2: ( 'isnodetype' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:265:4: 'isnodetype'
             {
             match("isnodetype"); 
 
@@ -427,8 +404,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = IS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:279:4: ( 'is' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:279:6: 'is'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:267:4: ( 'is' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:267:6: 'is'
             {
             match("is"); 
 
@@ -450,8 +427,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = HAS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:281:5: ( 'has' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:281:7: 'has'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:269:5: ( 'has' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:269:7: 'has'
             {
             match("has"); 
 
@@ -473,8 +450,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = MAX;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:283:5: ( 'max' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:283:7: 'max'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:271:5: ( 'max' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:271:7: 'max'
             {
             match("max"); 
 
@@ -496,8 +473,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = MIN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:285:5: ( 'min' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:285:7: 'min'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:273:5: ( 'min' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:273:7: 'min'
             {
             match("min"); 
 
@@ -519,8 +496,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = DEPTH;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:287:7: ( 'depth' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:287:9: 'depth'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:275:7: ( 'depth' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:275:9: 'depth'
             {
             match("depth"); 
 
@@ -542,8 +519,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = PRINT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:290:2: ( 'print' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:290:4: 'print'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:278:2: ( 'print' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:278:4: 'print'
             {
             match("print"); 
 
@@ -565,8 +542,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = COMMA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:292:7: ( ',' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:292:9: ','
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:280:7: ( ',' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:280:9: ','
             {
             match(','); 
 
@@ -586,8 +563,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = FILTER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:295:2: ( '->' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:295:4: '->'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:283:2: ( '->' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:283:4: '->'
             {
             match("->"); 
 
@@ -609,8 +586,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = LEFT_PAREN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:299:2: ( '(' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:299:4: '('
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:287:2: ( '(' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:287:4: '('
             {
             match('('); 
 
@@ -630,8 +607,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = RIGHT_PAREN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:302:2: ( ')' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:302:4: ')'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:290:2: ( ')' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:290:4: ')'
             {
             match(')'); 
 
@@ -651,8 +628,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = LEFT_BRACKET;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:305:2: ( '{' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:305:4: '{'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:293:2: ( '{' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:293:4: '{'
             {
             match('{'); 
 
@@ -672,8 +649,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = RIGHT_BRACKET;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:308:2: ( '}' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:308:4: '}'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:296:2: ( '}' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:296:4: '}'
             {
             match('}'); 
 
@@ -693,8 +670,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = LEFT_SQ_BRACKET;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:311:2: ( '[' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:311:4: '['
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:299:2: ( '[' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:299:4: '['
             {
             match('['); 
 
@@ -714,8 +691,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = RIGHT_SQ_BRACKET;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:314:2: ( ']' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:314:4: ']'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:302:2: ( ']' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:302:4: ']'
             {
             match(']'); 
 
@@ -735,8 +712,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = SEMICOLON;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:317:2: ( ';' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:317:4: ';'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:305:2: ( ';' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:305:4: ';'
             {
             match(';'); 
 
@@ -756,8 +733,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = COLON;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:320:2: ( ':' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:320:4: ':'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:308:2: ( ':' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:308:4: ':'
             {
             match(':'); 
 
@@ -777,8 +754,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = PERIOD;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:323:2: ( '.' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:323:5: '.'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:311:2: ( '.' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:311:5: '.'
             {
             match('.'); 
 
@@ -798,8 +775,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = DQOUTE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:326:8: ( '\"' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:326:10: '\"'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:314:8: ( '\"' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:314:10: '\"'
             {
             match('\"'); 
 
@@ -819,8 +796,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = GT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:328:5: ( '>' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:328:7: '>'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:316:5: ( '>' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:316:7: '>'
             {
             match('>'); 
 
@@ -840,8 +817,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = LT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:330:5: ( '<' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:330:7: '<'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:318:5: ( '<' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:318:7: '<'
             {
             match('<'); 
 
@@ -861,8 +838,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = LTE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:332:5: ( LT EQUALS )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:332:7: LT EQUALS
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:320:5: ( LT EQUALS )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:320:7: LT EQUALS
             {
             mLT(); 
 
@@ -886,8 +863,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = GTE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:334:5: ( GT EQUALS )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:334:7: GT EQUALS
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:322:5: ( GT EQUALS )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:322:7: GT EQUALS
             {
             mGT(); 
 
@@ -911,7 +888,7 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:336:5: ( '&&' | 'AND' | 'and' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:324:5: ( '&&' | 'AND' | 'and' )
             int alt1=3;
             switch ( input.LA(1) ) {
             case '&':
@@ -939,7 +916,7 @@ public class QueryLanguageLexer extends Lexer {
 
             switch (alt1) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:336:7: '&&'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:324:7: '&&'
                     {
                     match("&&"); 
 
@@ -948,7 +925,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:337:4: 'AND'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:325:4: 'AND'
                     {
                     match("AND"); 
 
@@ -957,7 +934,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:338:4: 'and'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:326:4: 'and'
                     {
                     match("and"); 
 
@@ -981,7 +958,7 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:340:4: ( '||' | 'OR' | 'or' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:328:4: ( '||' | 'OR' | 'or' )
             int alt2=3;
             switch ( input.LA(1) ) {
             case '|':
@@ -1009,7 +986,7 @@ public class QueryLanguageLexer extends Lexer {
 
             switch (alt2) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:340:6: '||'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:328:6: '||'
                     {
                     match("||"); 
 
@@ -1018,7 +995,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:341:4: 'OR'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:329:4: 'OR'
                     {
                     match("OR"); 
 
@@ -1027,7 +1004,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:342:4: 'or'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:330:4: 'or'
                     {
                     match("or"); 
 
@@ -1051,8 +1028,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = NOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:344:5: ( '!' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:344:7: '!'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:332:5: ( '!' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:332:7: '!'
             {
             match('!'); 
 
@@ -1072,8 +1049,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = NOT_EQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:347:2: ( NOT EQUALS )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:347:4: NOT EQUALS
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:335:2: ( NOT EQUALS )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:335:4: NOT EQUALS
             {
             mNOT(); 
 
@@ -1097,8 +1074,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = LOGIC_EQUALS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:349:14: ( EQUALS EQUALS )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:349:16: EQUALS EQUALS
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:337:14: ( EQUALS EQUALS )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:337:16: EQUALS EQUALS
             {
             mEQUALS(); 
 
@@ -1122,8 +1099,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = EQUALS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:352:8: ( '=' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:352:10: '='
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:340:8: ( '=' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:340:10: '='
             {
             match('='); 
 
@@ -1143,8 +1120,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:354:6: ( '+' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:354:8: '+'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:342:6: ( '+' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:342:8: '+'
             {
             match('+'); 
 
@@ -1164,8 +1141,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:356:7: ( '-' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:356:9: '-'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:344:7: ( '-' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:344:9: '-'
             {
             match('-'); 
 
@@ -1185,8 +1162,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = DIVIDE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:358:8: ( '/' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:358:10: '/'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:346:8: ( '/' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:346:10: '/'
             {
             match('/'); 
 
@@ -1206,8 +1183,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = COMPOUND_ADD;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:360:14: ( PLUS EQUALS )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:360:16: PLUS EQUALS
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:348:14: ( PLUS EQUALS )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:348:16: PLUS EQUALS
             {
             mPLUS(); 
 
@@ -1231,8 +1208,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = INCREMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:362:11: ( PLUS PLUS )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:362:13: PLUS PLUS
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:350:11: ( PLUS PLUS )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:350:13: PLUS PLUS
             {
             mPLUS(); 
 
@@ -1256,12 +1233,12 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = NODE_TYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:367:2: ( 'package_declaration' | 'body_declarations' | 'variable_declaration' | 'import_declaration' | 'type_declaration' | 'field_declaration' | 'method_declaration' | 'interface_declaration' | 'constructor_declaration' | 'class_declaration' | 'variable_declaration_fragment' | 'variable_declaration_statement' | 'thrown_exceptions' | 'try_statement' | 'catch_clause' | 'initializer' | 'method_invocation' | 'if_statement' | 'expression' | 'operator' | 'conditional_expression' | 'continue_expression' | 'assignment' | 'this_expression' | 'class_instance_creation' | 'field_access' | 'instance_of_expression' | 'cast_expression' | 'super_field_access' | 'statement' | 'then_statement' | 'else_statement' | 'do_statement' | 'parameters' | 'body' | 'for_statement' | 'enhanced_for_statement' | 'switch_statement' | 'while_statement' | 'null_literal' | 'integer_literal' | 'character_literal' | 'string_literal' | 'boolean_literal' | 'variable' | 'file' | 'directory' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:355:2: ( 'package_declaration' | 'body_declarations' | 'variable_declaration' | 'import_declaration' | 'type_declaration' | 'field_declaration' | 'method_declaration' | 'interface_declaration' | 'constructor_declaration' | 'class_declaration' | 'variable_declaration_fragment' | 'variable_declaration_statement' | 'thrown_exceptions' | 'try_statement' | 'catch_clause' | 'initializer' | 'method_invocation' | 'if_statement' | 'expression' | 'operator' | 'conditional_expression' | 'continue_expression' | 'assignment' | 'this_expression' | 'class_instance_creation' | 'field_access' | 'instance_of_expression' | 'cast_expression' | 'super_field_access' | 'statement' | 'then_statement' | 'else_statement' | 'do_statement' | 'parameters' | 'body' | 'for_statement' | 'enhanced_for_statement' | 'switch_statement' | 'while_statement' | 'null_literal' | 'integer_literal' | 'character_literal' | 'string_literal' | 'boolean_literal' | 'variable' | 'file' | 'directory' )
             int alt3=47;
             alt3 = dfa3.predict(input);
             switch (alt3) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:367:4: 'package_declaration'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:355:4: 'package_declaration'
                     {
                     match("package_declaration"); 
 
@@ -1270,7 +1247,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:368:4: 'body_declarations'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:356:4: 'body_declarations'
                     {
                     match("body_declarations"); 
 
@@ -1279,7 +1256,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:369:4: 'variable_declaration'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:357:4: 'variable_declaration'
                     {
                     match("variable_declaration"); 
 
@@ -1288,7 +1265,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:370:4: 'import_declaration'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:358:4: 'import_declaration'
                     {
                     match("import_declaration"); 
 
@@ -1297,7 +1274,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 5 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:371:4: 'type_declaration'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:359:4: 'type_declaration'
                     {
                     match("type_declaration"); 
 
@@ -1306,7 +1283,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 6 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:372:4: 'field_declaration'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:360:4: 'field_declaration'
                     {
                     match("field_declaration"); 
 
@@ -1315,7 +1292,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 7 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:373:4: 'method_declaration'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:361:4: 'method_declaration'
                     {
                     match("method_declaration"); 
 
@@ -1324,7 +1301,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 8 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:374:4: 'interface_declaration'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:362:4: 'interface_declaration'
                     {
                     match("interface_declaration"); 
 
@@ -1333,7 +1310,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 9 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:375:4: 'constructor_declaration'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:363:4: 'constructor_declaration'
                     {
                     match("constructor_declaration"); 
 
@@ -1342,7 +1319,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 10 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:376:4: 'class_declaration'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:364:4: 'class_declaration'
                     {
                     match("class_declaration"); 
 
@@ -1351,7 +1328,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 11 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:377:4: 'variable_declaration_fragment'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:365:4: 'variable_declaration_fragment'
                     {
                     match("variable_declaration_fragment"); 
 
@@ -1360,7 +1337,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 12 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:378:4: 'variable_declaration_statement'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:366:4: 'variable_declaration_statement'
                     {
                     match("variable_declaration_statement"); 
 
@@ -1369,7 +1346,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 13 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:379:4: 'thrown_exceptions'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:367:4: 'thrown_exceptions'
                     {
                     match("thrown_exceptions"); 
 
@@ -1378,7 +1355,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 14 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:380:4: 'try_statement'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:368:4: 'try_statement'
                     {
                     match("try_statement"); 
 
@@ -1387,7 +1364,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 15 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:381:4: 'catch_clause'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:369:4: 'catch_clause'
                     {
                     match("catch_clause"); 
 
@@ -1396,7 +1373,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 16 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:382:4: 'initializer'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:370:4: 'initializer'
                     {
                     match("initializer"); 
 
@@ -1405,7 +1382,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 17 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:383:4: 'method_invocation'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:371:4: 'method_invocation'
                     {
                     match("method_invocation"); 
 
@@ -1414,7 +1391,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 18 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:384:4: 'if_statement'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:372:4: 'if_statement'
                     {
                     match("if_statement"); 
 
@@ -1423,7 +1400,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 19 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:385:4: 'expression'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:373:4: 'expression'
                     {
                     match("expression"); 
 
@@ -1432,7 +1409,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 20 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:386:4: 'operator'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:374:4: 'operator'
                     {
                     match("operator"); 
 
@@ -1441,7 +1418,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 21 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:387:4: 'conditional_expression'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:375:4: 'conditional_expression'
                     {
                     match("conditional_expression"); 
 
@@ -1450,7 +1427,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 22 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:388:4: 'continue_expression'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:376:4: 'continue_expression'
                     {
                     match("continue_expression"); 
 
@@ -1459,7 +1436,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 23 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:389:4: 'assignment'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:377:4: 'assignment'
                     {
                     match("assignment"); 
 
@@ -1468,7 +1445,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 24 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:390:4: 'this_expression'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:378:4: 'this_expression'
                     {
                     match("this_expression"); 
 
@@ -1477,7 +1454,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 25 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:391:4: 'class_instance_creation'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:379:4: 'class_instance_creation'
                     {
                     match("class_instance_creation"); 
 
@@ -1486,7 +1463,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 26 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:392:4: 'field_access'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:380:4: 'field_access'
                     {
                     match("field_access"); 
 
@@ -1495,7 +1472,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 27 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:393:4: 'instance_of_expression'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:381:4: 'instance_of_expression'
                     {
                     match("instance_of_expression"); 
 
@@ -1504,7 +1481,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 28 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:394:4: 'cast_expression'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:382:4: 'cast_expression'
                     {
                     match("cast_expression"); 
 
@@ -1513,7 +1490,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 29 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:395:4: 'super_field_access'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:383:4: 'super_field_access'
                     {
                     match("super_field_access"); 
 
@@ -1522,7 +1499,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 30 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:396:4: 'statement'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:384:4: 'statement'
                     {
                     match("statement"); 
 
@@ -1531,7 +1508,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 31 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:397:4: 'then_statement'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:385:4: 'then_statement'
                     {
                     match("then_statement"); 
 
@@ -1540,7 +1517,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 32 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:398:4: 'else_statement'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:386:4: 'else_statement'
                     {
                     match("else_statement"); 
 
@@ -1549,7 +1526,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 33 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:399:4: 'do_statement'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:387:4: 'do_statement'
                     {
                     match("do_statement"); 
 
@@ -1558,7 +1535,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 34 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:400:4: 'parameters'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:388:4: 'parameters'
                     {
                     match("parameters"); 
 
@@ -1567,7 +1544,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 35 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:401:4: 'body'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:389:4: 'body'
                     {
                     match("body"); 
 
@@ -1576,7 +1553,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 36 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:402:4: 'for_statement'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:390:4: 'for_statement'
                     {
                     match("for_statement"); 
 
@@ -1585,7 +1562,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 37 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:403:4: 'enhanced_for_statement'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:391:4: 'enhanced_for_statement'
                     {
                     match("enhanced_for_statement"); 
 
@@ -1594,7 +1571,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 38 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:404:4: 'switch_statement'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:392:4: 'switch_statement'
                     {
                     match("switch_statement"); 
 
@@ -1603,7 +1580,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 39 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:405:4: 'while_statement'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:393:4: 'while_statement'
                     {
                     match("while_statement"); 
 
@@ -1612,7 +1589,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 40 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:406:4: 'null_literal'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:394:4: 'null_literal'
                     {
                     match("null_literal"); 
 
@@ -1621,7 +1598,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 41 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:407:4: 'integer_literal'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:395:4: 'integer_literal'
                     {
                     match("integer_literal"); 
 
@@ -1630,7 +1607,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 42 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:408:4: 'character_literal'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:396:4: 'character_literal'
                     {
                     match("character_literal"); 
 
@@ -1639,7 +1616,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 43 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:409:4: 'string_literal'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:397:4: 'string_literal'
                     {
                     match("string_literal"); 
 
@@ -1648,7 +1625,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 44 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:410:4: 'boolean_literal'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:398:4: 'boolean_literal'
                     {
                     match("boolean_literal"); 
 
@@ -1657,7 +1634,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 45 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:411:4: 'variable'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:399:4: 'variable'
                     {
                     match("variable"); 
 
@@ -1666,7 +1643,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 46 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:412:4: 'file'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:400:4: 'file'
                     {
                     match("file"); 
 
@@ -1675,7 +1652,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 47 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:413:4: 'directory'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:401:4: 'directory'
                     {
                     match("directory"); 
 
@@ -1699,12 +1676,12 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = ATTRIBUTES;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:417:2: ( 'name' | 'type' | 'return_type' | 'parameter_types' | 'is_constructor' | 'is_deprecated' | 'is_parameter' | 'is_field' | 'default_value' | 'modifiers' | 'origin' | 'kind' | 'declared_methods' | 'declared_fields' | 'declared_types' | 'declaring_class' | 'declaring_method' | 'package' | 'interfaces' | 'superclass' | 'boxing' | 'unboxing' | 'parameter_list' | 'modifier' | 'startLine' | 'endLine' | 'totalLines' | 'boolean_value' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:405:2: ( 'name' | 'type' | 'return_type' | 'parameter_types' | 'is_constructor' | 'is_deprecated' | 'is_parameter' | 'is_field' | 'default_value' | 'modifiers' | 'origin' | 'kind' | 'declared_methods' | 'declared_fields' | 'declared_types' | 'declaring_class' | 'declaring_method' | 'package' | 'interfaces' | 'superclass' | 'boxing' | 'unboxing' | 'parameter_list' | 'modifier' | 'startLine' | 'endLine' | 'totalLines' | 'boolean_value' )
             int alt4=28;
             alt4 = dfa4.predict(input);
             switch (alt4) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:417:4: 'name'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:405:4: 'name'
                     {
                     match("name"); 
 
@@ -1713,7 +1690,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:418:4: 'type'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:406:4: 'type'
                     {
                     match("type"); 
 
@@ -1722,7 +1699,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:419:4: 'return_type'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:407:4: 'return_type'
                     {
                     match("return_type"); 
 
@@ -1731,7 +1708,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:420:4: 'parameter_types'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:408:4: 'parameter_types'
                     {
                     match("parameter_types"); 
 
@@ -1740,7 +1717,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 5 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:421:4: 'is_constructor'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:409:4: 'is_constructor'
                     {
                     match("is_constructor"); 
 
@@ -1749,7 +1726,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 6 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:422:4: 'is_deprecated'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:410:4: 'is_deprecated'
                     {
                     match("is_deprecated"); 
 
@@ -1758,7 +1735,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 7 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:423:4: 'is_parameter'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:411:4: 'is_parameter'
                     {
                     match("is_parameter"); 
 
@@ -1767,7 +1744,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 8 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:424:4: 'is_field'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:412:4: 'is_field'
                     {
                     match("is_field"); 
 
@@ -1776,7 +1753,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 9 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:425:4: 'default_value'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:413:4: 'default_value'
                     {
                     match("default_value"); 
 
@@ -1785,7 +1762,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 10 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:426:4: 'modifiers'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:414:4: 'modifiers'
                     {
                     match("modifiers"); 
 
@@ -1794,7 +1771,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 11 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:427:4: 'origin'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:415:4: 'origin'
                     {
                     match("origin"); 
 
@@ -1803,7 +1780,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 12 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:428:4: 'kind'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:416:4: 'kind'
                     {
                     match("kind"); 
 
@@ -1812,7 +1789,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 13 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:429:4: 'declared_methods'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:417:4: 'declared_methods'
                     {
                     match("declared_methods"); 
 
@@ -1821,7 +1798,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 14 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:430:4: 'declared_fields'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:418:4: 'declared_fields'
                     {
                     match("declared_fields"); 
 
@@ -1830,7 +1807,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 15 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:431:4: 'declared_types'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:419:4: 'declared_types'
                     {
                     match("declared_types"); 
 
@@ -1839,7 +1816,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 16 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:432:4: 'declaring_class'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:420:4: 'declaring_class'
                     {
                     match("declaring_class"); 
 
@@ -1848,7 +1825,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 17 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:433:4: 'declaring_method'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:421:4: 'declaring_method'
                     {
                     match("declaring_method"); 
 
@@ -1857,7 +1834,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 18 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:434:4: 'package'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:422:4: 'package'
                     {
                     match("package"); 
 
@@ -1866,7 +1843,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 19 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:435:4: 'interfaces'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:423:4: 'interfaces'
                     {
                     match("interfaces"); 
 
@@ -1875,7 +1852,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 20 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:436:4: 'superclass'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:424:4: 'superclass'
                     {
                     match("superclass"); 
 
@@ -1884,7 +1861,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 21 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:437:4: 'boxing'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:425:4: 'boxing'
                     {
                     match("boxing"); 
 
@@ -1893,7 +1870,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 22 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:438:4: 'unboxing'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:426:4: 'unboxing'
                     {
                     match("unboxing"); 
 
@@ -1902,7 +1879,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 23 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:439:4: 'parameter_list'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:427:4: 'parameter_list'
                     {
                     match("parameter_list"); 
 
@@ -1911,7 +1888,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 24 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:440:4: 'modifier'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:428:4: 'modifier'
                     {
                     match("modifier"); 
 
@@ -1920,7 +1897,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 25 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:441:4: 'startLine'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:429:4: 'startLine'
                     {
                     match("startLine"); 
 
@@ -1929,7 +1906,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 26 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:442:4: 'endLine'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:430:4: 'endLine'
                     {
                     match("endLine"); 
 
@@ -1938,7 +1915,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 27 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:443:4: 'totalLines'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:431:4: 'totalLines'
                     {
                     match("totalLines"); 
 
@@ -1947,7 +1924,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 28 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:444:4: 'boolean_value'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:432:4: 'boolean_value'
                     {
                     match("boolean_value"); 
 
@@ -1971,7 +1948,7 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = RESERVED_TYPES;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:447:2: ( 'is_class' | 'is_primitive' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:435:2: ( 'is_class' | 'is_primitive' )
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -2023,7 +2000,7 @@ public class QueryLanguageLexer extends Lexer {
             }
             switch (alt5) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:447:4: 'is_class'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:435:4: 'is_class'
                     {
                     match("is_class"); 
 
@@ -2032,7 +2009,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:448:4: 'is_primitive'
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:436:4: 'is_primitive'
                     {
                     match("is_primitive"); 
 
@@ -2056,8 +2033,8 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:452:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:452:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:440:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:440:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
                 input.consume();
@@ -2069,7 +2046,7 @@ public class QueryLanguageLexer extends Lexer {
             }
 
 
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:452:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:440:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop6:
             do {
                 int alt6=2;
@@ -2119,10 +2096,10 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:455:9: ( ( '0' .. '9' )+ )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:455:11: ( '0' .. '9' )+
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:443:9: ( ( '0' .. '9' )+ )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:443:11: ( '0' .. '9' )+
             {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:455:11: ( '0' .. '9' )+
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:443:11: ( '0' .. '9' )+
             int cnt7=0;
             loop7:
             do {
@@ -2177,12 +2154,12 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:458:9: ( '\"' ( . )* '\"' )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:458:11: '\"' ( . )* '\"'
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:446:9: ( '\"' ( . )* '\"' )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:446:11: '\"' ( . )* '\"'
             {
             match('\"'); 
 
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:458:15: ( . )*
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:446:15: ( . )*
             loop8:
             do {
                 int alt8=2;
@@ -2198,7 +2175,7 @@ public class QueryLanguageLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:458:15: .
+            	    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:446:15: .
             	    {
             	    matchAny(); 
 
@@ -2229,14 +2206,14 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = FLOAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:462:5: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:450:5: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
             int alt15=3;
             alt15 = dfa15.predict(input);
             switch (alt15) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:462:9: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )?
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:450:9: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )?
                     {
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:462:9: ( '0' .. '9' )+
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:450:9: ( '0' .. '9' )+
                     int cnt9=0;
                     loop9:
                     do {
@@ -2277,7 +2254,7 @@ public class QueryLanguageLexer extends Lexer {
 
                     match('.'); 
 
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:462:25: ( '0' .. '9' )*
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:450:25: ( '0' .. '9' )*
                     loop10:
                     do {
                         int alt10=2;
@@ -2311,7 +2288,7 @@ public class QueryLanguageLexer extends Lexer {
                     } while (true);
 
 
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:462:37: ( EXPONENT )?
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:450:37: ( EXPONENT )?
                     int alt11=2;
                     int LA11_0 = input.LA(1);
 
@@ -2320,7 +2297,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     switch (alt11) {
                         case 1 :
-                            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:462:37: EXPONENT
+                            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:450:37: EXPONENT
                             {
                             mEXPONENT(); 
 
@@ -2334,11 +2311,11 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:463:9: '.' ( '0' .. '9' )+ ( EXPONENT )?
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:451:9: '.' ( '0' .. '9' )+ ( EXPONENT )?
                     {
                     match('.'); 
 
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:463:13: ( '0' .. '9' )+
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:451:13: ( '0' .. '9' )+
                     int cnt12=0;
                     loop12:
                     do {
@@ -2377,7 +2354,7 @@ public class QueryLanguageLexer extends Lexer {
                     } while (true);
 
 
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:463:25: ( EXPONENT )?
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:451:25: ( EXPONENT )?
                     int alt13=2;
                     int LA13_0 = input.LA(1);
 
@@ -2386,7 +2363,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     switch (alt13) {
                         case 1 :
-                            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:463:25: EXPONENT
+                            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:451:25: EXPONENT
                             {
                             mEXPONENT(); 
 
@@ -2400,9 +2377,9 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:464:9: ( '0' .. '9' )+ EXPONENT
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:452:9: ( '0' .. '9' )+ EXPONENT
                     {
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:464:9: ( '0' .. '9' )+
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:452:9: ( '0' .. '9' )+
                     int cnt14=0;
                     loop14:
                     do {
@@ -2460,8 +2437,8 @@ public class QueryLanguageLexer extends Lexer {
     // $ANTLR start "EXPONENT"
     public final void mEXPONENT() throws RecognitionException {
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:469:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:469:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:457:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:457:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -2473,7 +2450,7 @@ public class QueryLanguageLexer extends Lexer {
             }
 
 
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:469:22: ( '+' | '-' )?
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:457:22: ( '+' | '-' )?
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -2500,7 +2477,7 @@ public class QueryLanguageLexer extends Lexer {
             }
 
 
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:469:33: ( '0' .. '9' )+
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:457:33: ( '0' .. '9' )+
             int cnt17=0;
             loop17:
             do {
@@ -2552,7 +2529,7 @@ public class QueryLanguageLexer extends Lexer {
     // $ANTLR start "HEX_DIGIT"
     public final void mHEX_DIGIT() throws RecognitionException {
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:472:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:460:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
             // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:
             {
             if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'F')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
@@ -2578,7 +2555,7 @@ public class QueryLanguageLexer extends Lexer {
     // $ANTLR start "ESC_SEQ"
     public final void mESC_SEQ() throws RecognitionException {
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:476:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:464:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
             int alt18=3;
             int LA18_0 = input.LA(1);
 
@@ -2631,7 +2608,7 @@ public class QueryLanguageLexer extends Lexer {
             }
             switch (alt18) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:476:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:464:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
                     {
                     match('\\'); 
 
@@ -2648,7 +2625,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:477:9: UNICODE_ESC
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:465:9: UNICODE_ESC
                     {
                     mUNICODE_ESC(); 
 
@@ -2656,7 +2633,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:478:9: OCTAL_ESC
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:466:9: OCTAL_ESC
                     {
                     mOCTAL_ESC(); 
 
@@ -2676,7 +2653,7 @@ public class QueryLanguageLexer extends Lexer {
     // $ANTLR start "OCTAL_ESC"
     public final void mOCTAL_ESC() throws RecognitionException {
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:483:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:471:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
             int alt19=3;
             int LA19_0 = input.LA(1);
 
@@ -2727,7 +2704,7 @@ public class QueryLanguageLexer extends Lexer {
             }
             switch (alt19) {
                 case 1 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:483:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:471:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
                     {
                     match('\\'); 
 
@@ -2764,7 +2741,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:484:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:472:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
                     {
                     match('\\'); 
 
@@ -2791,7 +2768,7 @@ public class QueryLanguageLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:485:9: '\\\\' ( '0' .. '7' )
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:473:9: '\\\\' ( '0' .. '7' )
                     {
                     match('\\'); 
 
@@ -2820,8 +2797,8 @@ public class QueryLanguageLexer extends Lexer {
     // $ANTLR start "UNICODE_ESC"
     public final void mUNICODE_ESC() throws RecognitionException {
         try {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:490:5: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:490:9: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:478:5: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:478:9: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
             {
             match('\\'); 
 
@@ -2854,10 +2831,10 @@ public class QueryLanguageLexer extends Lexer {
         try {
             int _type = SPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:492:8: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:492:10: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:480:8: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:480:10: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:492:10: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:480:10: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt20=0;
             loop20:
             do {
@@ -2909,439 +2886,546 @@ public class QueryLanguageLexer extends Lexer {
     }
     // $ANTLR end "SPACE"
 
-    public void mTokens() throws RecognitionException {
-        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:8: ( FOREACH | SELECT | WHERE | WITH | AS | SET | IF | IN | STAR | REPEATER | CONTAINS | ISPARENT | ISNODETYPE | IS | HAS | MAX | MIN | DEPTH | PRINT | COMMA | FILTER | LEFT_PAREN | RIGHT_PAREN | LEFT_BRACKET | RIGHT_BRACKET | LEFT_SQ_BRACKET | RIGHT_SQ_BRACKET | SEMICOLON | COLON | PERIOD | DQOUTE | GT | LT | LTE | GTE | AND | OR | NOT | NOT_EQUAL | LOGIC_EQUALS | EQUALS | PLUS | MINUS | DIVIDE | COMPOUND_ADD | INCREMENT | NODE_TYPE | ATTRIBUTES | RESERVED_TYPES | ID | INTEGER | STRING | FLOAT | SPACE )
-        int alt21=54;
-        alt21 = dfa21.predict(input);
-        switch (alt21) {
-            case 1 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:10: FOREACH
-                {
-                mFOREACH(); 
+    // $ANTLR start "LINE_COMMENT"
+    public final void mLINE_COMMENT() throws RecognitionException {
+        try {
+            int _type = LINE_COMMENT;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:482:14: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\n' | '\\r' ( '\\n' )? )? )
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:483:13: '//' (~ ( '\\n' | '\\r' ) )* ( '\\n' | '\\r' ( '\\n' )? )?
+            {
+            match("//"); 
 
 
+
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:484:13: (~ ( '\\n' | '\\r' ) )*
+            loop21:
+            do {
+                int alt21=2;
+                int LA21_0 = input.LA(1);
+
+                if ( ((LA21_0 >= '\u0000' && LA21_0 <= '\t')||(LA21_0 >= '\u000B' && LA21_0 <= '\f')||(LA21_0 >= '\u000E' && LA21_0 <= '\uFFFF')) ) {
+                    alt21=1;
                 }
-                break;
-            case 2 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:18: SELECT
+
+
+                switch (alt21) {
+            	case 1 :
+            	    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:
+            	    {
+            	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\f')||(input.LA(1) >= '\u000E' && input.LA(1) <= '\uFFFF') ) {
+            	        input.consume();
+            	    }
+            	    else {
+            	        MismatchedSetException mse = new MismatchedSetException(null,input);
+            	        recover(mse);
+            	        throw mse;
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop21;
+                }
+            } while (true);
+
+
+            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:485:13: ( '\\n' | '\\r' ( '\\n' )? )?
+            int alt23=3;
+            int LA23_0 = input.LA(1);
+
+            if ( (LA23_0=='\n') ) {
+                alt23=1;
+            }
+            else if ( (LA23_0=='\r') ) {
+                alt23=2;
+            }
+            switch (alt23) {
+                case 1 :
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:485:15: '\\n'
+                    {
+                    match('\n'); 
+
+                    }
+                    break;
+                case 2 :
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:485:20: '\\r' ( '\\n' )?
+                    {
+                    match('\r'); 
+
+                    // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:485:24: ( '\\n' )?
+                    int alt22=2;
+                    int LA22_0 = input.LA(1);
+
+                    if ( (LA22_0=='\n') ) {
+                        alt22=1;
+                    }
+                    switch (alt22) {
+                        case 1 :
+                            // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:485:25: '\\n'
+                            {
+                            match('\n'); 
+
+                            }
+                            break;
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+             skip(); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "LINE_COMMENT"
+
+    public void mTokens() throws RecognitionException {
+        // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:8: ( SELECT | WHERE | WITH | AS | SET | IF | IN | STAR | REPEATER | CONTAINS | ISPARENT | ISNODETYPE | IS | HAS | MAX | MIN | DEPTH | PRINT | COMMA | FILTER | LEFT_PAREN | RIGHT_PAREN | LEFT_BRACKET | RIGHT_BRACKET | LEFT_SQ_BRACKET | RIGHT_SQ_BRACKET | SEMICOLON | COLON | PERIOD | DQOUTE | GT | LT | LTE | GTE | AND | OR | NOT | NOT_EQUAL | LOGIC_EQUALS | EQUALS | PLUS | MINUS | DIVIDE | COMPOUND_ADD | INCREMENT | NODE_TYPE | ATTRIBUTES | RESERVED_TYPES | ID | INTEGER | STRING | FLOAT | SPACE | LINE_COMMENT )
+        int alt24=54;
+        alt24 = dfa24.predict(input);
+        switch (alt24) {
+            case 1 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:10: SELECT
                 {
                 mSELECT(); 
 
 
                 }
                 break;
-            case 3 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:25: WHERE
+            case 2 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:17: WHERE
                 {
                 mWHERE(); 
 
 
                 }
                 break;
-            case 4 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:31: WITH
+            case 3 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:23: WITH
                 {
                 mWITH(); 
 
 
                 }
                 break;
-            case 5 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:36: AS
+            case 4 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:28: AS
                 {
                 mAS(); 
 
 
                 }
                 break;
-            case 6 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:39: SET
+            case 5 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:31: SET
                 {
                 mSET(); 
 
 
                 }
                 break;
-            case 7 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:43: IF
+            case 6 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:35: IF
                 {
                 mIF(); 
 
 
                 }
                 break;
-            case 8 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:46: IN
+            case 7 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:38: IN
                 {
                 mIN(); 
 
 
                 }
                 break;
-            case 9 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:49: STAR
+            case 8 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:41: STAR
                 {
                 mSTAR(); 
 
 
                 }
                 break;
-            case 10 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:54: REPEATER
+            case 9 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:46: REPEATER
                 {
                 mREPEATER(); 
 
 
                 }
                 break;
-            case 11 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:63: CONTAINS
+            case 10 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:55: CONTAINS
                 {
                 mCONTAINS(); 
 
 
                 }
                 break;
-            case 12 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:72: ISPARENT
+            case 11 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:64: ISPARENT
                 {
                 mISPARENT(); 
 
 
                 }
                 break;
-            case 13 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:81: ISNODETYPE
+            case 12 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:73: ISNODETYPE
                 {
                 mISNODETYPE(); 
 
 
                 }
                 break;
-            case 14 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:92: IS
+            case 13 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:84: IS
                 {
                 mIS(); 
 
 
                 }
                 break;
-            case 15 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:95: HAS
+            case 14 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:87: HAS
                 {
                 mHAS(); 
 
 
                 }
                 break;
-            case 16 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:99: MAX
+            case 15 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:91: MAX
                 {
                 mMAX(); 
 
 
                 }
                 break;
-            case 17 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:103: MIN
+            case 16 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:95: MIN
                 {
                 mMIN(); 
 
 
                 }
                 break;
-            case 18 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:107: DEPTH
+            case 17 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:99: DEPTH
                 {
                 mDEPTH(); 
 
 
                 }
                 break;
-            case 19 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:113: PRINT
+            case 18 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:105: PRINT
                 {
                 mPRINT(); 
 
 
                 }
                 break;
-            case 20 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:119: COMMA
+            case 19 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:111: COMMA
                 {
                 mCOMMA(); 
 
 
                 }
                 break;
-            case 21 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:125: FILTER
+            case 20 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:117: FILTER
                 {
                 mFILTER(); 
 
 
                 }
                 break;
-            case 22 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:132: LEFT_PAREN
+            case 21 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:124: LEFT_PAREN
                 {
                 mLEFT_PAREN(); 
 
 
                 }
                 break;
-            case 23 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:143: RIGHT_PAREN
+            case 22 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:135: RIGHT_PAREN
                 {
                 mRIGHT_PAREN(); 
 
 
                 }
                 break;
-            case 24 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:155: LEFT_BRACKET
+            case 23 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:147: LEFT_BRACKET
                 {
                 mLEFT_BRACKET(); 
 
 
                 }
                 break;
-            case 25 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:168: RIGHT_BRACKET
+            case 24 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:160: RIGHT_BRACKET
                 {
                 mRIGHT_BRACKET(); 
 
 
                 }
                 break;
-            case 26 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:182: LEFT_SQ_BRACKET
+            case 25 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:174: LEFT_SQ_BRACKET
                 {
                 mLEFT_SQ_BRACKET(); 
 
 
                 }
                 break;
-            case 27 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:198: RIGHT_SQ_BRACKET
+            case 26 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:190: RIGHT_SQ_BRACKET
                 {
                 mRIGHT_SQ_BRACKET(); 
 
 
                 }
                 break;
-            case 28 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:215: SEMICOLON
+            case 27 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:207: SEMICOLON
                 {
                 mSEMICOLON(); 
 
 
                 }
                 break;
-            case 29 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:225: COLON
+            case 28 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:217: COLON
                 {
                 mCOLON(); 
 
 
                 }
                 break;
-            case 30 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:231: PERIOD
+            case 29 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:223: PERIOD
                 {
                 mPERIOD(); 
 
 
                 }
                 break;
-            case 31 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:238: DQOUTE
+            case 30 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:230: DQOUTE
                 {
                 mDQOUTE(); 
 
 
                 }
                 break;
-            case 32 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:245: GT
+            case 31 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:237: GT
                 {
                 mGT(); 
 
 
                 }
                 break;
-            case 33 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:248: LT
+            case 32 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:240: LT
                 {
                 mLT(); 
 
 
                 }
                 break;
-            case 34 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:251: LTE
+            case 33 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:243: LTE
                 {
                 mLTE(); 
 
 
                 }
                 break;
-            case 35 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:255: GTE
+            case 34 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:247: GTE
                 {
                 mGTE(); 
 
 
                 }
                 break;
-            case 36 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:259: AND
+            case 35 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:251: AND
                 {
                 mAND(); 
 
 
                 }
                 break;
-            case 37 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:263: OR
+            case 36 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:255: OR
                 {
                 mOR(); 
 
 
                 }
                 break;
-            case 38 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:266: NOT
+            case 37 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:258: NOT
                 {
                 mNOT(); 
 
 
                 }
                 break;
-            case 39 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:270: NOT_EQUAL
+            case 38 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:262: NOT_EQUAL
                 {
                 mNOT_EQUAL(); 
 
 
                 }
                 break;
-            case 40 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:280: LOGIC_EQUALS
+            case 39 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:272: LOGIC_EQUALS
                 {
                 mLOGIC_EQUALS(); 
 
 
                 }
                 break;
-            case 41 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:293: EQUALS
+            case 40 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:285: EQUALS
                 {
                 mEQUALS(); 
 
 
                 }
                 break;
-            case 42 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:300: PLUS
+            case 41 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:292: PLUS
                 {
                 mPLUS(); 
 
 
                 }
                 break;
-            case 43 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:305: MINUS
+            case 42 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:297: MINUS
                 {
                 mMINUS(); 
 
 
                 }
                 break;
-            case 44 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:311: DIVIDE
+            case 43 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:303: DIVIDE
                 {
                 mDIVIDE(); 
 
 
                 }
                 break;
-            case 45 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:318: COMPOUND_ADD
+            case 44 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:310: COMPOUND_ADD
                 {
                 mCOMPOUND_ADD(); 
 
 
                 }
                 break;
-            case 46 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:331: INCREMENT
+            case 45 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:323: INCREMENT
                 {
                 mINCREMENT(); 
 
 
                 }
                 break;
-            case 47 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:341: NODE_TYPE
+            case 46 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:333: NODE_TYPE
                 {
                 mNODE_TYPE(); 
 
 
                 }
                 break;
-            case 48 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:351: ATTRIBUTES
+            case 47 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:343: ATTRIBUTES
                 {
                 mATTRIBUTES(); 
 
 
                 }
                 break;
-            case 49 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:362: RESERVED_TYPES
+            case 48 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:354: RESERVED_TYPES
                 {
                 mRESERVED_TYPES(); 
 
 
                 }
                 break;
-            case 50 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:377: ID
+            case 49 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:369: ID
                 {
                 mID(); 
 
 
                 }
                 break;
-            case 51 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:380: INTEGER
+            case 50 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:372: INTEGER
                 {
                 mINTEGER(); 
 
 
                 }
                 break;
-            case 52 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:388: STRING
+            case 51 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:380: STRING
                 {
                 mSTRING(); 
 
 
                 }
                 break;
-            case 53 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:395: FLOAT
+            case 52 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:387: FLOAT
                 {
                 mFLOAT(); 
 
 
                 }
                 break;
-            case 54 :
-                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:401: SPACE
+            case 53 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:393: SPACE
                 {
                 mSPACE(); 
+
+
+                }
+                break;
+            case 54 :
+                // C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\git\\code-arch-13\\Windows\\Senior-Design\\src\\query\\QueryLanguage.g:1:399: LINE_COMMENT
+                {
+                mLINE_COMMENT(); 
 
 
                 }
@@ -3355,7 +3439,7 @@ public class QueryLanguageLexer extends Lexer {
     protected DFA3 dfa3 = new DFA3(this);
     protected DFA4 dfa4 = new DFA4(this);
     protected DFA15 dfa15 = new DFA15(this);
-    protected DFA21 dfa21 = new DFA21(this);
+    protected DFA24 dfa24 = new DFA24(this);
     static final String DFA3_eotS =
         "\74\uffff\1\106\32\uffff\1\133\16\uffff\1\150\4\uffff";
     static final String DFA3_eofS =
@@ -3529,7 +3613,7 @@ public class QueryLanguageLexer extends Lexer {
             this.transition = DFA3_transition;
         }
         public String getDescription() {
-            return "366:1: NODE_TYPE : ( 'package_declaration' | 'body_declarations' | 'variable_declaration' | 'import_declaration' | 'type_declaration' | 'field_declaration' | 'method_declaration' | 'interface_declaration' | 'constructor_declaration' | 'class_declaration' | 'variable_declaration_fragment' | 'variable_declaration_statement' | 'thrown_exceptions' | 'try_statement' | 'catch_clause' | 'initializer' | 'method_invocation' | 'if_statement' | 'expression' | 'operator' | 'conditional_expression' | 'continue_expression' | 'assignment' | 'this_expression' | 'class_instance_creation' | 'field_access' | 'instance_of_expression' | 'cast_expression' | 'super_field_access' | 'statement' | 'then_statement' | 'else_statement' | 'do_statement' | 'parameters' | 'body' | 'for_statement' | 'enhanced_for_statement' | 'switch_statement' | 'while_statement' | 'null_literal' | 'integer_literal' | 'character_literal' | 'string_literal' | 'boolean_literal' | 'variable' | 'file' | 'directory' );";
+            return "354:1: NODE_TYPE : ( 'package_declaration' | 'body_declarations' | 'variable_declaration' | 'import_declaration' | 'type_declaration' | 'field_declaration' | 'method_declaration' | 'interface_declaration' | 'constructor_declaration' | 'class_declaration' | 'variable_declaration_fragment' | 'variable_declaration_statement' | 'thrown_exceptions' | 'try_statement' | 'catch_clause' | 'initializer' | 'method_invocation' | 'if_statement' | 'expression' | 'operator' | 'conditional_expression' | 'continue_expression' | 'assignment' | 'this_expression' | 'class_instance_creation' | 'field_access' | 'instance_of_expression' | 'cast_expression' | 'super_field_access' | 'statement' | 'then_statement' | 'else_statement' | 'do_statement' | 'parameters' | 'body' | 'for_statement' | 'enhanced_for_statement' | 'switch_statement' | 'while_statement' | 'null_literal' | 'integer_literal' | 'character_literal' | 'string_literal' | 'boolean_literal' | 'variable' | 'file' | 'directory' );";
         }
     }
     static final String DFA4_eotS =
@@ -3656,7 +3740,7 @@ public class QueryLanguageLexer extends Lexer {
             this.transition = DFA4_transition;
         }
         public String getDescription() {
-            return "416:1: ATTRIBUTES : ( 'name' | 'type' | 'return_type' | 'parameter_types' | 'is_constructor' | 'is_deprecated' | 'is_parameter' | 'is_field' | 'default_value' | 'modifiers' | 'origin' | 'kind' | 'declared_methods' | 'declared_fields' | 'declared_types' | 'declaring_class' | 'declaring_method' | 'package' | 'interfaces' | 'superclass' | 'boxing' | 'unboxing' | 'parameter_list' | 'modifier' | 'startLine' | 'endLine' | 'totalLines' | 'boolean_value' );";
+            return "404:1: ATTRIBUTES : ( 'name' | 'type' | 'return_type' | 'parameter_types' | 'is_constructor' | 'is_deprecated' | 'is_parameter' | 'is_field' | 'default_value' | 'modifiers' | 'origin' | 'kind' | 'declared_methods' | 'declared_fields' | 'declared_types' | 'declaring_class' | 'declaring_method' | 'package' | 'interfaces' | 'superclass' | 'boxing' | 'unboxing' | 'parameter_list' | 'modifier' | 'startLine' | 'endLine' | 'totalLines' | 'boolean_value' );";
         }
     }
     static final String DFA15_eotS =
@@ -3709,228 +3793,226 @@ public class QueryLanguageLexer extends Lexer {
             this.transition = DFA15_transition;
         }
         public String getDescription() {
-            return "461:1: FLOAT : ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT );";
+            return "449:1: FLOAT : ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT );";
         }
     }
-    static final String DFA21_eotS =
-        "\1\uffff\5\53\1\uffff\1\74\5\53\1\uffff\1\116\10\uffff\1\117\1\121"+
-        "\1\123\1\uffff\1\53\1\uffff\2\53\1\131\1\133\1\135\1\uffff\10\53"+
-        "\1\uffff\1\156\1\uffff\10\53\1\174\1\53\1\177\1\u0083\1\u0087\1"+
-        "\53\3\uffff\16\53\10\uffff\1\53\2\34\1\53\7\uffff\16\53\1\uffff"+
-        "\4\53\1\u00b6\10\53\1\uffff\1\32\1\53\1\uffff\3\53\1\uffff\3\53"+
-        "\1\uffff\6\53\1\u00d2\1\u00d3\1\u00d4\12\53\1\32\30\53\1\u00f7\1"+
-        "\53\1\uffff\7\53\1\u0100\23\53\3\uffff\14\53\1\u00f7\3\53\1\u0129"+
-        "\12\53\1\u0129\1\53\1\u0129\4\53\1\uffff\6\53\1\u0140\1\53\1\uffff"+
-        "\31\53\1\u015b\4\53\1\u0160\11\53\1\uffff\17\53\1\u017a\6\53\1\uffff"+
-        "\32\53\1\uffff\4\53\1\uffff\2\53\1\u0129\3\53\1\u0129\16\53\1\u01b4"+
-        "\3\53\1\uffff\46\53\1\u0129\16\53\1\u0129\3\53\1\uffff\20\53\1\u0201"+
-        "\2\53\1\u0204\3\53\1\u0129\1\53\1\u0209\12\53\1\u0129\7\53\1\u00f7"+
-        "\2\53\1\u00f7\13\53\1\u0129\5\53\1\u00f7\1\u0129\11\53\1\uffff\2"+
-        "\53\1\uffff\4\53\1\uffff\12\53\1\u0129\4\53\1\u00f7\25\53\1\u0129"+
-        "\3\53\1\u00f7\2\53\1\u0129\3\53\1\u026e\26\53\1\u00f7\12\53\1\u0129"+
-        "\1\u00f7\16\53\1\u00f7\1\53\1\uffff\45\53\1\u0129\2\53\1\u00f7\4"+
-        "\53\1\u00f7\5\53\1\u0129\1\u0204\6\53\1\u00f7\12\53\1\u00f7\16\53"+
-        "\2\u00f7\11\53\1\u0129\12\53\1\u0129\12\53\1\u0129\5\53\1\u00f7"+
-        "\4\53\1\u00f7\5\53\1\u0129\14\53\1\u0129\4\53\1\u0129\6\53\2\u00f7"+
-        "\4\53\1\u00f7\1\53\1\u00f7\7\53\1\u00f7\4\53\2\u0129\2\53\1\u0129"+
-        "\1\53\1\u00f7\3\53\1\u00f7\3\53\1\u00f7\13\53\2\u0129\3\53\1\u00f7"+
-        "\2\53\1\u00f7\7\53\1\u00f7\1\53\1\u00f7\1\53\1\u00f7\1\53\1\u00f7"+
-        "\1\53\1\u00f7\1\53\1\u00f7\2\53\1\u00f7\4\53\1\u00f7\5\53\1\u00f7"+
-        "\3\53\1\u00f7\7\53\1\u00f7\1\53\1\u00f7\6\53\1\u00f7\1\53\1\u00f7"+
-        "\3\53\3\u00f7\14\53\1\u00f7\1\53\1\u00f7";
-    static final String DFA21_eofS =
-        "\u0393\uffff";
-    static final String DFA21_minS =
-        "\1\11\1\151\1\145\1\150\1\156\1\146\1\uffff\1\56\3\141\1\145\1\141"+
-        "\1\uffff\1\76\10\uffff\1\0\2\75\1\uffff\1\116\1\uffff\1\122\1\160"+
-        "\2\75\1\53\1\uffff\1\157\1\141\1\150\1\154\1\141\1\145\1\151\1\156"+
-        "\1\uffff\1\56\1\uffff\1\162\1\145\1\154\1\160\1\141\1\151\1\145"+
-        "\1\164\1\60\1\144\3\60\1\160\3\uffff\1\156\1\141\1\163\1\141\1\163"+
-        "\1\170\1\156\1\164\1\144\1\143\1\137\1\162\1\151\1\143\10\uffff"+
-        "\1\104\2\60\1\145\7\uffff\1\144\1\162\1\160\1\145\1\171\1\164\1"+
-        "\160\1\163\1\144\1\154\1\155\1\164\1\156\1\142\1\uffff\1\137\1\154"+
-        "\2\145\1\60\1\145\1\162\1\151\1\164\1\162\1\154\1\150\1\151\1\uffff"+
-        "\1\60\1\163\1\uffff\1\145\2\164\1\uffff\1\141\1\157\1\143\1\uffff"+
-        "\1\157\1\144\1\163\1\143\1\164\1\162\3\60\1\150\1\151\1\164\1\141"+
-        "\1\154\1\163\1\145\1\156\1\153\1\141\1\60\1\147\1\162\1\171\1\154"+
-        "\2\151\1\145\1\157\1\163\1\156\1\137\1\141\1\162\1\145\1\141\1\114"+
-        "\1\154\1\145\1\165\1\144\1\157\1\141\1\163\1\144\1\60\1\143\1\uffff"+
-        "\1\162\1\145\1\164\1\156\1\143\2\145\1\60\1\147\1\164\1\147\1\151"+
-        "\1\141\1\162\1\144\1\154\1\145\1\141\1\151\1\162\1\141\1\164\1\151"+
-        "\1\163\1\150\1\137\1\141\3\uffff\1\157\1\146\1\150\1\165\1\141\1"+
-        "\164\1\143\1\164\1\141\1\155\1\151\1\141\1\60\1\145\1\156\1\141"+
-        "\1\60\1\167\2\137\1\163\1\154\1\145\1\137\1\156\1\151\1\137\1\60"+
-        "\1\162\1\60\1\170\1\143\1\164\1\137\1\uffff\1\164\1\137\1\155\1"+
-        "\114\1\147\1\150\1\60\1\137\1\uffff\1\156\1\141\1\146\1\145\1\141"+
-        "\1\156\2\145\1\156\1\141\1\160\1\162\1\151\1\145\1\164\1\151\1\156"+
-        "\1\162\1\164\2\137\1\145\1\143\1\144\1\151\1\60\1\154\1\162\1\141"+
-        "\1\164\1\60\1\147\1\145\1\156\1\164\1\144\1\141\1\147\1\142\1\144"+
-        "\1\uffff\1\156\1\145\1\163\1\164\1\114\2\163\1\143\1\156\1\154\1"+
-        "\156\1\151\1\150\2\141\1\60\1\146\1\154\1\145\1\151\2\137\1\uffff"+
-        "\1\163\1\155\1\164\1\141\1\162\1\154\1\143\1\156\1\164\2\163\1\162"+
-        "\1\141\1\155\1\154\1\137\1\156\2\165\1\151\1\144\1\143\1\170\1\164"+
-        "\1\137\1\145\1\uffff\1\164\1\145\1\164\1\157\1\uffff\1\145\1\164"+
-        "\1\60\1\157\1\145\1\156\1\60\1\154\1\145\1\137\1\170\1\164\1\141"+
-        "\1\151\1\163\1\164\2\145\1\151\1\137\1\156\1\60\1\164\1\145\1\143"+
-        "\1\uffff\1\151\1\141\2\156\1\154\1\163\1\164\2\145\1\143\1\137\1"+
-        "\151\1\145\1\164\1\171\1\164\1\163\1\145\1\155\1\151\2\144\1\163"+
-        "\1\145\1\143\1\157\1\145\1\156\1\154\1\160\1\145\1\144\1\162\1\137"+
-        "\1\144\1\156\1\145\1\162\1\60\1\145\1\162\1\143\1\137\1\145\1\143"+
-        "\1\145\1\160\1\141\1\164\1\156\1\151\1\141\1\144\1\60\2\164\1\147"+
-        "\1\uffff\1\145\2\143\1\145\1\163\1\164\1\145\1\151\1\164\1\141\1"+
-        "\156\1\155\1\145\1\154\1\172\1\137\1\60\1\160\1\162\1\60\1\143\1"+
-        "\145\1\164\1\60\1\145\1\60\1\137\1\164\1\156\1\143\1\163\1\141\2"+
-        "\162\1\145\1\156\1\60\1\166\1\137\1\147\1\155\1\171\1\144\1\162"+
-        "\1\60\2\154\1\60\1\154\1\170\1\162\1\164\2\145\1\157\1\164\1\137"+
-        "\1\145\1\171\1\60\1\155\1\154\1\145\1\154\1\163\2\60\1\164\1\141"+
-        "\2\164\1\145\1\137\1\151\1\145\1\157\1\uffff\1\145\1\165\1\uffff"+
-        "\1\141\1\164\1\151\1\143\1\uffff\1\145\1\157\1\141\1\154\1\164\1"+
-        "\165\1\145\1\137\1\143\1\166\1\60\1\141\1\146\1\137\1\145\1\60\1"+
-        "\145\1\137\1\141\1\151\1\141\1\144\1\141\1\143\2\145\1\155\1\163"+
-        "\1\156\1\145\1\146\1\162\1\160\1\145\1\141\1\163\1\144\1\60\1\145"+
-        "\1\164\1\145\1\60\1\156\1\144\1\60\1\164\1\162\1\146\1\60\1\143"+
-        "\1\164\1\145\1\166\1\154\1\170\1\162\1\154\2\141\2\163\2\154\1\157"+
-        "\1\154\1\145\1\151\1\171\1\143\1\156\1\143\1\60\1\154\1\162\1\164"+
-        "\1\154\1\145\1\162\1\145\1\163\1\155\1\145\2\60\1\155\1\157\1\141"+
-        "\1\145\1\156\1\162\1\163\1\137\1\162\1\145\1\155\1\164\2\145\1\60"+
-        "\1\137\1\uffff\1\164\1\145\1\162\1\145\1\141\1\160\2\137\1\162\1"+
-        "\156\1\145\1\163\1\151\1\141\1\143\1\165\1\164\1\145\1\160\1\154"+
-        "\1\145\1\164\1\154\1\171\1\151\1\141\1\145\1\165\1\143\1\141\1\160"+
-        "\1\163\1\145\1\156\1\145\1\162\1\154\1\60\1\164\1\141\1\60\2\141"+
-        "\1\155\1\145\1\60\1\143\1\162\1\145\1\157\1\144\2\60\2\162\1\144"+
-        "\1\145\1\141\1\143\1\60\1\151\1\164\1\162\1\141\1\145\1\150\1\154"+
-        "\1\145\1\141\1\164\1\60\1\141\1\160\1\163\1\164\1\162\1\145\1\154"+
-        "\2\164\1\151\1\156\1\164\1\156\1\137\2\60\1\164\1\143\1\154\1\145"+
-        "\1\156\1\154\1\141\1\170\1\162\1\60\1\141\2\145\1\170\1\164\1\145"+
-        "\1\157\1\145\1\141\1\164\1\60\1\157\1\144\2\163\1\150\1\162\1\145"+
-        "\1\164\1\151\1\141\1\60\1\141\2\151\1\157\1\164\1\60\1\164\1\163"+
-        "\1\151\1\143\1\60\1\156\1\164\1\141\1\154\1\160\1\60\1\164\1\163"+
-        "\1\143\1\160\1\151\1\137\1\156\1\162\1\164\1\151\1\144\1\163\1\60"+
-        "\1\163\1\157\1\141\1\163\1\60\1\157\1\154\1\162\2\157\1\156\2\60"+
-        "\1\164\1\157\1\145\1\164\1\60\1\162\1\60\1\162\1\151\1\163\1\154"+
-        "\1\162\1\157\1\143\1\60\1\141\1\151\1\157\1\163\2\60\1\144\1\164"+
-        "\1\60\1\156\1\60\1\141\2\156\1\60\1\141\1\156\1\163\1\60\1\141\1"+
-        "\145\1\157\1\151\1\141\1\145\1\156\1\162\1\154\1\157\1\156\2\60"+
-        "\1\151\1\163\1\164\1\60\1\163\1\164\1\60\1\163\1\164\1\163\1\156"+
-        "\1\157\1\162\1\163\1\60\1\145\1\60\1\156\1\60\1\157\1\60\1\151\1"+
-        "\60\1\145\1\60\1\151\1\163\1\60\1\156\1\141\1\163\1\141\1\60\1\156"+
-        "\1\157\1\155\1\157\1\151\1\60\1\164\1\151\1\164\1\60\1\156\1\145"+
-        "\1\156\1\157\1\151\1\157\1\151\1\60\1\156\1\60\1\156\1\157\1\156"+
-        "\1\157\1\146\1\164\1\60\1\156\1\60\1\156\1\162\1\164\3\60\2\141"+
-        "\1\147\1\164\1\155\2\145\1\155\1\156\1\145\1\164\1\156\1\60\1\164"+
-        "\1\60";
-    static final String DFA21_maxS =
-        "\1\175\1\157\1\167\1\151\2\163\1\uffff\1\71\1\157\1\141\2\157\1"+
-        "\162\1\uffff\1\76\10\uffff\1\uffff\2\75\1\uffff\1\116\1\uffff\1"+
-        "\122\1\162\3\75\1\uffff\1\157\1\141\1\171\1\170\1\165\1\145\1\151"+
-        "\1\156\1\uffff\1\145\1\uffff\1\162\1\154\1\164\1\160\1\162\2\151"+
-        "\1\164\1\172\1\144\3\172\1\160\3\uffff\1\156\1\141\1\164\1\141\1"+
-        "\163\1\170\1\156\1\164\1\144\1\160\1\137\1\162\1\151\1\162\10\uffff"+
-        "\1\104\2\172\1\145\7\uffff\1\170\1\162\1\160\1\162\1\171\1\164\1"+
-        "\160\1\163\1\150\1\154\1\155\1\164\1\156\1\142\1\uffff\1\145\1\154"+
-        "\2\145\1\172\1\145\1\164\1\151\1\164\1\162\1\154\1\150\1\151\1\uffff"+
-        "\1\172\1\163\1\uffff\1\145\2\164\1\uffff\1\141\1\157\1\160\1\uffff"+
-        "\1\157\1\164\1\163\1\143\1\164\1\162\3\172\1\150\1\151\1\164\1\141"+
-        "\1\154\1\163\1\145\1\156\1\153\1\141\1\172\1\147\1\162\1\171\1\154"+
-        "\2\151\1\145\1\157\1\163\1\156\1\137\1\141\1\162\1\145\1\141\1\114"+
-        "\1\154\1\145\1\165\1\144\1\157\1\141\1\163\1\144\1\172\1\143\1\uffff"+
-        "\1\162\1\145\1\164\1\156\1\143\2\145\1\172\1\147\1\164\1\162\1\151"+
-        "\1\141\1\162\1\144\1\157\1\145\1\162\1\151\1\162\1\151\1\164\1\151"+
-        "\1\163\1\150\1\137\1\141\3\uffff\1\157\1\146\1\150\1\165\1\141\1"+
-        "\164\1\143\1\164\1\141\1\155\1\151\1\141\1\172\1\145\1\156\1\141"+
-        "\1\172\1\167\2\137\1\163\1\154\1\145\1\137\1\156\1\151\1\137\1\172"+
-        "\1\162\1\172\1\170\1\143\1\164\1\137\1\uffff\1\164\1\143\1\155\1"+
-        "\114\1\147\1\150\1\172\1\137\1\uffff\1\156\1\141\1\146\1\145\1\141"+
-        "\1\156\2\145\1\156\1\141\1\160\1\162\1\151\1\145\1\164\1\151\1\156"+
-        "\1\162\1\164\2\137\1\145\1\143\1\144\1\151\1\172\1\154\1\162\1\141"+
-        "\1\164\1\172\1\147\1\145\1\156\1\164\1\144\1\141\1\147\1\142\1\144"+
-        "\1\uffff\1\156\1\145\1\163\1\164\1\114\2\163\1\143\1\156\1\154\1"+
-        "\156\1\151\1\150\1\141\1\144\1\172\1\146\1\154\1\145\1\151\2\137"+
-        "\1\uffff\1\163\1\155\1\164\1\141\1\162\1\154\1\143\1\156\1\164\2"+
-        "\163\1\162\1\141\1\155\1\154\1\137\1\156\2\165\2\151\1\143\1\170"+
-        "\1\164\1\137\1\145\1\uffff\1\164\1\151\1\164\1\157\1\uffff\1\145"+
-        "\1\164\1\172\1\157\1\145\1\156\1\172\1\154\1\145\1\137\1\170\1\164"+
-        "\1\141\1\151\1\163\1\164\2\145\1\151\1\137\1\156\1\172\1\164\1\145"+
-        "\1\143\1\uffff\1\151\1\141\2\156\1\154\1\163\1\164\2\145\1\143\1"+
-        "\137\1\151\1\145\1\164\1\171\1\164\1\163\1\145\1\155\1\151\2\144"+
-        "\1\163\1\145\1\143\1\157\1\145\1\156\1\154\1\160\1\145\1\151\1\162"+
-        "\1\137\1\144\1\156\1\145\1\162\1\172\1\145\1\162\1\143\1\137\1\145"+
-        "\1\143\1\145\1\160\1\141\1\164\1\156\1\151\1\141\1\144\1\172\2\164"+
-        "\1\147\1\uffff\1\145\2\143\1\145\1\163\1\164\1\145\1\151\1\164\1"+
-        "\141\1\156\1\155\1\145\1\154\1\172\1\137\1\172\1\160\1\162\1\172"+
-        "\1\143\1\145\1\164\1\172\1\145\1\172\1\137\1\164\1\156\1\143\1\163"+
-        "\1\141\2\162\1\145\1\156\1\172\1\166\1\137\1\147\1\155\1\171\1\144"+
-        "\1\162\1\172\1\154\1\166\1\172\1\154\1\170\1\162\1\164\2\145\1\157"+
-        "\1\164\1\137\1\145\1\171\1\172\1\155\1\154\1\145\1\154\1\163\2\172"+
-        "\1\164\1\141\2\164\1\145\1\163\1\151\1\145\1\157\1\uffff\1\145\1"+
-        "\165\1\uffff\1\141\1\164\1\151\1\143\1\uffff\1\145\1\157\1\141\1"+
-        "\154\1\164\1\165\1\145\1\137\1\143\1\166\1\172\1\141\1\164\1\137"+
-        "\1\145\1\172\1\145\1\163\1\141\1\151\1\141\1\144\1\141\1\143\2\145"+
-        "\1\155\1\163\1\156\1\145\1\146\1\162\1\160\1\145\1\141\1\163\1\144"+
-        "\1\172\1\145\1\164\1\145\1\172\1\156\1\144\1\172\1\164\1\162\1\146"+
-        "\1\172\1\143\1\164\1\145\1\166\1\154\1\170\1\162\1\154\2\141\2\163"+
-        "\2\154\1\157\1\154\1\145\1\151\1\171\1\155\1\156\1\143\1\172\1\164"+
-        "\1\162\1\164\1\154\1\145\1\162\1\145\1\163\1\155\1\145\2\172\1\155"+
-        "\1\157\1\141\1\145\1\156\1\162\1\163\1\137\1\162\1\145\1\155\1\164"+
-        "\2\145\1\172\1\137\1\uffff\1\164\1\145\1\162\1\145\1\141\1\160\2"+
-        "\137\1\162\1\156\1\145\1\163\1\151\1\141\1\143\1\165\1\164\1\145"+
-        "\1\160\1\154\1\145\1\164\1\154\1\171\1\151\1\141\1\145\1\165\1\143"+
-        "\1\141\1\160\1\163\1\145\1\156\1\145\1\162\1\154\1\172\1\164\1\141"+
-        "\1\172\2\141\1\155\1\145\1\172\1\143\1\162\1\145\1\157\1\144\2\172"+
-        "\2\162\1\144\1\145\1\141\1\143\1\172\1\151\1\164\1\162\1\141\1\145"+
-        "\1\150\1\154\1\145\1\141\1\164\1\172\1\141\1\160\1\163\1\164\1\162"+
-        "\1\145\1\154\2\164\1\151\1\156\1\164\1\156\1\137\2\172\1\164\1\143"+
-        "\1\154\1\145\1\156\1\154\1\141\1\170\1\162\1\172\1\141\2\145\1\170"+
-        "\1\164\1\145\1\157\1\145\1\141\1\164\1\172\1\157\1\144\2\163\1\150"+
-        "\1\162\1\145\1\164\1\151\1\141\1\172\1\141\2\151\1\157\1\164\1\172"+
-        "\1\164\1\163\1\151\1\143\1\172\1\156\1\164\1\141\1\154\1\160\1\172"+
-        "\1\164\1\163\1\143\1\160\1\151\1\137\1\156\1\162\1\164\1\151\1\144"+
-        "\1\163\1\172\1\163\1\157\1\141\1\163\1\172\1\157\1\154\1\162\2\157"+
-        "\1\156\2\172\1\164\1\157\1\145\1\164\1\172\1\162\1\172\1\162\1\151"+
-        "\1\163\1\154\1\162\1\157\1\143\1\172\1\141\1\151\1\157\1\163\2\172"+
-        "\1\144\1\164\1\172\1\156\1\172\1\141\2\156\1\172\1\141\1\156\1\163"+
-        "\1\172\1\141\1\145\1\157\1\151\1\141\1\145\1\156\1\162\1\154\1\157"+
-        "\1\156\2\172\1\151\1\163\1\164\1\172\1\163\1\164\1\172\1\163\1\164"+
-        "\1\163\1\156\1\157\1\162\1\163\1\172\1\145\1\172\1\156\1\172\1\157"+
-        "\1\172\1\151\1\172\1\145\1\172\1\151\1\163\1\172\1\156\1\141\1\163"+
-        "\1\141\1\172\1\156\1\157\1\155\1\157\1\151\1\172\1\164\1\151\1\164"+
-        "\1\172\1\156\1\145\1\156\1\157\1\151\1\157\1\151\1\172\1\156\1\172"+
-        "\1\156\1\157\1\156\1\157\1\163\1\164\1\172\1\156\1\172\1\156\1\162"+
-        "\1\164\3\172\2\141\1\147\1\164\1\155\2\145\1\155\1\156\1\145\1\164"+
-        "\1\156\1\172\1\164\1\172";
-    static final String DFA21_acceptS =
-        "\6\uffff\1\11\6\uffff\1\24\1\uffff\1\26\1\27\1\30\1\31\1\32\1\33"+
-        "\1\34\1\35\3\uffff\1\44\1\uffff\1\45\5\uffff\1\54\10\uffff\1\62"+
-        "\1\uffff\1\66\16\uffff\1\36\1\12\1\65\16\uffff\1\25\1\53\1\37\1"+
-        "\64\1\40\1\43\1\41\1\42\4\uffff\1\46\1\47\1\51\1\50\1\52\1\55\1"+
-        "\56\16\uffff\1\63\15\uffff\1\5\2\uffff\1\7\3\uffff\1\10\3\uffff"+
-        "\1\16\56\uffff\1\6\33\uffff\1\17\1\20\1\21\42\uffff\1\57\10\uffff"+
-        "\1\4\50\uffff\1\60\26\uffff\1\3\32\uffff\1\22\4\uffff\1\23\31\uffff"+
-        "\1\2\71\uffff\1\1\114\uffff\1\14\2\uffff\1\61\4\uffff\1\13\144\uffff"+
-        "\1\15\u0124\uffff";
-    static final String DFA21_specialS =
-        "\27\uffff\1\0\u037b\uffff}>";
-    static final String[] DFA21_transitionS = {
-            "\2\55\2\uffff\1\55\22\uffff\1\55\1\37\1\27\3\uffff\1\32\1\uffff"+
-            "\1\17\1\20\1\6\1\41\1\15\1\16\1\7\1\42\12\54\1\26\1\25\1\31"+
-            "\1\40\1\30\2\uffff\1\33\15\53\1\35\13\53\1\23\1\uffff\1\24\1"+
-            "\uffff\1\53\1\uffff\1\4\1\43\1\10\1\13\1\46\1\1\1\53\1\11\1"+
-            "\5\1\53\1\51\1\53\1\12\1\47\1\36\1\14\1\53\1\50\1\2\1\45\1\52"+
-            "\1\44\1\3\3\53\1\21\1\34\1\22",
-            "\1\57\5\uffff\1\56",
-            "\1\60\16\uffff\1\62\1\61\1\uffff\1\63",
-            "\1\64\1\65",
-            "\1\67\4\uffff\1\66",
-            "\1\70\6\uffff\1\73\1\71\4\uffff\1\72",
+    static final String DFA24_eotS =
+        "\1\uffff\4\53\1\uffff\1\72\5\53\1\uffff\1\114\10\uffff\1\115\1\117"+
+        "\1\121\1\uffff\1\53\1\uffff\2\53\1\127\1\131\1\133\1\137\11\53\1"+
+        "\uffff\1\160\1\uffff\6\53\1\173\1\53\1\176\1\u0082\1\u0086\1\53"+
+        "\3\uffff\16\53\10\uffff\1\53\2\33\1\53\11\uffff\20\53\1\uffff\1"+
+        "\53\1\u00b4\10\53\1\uffff\1\31\1\53\1\uffff\3\53\1\uffff\3\53\1"+
+        "\uffff\6\53\1\u00d0\1\u00d1\1\u00d2\12\53\1\31\31\53\1\uffff\7\53"+
+        "\1\u00fd\23\53\3\uffff\14\53\1\u0122\3\53\1\u0127\6\53\1\u0122\6"+
+        "\53\1\u0127\1\53\1\u0127\7\53\1\u013d\1\53\1\uffff\31\53\1\u0158"+
+        "\4\53\1\u015d\5\53\1\uffff\4\53\1\uffff\16\53\1\u0175\6\53\1\uffff"+
+        "\32\53\1\uffff\4\53\1\uffff\2\53\1\u0127\3\53\1\u0127\20\53\1\uffff"+
+        "\46\53\1\u0127\21\53\1\u0127\20\53\1\u01fb\2\53\1\u01fe\3\53\1\u0127"+
+        "\1\53\1\u0203\12\53\1\u0127\7\53\1\u0122\2\53\1\u0122\16\53\1\u0127"+
+        "\2\53\1\u0122\1\u0127\11\53\1\uffff\2\53\1\uffff\4\53\1\uffff\12"+
+        "\53\1\u0127\4\53\1\u0122\25\53\1\u0127\3\53\1\u0122\2\53\1\u0127"+
+        "\3\53\1\u0268\26\53\1\u0122\12\53\1\u0127\3\53\1\u0122\13\53\1\u0122"+
+        "\1\53\1\uffff\50\53\1\u0127\4\53\1\u0122\5\53\1\u0127\1\u01fe\6"+
+        "\53\1\u0122\12\53\1\u0122\15\53\1\u0122\3\53\1\u0122\10\53\1\u0127"+
+        "\12\53\1\u0127\12\53\1\u0127\5\53\1\u0122\1\53\1\u0122\3\53\1\u0122"+
+        "\5\53\1\u0127\14\53\1\u0127\4\53\1\u0127\6\53\1\u0122\1\53\1\u0122"+
+        "\3\53\1\u0122\1\53\1\u0122\7\53\1\u0122\4\53\2\u0127\2\53\1\u0127"+
+        "\1\53\1\u0122\3\53\1\u0122\3\53\1\u0122\13\53\2\u0127\3\53\1\u0122"+
+        "\12\53\1\u0122\1\53\1\u0122\1\53\1\u0122\1\53\1\u0122\1\53\2\u0122"+
+        "\1\53\1\u0122\2\53\1\u0122\4\53\1\u0122\5\53\1\u0122\3\53\1\u0122"+
+        "\7\53\1\u0122\1\53\1\u0122\6\53\1\u0122\1\53\1\u0122\3\53\3\u0122"+
+        "\14\53\1\u0122\1\53\1\u0122";
+    static final String DFA24_eofS =
+        "\u0390\uffff";
+    static final String DFA24_minS =
+        "\1\11\1\145\1\150\1\156\1\146\1\uffff\1\56\3\141\1\145\1\141\1\uffff"+
+        "\1\76\10\uffff\1\0\2\75\1\uffff\1\116\1\uffff\1\122\1\160\2\75\1"+
+        "\53\1\57\1\157\1\141\1\150\1\151\1\154\1\141\1\145\1\151\1\156\1"+
+        "\uffff\1\56\1\uffff\1\154\1\160\1\141\1\151\1\145\1\164\1\60\1\144"+
+        "\3\60\1\160\3\uffff\1\156\1\141\1\163\1\141\1\163\1\170\1\156\1"+
+        "\164\1\144\1\143\1\137\1\162\1\151\1\143\10\uffff\1\104\2\60\1\145"+
+        "\11\uffff\1\144\1\162\1\160\1\145\1\171\1\164\1\145\1\162\1\160"+
+        "\1\163\1\144\1\154\1\155\1\164\1\156\1\142\1\uffff\1\145\1\60\1"+
+        "\145\1\162\1\151\1\164\1\162\1\154\1\150\1\151\1\uffff\1\60\1\163"+
+        "\1\uffff\1\145\2\164\1\uffff\1\141\1\157\1\143\1\uffff\1\157\1\144"+
+        "\1\163\1\143\1\164\1\162\3\60\1\150\1\151\1\164\1\141\1\154\1\163"+
+        "\1\145\1\156\1\153\1\141\1\60\1\147\1\162\1\171\1\154\2\151\1\145"+
+        "\1\157\1\163\1\156\1\137\1\141\1\154\1\145\1\137\1\162\1\145\1\141"+
+        "\1\114\1\154\1\145\1\165\1\144\1\157\1\143\1\uffff\1\162\1\145\1"+
+        "\164\1\156\1\143\2\145\1\60\1\147\1\164\1\147\1\151\1\141\1\162"+
+        "\1\144\1\154\1\145\1\141\1\151\1\162\1\141\1\164\1\151\1\163\1\150"+
+        "\1\137\1\141\3\uffff\1\157\1\146\1\150\1\165\1\141\1\164\1\143\1"+
+        "\164\1\141\1\155\1\151\1\141\1\60\1\145\1\156\1\141\1\60\1\167\2"+
+        "\137\1\163\1\154\1\144\1\60\1\163\1\145\1\137\1\156\1\151\1\137"+
+        "\1\60\1\162\1\60\1\170\1\164\1\137\1\155\1\114\1\147\1\150\1\60"+
+        "\1\137\1\uffff\1\156\1\141\1\146\1\145\1\141\1\156\2\145\1\156\1"+
+        "\141\1\160\1\162\1\151\1\145\1\164\1\151\1\156\1\162\1\164\2\137"+
+        "\1\145\1\143\1\144\1\151\1\60\1\154\1\162\1\141\1\164\1\60\1\147"+
+        "\1\145\1\156\1\164\1\144\1\uffff\1\141\1\147\1\142\1\144\1\uffff"+
+        "\1\156\1\145\1\163\1\164\1\114\1\137\1\164\2\163\1\143\1\156\1\154"+
+        "\1\156\1\151\1\60\1\146\1\154\1\145\1\151\2\137\1\uffff\1\163\1"+
+        "\155\1\164\1\141\1\162\1\154\1\143\1\156\1\164\2\163\1\162\1\141"+
+        "\1\155\1\154\1\137\1\156\2\165\1\151\1\144\1\143\1\170\1\164\1\137"+
+        "\1\145\1\uffff\1\164\1\145\1\164\1\157\1\uffff\1\145\1\164\1\60"+
+        "\1\157\1\145\1\156\1\60\1\154\1\145\1\137\1\170\1\164\1\141\1\151"+
+        "\2\141\1\163\1\164\2\145\1\151\1\137\1\156\1\uffff\1\151\1\141\2"+
+        "\156\1\154\1\163\1\164\2\145\1\143\1\137\1\151\1\145\1\164\1\171"+
+        "\1\164\1\163\1\145\1\155\1\151\2\144\1\163\1\145\1\143\1\157\1\145"+
+        "\1\156\1\154\1\160\1\145\1\144\1\162\1\137\1\144\1\156\1\145\1\162"+
+        "\1\60\1\145\1\162\1\143\1\137\1\145\1\143\1\145\1\160\1\141\1\164"+
+        "\1\156\1\145\1\143\1\164\1\151\1\141\1\144\1\60\2\164\1\147\1\145"+
+        "\1\163\1\164\1\145\1\151\1\164\1\141\1\156\1\155\1\145\1\154\1\172"+
+        "\1\137\1\60\1\160\1\162\1\60\1\143\1\145\1\164\1\60\1\145\1\60\1"+
+        "\137\1\164\1\156\1\143\1\163\1\141\2\162\1\145\1\156\1\60\1\166"+
+        "\1\137\1\147\1\155\1\171\1\144\1\162\1\60\2\154\1\60\1\154\1\170"+
+        "\1\162\1\164\2\145\2\143\1\145\1\157\1\164\1\137\1\145\1\171\1\60"+
+        "\1\154\1\163\2\60\1\164\1\141\2\164\1\145\1\137\1\151\1\145\1\157"+
+        "\1\uffff\1\145\1\165\1\uffff\1\141\1\164\1\151\1\143\1\uffff\1\145"+
+        "\1\157\1\141\1\154\1\164\1\165\1\145\1\137\1\143\1\166\1\60\1\141"+
+        "\1\146\1\137\1\145\1\60\1\145\1\137\1\141\1\151\1\141\1\144\1\141"+
+        "\1\143\2\145\1\155\1\163\1\154\1\145\1\155\1\156\1\145\1\146\1\162"+
+        "\1\160\1\144\1\60\1\145\1\164\1\145\1\60\1\156\1\144\1\60\1\164"+
+        "\1\162\1\146\1\60\1\143\1\164\1\145\1\166\1\154\1\170\1\162\1\154"+
+        "\2\141\2\163\2\154\1\157\1\154\1\145\1\151\1\171\1\143\1\156\1\143"+
+        "\1\60\1\154\1\162\1\164\1\154\1\145\1\162\1\145\1\163\1\155\1\145"+
+        "\1\60\1\141\1\163\1\145\1\60\1\155\1\157\1\141\1\145\1\137\1\162"+
+        "\1\145\1\155\1\164\2\145\1\60\1\137\1\uffff\1\164\1\145\1\162\1"+
+        "\145\1\141\1\160\2\137\1\162\1\156\1\145\1\163\1\151\1\141\1\143"+
+        "\1\165\1\164\1\145\1\160\1\154\1\145\1\164\1\154\1\171\1\151\1\141"+
+        "\1\145\1\165\1\143\1\141\1\160\1\163\1\145\1\156\1\162\1\163\1\156"+
+        "\1\145\1\162\1\154\1\60\2\141\1\155\1\145\1\60\1\143\1\162\1\145"+
+        "\1\157\1\144\2\60\2\162\1\144\1\145\1\141\1\143\1\60\1\151\1\164"+
+        "\1\162\1\141\1\145\1\150\1\154\1\145\1\141\1\164\1\60\1\141\1\160"+
+        "\1\163\1\164\1\162\1\145\1\154\2\164\1\151\1\156\1\164\1\141\1\60"+
+        "\1\164\1\156\1\137\1\60\1\143\1\154\1\145\1\156\1\154\1\141\1\170"+
+        "\1\162\1\60\1\141\2\145\1\170\1\164\1\145\1\157\1\145\1\141\1\164"+
+        "\1\60\1\157\1\144\2\163\1\150\1\162\1\145\1\164\1\151\1\141\1\60"+
+        "\1\141\2\151\1\157\1\164\1\60\1\164\1\60\1\164\1\163\1\143\1\60"+
+        "\1\156\1\164\1\141\1\154\1\160\1\60\1\164\1\163\1\143\1\160\1\151"+
+        "\1\137\1\156\1\162\1\164\1\151\1\144\1\163\1\60\1\163\1\157\1\141"+
+        "\1\163\1\60\1\157\1\154\1\162\2\157\1\156\1\60\1\151\1\60\1\164"+
+        "\1\145\1\164\1\60\1\162\1\60\1\162\1\151\1\163\1\154\1\162\1\157"+
+        "\1\143\1\60\1\141\1\151\1\157\1\163\2\60\1\144\1\164\1\60\1\156"+
+        "\1\60\1\141\2\156\1\60\1\157\1\141\1\163\1\60\1\141\1\145\1\157"+
+        "\1\151\1\141\1\145\1\156\1\162\1\154\1\157\1\156\2\60\1\151\1\163"+
+        "\1\164\1\60\1\163\1\156\1\164\1\163\1\164\1\163\1\156\1\157\1\162"+
+        "\1\163\1\60\1\145\1\60\1\156\1\60\1\157\1\60\1\151\2\60\1\145\1"+
+        "\60\1\151\1\163\1\60\1\156\1\141\1\163\1\141\1\60\1\156\1\157\1"+
+        "\155\1\157\1\151\1\60\1\164\1\151\1\164\1\60\1\156\1\145\1\156\1"+
+        "\157\1\151\1\157\1\151\1\60\1\156\1\60\1\156\1\157\1\156\1\157\1"+
+        "\146\1\164\1\60\1\156\1\60\1\156\1\162\1\164\3\60\2\141\1\147\1"+
+        "\164\1\155\2\145\1\155\1\156\1\145\1\164\1\156\1\60\1\164\1\60";
+    static final String DFA24_maxS =
+        "\1\175\1\167\1\151\2\163\1\uffff\1\71\1\157\1\141\2\157\1\162\1"+
+        "\uffff\1\76\10\uffff\1\uffff\2\75\1\uffff\1\116\1\uffff\1\122\1"+
+        "\162\3\75\1\57\1\157\1\141\1\171\1\157\1\170\1\165\1\145\1\151\1"+
+        "\156\1\uffff\1\145\1\uffff\1\164\1\160\1\162\2\151\1\164\1\172\1"+
+        "\144\3\172\1\160\3\uffff\1\156\1\141\1\164\1\141\1\163\1\170\1\156"+
+        "\1\164\1\144\1\160\1\137\1\162\1\151\1\162\10\uffff\1\104\2\172"+
+        "\1\145\11\uffff\1\170\1\162\1\160\1\162\1\171\1\164\1\154\1\162"+
+        "\1\160\1\163\1\150\1\154\1\155\1\164\1\156\1\142\1\uffff\1\145\1"+
+        "\172\1\145\1\164\1\151\1\164\1\162\1\154\1\150\1\151\1\uffff\1\172"+
+        "\1\163\1\uffff\1\145\2\164\1\uffff\1\141\1\157\1\160\1\uffff\1\157"+
+        "\1\164\1\163\1\143\1\164\1\162\3\172\1\150\1\151\1\164\1\141\1\154"+
+        "\1\163\1\145\1\156\1\153\1\141\1\172\1\147\1\162\1\171\1\154\2\151"+
+        "\1\145\1\157\1\163\1\156\1\137\1\141\1\154\1\145\1\137\1\162\1\145"+
+        "\1\141\1\114\1\154\1\145\1\165\1\144\1\157\1\143\1\uffff\1\162\1"+
+        "\145\1\164\1\156\1\143\2\145\1\172\1\147\1\164\1\162\1\151\1\141"+
+        "\1\162\1\144\1\157\1\145\1\162\1\151\1\162\1\151\1\164\1\151\1\163"+
+        "\1\150\1\137\1\141\3\uffff\1\157\1\146\1\150\1\165\1\141\1\164\1"+
+        "\143\1\164\1\141\1\155\1\151\1\141\1\172\1\145\1\156\1\141\1\172"+
+        "\1\167\2\137\1\163\1\154\1\144\1\172\1\163\1\145\1\137\1\156\1\151"+
+        "\1\137\1\172\1\162\1\172\1\170\1\164\1\143\1\155\1\114\1\147\1\150"+
+        "\1\172\1\137\1\uffff\1\156\1\141\1\146\1\145\1\141\1\156\2\145\1"+
+        "\156\1\141\1\160\1\162\1\151\1\145\1\164\1\151\1\156\1\162\1\164"+
+        "\2\137\1\145\1\143\1\144\1\151\1\172\1\154\1\162\1\141\1\164\1\172"+
+        "\1\147\1\145\1\156\1\164\1\144\1\uffff\1\141\1\147\1\142\1\144\1"+
+        "\uffff\1\156\1\145\1\163\1\164\1\114\1\137\1\164\2\163\1\143\1\156"+
+        "\1\154\1\156\1\151\1\172\1\146\1\154\1\145\1\151\2\137\1\uffff\1"+
+        "\163\1\155\1\164\1\141\1\162\1\154\1\143\1\156\1\164\2\163\1\162"+
+        "\1\141\1\155\1\154\1\137\1\156\2\165\2\151\1\143\1\170\1\164\1\137"+
+        "\1\145\1\uffff\1\164\1\151\1\164\1\157\1\uffff\1\145\1\164\1\172"+
+        "\1\157\1\145\1\156\1\172\1\154\1\145\1\137\1\170\1\164\1\141\1\151"+
+        "\1\144\1\141\1\163\1\164\2\145\1\151\1\137\1\156\1\uffff\1\151\1"+
+        "\141\2\156\1\154\1\163\1\164\2\145\1\143\1\137\1\151\1\145\1\164"+
+        "\1\171\1\164\1\163\1\145\1\155\1\151\2\144\1\163\1\145\1\143\1\157"+
+        "\1\145\1\156\1\154\1\160\1\145\1\151\1\162\1\137\1\144\1\156\1\145"+
+        "\1\162\1\172\1\145\1\162\1\143\1\137\1\145\1\143\1\145\1\160\1\141"+
+        "\1\164\1\156\1\145\1\143\1\164\1\151\1\141\1\144\1\172\2\164\1\147"+
+        "\1\145\1\163\1\164\1\145\1\151\1\164\1\141\1\156\1\155\1\145\1\154"+
+        "\1\172\1\137\1\172\1\160\1\162\1\172\1\143\1\145\1\164\1\172\1\145"+
+        "\1\172\1\137\1\164\1\156\1\143\1\163\1\141\2\162\1\145\1\156\1\172"+
+        "\1\166\1\137\1\147\1\155\1\171\1\144\1\162\1\172\1\154\1\166\1\172"+
+        "\1\154\1\170\1\162\1\164\2\145\2\143\1\145\1\157\1\164\1\137\1\145"+
+        "\1\171\1\172\1\154\1\163\2\172\1\164\1\141\2\164\1\145\1\163\1\151"+
+        "\1\145\1\157\1\uffff\1\145\1\165\1\uffff\1\141\1\164\1\151\1\143"+
+        "\1\uffff\1\145\1\157\1\141\1\154\1\164\1\165\1\145\1\137\1\143\1"+
+        "\166\1\172\1\141\1\164\1\137\1\145\1\172\1\145\1\163\1\141\1\151"+
+        "\1\141\1\144\1\141\1\143\2\145\1\155\1\163\1\154\1\145\1\155\1\156"+
+        "\1\145\1\146\1\162\1\160\1\144\1\172\1\145\1\164\1\145\1\172\1\156"+
+        "\1\144\1\172\1\164\1\162\1\146\1\172\1\143\1\164\1\145\1\166\1\154"+
+        "\1\170\1\162\1\154\2\141\2\163\2\154\1\157\1\154\1\145\1\151\1\171"+
+        "\1\155\1\156\1\143\1\172\1\164\1\162\1\164\1\154\1\145\1\162\1\145"+
+        "\1\163\1\155\1\145\1\172\1\141\1\163\1\145\1\172\1\155\1\157\1\141"+
+        "\1\145\1\137\1\162\1\145\1\155\1\164\2\145\1\172\1\137\1\uffff\1"+
+        "\164\1\145\1\162\1\145\1\141\1\160\2\137\1\162\1\156\1\145\1\163"+
+        "\1\151\1\141\1\143\1\165\1\164\1\145\1\160\1\154\1\145\1\164\1\154"+
+        "\1\171\1\151\1\141\1\145\1\165\1\143\1\141\1\160\1\163\1\145\1\156"+
+        "\1\162\1\163\1\156\1\145\1\162\1\154\1\172\2\141\1\155\1\145\1\172"+
+        "\1\143\1\162\1\145\1\157\1\144\2\172\2\162\1\144\1\145\1\141\1\143"+
+        "\1\172\1\151\1\164\1\162\1\141\1\145\1\150\1\154\1\145\1\141\1\164"+
+        "\1\172\1\141\1\160\1\163\1\164\1\162\1\145\1\154\2\164\1\151\1\156"+
+        "\1\164\1\141\1\172\1\164\1\156\1\137\1\172\1\143\1\154\1\145\1\156"+
+        "\1\154\1\141\1\170\1\162\1\172\1\141\2\145\1\170\1\164\1\145\1\157"+
+        "\1\145\1\141\1\164\1\172\1\157\1\144\2\163\1\150\1\162\1\145\1\164"+
+        "\1\151\1\141\1\172\1\141\2\151\1\157\1\164\1\172\1\164\1\172\1\164"+
+        "\1\163\1\143\1\172\1\156\1\164\1\141\1\154\1\160\1\172\1\164\1\163"+
+        "\1\143\1\160\1\151\1\137\1\156\1\162\1\164\1\151\1\144\1\163\1\172"+
+        "\1\163\1\157\1\141\1\163\1\172\1\157\1\154\1\162\2\157\1\156\1\172"+
+        "\1\151\1\172\1\164\1\145\1\164\1\172\1\162\1\172\1\162\1\151\1\163"+
+        "\1\154\1\162\1\157\1\143\1\172\1\141\1\151\1\157\1\163\2\172\1\144"+
+        "\1\164\1\172\1\156\1\172\1\141\2\156\1\172\1\157\1\141\1\163\1\172"+
+        "\1\141\1\145\1\157\1\151\1\141\1\145\1\156\1\162\1\154\1\157\1\156"+
+        "\2\172\1\151\1\163\1\164\1\172\1\163\1\156\1\164\1\163\1\164\1\163"+
+        "\1\156\1\157\1\162\1\163\1\172\1\145\1\172\1\156\1\172\1\157\1\172"+
+        "\1\151\2\172\1\145\1\172\1\151\1\163\1\172\1\156\1\141\1\163\1\141"+
+        "\1\172\1\156\1\157\1\155\1\157\1\151\1\172\1\164\1\151\1\164\1\172"+
+        "\1\156\1\145\1\156\1\157\1\151\1\157\1\151\1\172\1\156\1\172\1\156"+
+        "\1\157\1\156\1\157\1\163\1\164\1\172\1\156\1\172\1\156\1\162\1\164"+
+        "\3\172\2\141\1\147\1\164\1\155\2\145\1\155\1\156\1\145\1\164\1\156"+
+        "\1\172\1\164\1\172";
+    static final String DFA24_acceptS =
+        "\5\uffff\1\10\6\uffff\1\23\1\uffff\1\25\1\26\1\27\1\30\1\31\1\32"+
+        "\1\33\1\34\3\uffff\1\43\1\uffff\1\44\17\uffff\1\61\1\uffff\1\65"+
+        "\14\uffff\1\35\1\11\1\64\16\uffff\1\24\1\52\1\36\1\63\1\37\1\42"+
+        "\1\40\1\41\4\uffff\1\45\1\46\1\50\1\47\1\51\1\54\1\55\1\66\1\53"+
+        "\20\uffff\1\62\12\uffff\1\4\2\uffff\1\6\3\uffff\1\7\3\uffff\1\15"+
+        "\55\uffff\1\5\33\uffff\1\16\1\17\1\20\52\uffff\1\3\44\uffff\1\56"+
+        "\4\uffff\1\57\25\uffff\1\2\32\uffff\1\21\4\uffff\1\22\27\uffff\1"+
+        "\1\u0085\uffff\1\13\2\uffff\1\60\4\uffff\1\12\144\uffff\1\14\u0127"+
+        "\uffff";
+    static final String DFA24_specialS =
+        "\26\uffff\1\0\u0379\uffff}>";
+    static final String[] DFA24_transitionS = {
+            "\2\55\2\uffff\1\55\22\uffff\1\55\1\36\1\26\3\uffff\1\31\1\uffff"+
+            "\1\16\1\17\1\5\1\40\1\14\1\15\1\6\1\41\12\54\1\25\1\24\1\30"+
+            "\1\37\1\27\2\uffff\1\32\15\53\1\34\13\53\1\22\1\uffff\1\23\1"+
+            "\uffff\1\53\1\uffff\1\3\1\42\1\7\1\12\1\46\1\45\1\53\1\10\1"+
+            "\4\1\53\1\51\1\53\1\11\1\47\1\35\1\13\1\53\1\50\1\1\1\44\1\52"+
+            "\1\43\1\2\3\53\1\20\1\33\1\21",
+            "\1\56\16\uffff\1\60\1\57\1\uffff\1\61",
+            "\1\62\1\63",
+            "\1\65\4\uffff\1\64",
+            "\1\66\6\uffff\1\71\1\67\4\uffff\1\70",
             "",
-            "\1\75\1\uffff\12\76",
-            "\1\101\6\uffff\1\102\3\uffff\1\100\2\uffff\1\77",
-            "\1\103",
-            "\1\104\3\uffff\1\106\3\uffff\1\105\5\uffff\1\107",
-            "\1\110\3\uffff\1\112\5\uffff\1\111",
-            "\1\114\20\uffff\1\113",
+            "\1\73\1\uffff\12\74",
+            "\1\77\6\uffff\1\100\3\uffff\1\76\2\uffff\1\75",
+            "\1\101",
+            "\1\102\3\uffff\1\104\3\uffff\1\103\5\uffff\1\105",
+            "\1\106\3\uffff\1\110\5\uffff\1\107",
+            "\1\112\20\uffff\1\111",
             "",
-            "\1\115",
+            "\1\113",
             "",
             "",
             "",
@@ -3939,62 +4021,61 @@ public class QueryLanguageLexer extends Lexer {
             "",
             "",
             "",
-            "\0\120",
+            "\0\116",
+            "\1\120",
             "\1\122",
+            "",
+            "\1\123",
+            "",
             "\1\124",
-            "",
-            "\1\125",
-            "",
-            "\1\126",
-            "\1\130\1\uffff\1\127",
+            "\1\126\1\uffff\1\125",
+            "\1\130",
             "\1\132",
-            "\1\134",
-            "\1\137\21\uffff\1\136",
-            "",
+            "\1\135\21\uffff\1\134",
+            "\1\136",
             "\1\140",
             "\1\141",
             "\1\143\6\uffff\1\145\2\uffff\1\144\6\uffff\1\142",
-            "\1\147\1\uffff\1\150\11\uffff\1\146",
-            "\1\152\23\uffff\1\151",
-            "\1\153",
-            "\1\154",
+            "\1\146\5\uffff\1\147",
+            "\1\151\1\uffff\1\152\11\uffff\1\150",
+            "\1\154\23\uffff\1\153",
             "\1\155",
-            "",
-            "\1\76\1\uffff\12\54\13\uffff\1\76\37\uffff\1\76",
-            "",
+            "\1\156",
             "\1\157",
-            "\1\160\6\uffff\1\161",
-            "\1\162\7\uffff\1\163",
-            "\1\164",
-            "\1\165\20\uffff\1\166",
-            "\1\167",
-            "\1\170\3\uffff\1\171",
-            "\1\172",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\22\53\1\173\7\53",
-            "\1\175",
-            "\12\53\7\uffff\32\53\4\uffff\1\176\1\uffff\32\53",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\10\53\1\u0081\11"+
-            "\53\1\u0082\1\u0080\6\53",
-            "\12\53\7\uffff\32\53\4\uffff\1\u0086\1\uffff\15\53\1\u0085"+
-            "\1\53\1\u0084\12\53",
+            "",
+            "\1\74\1\uffff\12\54\13\uffff\1\74\37\uffff\1\74",
+            "",
+            "\1\161\7\uffff\1\162",
+            "\1\163",
+            "\1\164\20\uffff\1\165",
+            "\1\166",
+            "\1\167\3\uffff\1\170",
+            "\1\171",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\22\53\1\172\7\53",
+            "\1\174",
+            "\12\53\7\uffff\32\53\4\uffff\1\175\1\uffff\32\53",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\10\53\1\u0080\11"+
+            "\53\1\u0081\1\177\6\53",
+            "\12\53\7\uffff\32\53\4\uffff\1\u0085\1\uffff\15\53\1\u0084"+
+            "\1\53\1\u0083\12\53",
+            "\1\u0087",
+            "",
+            "",
+            "",
             "\1\u0088",
-            "",
-            "",
-            "",
             "\1\u0089",
-            "\1\u008a",
-            "\1\u008c\1\u008b",
+            "\1\u008b\1\u008a",
+            "\1\u008c",
             "\1\u008d",
             "\1\u008e",
             "\1\u008f",
             "\1\u0090",
             "\1\u0091",
-            "\1\u0092",
-            "\1\u0095\2\uffff\1\u0094\11\uffff\1\u0093",
+            "\1\u0094\2\uffff\1\u0093\11\uffff\1\u0092",
+            "\1\u0095",
             "\1\u0096",
             "\1\u0097",
-            "\1\u0098",
-            "\1\u0099\16\uffff\1\u009a",
+            "\1\u0098\16\uffff\1\u0099",
             "",
             "",
             "",
@@ -4003,11 +4084,11 @@ public class QueryLanguageLexer extends Lexer {
             "",
             "",
             "",
-            "\1\u009b",
+            "\1\u009a",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\10\53\1\u009c\21"+
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\10\53\1\u009b\21"+
             "\53",
-            "\1\u009d",
+            "\1\u009c",
             "",
             "",
             "",
@@ -4015,55 +4096,58 @@ public class QueryLanguageLexer extends Lexer {
             "",
             "",
             "",
-            "\1\u009e\12\uffff\1\u009f\10\uffff\1\u00a0",
+            "",
+            "",
+            "\1\u009d\12\uffff\1\u009e\10\uffff\1\u009f",
+            "\1\u00a0",
             "\1\u00a1",
-            "\1\u00a2",
-            "\1\u00a5\3\uffff\1\u00a4\10\uffff\1\u00a3",
+            "\1\u00a4\3\uffff\1\u00a3\10\uffff\1\u00a2",
+            "\1\u00a5",
             "\1\u00a6",
-            "\1\u00a7",
-            "\1\u00a8",
+            "\1\u00a7\6\uffff\1\u00a8",
             "\1\u00a9",
-            "\1\u00ab\3\uffff\1\u00aa",
-            "\1\u00ac",
-            "\1\u00ad",
+            "\1\u00aa",
+            "\1\u00ab",
+            "\1\u00ad\3\uffff\1\u00ac",
             "\1\u00ae",
             "\1\u00af",
             "\1\u00b0",
+            "\1\u00b1",
+            "\1\u00b2",
             "",
-            "\1\u00b2\5\uffff\1\u00b1",
             "\1\u00b3",
-            "\1\u00b4",
-            "\1\u00b5",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u00b7",
-            "\1\u00b9\1\uffff\1\u00b8",
+            "\1\u00b5",
+            "\1\u00b7\1\uffff\1\u00b6",
+            "\1\u00b8",
+            "\1\u00b9",
             "\1\u00ba",
             "\1\u00bb",
             "\1\u00bc",
             "\1\u00bd",
-            "\1\u00be",
-            "\1\u00bf",
             "",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u00c0",
+            "\1\u00be",
             "",
+            "\1\u00bf",
+            "\1\u00c0",
             "\1\u00c1",
+            "",
             "\1\u00c2",
             "\1\u00c3",
+            "\1\u00c4\1\u00c5\1\uffff\1\u00c7\11\uffff\1\u00c6",
             "",
-            "\1\u00c4",
-            "\1\u00c5",
-            "\1\u00c6\1\u00c7\1\uffff\1\u00c9\11\uffff\1\u00c8",
-            "",
-            "\1\u00ca",
-            "\1\u00cd\16\uffff\1\u00cc\1\u00cb",
+            "\1\u00c8",
+            "\1\u00cb\16\uffff\1\u00ca\1\u00c9",
+            "\1\u00cc",
+            "\1\u00cd",
             "\1\u00ce",
             "\1\u00cf",
-            "\1\u00d0",
-            "\1\u00d1",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u00d3",
+            "\1\u00d4",
             "\1\u00d5",
             "\1\u00d6",
             "\1\u00d7",
@@ -4072,9 +4156,9 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u00da",
             "\1\u00db",
             "\1\u00dc",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u00dd",
             "\1\u00de",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u00df",
             "\1\u00e0",
             "\1\u00e1",
@@ -4098,40 +4182,40 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u00f3",
             "\1\u00f4",
             "\1\u00f5",
-            "\1\u00f6",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u00f8",
             "",
+            "\1\u00f6",
+            "\1\u00f7",
+            "\1\u00f8",
             "\1\u00f9",
             "\1\u00fa",
             "\1\u00fb",
             "\1\u00fc",
-            "\1\u00fd",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u00fe",
             "\1\u00ff",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u0101",
+            "\1\u0101\12\uffff\1\u0100",
             "\1\u0102",
-            "\1\u0104\12\uffff\1\u0103",
+            "\1\u0103",
+            "\1\u0104",
             "\1\u0105",
-            "\1\u0106",
-            "\1\u0107",
+            "\1\u0107\2\uffff\1\u0106",
             "\1\u0108",
-            "\1\u010a\2\uffff\1\u0109",
+            "\1\u0109\20\uffff\1\u010a",
             "\1\u010b",
-            "\1\u010c\20\uffff\1\u010d",
-            "\1\u010e",
+            "\1\u010c",
+            "\1\u010d\7\uffff\1\u010e",
             "\1\u010f",
-            "\1\u0110\7\uffff\1\u0111",
+            "\1\u0110",
+            "\1\u0111",
             "\1\u0112",
             "\1\u0113",
             "\1\u0114",
+            "",
+            "",
+            "",
             "\1\u0115",
             "\1\u0116",
             "\1\u0117",
-            "",
-            "",
-            "",
             "\1\u0118",
             "\1\u0119",
             "\1\u011a",
@@ -4141,18 +4225,18 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u011e",
             "\1\u011f",
             "\1\u0120",
-            "\1\u0121",
-            "\1\u0122",
+            "\12\53\7\uffff\32\53\4\uffff\1\u0121\1\uffff\32\53",
             "\1\u0123",
-            "\12\53\7\uffff\32\53\4\uffff\1\u0124\1\uffff\32\53",
+            "\1\u0124",
             "\1\u0125",
-            "\1\u0126",
-            "\1\u0127",
-            "\12\53\7\uffff\32\53\4\uffff\1\u0128\1\uffff\32\53",
+            "\12\53\7\uffff\32\53\4\uffff\1\u0126\1\uffff\32\53",
+            "\1\u0128",
+            "\1\u0129",
             "\1\u012a",
             "\1\u012b",
             "\1\u012c",
             "\1\u012d",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u012e",
             "\1\u012f",
             "\1\u0130",
@@ -4164,18 +4248,17 @@ public class QueryLanguageLexer extends Lexer {
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0135",
             "\1\u0136",
-            "\1\u0137",
-            "\1\u0138",
-            "",
+            "\1\u0137\3\uffff\1\u0138",
             "\1\u0139",
-            "\1\u013a\3\uffff\1\u013b",
+            "\1\u013a",
+            "\1\u013b",
             "\1\u013c",
-            "\1\u013d",
-            "\1\u013e",
-            "\1\u013f",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u0141",
+            "\1\u013e",
             "",
+            "\1\u013f",
+            "\1\u0140",
+            "\1\u0141",
             "\1\u0142",
             "\1\u0143",
             "\1\u0144",
@@ -4198,25 +4281,26 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u0155",
             "\1\u0156",
             "\1\u0157",
-            "\1\u0158",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0159",
             "\1\u015a",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u015b",
             "\1\u015c",
-            "\1\u015d",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u015e",
             "\1\u015f",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u0160",
             "\1\u0161",
             "\1\u0162",
+            "",
             "\1\u0163",
             "\1\u0164",
             "\1\u0165",
             "\1\u0166",
+            "",
             "\1\u0167",
             "\1\u0168",
             "\1\u0169",
-            "",
             "\1\u016a",
             "\1\u016b",
             "\1\u016c",
@@ -4228,18 +4312,19 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u0172",
             "\1\u0173",
             "\1\u0174",
-            "\1\u0175",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0176",
             "\1\u0177",
-            "\1\u0179\2\uffff\1\u0178",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u0178",
+            "\1\u0179",
+            "\1\u017a",
             "\1\u017b",
+            "",
             "\1\u017c",
             "\1\u017d",
             "\1\u017e",
             "\1\u017f",
             "\1\u0180",
-            "",
             "\1\u0181",
             "\1\u0182",
             "\1\u0183",
@@ -4255,34 +4340,33 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u018d",
             "\1\u018e",
             "\1\u018f",
-            "\1\u0190",
-            "\1\u0191",
+            "\1\u0190\4\uffff\1\u0191",
             "\1\u0192",
             "\1\u0193",
             "\1\u0194",
-            "\1\u0195\4\uffff\1\u0196",
+            "\1\u0195",
+            "\1\u0196",
+            "",
             "\1\u0197",
-            "\1\u0198",
-            "\1\u0199",
+            "\1\u0198\3\uffff\1\u0199",
             "\1\u019a",
             "\1\u019b",
             "",
             "\1\u019c",
-            "\1\u019d\3\uffff\1\u019e",
+            "\1\u019d",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u019e",
             "\1\u019f",
             "\1\u01a0",
-            "",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u01a1",
             "\1\u01a2",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u01a3",
             "\1\u01a4",
             "\1\u01a5",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u01a6",
             "\1\u01a7",
-            "\1\u01a8",
-            "\1\u01a9",
+            "\1\u01a9\2\uffff\1\u01a8",
             "\1\u01aa",
             "\1\u01ab",
             "\1\u01ac",
@@ -4291,13 +4375,13 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u01af",
             "\1\u01b0",
             "\1\u01b1",
+            "",
             "\1\u01b2",
             "\1\u01b3",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u01b4",
             "\1\u01b5",
             "\1\u01b6",
             "\1\u01b7",
-            "",
             "\1\u01b8",
             "\1\u01b9",
             "\1\u01ba",
@@ -4323,20 +4407,20 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u01ce",
             "\1\u01cf",
             "\1\u01d0",
-            "\1\u01d1",
-            "\1\u01d2",
+            "\1\u01d1\4\uffff\1\u01d2",
             "\1\u01d3",
             "\1\u01d4",
             "\1\u01d5",
             "\1\u01d6",
-            "\1\u01d7\4\uffff\1\u01d8",
-            "\1\u01d9",
+            "\1\u01d7",
+            "\1\u01d8",
+            "\12\53\7\uffff\32\53\4\uffff\1\u01d9\1\uffff\32\53",
             "\1\u01da",
             "\1\u01db",
             "\1\u01dc",
             "\1\u01dd",
             "\1\u01de",
-            "\12\53\7\uffff\32\53\4\uffff\1\u01df\1\uffff\32\53",
+            "\1\u01df",
             "\1\u01e0",
             "\1\u01e1",
             "\1\u01e2",
@@ -4348,14 +4432,13 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u01e8",
             "\1\u01e9",
             "\1\u01ea",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u01eb",
             "\1\u01ec",
             "\1\u01ed",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u01ee",
             "\1\u01ef",
             "\1\u01f0",
-            "",
             "\1\u01f1",
             "\1\u01f2",
             "\1\u01f3",
@@ -4366,44 +4449,44 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u01f8",
             "\1\u01f9",
             "\1\u01fa",
-            "\1\u01fb",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u01fc",
             "\1\u01fd",
-            "\1\u01fe",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u01ff",
             "\1\u0200",
+            "\1\u0201",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0202",
-            "\1\u0203",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u0204",
             "\1\u0205",
             "\1\u0206",
             "\1\u0207",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0208",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u0209",
             "\1\u020a",
             "\1\u020b",
             "\1\u020c",
             "\1\u020d",
-            "\1\u020e",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\22\53\1\u020e\7\53",
             "\1\u020f",
             "\1\u0210",
             "\1\u0211",
             "\1\u0212",
             "\1\u0213",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\22\53\1\u0214\7\53",
+            "\1\u0214",
             "\1\u0215",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0216",
-            "\1\u0217",
-            "\1\u0218",
-            "\1\u0219",
+            "\1\u0217\11\uffff\1\u0218",
+            "\12\53\7\uffff\32\53\4\uffff\1\u0219\1\uffff\32\53",
             "\1\u021a",
             "\1\u021b",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u021c",
-            "\1\u021d\11\uffff\1\u021e",
-            "\12\53\7\uffff\32\53\4\uffff\1\u021f\1\uffff\32\53",
+            "\1\u021d",
+            "\1\u021e",
+            "\1\u021f",
             "\1\u0220",
             "\1\u0221",
             "\1\u0222",
@@ -4412,53 +4495,53 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u0225",
             "\1\u0226",
             "\1\u0227",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0228",
             "\1\u0229",
-            "\1\u022a",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u022a",
             "\1\u022b",
             "\1\u022c",
             "\1\u022d",
             "\1\u022e",
-            "\1\u022f",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u0230",
+            "\1\u022f\23\uffff\1\u0230",
             "\1\u0231",
             "\1\u0232",
             "\1\u0233",
+            "",
             "\1\u0234",
-            "\1\u0235\23\uffff\1\u0236",
+            "\1\u0235",
+            "",
+            "\1\u0236",
             "\1\u0237",
             "\1\u0238",
             "\1\u0239",
             "",
             "\1\u023a",
             "\1\u023b",
-            "",
             "\1\u023c",
             "\1\u023d",
             "\1\u023e",
             "\1\u023f",
-            "",
             "\1\u0240",
             "\1\u0241",
             "\1\u0242",
             "\1\u0243",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0244",
-            "\1\u0245",
-            "\1\u0246",
-            "\1\u0247",
+            "\1\u0246\6\uffff\1\u0245\6\uffff\1\u0247",
             "\1\u0248",
             "\1\u0249",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u024a",
-            "\1\u024c\6\uffff\1\u024b\6\uffff\1\u024d",
+            "\1\u024c\23\uffff\1\u024b",
+            "\1\u024d",
             "\1\u024e",
             "\1\u024f",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0250",
-            "\1\u0252\23\uffff\1\u0251",
+            "\1\u0251",
+            "\1\u0252",
             "\1\u0253",
             "\1\u0254",
             "\1\u0255",
@@ -4472,24 +4555,24 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u025d",
             "\1\u025e",
             "\1\u025f",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0260",
             "\1\u0261",
             "\1\u0262",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0263",
             "\1\u0264",
-            "\1\u0265",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u0265",
             "\1\u0266",
             "\1\u0267",
-            "\1\u0268",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0269",
             "\1\u026a",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u026b",
             "\1\u026c",
             "\1\u026d",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u026e",
             "\1\u026f",
             "\1\u0270",
             "\1\u0271",
@@ -4503,28 +4586,28 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u0279",
             "\1\u027a",
             "\1\u027b",
-            "\1\u027c",
-            "\1\u027d",
+            "\1\u027c\11\uffff\1\u027d",
             "\1\u027e",
             "\1\u027f",
-            "\1\u0280",
-            "\1\u0281",
-            "\1\u0282\11\uffff\1\u0283",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u0281\7\uffff\1\u0280",
+            "\1\u0282",
+            "\1\u0283",
             "\1\u0284",
             "\1\u0285",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u0287\7\uffff\1\u0286",
+            "\1\u0286",
+            "\1\u0287",
             "\1\u0288",
             "\1\u0289",
             "\1\u028a",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u028b",
             "\1\u028c",
             "\1\u028d",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u028e",
             "\1\u028f",
             "\1\u0290",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0291",
             "\1\u0292",
             "\1\u0293",
@@ -4533,15 +4616,15 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u0296",
             "\1\u0297",
             "\1\u0298",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0299",
+            "",
             "\1\u029a",
             "\1\u029b",
             "\1\u029c",
             "\1\u029d",
             "\1\u029e",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u029f",
-            "",
             "\1\u02a0",
             "\1\u02a1",
             "\1\u02a2",
@@ -4576,43 +4659,42 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u02bf",
             "\1\u02c0",
             "\1\u02c1",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u02c2",
             "\1\u02c3",
             "\1\u02c4",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u02c5",
-            "\1\u02c6",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u02c6",
             "\1\u02c7",
             "\1\u02c8",
             "\1\u02c9",
             "\1\u02ca",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u02cb",
             "\1\u02cc",
             "\1\u02cd",
             "\1\u02ce",
             "\1\u02cf",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u02d0",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u02d1",
             "\1\u02d2",
             "\1\u02d3",
             "\1\u02d4",
             "\1\u02d5",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u02d6",
             "\1\u02d7",
             "\1\u02d8",
             "\1\u02d9",
             "\1\u02da",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u02db",
             "\1\u02dc",
             "\1\u02dd",
             "\1\u02de",
             "\1\u02df",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u02e0",
             "\1\u02e1",
             "\1\u02e2",
@@ -4621,48 +4703,50 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u02e5",
             "\1\u02e6",
             "\1\u02e7",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u02e8",
             "\1\u02e9",
             "\1\u02ea",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u02eb",
             "\1\u02ec",
             "\1\u02ed",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u02ee",
             "\1\u02ef",
             "\1\u02f0",
             "\1\u02f1",
             "\1\u02f2",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u02f3",
             "\1\u02f4",
             "\1\u02f5",
             "\1\u02f6",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u02f7",
             "\1\u02f8",
             "\1\u02f9",
             "\1\u02fa",
             "\1\u02fb",
             "\1\u02fc",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u02fd",
             "\1\u02fe",
             "\1\u02ff",
             "\1\u0300",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0301",
             "\1\u0302",
             "\1\u0303",
             "\1\u0304",
             "\1\u0305",
             "\1\u0306",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0307",
             "\1\u0308",
             "\1\u0309",
             "\1\u030a",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u030b",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u030c",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u030d",
             "\1\u030e",
             "\1\u030f",
@@ -4671,13 +4755,12 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u0311",
             "\1\u0312",
             "\1\u0313",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0314",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0315",
             "\1\u0316",
             "\1\u0317",
             "\1\u0318",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0319",
             "\1\u031a",
             "\1\u031b",
@@ -4686,6 +4769,7 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u031e",
             "\1\u031f",
             "\1\u0320",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0321",
             "\1\u0322",
             "\1\u0323",
@@ -4695,49 +4779,48 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u0326",
             "\1\u0327",
             "\1\u0328",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0329",
             "\1\u032a",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u032b",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u032c",
             "\1\u032d",
             "\1\u032e",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u032f",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0330",
             "\1\u0331",
             "\1\u0332",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0333",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0334",
             "\1\u0335",
             "\1\u0336",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0337",
             "\1\u0338",
             "\1\u0339",
             "\1\u033a",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u033b",
             "\1\u033c",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u033d",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u033e",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u033f",
             "\1\u0340",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0341",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0342",
             "\1\u0343",
-            "\1\u0344",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u0344",
             "\1\u0345",
             "\1\u0346",
             "\1\u0347",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0348",
             "\1\u0349",
             "\1\u034a",
@@ -4745,47 +4828,48 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u034c",
             "\1\u034d",
             "\1\u034e",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u034f",
             "\1\u0350",
             "\1\u0351",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0352",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0353",
             "\1\u0354",
             "\1\u0355",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0356",
             "\1\u0357",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0358",
             "\1\u0359",
             "\1\u035a",
             "\1\u035b",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u035c",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u035d",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u035e",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u035f",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0360",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0361",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0362",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0363",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0364",
             "\1\u0365",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0366",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0367",
             "\1\u0368",
             "\1\u0369",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u036a",
             "\1\u036b",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u036c",
             "\1\u036d",
             "\1\u036e",
@@ -4793,32 +4877,31 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u036f",
             "\1\u0370",
             "\1\u0371",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0372",
             "\1\u0373",
             "\1\u0374",
             "\1\u0375",
-            "\1\u0376",
+            "\12\53\7\uffff\32\53\4\uffff\1\u0376\1\uffff\32\53",
             "\1\u0377",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0378",
-            "\12\53\7\uffff\32\53\4\uffff\1\u0379\1\uffff\32\53",
+            "\1\u0379",
             "\1\u037a",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u037b",
-            "\1\u037c",
-            "\1\u037d",
+            "\1\u037c\14\uffff\1\u037d",
             "\1\u037e",
-            "\1\u037f\14\uffff\1\u0380",
-            "\1\u0381",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u037f",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u0380",
+            "\1\u0381",
             "\1\u0382",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0383",
             "\1\u0384",
             "\1\u0385",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0386",
             "\1\u0387",
             "\1\u0388",
@@ -4828,63 +4911,60 @@ public class QueryLanguageLexer extends Lexer {
             "\1\u038c",
             "\1\u038d",
             "\1\u038e",
-            "\1\u038f",
-            "\1\u0390",
-            "\1\u0391",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u0392",
+            "\1\u038f",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53"
     };
 
-    static final short[] DFA21_eot = DFA.unpackEncodedString(DFA21_eotS);
-    static final short[] DFA21_eof = DFA.unpackEncodedString(DFA21_eofS);
-    static final char[] DFA21_min = DFA.unpackEncodedStringToUnsignedChars(DFA21_minS);
-    static final char[] DFA21_max = DFA.unpackEncodedStringToUnsignedChars(DFA21_maxS);
-    static final short[] DFA21_accept = DFA.unpackEncodedString(DFA21_acceptS);
-    static final short[] DFA21_special = DFA.unpackEncodedString(DFA21_specialS);
-    static final short[][] DFA21_transition;
+    static final short[] DFA24_eot = DFA.unpackEncodedString(DFA24_eotS);
+    static final short[] DFA24_eof = DFA.unpackEncodedString(DFA24_eofS);
+    static final char[] DFA24_min = DFA.unpackEncodedStringToUnsignedChars(DFA24_minS);
+    static final char[] DFA24_max = DFA.unpackEncodedStringToUnsignedChars(DFA24_maxS);
+    static final short[] DFA24_accept = DFA.unpackEncodedString(DFA24_acceptS);
+    static final short[] DFA24_special = DFA.unpackEncodedString(DFA24_specialS);
+    static final short[][] DFA24_transition;
 
     static {
-        int numStates = DFA21_transitionS.length;
-        DFA21_transition = new short[numStates][];
+        int numStates = DFA24_transitionS.length;
+        DFA24_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA21_transition[i] = DFA.unpackEncodedString(DFA21_transitionS[i]);
+            DFA24_transition[i] = DFA.unpackEncodedString(DFA24_transitionS[i]);
         }
     }
 
-    class DFA21 extends DFA {
+    class DFA24 extends DFA {
 
-        public DFA21(BaseRecognizer recognizer) {
+        public DFA24(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 21;
-            this.eot = DFA21_eot;
-            this.eof = DFA21_eof;
-            this.min = DFA21_min;
-            this.max = DFA21_max;
-            this.accept = DFA21_accept;
-            this.special = DFA21_special;
-            this.transition = DFA21_transition;
+            this.decisionNumber = 24;
+            this.eot = DFA24_eot;
+            this.eof = DFA24_eof;
+            this.min = DFA24_min;
+            this.max = DFA24_max;
+            this.accept = DFA24_accept;
+            this.special = DFA24_special;
+            this.transition = DFA24_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( FOREACH | SELECT | WHERE | WITH | AS | SET | IF | IN | STAR | REPEATER | CONTAINS | ISPARENT | ISNODETYPE | IS | HAS | MAX | MIN | DEPTH | PRINT | COMMA | FILTER | LEFT_PAREN | RIGHT_PAREN | LEFT_BRACKET | RIGHT_BRACKET | LEFT_SQ_BRACKET | RIGHT_SQ_BRACKET | SEMICOLON | COLON | PERIOD | DQOUTE | GT | LT | LTE | GTE | AND | OR | NOT | NOT_EQUAL | LOGIC_EQUALS | EQUALS | PLUS | MINUS | DIVIDE | COMPOUND_ADD | INCREMENT | NODE_TYPE | ATTRIBUTES | RESERVED_TYPES | ID | INTEGER | STRING | FLOAT | SPACE );";
+            return "1:1: Tokens : ( SELECT | WHERE | WITH | AS | SET | IF | IN | STAR | REPEATER | CONTAINS | ISPARENT | ISNODETYPE | IS | HAS | MAX | MIN | DEPTH | PRINT | COMMA | FILTER | LEFT_PAREN | RIGHT_PAREN | LEFT_BRACKET | RIGHT_BRACKET | LEFT_SQ_BRACKET | RIGHT_SQ_BRACKET | SEMICOLON | COLON | PERIOD | DQOUTE | GT | LT | LTE | GTE | AND | OR | NOT | NOT_EQUAL | LOGIC_EQUALS | EQUALS | PLUS | MINUS | DIVIDE | COMPOUND_ADD | INCREMENT | NODE_TYPE | ATTRIBUTES | RESERVED_TYPES | ID | INTEGER | STRING | FLOAT | SPACE | LINE_COMMENT );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA21_23 = input.LA(1);
+                        int LA24_22 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA21_23 >= '\u0000' && LA21_23 <= '\uFFFF')) ) {s = 80;}
+                        if ( ((LA24_22 >= '\u0000' && LA24_22 <= '\uFFFF')) ) {s = 78;}
 
-                        else s = 79;
+                        else s = 77;
 
                         if ( s>=0 ) return s;
                         break;
             }
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 21, _s, input);
+                new NoViableAltException(getDescription(), 24, _s, input);
             error(nvae);
             throw nvae;
         }

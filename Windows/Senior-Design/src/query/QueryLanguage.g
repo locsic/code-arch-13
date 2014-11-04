@@ -53,8 +53,7 @@ queries	:	blockquery*
 blockquery : stat_statements query stat_statements -> ^(STATEMENTS stat_statements) query ^(STATEMENTS stat_statements)
            ;
 
-query	:	query_name foreach_query print_stmt -> ^(QUERY ^(QUERY_NAME query_name) ^(FOR_QUERY foreach_query) ^(PRINT print_stmt?) )
-	|	query_name select_query print_stmt -> ^(QUERY ^(QUERY_NAME query_name) ^(SELECT_QUERY select_query) ^(PRINT print_stmt?) )
+query	:	query_name select_query print_stmt -> ^(QUERY ^(QUERY_NAME query_name) ^(SELECT_QUERY select_query) ^(PRINT print_stmt?) )
 	|	query_name ID FILTER ID print_stmt -> ^(QUERY ^(QUERY_NAME query_name) ^(FILTER_QUERY ID FILTER ID) ^(PRINT print_stmt?) )
 	|       EPSILON
 	;
@@ -64,23 +63,15 @@ query_name
 	|	-> EPSILON
 	;
 
-foreach_query
-	:	FOREACH LEFT_PAREN node_chain ID? in_clause RIGHT_PAREN with_clause foreach_where stat_statements -> ^(NODE_CHAIN node_chain) ^(CHAIN_ID ID?) ^(IN_CLAUSE in_clause) with_clause foreach_where ^(STATEMENTS stat_statements)
-	;
-foreach_where
-	:	WHERE boolean_exp -> ^(WHERE_BLOCK boolean_exp)
-	|	-> WHERE_BLOCK
-	;
-
 select_query
-	:	SELECT LEFT_PAREN node_chain ID? node_chain_op block in_clause RIGHT_PAREN with_clause select_where -> ^(NODE_CHAIN node_chain) ^(CHAIN_ID ID?) ^(NODE_CHAIN_OP node_chain_op)  ^(IN_CLAUSE in_clause) ^(BLOCK_STATEMENTS block) with_clause select_where
+	:	SELECT LEFT_PAREN node_chain ID? node_chain_op block RIGHT_PAREN with_clause in_clause select_where -> ^(NODE_CHAIN node_chain) ^(CHAIN_ID ID?) ^(NODE_CHAIN_OP node_chain_op)  ^(IN_CLAUSE in_clause) ^(BLOCK_STATEMENTS block) with_clause select_where
 	;
 select_where
 	:	WHERE boolean_exp stat_statements -> ^(WHERE_BLOCK ^(BOOL_EXP boolean_exp) ^(STATEMENTS stat_statements))
 	|	stat_statements -> ^(WHERE_BLOCK ^(STATEMENTS stat_statements))
 	;
 in_clause
-	:	IN ID -> ID
+	:	IN variable -> variable
 	|	-> EPSILON
 	;
 with_clause 
@@ -238,9 +229,6 @@ logical_op
 	;
 	
 //QL Specific Keywords
-FOREACH  
-	:	 'foreach'
-	;
 SELECT  
 	:	 'select'
 	;
@@ -491,3 +479,8 @@ UNICODE_ESC
     
 SPACE  : (' ' | '\t' | '\r' | '\n')+ {skip();};
 
+LINE_COMMENT : 
+            '//' 
+            ( ~('\n'|'\r') )* 
+            ( '\n'|'\r'('\n')? )? 
+	    { skip(); } ;

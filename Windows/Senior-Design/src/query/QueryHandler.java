@@ -1,4 +1,3 @@
-						//QueryHandler.applyStatements(dummyQuery, result);
 package query;
 
 import java.io.FileReader;
@@ -14,6 +13,7 @@ import objects.Query;
 import objects.ResultTree;
 import objects.SelectorNode;
 import objects.Statement;
+import objects.NodeChain.VarResult;
 
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.CommonTree;
@@ -29,6 +29,7 @@ public class QueryHandler {
 	public static boolean printSum = false;
 	static public LinkedList<Query> queries = null;
 	static public LinkedList <NodeChain> localVars = new LinkedList <NodeChain> ();
+	static String queryFileName = null;
 	
 	public static void printQueries()
 	{
@@ -52,13 +53,28 @@ public class QueryHandler {
 		}
 		else
 		{
-			if (inputTrees == null)
+			if (query.inClause != null)
 			{
-				resultTrees = algorithm.Search.SearchTrees(query, Controller.projectsList);
+				VarResult result = NodeChain.evaluateVar(query.inClause, parent.nodeChains, localVars, true);
+				if (result.ASTNodeResultFound != true)
+				{
+					Assert.isTrue(false, "In clause evaluation did not result in a node chain");
+				}
+				inputTrees = new LinkedList <ResultTree> ();
+				inputTrees.add(new ResultTree(result.ASTNodeResult));
+				
+				resultTrees = algorithm.Search.SearchTrees(query, inputTrees);
 			}
 			else
 			{
-				resultTrees = algorithm.Search.SearchTrees(query, inputTrees);
+				if (inputTrees == null)
+				{
+					resultTrees = algorithm.Search.SearchTrees(query, Controller.projectsList);
+				}
+				else
+				{
+					resultTrees = algorithm.Search.SearchTrees(query, inputTrees);
+				}
 			}
 			
 			if (parent != null) 
@@ -82,10 +98,20 @@ public class QueryHandler {
 		return resultTrees;
 	}
 
-	public static void ReadUserQuery () throws IOException, RecognitionException
+	public static void ReadUserQuery (String queryFile) throws IOException, RecognitionException
 	{
-		String file = Controller.ROOT + "input.txt";
-		CharStream cs = new ANTLRFileStream(file);
+		String file = Controller.ROOT + queryFile;
+		queryFileName = new String(queryFile);
+		CharStream cs = null;
+		try
+		{
+			cs = new ANTLRFileStream(file);
+		}
+		catch (Exception e)
+		{
+			System.out.println("Couldn't open query file " + queryFile + ". Exception: " + e.getMessage());
+			System.exit(0);
+		}
 		System.out.println(cs);
 		QueryLanguageLexer lexer = new QueryLanguageLexer(cs);
 		CommonTokenStream tokens = new CommonTokenStream();
@@ -169,19 +195,6 @@ public class QueryHandler {
 						//System.out.println("here2: " + t.getParent().getText().toString());
 					}
 					
-					if (t.getText().toString().equals("STATEMENTS"))
-					{
-						Query dummyQuery = new Query();
-						
-						dummyQuery.nodeChains = new LinkedList <NodeChain> ();
-						dummyQuery.addStatements((CommonTree)t);
-						dummyQuery.nullQuery = true;
-						
-						ResultTree result = new ResultTree((ResultTree)null);
-
-						queries.addLast(dummyQuery);
-						//QueryHandler.applyStatements(dummyQuery, result);
-					}
 				}
 			}
 			for ( int i = 0; i < indent; i++ )
@@ -190,31 +203,57 @@ public class QueryHandler {
 				System.out.println(sb.toString() + t.getChild(i).toString());
 				if (t.getChild(i).getText().toString().equals("QUERY"))
 				{
-					QueryBuilder((CommonTree)t.getChild(i), indent+1);
+					QueryBuilder((CommonTree)t.getChild(i), indent+1, true);
 					//printTree((CommonTree)t.getChild(i), indent+1);
 				}
-				else if (t.getChild(i).getText().toString().equals("STATEMENT"))
+				else if (t.getChild(i).getText().toString().equals("STATEMENTS"))
 				{
-					// Create a dummy query to hold the statements
-					Query dummyQuery = new Query();
+					// Make sure this STATEMENTS isn't part of a query
+					boolean processThisStatements = true;
+					CommonTree parent = (CommonTree)t.getChild(i).getParent();
+					if (parent != null)
+					{
+						if (!parent.getText().toString().equals("QUERIES"))
+						{
+							processThisStatements = false;
+						}	
+						
+						if (t.getChild(i).getChildIndex() != 0)
+						{
+							int index = t.getChild(i).getChildIndex();
+							CommonTree olderSibling = (CommonTree)t.getChild(i).getParent().getChild(index - 1);
+							
+							if (!olderSibling.getText().toString().equals("QUERY") ||
+									!parent.getText().toString().equals("QUERIES"))
+							{
+								processThisStatements = false;
+							}								
+						}
+					}
 					
-					dummyQuery.nodeChains = new LinkedList <NodeChain> ();
-					dummyQuery.addStatements((CommonTree)t.getChild(i));
-					dummyQuery.nullQuery = true;
-					
-					ResultTree result = new ResultTree((ResultTree)null);
+					if (processThisStatements == true)
+					{
+						Query dummyQuery = new Query();
+						
+						dummyQuery.nodeChains = new LinkedList <NodeChain> ();
+						dummyQuery.addStatements((CommonTree)t.getChild(i));
+						dummyQuery.nullQuery = true;
+						dummyQuery.isTopLevel = true;
+						
+						ResultTree result = new ResultTree((ResultTree)null);
 
-					queries.addLast(dummyQuery);
+						if (!dummyQuery.statements.isEmpty())
+						{
+							queries.addLast(dummyQuery);
+						}
+					}
 					//QueryHandler.applyStatements(dummyQuery, result);
-	
-					//System.out.println("here: " + t.getChild(i).getText().toString());
-					//printTree((CommonTree)t.getChild(i), indent+1);
 				}
 			}
 		}
 	}
 
-	public static void QueryBuilder(CommonTree t, int indent)
+	public static void QueryBuilder(CommonTree t, int indent, boolean isTopLevel)
 	{
 		StringBuffer sb = new StringBuffer(indent);
 		for ( int i = 0; i < indent; i++ )
@@ -222,6 +261,8 @@ public class QueryHandler {
 		
 		Query query = new Query();
 
+		query.isTopLevel = isTopLevel;
+		
 		queries.addLast(query);
 		
 		for ( int i = 0; i < t.getChildCount(); i++ ) {
@@ -233,7 +274,7 @@ public class QueryHandler {
 			}
 			if (t.getChild(i).getText().toString().equals("FOR_QUERY"))
 			{
-				ForQueryBuilder((CommonTree)t.getChild(i), indent+1, query);
+				//ForQueryBuilder((CommonTree)t.getChild(i), indent+1, query);
 			}
 			else if (t.getChild(i).getText().toString().equals("SELECT_QUERY"))
 			{
@@ -245,44 +286,44 @@ public class QueryHandler {
 		}
 	}
 
-	public static void ForQueryBuilder(CommonTree t, int indent, Query query) {
-		if ( t != null ) {
-			StringBuffer sb = new StringBuffer(indent);
-
-			for ( int i = 0; i < indent; i++ )
-				sb = sb.append("   ");
-			for ( int i = 0; i < t.getChildCount(); i++ ) {
-				System.out.println(sb.toString() + t.getChild(i).toString());
-				if (t.getChild(i).getText().toString().equals("NODE_CHAIN"))
-				{
-					GetSearchNode((CommonTree)t.getChild(i),indent+1, query);
-				}
-				else if (t.getChild(i).getText().toString().equals("CHAIN_ID"))
-				{
-					query.setNodeChainName(((CommonTree)t.getChild(i).getChild(0)).getText().toString());
-					System.out.println(sb.toString() + query.nodeChains.getLast().name);
-				}
-				else if (t.getChild(i).getText().toString().equals("WHERE_BLOCK"))
-				{
-					CommonTree sw = (CommonTree)t.getChild(i);
-					
-					for (CommonTree whereChild : (Collection <CommonTree>)(sw.getChildren()))
-					{
-						if (whereChild.getText().toString().equals("BOOL_EXP"))
-						{
-							query.addWhereClause(whereChild);						
-						}
-						if (whereChild.getText().toString().equals("STATEMENTS"))
-						{
-							query.addStatements(whereChild);
-						}
-					}
-				}				
-				else
-					printTree((CommonTree)t.getChild(i), indent+1);
-			}
-		}
-	}
+//	public static void ForQueryBuilder(CommonTree t, int indent, Query query) {
+//		if ( t != null ) {
+//			StringBuffer sb = new StringBuffer(indent);
+//
+//			for ( int i = 0; i < indent; i++ )
+//				sb = sb.append("   ");
+//			for ( int i = 0; i < t.getChildCount(); i++ ) {
+//				System.out.println(sb.toString() + t.getChild(i).toString());
+//				if (t.getChild(i).getText().toString().equals("NODE_CHAIN"))
+//				{
+//					GetSearchNode((CommonTree)t.getChild(i),indent+1, query);
+//				}
+//				else if (t.getChild(i).getText().toString().equals("CHAIN_ID"))
+//				{
+//					query.setNodeChainName(((CommonTree)t.getChild(i).getChild(0)).getText().toString());
+//					System.out.println(sb.toString() + query.nodeChains.getLast().name);
+//				}
+//				else if (t.getChild(i).getText().toString().equals("WHERE_BLOCK"))
+//				{
+//					CommonTree sw = (CommonTree)t.getChild(i);
+//					
+//					for (CommonTree whereChild : (Collection <CommonTree>)(sw.getChildren()))
+//					{
+//						if (whereChild.getText().toString().equals("BOOL_EXP"))
+//						{
+//							query.addWhereClause(whereChild);						
+//						}
+//						if (whereChild.getText().toString().equals("STATEMENTS"))
+//						{
+//							query.addStatements(whereChild);
+//						}
+//					}
+//				}				
+//				else
+//					printTree((CommonTree)t.getChild(i), indent+1);
+//			}
+//		}
+//	}
 
 	public static void SelectQueryBuilder(CommonTree t, int indent, Query query) {
 		if ( t != null ) {
@@ -292,7 +333,15 @@ public class QueryHandler {
 				sb = sb.append("   ");
 			for ( int i = 0; i < t.getChildCount(); i++ ) {
 				System.out.println(sb.toString() + t.getChild(i).toString());
-				if (t.getChild(i).getText().toString().equals("NODE_CHAIN"))
+				if (t.getChild(i).getText().toString().equals("IN_CLAUSE"))
+				{
+					CommonTree in_clause = (CommonTree)t.getChild(i);
+					if (in_clause.getChild(0).getType() != QueryLanguageLexer.EPSILON)
+					{
+						query.inClause = (CommonTree)in_clause.getChild(0);
+					}
+				}
+				else if (t.getChild(i).getText().toString().equals("NODE_CHAIN"))
 				{
 					GetSearchNode((CommonTree)t.getChild(i),indent+1, query);
 				}
@@ -363,58 +412,133 @@ public class QueryHandler {
 		return GetSearchNode(t, indent, dummyQuery);
 	}
 	
+	static public int dummy1()
+	{
+		int i = 0;
+		int j = 1;
+		for (i = 0; i < 10000000; i++)
+		{
+			j = j+1;
+		}
+		return j;
+	}
+	static public int dummy2()
+	{
+		int i = 0;
+		int j = 1;
+		for (i = 0; i < 10000000; i++)
+		{
+			j = j+1;
+		}
+		return j;
+	}
+	static public int dummy3()
+	{
+		int i = 0;
+		int j = 1;
+		for (i = 0; i < 10000000; i++)
+		{
+			j = j+1;
+		}
+		return j;
+	}
+	static public int dummy4()
+	{
+		int i = 0;
+		int j = 1;
+		for (i = 0; i < 10000000; i++)
+		{
+			j = j+1;
+		}
+		return j;
+	}
+	static public int dummy5()
+	{
+		int i = 0;
+		int j = 1;
+		for (i = 0; i < 10000000; i++)
+		{
+			j = j+1;
+		}
+		return j;
+	}
+	static public int dummy6()
+	{
+		int i = 0;
+		int j = 1;
+		for (i = 0; i < 10000000; i++)
+		{
+			j = j+1;
+		}
+		return j;
+	}
+	static public int dummy7()
+	{
+		int i = 0;
+		int j = 1;
+		for (i = 0; i < 10000000; i++)
+		{
+			j = j+1;
+		}
+		return j;
+	}
+	
 	public static NodeChain GetSearchNode(CommonTree t, int indent, Query query)
 	{
 		if ( t != null ) {
-			StringBuffer sb = new StringBuffer(indent);
+			//StringBuffer sb = new StringBuffer(indent);
 
-			if (t.getParent() == null){
-				if(t.getText()!=null){
+			//if (t.getParent() == null){
+			//	if(t.getText()!=null){
 					//String node = t.getText().toString();
 					//System.out.println(sb.toString() + t.getText().toString());	
-				}
-			}
-			for ( int i = 0; i < indent; i++ )
-				sb = sb.append("   ");
+			//	}
+			//}
+			//for ( int i = 0; i < indent; i++ )
+				//sb = sb.append("   ");
 			for ( int i = 0; i < t.getChildCount(); i++ ) {
 				//System.out.println(sb.toString() + t.getChild(i).toString());
-				if(t.getChild(i).getText().toString().equals("NODE_NAME"))
+				String childStr = t.getChild(i).getText().toString(); 
+				if(childStr.equals("NODE_NAME"))
 				{
+					//dummy1();
 					query.newNodeChain();
 					//searchNodeType = t.getChild(i).getChild(0).getText().toString();
 					query.addSelectorNode(query.searchNodeType, SelectorNode.NODE);
-					System.out.println(sb.toString() + "node: " + query.searchNodeType);
+					//System.out.println(sb.toString() + "node: " + query.searchNodeType);
 				}
-				else if (t.getChild(i).getText().toString().equals("AST_CHILD"))
+				else if (childStr.equals("AST_CHILD"))
 				{
+					//dummy2();
 					if (query.nodeChains.size() == 0) query.newNodeChain();
 					query.searchNodeType = t.getChild(i).getChild(0).getText().toString();
 					query.addSelectorNode(query.searchNodeType, SelectorNode.AST_CHILD);
 					//System.out.println(sb.toString() + "ast_child: " + query.searchNodeType);					
 				}
-				else if (t.getChild(i).getText().toString().equals("contains") ||
-						 t.getChild(i).getText().toString().equals("isparent") ||
-						 t.getChild(i).getText().toString().equals("isnodetype"))
+				else if (childStr.equals("contains") ||
+						 childStr.equals("isparent") ||
+						 childStr.equals("isnodetype"))
 				{
+					//dummy3();
 					// "Contains" only implemented for AST child right now
 					CommonTree contains = (CommonTree)t.getChild(i);
 					int containsType = 0;
 					
-					if (t.getChild(i).getText().toString().equals("contains"))
+					if (childStr.equals("contains"))
 					{
 						containsType = NodeChain.CONTAINS;
 					}
-					else if (t.getChild(i).getText().toString().equals("isparent"))
+					else if (childStr.equals("isparent"))
 					{
 						containsType = NodeChain.ISPARENT;
 					}
-					else if (t.getChild(i).getText().toString().equals("isnodetype"))
+					else if (childStr.equals("isnodetype"))
 					{
 						containsType = NodeChain.ISNODETYPE;
 					}
 					else
 					{
-						Assert.isTrue(false, "Invalid containst type:" + t.getChild(i).getText().toString());
+						Assert.isTrue(false, "Invalid contains type:" + childStr);
 					}
 					//CommonTree containsAstChild = (CommonTree)contains.getChild(0);
 					//String containsAstChildString = containsAstChild.getText().toString();
@@ -426,14 +550,16 @@ public class QueryHandler {
 				else 
 				{
 					if (query.nodeChains.size() == 0) query.newNodeChain();
-					if (t.getChild(i).getText().toString().equals("ATTRIBUTE"))				
+					if (childStr.equals("ATTRIBUTE"))				
 					{
+						//dummy4();
 						String node = t.getChild(i).getChild(0).getText().toString();
 						query.addSelectorNode(node, SelectorNode.ATTR);
-						System.out.println(sb.toString() + "attr: " + node);
+						//System.out.println(sb.toString() + "attr: " + node);
 					}
-					else if (t.getChild(i).getText().toString().equals("VAR_NAME"))
+					else if (childStr.equals("VAR_NAME"))
 					{
+						//dummy5();
 						String node = t.getChild(i).getChild(0).getText().toString();
 						
 						query.setNodeChainName(node);
@@ -441,8 +567,9 @@ public class QueryHandler {
 						
 						GetSearchNode((CommonTree)t.getChild(i), indent+1, query);
 					}
-					else if (t.getChild(i).getText().toString().equals("PROPERTY"))
+					else if (childStr.equals("PROPERTY"))
 					{
+						//dummy6();
 						String node = t.getChild(i).getChild(0).getText().toString();
 						if (node == "VAR_NAME")
 						{
@@ -455,10 +582,16 @@ public class QueryHandler {
 
 						//System.out.println(sb.toString() + "prop: " + node);
 					}
-					else //if  (t.getChild(i).getText().toString().equals("NODE"))
+ 					else if (childStr.startsWith("NODE"))//if  (t.getChild(i).getText().toString().equals("NODE"))
 					{
+ 						//dummy7();
 						GetSearchNode((CommonTree)t.getChild(i), indent+1, query);
 					}
+ 					else 
+ 					{
+ 						//GetSearchNode((CommonTree)t.getChild(i), indent+1, query);
+ 					}
+ 					
 				}
 			}
 		}
@@ -502,7 +635,7 @@ public class QueryHandler {
 			boolean passed = true;
 			if (q.whereClause != null)
 			{
-				passed = q.whereClause.evaluate(r, q.nodeChains, new LinkedList <NodeChain> ());					
+				passed = q.whereClause.evaluate(r, q.nodeChains, localVars);					
 			}
 			if (passed == true)
 			{
@@ -525,7 +658,7 @@ public class QueryHandler {
 			Properties p = new Properties();
 			p.load(fr);
 
-			for (Enumeration<Object> e = p.elements(); e.hasMoreElements();)
+			for (Enumeration<?> e = p.propertyNames(); e.hasMoreElements();)
 			{
 				String key = (String)(e.nextElement());
 				String value = p.getProperty(key);
@@ -566,6 +699,8 @@ public class QueryHandler {
 	}
 
 	public static void writeLocals(String filename) {
+		
+		// add the query name to the locals
 		try
 		{
 			FileWriter fw = new FileWriter(filename);
@@ -576,6 +711,7 @@ public class QueryHandler {
 				       value = nc.localVarValue.toString();
 				p.setProperty(key, value);
 			}
+			p.setProperty("query", queryFileName); 
 			p.store(fw, "Persistent local query variables");
 			fw.close();
 		}

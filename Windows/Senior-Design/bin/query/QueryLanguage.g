@@ -80,7 +80,7 @@ select_where
 	|	stat_statements -> ^(WHERE_BLOCK ^(STATEMENTS stat_statements))
 	;
 in_clause
-	:	IN ID -> ID
+	:	IN variable -> variable
 	|	-> EPSILON
 	;
 with_clause 
@@ -491,3 +491,8 @@ UNICODE_ESC
     
 SPACE  : (' ' | '\t' | '\r' | '\n')+ {skip();};
 
+LINE_COMMENT : 
+            '//' 
+            ( ~('\n'|'\r') )* 
+            ( '\n'|'\r'('\n')? )? 
+	    { skip(); } ;

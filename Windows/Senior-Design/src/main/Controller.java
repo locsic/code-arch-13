@@ -9,6 +9,7 @@ import java.net.URLDecoder;
 import java.util.LinkedList;
 
 import org.antlr.runtime.RecognitionException;
+import org.eclipse.core.runtime.Assert;
 
 import projects.ProjectProcessor;
 import query.QueryHandler;
@@ -19,6 +20,7 @@ import objects.ResultTree;
 public class Controller {
 	//public static String ROOT = "C:\\Users\\Sara\\Documents\\Java\\Senior-Design\\src\\";
 	public static String ROOT = "C:\\Users\\Chervil\\Desktop\\gw\\program_comprehension\\code_archaeology\\data_area\\";
+	public static String PROPERTIES_FILE = "locals.properties";
 	//public static String ROOT = "";
 	public static boolean DEBUG = false;
 	public static boolean DOWNLOAD = false;
@@ -36,7 +38,7 @@ public class Controller {
 			e.printStackTrace();
 		}
 	}
-	
+	/*
 	public static void TestProjects()
 	{
 		if(DEBUG) System.out.println("before download");
@@ -53,22 +55,22 @@ public class Controller {
 				System.out.println("print: " + p.projectName);
 				p.print();
 			}
-	}
+	}*/
 
-	public static void TestQuery()
-	{
-
-		try {
-			QueryHandler.ReadUserQuery();
-			QueryHandler.printQueries();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RecognitionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-	}
+//	public static void TestQuery()
+//	{
+//
+//		try {
+//			QueryHandler.ReadUserQuery();
+//			QueryHandler.printQueries();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (RecognitionException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} 
+//	}
 
 	public static void TestFileTreeCreation()
 	{
@@ -77,48 +79,65 @@ public class Controller {
 		algorithm.TreeSearch.HasSubTree(t.root, "InputStream is = process.getInputStream();			InputStreamReader isr = new InputStreamReader(is);");
 
 	}
-
+/*
 	public static void GetProjects()
 	{
 		ProjectProcessor.DownloadProjects(DOWNLOAD);
 		if(DOWNLOAD)
 			ProjectProcessor.UnZipProjects();
 		ProjectProcessor.BuildProjectTrees();
+	}*/
+
+	public static void InterpretQuery(String queryFile) throws Exception
+	{
+		QueryHandler.ReadUserQuery(queryFile);
 	}
 
-	public static void InterpretQuery() throws Exception
+	public static void SearchAlgorithm(LinkedList<Query> queries, String localsFile, boolean topLevel)
 	{
-		QueryHandler.ReadUserQuery();
-	}
-
-	public static void SearchAlgorithm(LinkedList<Query> queries, boolean topLevel)
-	{
-		QueryHandler.readLocals(ROOT + "locals.properties");	
+		if (localsFile != null)
+		{
+			QueryHandler.readLocals(ROOT + localsFile);			
+		}
+		else
+		{
+			QueryHandler.readLocals(ROOT + PROPERTIES_FILE);
+		}
 		
 		LinkedList<ResultTree> resultTrees = null;
 		
 		for (Query q : queries)
 		{
-			resultTrees = QueryHandler.executeQuery(QueryHandler.queries.getFirst(), null, resultTrees);
+			if (q.isTopLevel)
+			{
+				resultTrees = QueryHandler.executeQuery(q, null, resultTrees);
+			}
 		}
-		
-		if (topLevel && QueryHandler.printSum)
-			ResultsHandler.PrintNumResults(resultTrees);
+
+		if (resultTrees != null)
+		{
+			if (topLevel && QueryHandler.printSum)
+				ResultsHandler.PrintNumResults(resultTrees);
+			else
+				ResultsHandler.PrintResults(resultTrees);
+		}
 		else
-			ResultsHandler.PrintResults(resultTrees);
+		{
+			System.out.println("No results.");
+		}
 	}
 
 
-	public static void Run()
+	public static void Run(String projectName, String queryFile, String localsFile)
 	{
-		try{
-			GetProjects();
+		try{			
+			ProjectProcessor.BuildProjectTree(projectName);
 			
 			try{
-				InterpretQuery();
+				InterpretQuery(queryFile);
 				
 				try{
-					SearchAlgorithm(QueryHandler.queries, true);
+					SearchAlgorithm(QueryHandler.queries, localsFile, true);
 				}
 				catch (Exception e)
 				{
@@ -146,8 +165,28 @@ public class Controller {
 		//TestQuery();
 		//TestFileTreeCreation();
 		//TestTreeSearchAlgorithm();
+		String projectName = null, queryFile = null, localsFile = null;
+		if (args.length < 2)
+		{
+			projectName = new String("squirrel-sql");
+			queryFile = new String("input.txt");
+			localsFile = null;
+		}
+		else if (args.length <= 3)
+		{
+			projectName = args[0];
+			queryFile = args[1];
+			if (args.length == 3)
+			{
+				localsFile = args[2];
+			}
+			else localsFile = null;			 
+		}
+		else
+		{
+			Assert.isTrue(false, "Arguments: projectname queryfile [localsfile]");
+		}
 
-		Run();
+		Run(projectName, queryFile, localsFile);
 	}
-
 }

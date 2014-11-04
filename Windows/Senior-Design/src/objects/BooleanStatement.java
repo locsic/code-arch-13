@@ -51,14 +51,14 @@ public class BooleanStatement {
 		else
 		{
 			varTree = (CommonTree)ct.getChild(0);
-			varResult = NodeChain.evaluateVar((CommonTree) varTree.getChild(0), bindings, locals);
+			varResult = NodeChain.evaluateVar((CommonTree) varTree.getChild(0), bindings, locals, false);
 		
 			// The second child is always a BOOLEAN_OP variable or EPSILON
 			if (ct.getChild(1).getText() != "EPSILON")
 			{
 				CommonTree booleanOp = (CommonTree) ct.getChild(1);
 				CommonTree innerVarTree = (CommonTree)booleanOp.getChild(0);
-				NodeChain.VarResult innerVarResult = NodeChain.evaluateVar(innerVarTree, bindings, locals);
+				NodeChain.VarResult innerVarResult = NodeChain.evaluateVar(innerVarTree, bindings, locals, false);
 				
 				String operation = booleanOp.getText().toString();
 				varResult = NodeChain.applyBoolOperation(varResult, innerVarResult, operation);

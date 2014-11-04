@@ -20,7 +20,8 @@ public class DirectoryTree {
 		public boolean accept(File file) {
 			return file.isFile() && file.getName().contains(".java");
 		}
-	};	
+	};
+	
 	public DirectoryTree()
 	{
 	}
@@ -54,7 +55,6 @@ public class DirectoryTree {
 			System.out.println(sb.toString() + file.origin.getAbsolutePath());
 		}
 	}
-	
 }
 
 

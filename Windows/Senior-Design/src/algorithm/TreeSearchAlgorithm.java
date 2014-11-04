@@ -100,7 +100,8 @@ public class TreeSearchAlgorithm extends ASTVisitor{
 			System.out.print(".");
 
 		// Use ASTMatcher to compare this node against the search tree
-		if (node.getClass() == nodeType)
+		//if (node.getClass() == nodeType)
+		if (nodeType.isAssignableFrom(node.getClass()))
 		{
 			//if(Controller.DEBUG)
 			//System.out.println(treeToSearch.getLineNumber(node.getStartPosition()));

@@ -16,7 +16,15 @@ public class ProjectTree extends DirectoryTree {
 		projectName = name;
 		
 		System.out.println(projectName);
-		projectTree = new DirectoryTree(root, name);
+		try
+		{
+			projectTree = new DirectoryTree(root, name);
+		}
+		catch (Exception e)
+		{
+			System.out.println("Couldn't open project " + name + ". Exception: " + e.getMessage());
+			System.exit(0);
+		}
 	}
 	
 	public void print()

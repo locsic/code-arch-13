@@ -25,6 +25,8 @@ public class NodeChain {
 		public boolean intResultFound;
 		public String stringResult;
 		public boolean stringResultFound;
+		public ASTNode ASTNodeResult;
+		public boolean ASTNodeResultFound;
 		
 		public VarResult()
 		{
@@ -32,6 +34,8 @@ public class NodeChain {
 			stringResultFound = false;
 			intResult = 0;
 			intResultFound = false;
+			ASTNodeResult = null;
+			ASTNodeResultFound = false;
 		}
 		
 		public String toString()
@@ -282,17 +286,17 @@ public class NodeChain {
 		}
 		else if (functionName.equals("max") || functionName.equals("min"))
 		{
-			VarResult vr1 = evaluateVar((CommonTree)functionNode.getChild(0), bindings, new LinkedList <NodeChain> ());
-			VarResult vr2 = evaluateVar((CommonTree)functionNode.getChild(1), bindings, new LinkedList <NodeChain> ());
+			VarResult vr1 = evaluateVar((CommonTree)functionNode.getChild(0), bindings, new LinkedList <NodeChain> (), false);
+			VarResult vr2 = evaluateVar((CommonTree)functionNode.getChild(1), bindings, new LinkedList <NodeChain> (), false);
 			
 			if (vr1.intResultFound == false)
 			{
-				vr1 = evaluateVar((CommonTree)functionNode.getChild(0), locals, new LinkedList <NodeChain> ()); 
+				vr1 = evaluateVar((CommonTree)functionNode.getChild(0), locals, new LinkedList <NodeChain> (), false); 
 			}
 
 			if (vr2.intResultFound == false)
 			{
-				vr2 = evaluateVar((CommonTree)functionNode.getChild(1), locals, new LinkedList <NodeChain> ()); 
+				vr2 = evaluateVar((CommonTree)functionNode.getChild(1), locals, new LinkedList <NodeChain> (), false); 
 			}
 
 			varResult.intResultFound = true;
@@ -314,7 +318,7 @@ public class NodeChain {
 		return varResult;
 	}
 
-	static VarResult evaluateVar(CommonTree ct, LinkedList <NodeChain> bindings, LinkedList <NodeChain> locals)
+	public static VarResult evaluateVar(CommonTree ct, LinkedList <NodeChain> bindings, LinkedList <NodeChain> locals, boolean ASTResultOK)
 		{
 	//		variable	
 	//		:	ID COLON attr				-> ^(VAR_NAME ID attr)
@@ -397,6 +401,7 @@ public class NodeChain {
 											varResult.intResultFound = true;
 											varResult.intResult = 0;								
 										}
+			
 									}
 									else // ISPARENT has no meaning for an AST_CHILD
 									{
@@ -441,7 +446,13 @@ public class NodeChain {
 								} break;
 							}
 							return varResult;
-						}						
+						}
+						else if (ASTResultOK)
+						{
+							varResult.ASTNodeResultFound = true;
+							varResult.ASTNodeResult = currentResult;
+							return varResult;
+						}
 						else if (currentResult instanceof VariableDeclarationFragment)
 						{
 							varResult.stringResultFound = true;
